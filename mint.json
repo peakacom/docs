@@ -30,6 +30,14 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "SQL",
+      "url": "sql"
+    },
+    {
+      "name": "Integrations",
+      "url": "integrations"
     }
   ],
   "anchors": [
@@ -68,6 +76,14 @@
     {
       "group": "API Documentation",
       "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "SQL",
+      "pages": ["sql/introduction"]
+    },
+    {
+      "group": "Integrations",
+      "pages": ["integrations/introduction"]
     },
     {
       "group": "Projects",
