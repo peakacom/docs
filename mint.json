@@ -52,11 +52,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
+      "pages": ["introduction", "quickstart", "development"]
     },
     {
       "group": "Essentials",
@@ -71,16 +67,72 @@
     },
     {
       "group": "API Documentation",
+      "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Projects",
       "pages": [
-        "api-reference/introduction"
+        "api-reference/peaka/projects/list-all-projects",
+        "api-reference/peaka/projects/create-a-project",
+        "api-reference/peaka/projects/get-a-project",
+        "api-reference/peaka/projects/delete-project"
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Data > Cache",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/peaka/data->-cache/list-caches",
+        "api-reference/peaka/data->-cache/create-a-cache",
+        "api-reference/peaka/data->-cache/delete-a-cache",
+        "api-reference/peaka/data->-cache/startupdate-a-cache",
+        "api-reference/peaka/data->-cache/rebuild-a-cache",
+        "api-reference/peaka/data->-cache/get-status-of-a-cache"
+      ]
+    },
+    {
+      "group": "Data > Catalogs",
+      "pages": [
+        "api-reference/peaka/data->-catalogs/list-catalogs",
+        "api-reference/peaka/data->-catalogs/create-a-catalog",
+        "api-reference/peaka/data->-catalogs/get-a-catalog",
+        "api-reference/peaka/data->-catalogs/delete-a-catalog",
+        "api-reference/peaka/data->-catalogs/list-schemas",
+        "api-reference/peaka/data->-catalogs/list-tables",
+        "api-reference/peaka/data->-catalogs/list-columns"
+      ]
+    },
+    {
+      "group": "Data > Query",
+      "pages": [
+        "api-reference/peaka/data->-query/list-queries",
+        "api-reference/peaka/data->-query/create-a-query",
+        "api-reference/peaka/data->-query/update-a-query",
+        "api-reference/peaka/data->-query/delete-a-query",
+        "api-reference/peaka/data->-query/execute-a-query"
+      ]
+    },
+    {
+      "group": "Data > Internal Tables",
+      "pages": [
+        "api-reference/peaka/data->-internal-tables/list-internal-tables",
+        "api-reference/peaka/data->-internal-tables/create-an-internal-table",
+        "api-reference/peaka/data->-internal-tables/delete-an-internal-table",
+        "api-reference/peaka/data->-internal-tables/get-columns-of-an-internal-table",
+        "api-reference/peaka/data->-internal-tables/add-a-column-to-an-internal-table",
+        "api-reference/peaka/data->-internal-tables/update-a-column-of-an-internal-table",
+        "api-reference/peaka/data->-internal-tables/delete-a-column-of-an-internal-table"
+      ]
+    },
+    {
+      "group": "Connections",
+      "pages": [
+        "api-reference/peaka/connections/list-connections",
+        "api-reference/peaka/connections/create-a-connection",
+        "api-reference/peaka/connections/get-a-connection",
+        "api-reference/peaka/connections/update-a-connection",
+        "api-reference/peaka/connections/delete-a-connection",
+        "api-reference/peaka/connections/list-available-connections",
+        "api-reference/peaka/connections/test-connection"
       ]
     }
   ],
