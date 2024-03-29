@@ -130,7 +130,7 @@ input => TABLE(orders)
 data => TABLE(SELECT * FROM region, nation WHERE region.regionkey = nation.regionkey)
 ```
 
-If the table argument is declared as {ref}`set semantics<tf-set-or-row-semantics>`,
+If the table argument is declared as set semantics,
 you can specify partitioning and ordering. Each partition is processed
 independently by the table function. If you do not specify partitioning, the
 argument is processed as a single partition. You can also specify
