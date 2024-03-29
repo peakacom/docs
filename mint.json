@@ -76,7 +76,70 @@
     },
     {
       "group": "SQL",
-      "pages": ["sql/introduction"]
+      "pages": [
+        "sql/introduction"
+      ]
+    },
+    {
+      "group": "Reference",
+      "pages": [
+        "sql/reference/describe",
+        "sql/reference/execute",
+        "sql/reference/prepare",
+        "sql/reference/select",
+        "sql/reference/show-catalogs",
+        "sql/reference/show-columns",
+        "sql/reference/show-schemas",
+        "sql/reference/use",
+        "sql/reference/values"
+      ]
+    },
+    {
+      "group": "Functions",
+      "pages": [
+        "sql/functions/aggregate",
+        "sql/functions/array",
+        "sql/functions/binary",
+        "sql/functions/bitwise",
+        "sql/functions/comparison",
+        "sql/functions/conditional",
+        "sql/functions/conversion",
+        "sql/functions/datetime",
+        "sql/functions/decimal",
+        "sql/functions/hyperloglog",
+        "sql/functions/json",
+        "sql/functions/lambda",
+        "sql/functions/map",
+        "sql/functions/ml",
+        "sql/functions/qdigest",
+        "sql/functions/regexp",
+        "sql/functions/setdigest",
+        "sql/functions/string",
+        "sql/functions/table",
+        "sql/functions/teradata",
+        "sql/functions/url",
+        "sql/functions/uuid",
+        "sql/functions/window"
+      ]
+    },
+    {
+      "group": "routines",
+      "pages": [
+        "sql/routines/introduction",
+        "sql/routines/begin",
+        "sql/routines/case",
+        "sql/routines/declare",
+        "sql/routines/examples",
+        "sql/routines/function",
+        "sql/routines/if",
+        "sql/routines/iterate",
+        "sql/routines/leave",
+        "sql/routines/loop",
+        "sql/routines/repeat",
+        "sql/routines/return",
+        "sql/routines/set",
+        "sql/routines/while"
+      ]
     },
     {
       "group": "Integrations",
