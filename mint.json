@@ -126,10 +126,10 @@
       "group": "Routines",
       "pages": [
         "sql/routines/introduction",
+        "sql/routines/examples",
         "sql/routines/begin",
         "sql/routines/case",
         "sql/routines/declare",
-        "sql/routines/examples",
         "sql/routines/function",
         "sql/routines/if",
         "sql/routines/iterate",
