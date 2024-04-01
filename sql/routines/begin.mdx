@@ -1,0 +1,59 @@
+---
+title: BEGIN
+---
+
+## Synopsis
+
+```text
+BEGIN
+  [ DECLARE ... ]
+  statements
+END
+```
+
+## Description
+
+Marks the start and end of a block in a [SQL routine](/sql/routines/introduction.mdx).
+`BEGIN` can be used wherever a statement can be used to group multiple
+statements together and to declare variables local to the block. A typical use
+case is as first statement within a [function](/sql/routines/function.mdx). Blocks can also be
+nested.
+
+After the `BEGIN` keyword, you can add variable declarations using
+[declare](/sql/routines/declare.mdx) statements, followed by one or more statements that define
+the main body of the routine, separated by `;`. The following statements can be
+used:
+
+* [case](/sql/routines/case.mdx)
+* [if](/sql/routines/if.mdx)
+* [iterate](/sql/routines/iterate.mdx)
+* [leave](/sql/routines/leave.mdx)
+* [loop](/sql/routines/loop.mdx)
+* [repeat](/sql/routines/repeat.mdx)
+* [return](/sql/routines/return.mdx)
+* [set](/sql/routines/set.mdx)
+* [while](/sql/routines/while.mdx)
+* Nested [begin](/sql/routines/begin.mdx.mdx) blocks
+
+## Examples
+
+The following example computes the value `42`:
+
+```sql
+FUNCTION meaning_of_life()
+  RETURNS tinyint
+  BEGIN
+    DECLARE a tinyint DEFAULT 6;
+    DECLARE b tinyint DEFAULT 7;
+    RETURN a * b;
+  END
+```
+
+Further examples of varying complexity that cover usage of the `BEGIN` statement
+in combination with other statements are available in the [SQL routines examples
+documentation](/sql/routines/examples.mdx).
+
+## See also
+
+* [routines](/sql/routines/introduction.mdx)
+* [function](/sql/routines/function.mdx)
