@@ -180,7 +180,10 @@
     },
     {
       "group": "BI Tools",
-      "pages": ["bi-tools/introduction"]
+      "pages": [
+        "bi-tools/introduction",
+        "bi-tools/looker-studio"
+      ]
     },
     {
       "group": "DB Drivers",
