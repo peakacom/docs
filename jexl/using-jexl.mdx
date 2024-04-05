@@ -1,0 +1,156 @@
+---
+title: "How to use JEXL in Peaka"
+description: "Click here to see a detailed description of how to use JEXL in Peaka"
+---
+
+**Javascript Expression Language: Powerful context-based expression parser and evaluator.**
+
+In Peaka, JEXL empowers you to assign dynamic values to component properties and flow parameters while seamlessly integrating with variables. This versatile feature extends to all property values, and for added convenience, you can access an expanded editing interface by simply clicking the arrow icon located on the right side of the property field.
+
+Even properties typically represented as simple checkboxes can be transformed into JEXL editors with a single click of the "f(x)" button. Below, we present a selection of common examples demonstrating the practical application of JEXL:
+
+**Examples**
+
+```py
+  // addition
+  {{sum(45, 99)}}
+  // => 144
+
+  // show name
+  {{ "Hello " + page.name}}
+  // => 'Hello Can'
+
+  // alternatively
+  Hello {{ page.name }}
+  // => 'Hello Can'
+
+  // convert the date
+  {{convertLocaleDateString("Tue Aug 15 2023 10:23:41", "de",{
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  }}
+  // => Dienstag, 15. August 2023
+```
+
+<img
+  src="https://cdn.peaka.com/jexl/using-jexl-1.png"
+  alt="showing inputs where users can write jexl 1 view"
+/>
+
+<img
+  src="https://cdn.peaka.com/jexl/using-jexl-2.png"
+  alt="showing inputs where users can write jexl 2 view"
+/>
+
+## Using Variables in the Visual Query Filters
+
+In our application, we utilize a variable named 'industry' with a current value of 'automotive.' If you're interested in learning more about variables, please refer to [this article](https://www.peaka.com/docs/variables/what-are-page-variables-and-app-variables/).
+
+In the following example, we demonstrate how to filter our data table based on the 'industry' variable.
+
+<img
+  src="https://cdn.peaka.com/jexl/examples-1.png"
+  alt="app variables modal view"
+/>
+
+Next, open the [Visual Query Filters](https://www.peaka.com/docs/connecting-your-data/visual-query-and-filters/).
+
+The condition for the filter should be set to match the 'company.industry' with our 'industry' app variable. To achieve this, select `company.industry` under 'Where' in the Visual Query Filters interface, as illustrated in the image below.
+
+<img
+  src="https://cdn.peaka.com/jexl/examples-1.2.png"
+  alt="visual sql editor where condition view"
+/>
+
+This action will open a modal where you can input your desired value or JEXL code.
+
+```
+    {{ app.variableName }}
+```
+
+To access page variables and component variables, you can use the following code pattern:
+
+```
+    {{ page.variableName }}
+```
+
+In this example, our goal is to access the 'industry' app variable and convert its content to uppercase. This can be achieved using a function provided by [JEXL](https://www.peaka.com/docs/jexl/advanced-jexl/).
+
+Please enter the following JEXL code below:
+
+```java
+  {{ upperCase(app.industry) }}
+```
+
+<img
+  src="https://cdn.peaka.com/jexl/examples-1.3.png"
+  alt="visual sql editor modal view"
+/>
+
+That's all you need to do, and your data table will be filtered accordingly.
+
+## Using Variables in Loops
+
+We have a page variable named 'myCountries,' which is an array with values structured as follows:
+
+```javascript
+[
+  { value: "USA", index: 1 },
+  { value: "Turkiye", index: 2 },
+  { value: "China", index: 3 },
+];
+```
+
+<img
+  src="https://cdn.peaka.com/jexl/examples-2.1.png"
+  alt="page variables modal view"
+/>
+
+We have created a flow and added a new action called 'Loop Over List' to the [Flow](https://www.peaka.com/docs/flows/how-to-create-a-flow/).
+
+To configure the 'Loop Over List' action, we need to either input an array or select one. In this case, we can access our array from the page variable, as demonstrated in the image below.
+
+Please enter the following JEXL code below:
+
+```java
+  {{ page.myCountries }}
+```
+
+<img
+  src="https://cdn.peaka.com/jexl/examples-2.2.png"
+  alt="flow loop list node view"
+/>
+
+## Adding a New Property to an Object
+
+We have a page variable named 'countryInfo,' which is an object with a value structured as follows. Our objective is to add new country information to our array within the flow.
+
+```javascript
+{
+  name: 'Turkiye',
+  capital: 'Ankara'
+}
+```
+
+<img
+  src="https://cdn.peaka.com/jexl/examples-4.1.png"
+  alt="updated page variables modal view"
+/>
+
+We have created a flow and added a new action called ['Set Page Variable'](https://www.peaka.com/docs/flows/set-page-variable/).
+
+Now, please input your value or JEXL code in accordance with the format shown below. We are utilizing a function from [JEXL](https://www.peaka.com/docs/jexl/advanced-jexl/).
+
+```java
+ {{ setWith(page.countryInfo,'population', '88.8 M') }}
+```
+
+<img
+  src="https://cdn.peaka.com/jexl/examples-4.2.png"
+  alt="flow set page variables flow node view"
+/>
+
+That's all there is to it. Once the flow is executed, your object will be updated accordingly.
