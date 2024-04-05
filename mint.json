@@ -54,6 +54,14 @@
     {
       "name": "Connecting Your Data",
       "url": "connecting-your-data"
+    },
+    {
+      "name": "JEXL",
+      "url": "jexl"
+    },
+    {
+      "name": "Flows",
+      "url": "flows"
     }
   ],
   "anchors": [
@@ -226,6 +234,39 @@
         "connecting-your-data/creating-peaka-table",
         "connecting-your-data/add-connection",
         "connecting-your-data/what-is-catalog-schema-virtual-table"
+      ]
+    },
+    {
+      "group": "JEXL",
+      "pages": [
+        "jexl/using-jexl",
+        "jexl/advanced-jexl",
+        "jexl/built-in-functions",
+        "jexl/lodash-functions"
+      ]
+    },
+    {
+      "group": "Flows",
+      "pages": [
+        "flows/how-to-create-a-flow",
+        "flows/definition-of-flow-components",
+        "flows/creating-and-exposing-api",
+        "flows/frontend-vs-backend-nodes",
+        "flows/reusable-flows",
+        "flows/backend-flows",
+        "flows/what-is-output-and-how-to-use-it",
+        "flows/what-is-trigger-type",
+        "flows/show-notification",
+        "flows/set-variable",
+        "flows/set-page-variable",
+        "flows/set-app-variable",
+        "flows/set-flow-variable",
+        "flows/loops",
+        "flows/log",
+        "flows/http-request",
+        "flows/switch-case",
+        "flows/success-fail",
+        "flows/connections"
       ]
     },
     {
