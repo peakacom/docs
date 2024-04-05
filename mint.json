@@ -208,8 +208,7 @@
     {
       "group": "DB Drivers",
       "pages": [
-        "db-drivers/introduction",
-        "db-drivers/python"
+        "db-drivers/introduction"
       ]
     },
     {
