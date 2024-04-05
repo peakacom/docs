@@ -46,6 +46,14 @@
     {
       "name": "DB Drivers",
       "url": "db-drivers"
+    },
+    {
+      "name": "Project Operations",
+      "url": "project-operations"
+    },
+    {
+      "name": "Connecting Your Data",
+      "url": "connecting-your-data"
     }
   ],
   "anchors": [
@@ -68,11 +76,15 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction"]
+      "pages": [
+        "introduction"
+      ]
     },
     {
       "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "pages": [
+        "api-reference/introduction"
+      ]
     },
     {
       "group": "SQL",
@@ -187,7 +199,33 @@
     },
     {
       "group": "DB Drivers",
-      "pages": ["db-drivers/introduction"]
+      "pages": [
+        "db-drivers/introduction"
+      ]
+    },
+    {
+      "group": "Project Operations",
+      "pages": [
+        "project-operations/clone-a-project",
+        "project-operations/delete-a-project",
+        "project-operations/how-to-create-a-project",
+        "project-operations/rename-a-project",
+        "project-operations/send-a-copy-of-a-project",
+        "project-operations/share-your-project"
+      ]
+    },
+    {
+      "group": "Connecting Your Data",
+      "pages": [
+        "connecting-your-data/peaka-query",
+        "connecting-your-data/peaka-table",
+        "connecting-your-data/peaka-big-table",
+        "connecting-your-data/differences-of-peaka-table-and-peaka-big-table",
+        "connecting-your-data/creating-query",
+        "connecting-your-data/creating-peaka-table",
+        "connecting-your-data/add-connection",
+        "connecting-your-data/what-is-catalog-schema-virtual-table"
+      ]
     },
     {
       "group": "Projects",
