@@ -66,6 +66,10 @@
     {
       "name": "How to Guides",
       "url": "how-to-guides"
+    },
+    {
+      "name": "CDC Setup",
+      "url": "cdc-setup"
     }
   ],
   "anchors": [
@@ -281,6 +285,14 @@
         "how-to-guides/how-to-change-flow-name",
         "how-to-guides/how-to-generate-api-keys",
         "how-to-guides/how-to-connect-databases-in-aws-using-iam-credentials"
+      ]
+    },
+    {
+      "group": "CDC Setup",
+      "pages": [
+        "cdc-setup/cdc-postgresql-setup",
+        "cdc-setup/cdc-mysql-setup",
+        "cdc-setup/cdc-mongodb-setup"
       ]
     },
     {
