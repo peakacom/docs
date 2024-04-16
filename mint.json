@@ -62,6 +62,14 @@
     {
       "name": "Flows",
       "url": "flows"
+    },
+    {
+      "name": "How to Guides",
+      "url": "how-to-guides"
+    },
+    {
+      "name": "CDC Setup",
+      "url": "cdc-setup"
     }
   ],
   "anchors": [
@@ -267,6 +275,25 @@
         "flows/switch-case",
         "flows/success-fail",
         "flows/connections"
+      ]
+    },
+    {
+      "group": "How to Guides",
+      "pages": [
+        "how-to-guides/how-to-connect-data-to-data-table",
+        "how-to-guides/how-to-combine-connector-and-peaka-table-data",
+        "how-to-guides/how-to-filter-your-data-with-visual-filter",
+        "how-to-guides/how-to-change-flow-name",
+        "how-to-guides/how-to-generate-api-keys",
+        "how-to-guides/how-to-connect-databases-in-aws-using-iam-credentials"
+      ]
+    },
+    {
+      "group": "CDC Setup",
+      "pages": [
+        "cdc-setup/cdc-postgresql-setup",
+        "cdc-setup/cdc-mysql-setup",
+        "cdc-setup/cdc-mongodb-setup"
       ]
     },
     {
