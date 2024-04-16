@@ -3,8 +3,9 @@
   "name": "Peaka",
   "logo": {
     "dark": "/logo/dark.svg",
+    "dark": "/logo/dark.svg",
     "light": "/logo/light.svg",
-    "href": "https://peaka.com"
+    "href": "/docs"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -19,12 +20,12 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:support@peaka.com"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Peaka Studio",
+    "url": "https://peaka.studio"
   },
   "tabs": [
     {
