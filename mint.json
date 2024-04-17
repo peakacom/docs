@@ -4,7 +4,7 @@
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg",
-    "href": "https://peaka.com"
+    "href": "/docs"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -19,12 +19,12 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:support@peaka.com"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Peaka Studio",
+    "url": "https://peaka.studio"
   },
   "tabs": [
     {
@@ -48,14 +48,6 @@
       "url": "db-drivers"
     },
     {
-      "name": "Project Operations",
-      "url": "project-operations"
-    },
-    {
-      "name": "Connecting Your Data",
-      "url": "connecting-your-data"
-    },
-    {
       "name": "JEXL",
       "url": "jexl"
     },
@@ -66,10 +58,6 @@
     {
       "name": "How to Guides",
       "url": "how-to-guides"
-    },
-    {
-      "name": "CDC Setup",
-      "url": "cdc-setup"
     }
   ],
   "anchors": [
@@ -120,6 +108,12 @@
         "sql/reference/show-schemas",
         "sql/reference/use",
         "sql/reference/values"
+      ]
+    },
+    {
+      "group": "Data Types",
+      "pages": [
+        "sql/reference/types"
       ]
     },
     {
@@ -224,9 +218,9 @@
     {
       "group": "Project Operations",
       "pages": [
+        "project-operations/how-to-create-a-project",
         "project-operations/clone-a-project",
         "project-operations/delete-a-project",
-        "project-operations/how-to-create-a-project",
         "project-operations/rename-a-project",
         "project-operations/send-a-copy-of-a-project",
         "project-operations/share-your-project"
