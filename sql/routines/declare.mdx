@@ -10,11 +10,11 @@ DECLARE identifier [, ...] type [ DEFAULT expression ]
 
 ## Description
 
-Use the `DECLARE` statement directly after the [begin](/sql/routines/begin.mdx) keyword in
-[routines](/sql/routines/introduction.mdx) to define one or more variables with an `identifier` as name. 
+Use the `DECLARE` statement directly after the [begin](/sql/routines/begin) keyword in
+[routines](/sql/routines/introduction) to define one or more variables with an `identifier` as name. 
 
 {/* TODO: Will we add the types file? */}
-{/* Each statement must specify the [data type](/sql/reference/types.mdx) of the variable with
+{/* Each statement must specify the [data type](/sql/reference/types) of the variable with
 `type`. It can optionally include a default, initial value defined by an
 `expression`. The default value is `NULL` if not specified. */}
 
@@ -48,11 +48,11 @@ DECLARE start_time timestamp(3) with time zone DEFAULT now();
 
 Further examples of varying complexity that cover usage of the `DECLARE`
 statement in combination with other statements are available in the [SQL
-routines examples documentation](/sql/routines/examples.mdx).
+routines examples documentation](/sql/routines/examples).
 
 ## See also
 
-* [routines](/sql/routines/introduction.mdx)
+* [routines](/sql/routines/introduction)
 
 {/* TODO: Will we add the types file? */}
-{/* * [](/sql/reference/types.mdx) */}
+{/* * [](/sql/reference/types) */}

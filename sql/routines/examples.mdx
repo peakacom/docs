@@ -4,7 +4,7 @@ title: Example SQL routines
 
 
 After learning about [SQL routines from the
-introduction](/sql/routines/introduction.mdx), the following sections show numerous
+introduction](/sql/routines/introduction), the following sections show numerous
 examples of valid SQL routines. The routines are suitable as [inline
 routines](/sql/routines/introduction#inline-routines) or [catalog routines](/sql/routines/introduction#catalog-routines), after
 adjusting the name and adjusting the example invocations.
@@ -12,13 +12,13 @@ adjusting the name and adjusting the example invocations.
 The examples combine numerous supported statements. Refer to the specific
 statement documentation for further details:
 
-* [function](/sql/routines/function.mdx) for general SQL routine declaration
-* [begin](/sql/routines/begin.mdx) and [declare](/sql/routines/declare.mdx) for routine blocks
-* [set](/sql/routines/set.mdx) for assigning values to variables
-* [return](/sql/routines/return.mdx) for returning routine results
-* [case](/sql/routines/case.mdx) and [if](/sql/routines/if.mdx) for conditional flows
-* [loop](/sql/routines/loop.mdx), [repeat](/sql/routines/repeat.mdx), and [while](/sql/routines/while.mdx) for looping constructs
-* [iterate](/sql/routines/iterate.mdx) and [leave](/sql/routines/leave.mdx) for flow control
+* [function](/sql/routines/function) for general SQL routine declaration
+* [begin](/sql/routines/begin) and [declare](/sql/routines/declare) for routine blocks
+* [set](/sql/routines/set) for assigning values to variables
+* [return](/sql/routines/return) for returning routine results
+* [case](/sql/routines/case) and [if](/sql/routines/if) for conditional flows
+* [loop](/sql/routines/loop), [repeat](/sql/routines/repeat), and [while](/sql/routines/while) for looping constructs
+* [iterate](/sql/routines/iterate) and [leave](/sql/routines/leave) for flow control
 
 A very simple routine that returns a static value without requiring any input:
 
@@ -746,7 +746,7 @@ The preceding query produces the following output:
 
 ## Charts
 
-Trino already has a built-in `bar()` [color function](/sql/functions/color.mdx), but
+Trino already has a built-in `bar()` [color function](/sql/functions/color), but
 it's using ANSI escape codes to output colors, and thus is only usable for
 displaying results in a terminal. The following example shows a similar routine,
 that only uses ASCII characters.
@@ -894,7 +894,7 @@ The preceding query produces the following output:
 
 ## Top-N
 
-Trino already has a built-in [aggregate function](/sql/functions/aggregate.mdx) called
+Trino already has a built-in [aggregate function](/sql/functions/aggregate) called
 `approx_most_frequent()`, that can calculate most frequently occurring values.
 It returns a map with values as keys and number of occurrences as values. Maps
 are not ordered, so when displayed, the entries can change places on subsequent
