@@ -217,7 +217,8 @@
       "group": "DB Drivers",
       "pages": [
         "db-drivers/introduction",
-        "db-drivers/python"
+        "db-drivers/python",
+        "db-drivers/nodejs"
       ]
     },
     {

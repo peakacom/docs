@@ -9,19 +9,23 @@ description: "Discover the [Peaka](https://peaka.com/) NodeJS driver"
 
 ## Install
 
-`npm install @peaka/peaka-client` or `yarn add @peaka/peaka-client`
+`npm install @peaka/client` or `yarn add @peaka/client`
 
 ## Usage
 
 ### Create a Peaka connection
 
 ```typescript
+import { Peaka, connectToPeaka } from "@peaka/client";
+
 const connection: Peaka = connectToPeaka("<YOUR_API_KEY>")
 ```
 
 ### Submit a query
 
 ```typescript
+import type { QueryResult } from "@peaka/client";
+
 const iter: Iterator<QueryResult> = await connection.query(
   'select * from <CATALOG_NAME>.<SCHEMA_NAME>.<TABLE_NAME> limit 100'
 );
@@ -38,6 +42,8 @@ for await (const queryResult of iter) {
 ### Alternative: map and aggregate the data
 
 ```typescript
+import type { QueryData } from "@peaka/client";
+
 const data: QueryData[] = await iter
   .map(r => r.data ?? [])
   .fold<QueryData[]>([], (row, acc) => [...acc, ...row]);
