@@ -194,7 +194,11 @@
     },
     {
       "group": "BI Tools",
-      "pages": ["bi-tools/introduction", "bi-tools/looker-studio"]
+      "pages": [
+        "bi-tools/introduction",
+        "bi-tools/looker-studio",
+        "bi-tools/metabase"
+      ]
     },
     {
       "group": "DB Drivers",
