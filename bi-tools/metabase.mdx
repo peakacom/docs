@@ -21,56 +21,56 @@ Check out Peaka Documentation for creating your API Key and follow detailed inst
 
 The Peaka Metabase integration uses the Starburst Connector right now. Startburst Connector is offical partner driver which is provided in Metabase Cloud offering.
 
-In order to add Peaka as data source, go to your Metabase Home page. Click settings icon on the top right corner of the screen and click _Admin Settings_ button as shown in the screenshot below.
+- In order to add Peaka as data source, go to your Metabase Home page. Click settings icon on the top right corner of the screen and click _Admin Settings_ button as shown in the screenshot below.
 
 <img
   src="https://cdn.peaka.com/bi-tools/metabase/metabase-1.png"
   style={{ border: "1px solid #e2e4e7" }}
 />
 
-On the next screen click Databases from the top toolbar.
+- On the next screen click Databases from the top toolbar.
 
 <img
   src="https://cdn.peaka.com/bi-tools/metabase/metabase-2.png"
   style={{ border: "1px solid #e2e4e7" }}
 />
 
-On the next screen click Add database button.
+- On the next screen click Add database button.
 
 <img
   src="https://cdn.peaka.com/bi-tools/metabase/metabase-3.png"
   style={{ border: "1px solid #e2e4e7" }}
 />
 
-Add database form will open and you need to add your connection details on this screen. Select Starbust for Database Type.
-Then give a name to your database connection. For the host name enter dbc.peaka.host. For the port enter 4567.
-As for the Catalog Name and Schema Name enter the catalog name and schema name of your Peaka Catalog.
-Then enter trino to the User name field and select Use Secure Connection checkbox.
-Your form should look like the screenshot below after you enter correct values:
+- Add database form will open and you need to add your connection details on this screen. Select Starbust for Database Type.
+  Then give a name to your database connection. For the host name enter dbc.peaka.host. For the port enter 4567.
+  As for the Catalog Name and Schema Name enter the catalog name and schema name of your Peaka Catalog.
+  Then enter trino to the User name field and select Use Secure Connection checkbox.
+  Your form should look like the screenshot below after you enter correct values:
 
 <img
   src="https://cdn.peaka.com/bi-tools/metabase/metabase-4.png"
   style={{ border: "1px solid #e2e4e7" }}
 />
 
-Scroll down to bottom and click Show advanced options button. Check Optimize prepared statements checkbox.
-Enter your Peaka API Key to Additional JDBC connection string options in the following format extraCredentials=peakaKey:`<Your Key>`. After that check Rerun queries for simple explorations and Periodically refingerprint tables check boxes.
-Your form should look like the screenshot below after you enter correct values:
+- Scroll down to bottom and click Show advanced options button. Check Optimize prepared statements checkbox.
+  Enter your Peaka API Key to Additional JDBC connection string options in the following format extraCredentials=peakaKey:`<Your Key>`. After that check Rerun queries for simple explorations and Periodically refingerprint tables check boxes.
+  Your form should look like the screenshot below after you enter correct values:
 
 <img
   src="https://cdn.peaka.com/bi-tools/metabase/metabase-5.png"
   style={{ border: "1px solid #e2e4e7" }}
 />
 
-If everything is entered correctly you should be able to see Peaka under databases list like the screenshot below.
+- If everything is entered correctly you should be able to see Peaka under databases list like the screenshot below.
 
 <img
   src="https://cdn.peaka.com/bi-tools/metabase/metabase-6.png"
   style={{ border: "1px solid #e2e4e7" }}
 />
 
-Go to Metabase Home page and click Browse Data button from the toolbar from the left and select your Peaka connection.
-You should be able to see your tables here. In our case we are seeing tables under catalog stripe and schema name payment.
+- Go to Metabase Home page and click Browse Data button from the toolbar from the left and select your Peaka connection.
+  You should be able to see your tables here. In our case we are seeing tables under catalog stripe and schema name payment.
 
 <img
   src="https://cdn.peaka.com/bi-tools/metabase/metabase-7.png"

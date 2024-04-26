@@ -1,0 +1,58 @@
+---
+title: "Preset"
+description: "Welcome to the installation guide for integrating Apache Preset with Peaka. As a leading data platform, Peaka provides seamless integration with various business intelligence and data visualization platforms, including Apache Preset. This document will guide you through the step-by-step process to set up this integration, enabling you to unlock the full potential of your data. Please follow each step carefully to ensure a successful setup."
+---
+
+You need 2 steps to complete setup:
+
+- Generate Peaka API Key
+- Add Peaka as Database Connection
+
+## Generate API Key
+
+After you create your project, setup connections and create your catalogs in Peaka, you need to generate a Peaka API Key to use it with Preset.
+Check out Peaka Documentation for creating your API Key and follow detailed instructions by clicking [here](https://www.peaka.com/docs/how-to-guides/how-to-generate-api-keys/).
+
+## Add Peaka as Database Connection
+
+- Adding Peaka as Database Connection to Preset is so easy. In your main dashboard in Preset, click Setting and then click Database Connections.
+  Then in the next screen click Database button on the top right corner of your screen.
+
+<img
+  src="https://cdn.peaka.com/bi-tools/preset/preset-1.png"
+  style={{ border: "1px solid #e2e4e7" }}
+/>
+
+<img
+  src="https://cdn.peaka.com/bi-tools/preset/preset-2.png"
+  style={{ border: "1px solid #e2e4e7" }}
+/>
+
+- Connect a database window will open. In supported databases select Trino.
+
+<img
+  src="https://cdn.peaka.com/bi-tools/preset/preset-3.png"
+  style={{ border: "1px solid #e2e4e7" }}
+/>
+
+- In the next screen you need to enter Display Name and SQL Alchemy URI. You can enter anything you like for the Display Name.The SQL Alchemy URI format is like below:
+
+`trino://dbc.peaka.studio:4567/<catalog>/<schema>?http_scheme=https&extra_credential=[[”peakaKey”,”<YOUR_API_KEY>”]]&access_token=true`
+
+You need to fill `<catalog>`, `<schema>` and `<YOUR_API_KEY>`. For example if I want to see work on the tables under stripe catalog and payment schema created in Peaka with API Key `abc` , then my SQL Alchemy URI would look like below:
+
+`trino://dbc.peaka.studio:4567/stripe/payment?http_scheme=https&extra_credential=[[”peakaKey”,”abc”]]&access_token=true`
+
+Then click `Test Connection` button to test the connection and if the connection is ok, then click `Connect` button.
+
+<img
+  src="https://cdn.peaka.com/bi-tools/preset/preset-4.png"
+  style={{ border: "1px solid #e2e4e7" }}
+/>
+- Installation is complete you should be able to see Peaka in Database Connections
+List. You can start using Peaka with Preset.
+
+<img
+  src="https://cdn.peaka.com/bi-tools/preset/preset-5.png"
+  style={{ border: "1px solid #e2e4e7" }}
+/>

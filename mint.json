@@ -197,7 +197,9 @@
       "pages": [
         "bi-tools/introduction",
         "bi-tools/looker-studio",
-        "bi-tools/metabase"
+        "bi-tools/metabase",
+        "bi-tools/preset",
+        "bi-tools/superset"
       ]
     },
     {
