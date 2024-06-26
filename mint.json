@@ -276,7 +276,8 @@
         "how-to-guides/how-to-filter-your-data-with-visual-filter",
         "how-to-guides/how-to-change-flow-name",
         "how-to-guides/how-to-generate-api-keys",
-        "how-to-guides/how-to-connect-databases-in-aws-using-iam-credentials"
+        "how-to-guides/how-to-connect-databases-in-aws-using-iam-credentials",
+        "how-to-guides/how-to-manage-partner-api-key"
       ]
     },
     {
@@ -372,9 +373,7 @@
     },
     {
       "group": "Embedded Peaka",
-      "pages": [
-        "api-reference/embedded-peaka/init-session"
-      ]
+      "pages": ["api-reference/embedded-peaka/init-session"]
     }
   ],
   "footerSocials": {
