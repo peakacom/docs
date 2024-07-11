@@ -159,6 +159,7 @@
       "group": "Integrations",
       "pages": [
         "integrations/introduction",
+        "integrations/active-campaign",
         "integrations/airtable",
         "integrations/amazon-redshift",
         "integrations/big-query",
