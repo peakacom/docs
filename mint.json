@@ -162,6 +162,8 @@
         "integrations/active-campaign",
         "integrations/airtable",
         "integrations/amazon-redshift",
+        "integrations/amazon-rds",
+        "integrations/big-query-oauth",
         "integrations/big-query",
         "integrations/bullhorn",
         "integrations/google-analytics",
