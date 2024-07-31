@@ -63,9 +63,7 @@
   "paths": {
     "/projects/{projectId}/apiKeys": {
       "post": {
-        "tags": [
-          "Projects > Project Api Keys"
-        ],
+        "tags": ["Projects > Project Api Keys"],
         "summary": "Create Api Key",
         "requestBody": {
           "content": {
@@ -183,9 +181,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Projects > Project Api Keys"
-        ],
+        "tags": ["Projects > Project Api Keys"],
         "summary": "List Api Keys",
         "parameters": [
           {
@@ -303,9 +299,7 @@
     },
     "/projects/{projectId}/apiKeys/{apiKeyId}": {
       "put": {
-        "tags": [
-          "Projects > Project Api Keys"
-        ],
+        "tags": ["Projects > Project Api Keys"],
         "summary": "Update Api Key",
         "requestBody": {
           "content": {
@@ -440,9 +434,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Projects > Project Api Keys"
-        ],
+        "tags": ["Projects > Project Api Keys"],
         "summary": "Delete Api Key",
         "parameters": [
           {
@@ -549,9 +541,7 @@
     },
     "/projects": {
       "post": {
-        "tags": [
-          "Projects"
-        ],
+        "tags": ["Projects"],
         "summary": "Create a Project",
         "description": "### Add Project\n\nThis endpoint allows you to create a new project.\n\n#### Request Body\n\n- name (string, required): The name of the project.\n\n#### Response\n\n- id (string): The unique identifier of the project.\n- owner (string): The owner of the project.\n- name (string): The name of the project.\n- description (string): The description of the project.\n- domain (string): The domain of the project.\n- previewURL (string): The URL for previewing the project.\n- version (integer): The version of the project.\n- deleted (boolean): Indicates if the project is deleted.\n- parent (string): The parent project, if any.\n- invitedBy (string): The user who invited to the project.\n- createdAt (string): The timestamp when the project was created.\n- updatedAt (string): The timestamp when the project was last updated.\n- deletedAt (string): The timestamp when the project was deleted, if applicable.\n- disabled (boolean): Indicates if the project is disabled.\n- internalApp (boolean): Indicates if the project is an internal application.\n- template (boolean): Indicates if the project is a template.\n- roles (array of strings): The roles associated with the project.",
         "requestBody": {
@@ -665,9 +655,7 @@
                   "disabled": false,
                   "internalApp": false,
                   "template": false,
-                  "roles": [
-                    "owner"
-                  ]
+                  "roles": ["owner"]
                 }
               }
             }
@@ -675,9 +663,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Projects"
-        ],
+        "tags": ["Projects"],
         "summary": "List all projects",
         "description": "This endpoint makes an HTTP GET request to retrieve a list of projects. The response will include an array of objects, where each object represents a project with details such as ID, owner, name, description, domain, preview URL, version, and other attributes.",
         "responses": {
@@ -786,9 +772,7 @@
                     "disabled": false,
                     "internalApp": false,
                     "template": false,
-                    "roles": [
-                      "owner"
-                    ]
+                    "roles": ["owner"]
                   },
                   {
                     "id": "SksnYuxH",
@@ -807,9 +791,7 @@
                     "disabled": false,
                     "internalApp": false,
                     "template": false,
-                    "roles": [
-                      "owner"
-                    ]
+                    "roles": ["owner"]
                   }
                 ]
               }
@@ -820,9 +802,7 @@
     },
     "/projects/{projectId}": {
       "get": {
-        "tags": [
-          "Projects"
-        ],
+        "tags": ["Projects"],
         "summary": "Get a Project",
         "description": "This endpoint makes an HTTP GET request to retrieve details of a specific project identified by the projectId parameter. The response will include various details about the project such as its ID, owner, name, description, domain, preview URL, version, deletion status, creation and update timestamps, and other attributes related to the project.\n\n### Response\n\n- `id` (string): The unique identifier of the project.\n- `owner` (string): The identifier of the user who owns the project.\n- `name` (string): The name of the project.\n- `description` (string): The description of the project.\n- `domain` (string): The domain associated with the project.\n- `previewURL` (string): The URL for previewing the project.\n- `version` (integer): The version of the project.\n- `deleted` (boolean): Indicates whether the project is deleted or not.\n- `parent` (string or null): The identifier of the parent project, if any.\n- `invitedBy` (string or null): The identifier of the user who invited to the project, if applicable.\n- `createdAt` (string): The timestamp when the project was created.\n- `updatedAt` (string): The timestamp when the project was last updated.\n- `deletedAt` (string or null): The timestamp when the project was deleted, if applicable.\n- `disabled` (boolean): Indicates whether the project is disabled or not.\n- `internalApp` (boolean): Indicates whether the project is an internal application or not.\n- `template` (boolean): Indicates whether the project is a template or not.\n- `roles` (array of strings): The roles assigned to the project.\n\n### Example Response\n\n``` json\n{ \"id\": \"IqZOWGg1\", \"owner\": \"1673d60f-a0ea-41f4-9420-c91dbc2864f5\", \"name\": \"Sample Application Name 2\", \"description\": null, \"domain\": \"sampleapplicationname2-qxfy\", \"previewURL\": \"https://sampleapplicationname2-qxfy--test.peaka.host\", \"version\": 0, \"deleted\": false, \"parent\": null, \"invitedBy\": null, \"createdAt\": \"2024-01-23T07:50:26.639568137Z\", \"updatedAt\": \"2024-01-23T07:50:26.639568137Z\", \"deletedAt\": null, \"disabled\": false, \"internalApp\": false, \"template\": false, \"roles\": [ \"owner\" ] }\n```",
         "parameters": [
@@ -935,9 +915,7 @@
                   "disabled": false,
                   "internalApp": false,
                   "template": false,
-                  "roles": [
-                    "owner"
-                  ]
+                  "roles": ["owner"]
                 }
               }
             }
@@ -945,9 +923,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Projects"
-        ],
+        "tags": ["Projects"],
         "summary": "Delete Project",
         "description": "Delete given project.",
         "parameters": [
@@ -1055,9 +1031,7 @@
     },
     "/data/projects/{projectId}/cache": {
       "post": {
-        "tags": [
-          "Data > Cache"
-        ],
+        "tags": ["Data > Cache"],
         "summary": "Create a Cache",
         "requestBody": {
           "content": {
@@ -1097,9 +1071,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Data > Cache"
-        ],
+        "tags": ["Data > Cache"],
         "summary": "List Caches",
         "parameters": [
           {
@@ -1123,9 +1095,7 @@
     },
     "/data/projects/{projectId}/cache/{cacheId}": {
       "delete": {
-        "tags": [
-          "Data > Cache"
-        ],
+        "tags": ["Data > Cache"],
         "summary": "Delete a Cache",
         "parameters": [
           {
@@ -1157,9 +1127,7 @@
     },
     "/data/projects/{projectId}/cache/{cacheId}/update": {
       "post": {
-        "tags": [
-          "Data > Cache"
-        ],
+        "tags": ["Data > Cache"],
         "summary": "Start/Update a Cache",
         "requestBody": {
           "content": {}
@@ -1194,9 +1162,7 @@
     },
     "/data/projects/{projectId}/cache/{cacheId}/rebuild": {
       "post": {
-        "tags": [
-          "Data > Cache"
-        ],
+        "tags": ["Data > Cache"],
         "summary": "Rebuild a Cache",
         "requestBody": {
           "content": {}
@@ -1231,9 +1197,7 @@
     },
     "/data/projects/{projectId}/cache/{cacheId}/status": {
       "get": {
-        "tags": [
-          "Data > Cache"
-        ],
+        "tags": ["Data > Cache"],
         "summary": "Get Status of a Cache",
         "parameters": [
           {
@@ -1265,9 +1229,7 @@
     },
     "/data/projects/{projectId}/catalogs": {
       "post": {
-        "tags": [
-          "Data > Catalogs"
-        ],
+        "tags": ["Data > Catalogs"],
         "summary": "Create a Catalog",
         "requestBody": {
           "content": {
@@ -1359,9 +1321,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Data > Catalogs"
-        ],
+        "tags": ["Data > Catalogs"],
         "summary": "List Catalogs",
         "description": "This endpoint makes an HTTP GET request to retrieve catalogs for a specific project. It is accessed by appending the project ID to the base URL. The request does not require a request body.\n\nThe response to the request is a JSON array with a 200 status code. Each object in the array represents a catalog and includes properties such as ID, name, display name, query name, type, props, and subType.",
         "parameters": [
@@ -1516,9 +1476,7 @@
     },
     "/data/projects/{projectId}/catalogs/{catalogId}": {
       "get": {
-        "tags": [
-          "Data > Catalogs"
-        ],
+        "tags": ["Data > Catalogs"],
         "summary": "Get a Catalog",
         "parameters": [
           {
@@ -1595,9 +1553,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Data > Catalogs"
-        ],
+        "tags": ["Data > Catalogs"],
         "summary": "Delete a Catalog",
         "description": "This endpoint sends an HTTP DELETE request to delete a specific catalog (:catalogId) within a project (:projectId).\n\nThe request does not contain a request body.\n\n### Response\n\n- Status: 200\n- The response body contains a single value, which is the ID of the deleted catalog.\n\n#### Example\n\n```\n200 OK\n544639856899260964\n```",
         "parameters": [
@@ -1661,9 +1617,7 @@
     },
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas": {
       "get": {
-        "tags": [
-          "Data > Catalogs"
-        ],
+        "tags": ["Data > Catalogs"],
         "summary": "List Schemas",
         "description": "This HTTP GET request retrieves a list of schemas for a specific catalog within a project. The request should be made to {{baseUrl}}/data/projects/:projectId/catalogs/:catalogId/schemas.\n\n### Request\n\nThere is no request body for this request.\n\n### Response\n\n- Status: 200 OK\n- Body: An array of objects, each containing the \"catalogId\" and \"schemaName\" for the schemas within the specified catalog.\n\nExample response:\n\n``` json\n[ { \"catalogId\": \"544639856899260964\", \"schemaName\": \"deneme\" } ]\n```",
         "parameters": [
@@ -1732,9 +1686,7 @@
     },
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables": {
       "get": {
-        "tags": [
-          "Data > Catalogs"
-        ],
+        "tags": ["Data > Catalogs"],
         "summary": "List Tables",
         "description": "This endpoint makes an HTTP GET request to retrieve a list of tables within a specific schema of a project catalog. The request should include the project ID, catalog ID, and schema name in the URL path.\n\nThe response to this request will be a JSON array containing objects with details about each table, including the catalog ID, catalog name, schema name, table name, and flags indicating whether the table is cacheable, dynamic, and cached.\n\nExample response:\n\n``` json\n[ { \"catalogId\": \"544639856899260964\", \"catalogName\": \"airtable2\", \"schemaName\": \"deneme\", \"tableName\": \"projects\", \"isCacheable\": false, \"isDynamicTable\": false, \"isCached\": false }, { \"catalogId\": \"544639856899260964\", \"catalogName\": \"airtable2\", \"schemaName\": \"deneme\", \"tableName\": \"testdeneme\", \"isCacheable\": false, \"isDynamicTable\": false, \"isCached\": false } ]\n```",
         "parameters": [
@@ -1825,9 +1777,7 @@
     },
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/columns": {
       "get": {
-        "tags": [
-          "Data > Catalogs"
-        ],
+        "tags": ["Data > Catalogs"],
         "summary": "List Columns",
         "description": "This endpoint retrieves a list of columns for a specific table within a schema of a project's catalog.\n\nNo request body is required for this endpoint.\n\nThe response will include a status code of 200, and a JSON array containing objects representing the columns. Each object includes details such as catalog ID, schema name, table name, column name, data type, and properties like type, display name, uniqueness, and more.",
         "parameters": [
@@ -2034,9 +1984,7 @@
     },
     "/data/projects/{projectId}/queries": {
       "post": {
-        "tags": [
-          "Data > Query"
-        ],
+        "tags": ["Data > Query"],
         "summary": "Create A Query",
         "description": "### Add Project Query\n\nThis endpoint allows the user to add a new query to a specific project.\n\n#### Request Body\n\n- `displayName` (string): The display name for the query.\n- `inputQuery` (string): The input query for the project.\n- `queryType` (string): The type of query.\n\nExample:\n\n``` json\n{ \"displayName\": \"\", \"inputQuery\": \"\", \"queryType\": \"\" }\n```\n#### Response\n\n- `id` (string): The unique identifier for the query.\n- `displayName` (string): The display name of the query.\n- `name` (string): The name of the query.\n- `queryType` (string): The type of query.\n- `inputQuery` (string): The input query.\n- `lastValidInputQuery` (string): The last valid input query.\n- `columns` (array): An array of objects containing information about the columns.\n- `createdTime` (string): The timestamp when the query was created.\n- `modifiedTime` (string): The timestamp when the query was last modified.\n- `visualInput` (string, null): Visual input, if available.\n- `aiText` (string, null): AI-generated text, if available.\n\nExample:\n\n``` json\n{ \"id\": \"545274742546891676\", \"displayName\": \"sampleAirtableQuery\", \"name\": \"sampleairtablequery\", \"queryType\": \"PLAIN\", \"inputQuery\": \"SELECT * from \\\"airtable\\\".\\\"deneme\\\".\\\"projects\\\"\", \"lastValidInputQuery\": \"SELECT * from \\\"airtable\\\".\\\"deneme\\\".\\\"projects\\\"\", \"columns\": [ { \"name\": \"_airtable_row_id\", \"displayName\": \"_airtable_row_id\", \"dataType\": \"varchar\", \"jdbcDataType\": 12, \"columnSize\": 2147483647, \"decimalDigits\": 0, \"numPrecRadix\": null, \"nullable\": 2, \"charOctetLength\": null, \"ordinalPosition\": 1 }, ... ], \"createdTime\": \"2024-01-23T08:03:34.660949Z\", \"modifiedTime\": \"2024-01-23T08:03:34.660949Z\", \"visualInput\": null, \"aiText\": null }\n```",
         "requestBody": {
@@ -2195,9 +2143,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Data > Query"
-        ],
+        "tags": ["Data > Query"],
         "summary": "List Queries",
         "description": "This endpoint makes an HTTP GET request to retrieve queries for a specific project. The project ID is included in the URL path. The request does not include a request body.\n\nThe response to the request is a 200 status code, and it returns an array of objects. Each object in the array represents a query and includes properties such as ID, display name, query type, input query, last valid input query, columns, created time, modified time, visual input, and AI text.\n\nIt is important to note that the response includes masked/minified values for the properties.\n\nThe user can use this endpoint to fetch queries for a specific project.",
         "parameters": [
@@ -2471,9 +2417,7 @@
     },
     "/data/projects/{projectId}/queries/{queryId}": {
       "put": {
-        "tags": [
-          "Data > Query"
-        ],
+        "tags": ["Data > Query"],
         "summary": "Update A Query",
         "description": "This endpoint allows you to update a specific query within a project. The HTTP PUT request should be made to /data/projects/:projectId/queries/:queryId, where :projectId is the unique identifier of the project and :queryId is the unique identifier of the query being updated. The request should include a raw payload with the following parameters:\n\n- displayName: (string) The display name of the query\n- inputQuery: (string) The input query for the query\n- queryType: (string) The type of the query\n- id: (string) The unique identifier of the query\n\nThe response will include the updated details of the query, such as:\n\n- id: The unique identifier of the query\n- displayName: The updated display name of the query\n- name: The updated name of the query\n- queryType: The type of the query\n- inputQuery: The updated input query for the query\n- lastValidInputQuery: The last valid input query for the query\n- columns: Details of the columns in the query result\n- createdTime: The timestamp when the query was created\n- modifiedTime: The timestamp when the query was last modified\n- visualInput: Visual input details (if available)\n- aiText: AI-generated text (if available)\n\nHere is an example of the response:\n\n``` json\n{ \"id\": \"545274742546891676\", \"displayName\": \"newName\", \"name\": \"newname\", \"queryType\": \"PLAIN\", \"inputQuery\": \"SELECT name from \\\"airtable\\\".\\\"deneme\\\".\\\"projects\\\"\", \"lastValidInputQuery\": \"SELECT name from \\\"airtable\\\".\\\"deneme\\\".\\\"projects\\\"\", \"columns\": [ { \"name\": \"name\", \"displayName\": \"name\", \"dataType\": \"varchar\", \"jdbcDataType\": 12, \"columnSize\": 2147483647, \"decimalDigits\": 0, \"numPrecRadix\": null, \"nullable\": 2, \"charOctetLength\": null, \"ordinalPosition\": 1 } ], \"createdTime\": \"2024-01-23T08:03:34.660949Z\", \"modifiedTime\": \"2024-01-23T08:06:48.459155Z\", \"visualInput\": null, \"aiText\": null }\n```",
         "requestBody": {
@@ -2575,9 +2519,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Data > Query"
-        ],
+        "tags": ["Data > Query"],
         "summary": "Delete A Query",
         "description": "This endpoint sends an HTTP DELETE request to delete a specific query (:queryId) within a project (:projectId).\n\nNo request body is required for this request.\n\n### Response\n\n- Status: 200\n- Example Response:\n``` 545274742546891676\n```",
         "parameters": [
@@ -2641,9 +2583,7 @@
     },
     "/data/projects/{projectId}/queries/execute": {
       "post": {
-        "tags": [
-          "Data > Query"
-        ],
+        "tags": ["Data > Query"],
         "summary": "Execute A Query",
         "requestBody": {
           "content": {
@@ -4453,9 +4393,7 @@
     },
     "/data/projects/{projectId}/catalogs/1/schemas/table/tables": {
       "get": {
-        "tags": [
-          "Data > Internal Tables"
-        ],
+        "tags": ["Data > Internal Tables"],
         "summary": "List Internal Tables",
         "parameters": [
           {
@@ -4480,9 +4418,7 @@
     },
     "/data/projects/{projectId}/catalogs/1/schemas/table/tables/{tableName}": {
       "post": {
-        "tags": [
-          "Data > Internal Tables"
-        ],
+        "tags": ["Data > Internal Tables"],
         "summary": "Create an Internal Table",
         "requestBody": {
           "content": {}
@@ -4515,9 +4451,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Data > Internal Tables"
-        ],
+        "tags": ["Data > Internal Tables"],
         "summary": "Delete an Internal Table",
         "parameters": [
           {
@@ -4549,9 +4483,7 @@
     },
     "/data/projects/{projectId}/catalogs/1/schemas/table/tables/{tableName}/columns": {
       "get": {
-        "tags": [
-          "Data > Internal Tables"
-        ],
+        "tags": ["Data > Internal Tables"],
         "summary": "Get Columns of an Internal Table",
         "parameters": [
           {
@@ -4581,9 +4513,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Data > Internal Tables"
-        ],
+        "tags": ["Data > Internal Tables"],
         "summary": "Add a Column to an Internal Table",
         "requestBody": {
           "content": {
@@ -4633,9 +4563,7 @@
     },
     "/data/projects/{projectId}/catalogs/1/schemas/table/tables/{tableName}/columns/{columnName}": {
       "put": {
-        "tags": [
-          "Data > Internal Tables"
-        ],
+        "tags": ["Data > Internal Tables"],
         "summary": "Update a Column  of an Internal Table",
         "requestBody": {
           "content": {
@@ -4691,9 +4619,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Data > Internal Tables"
-        ],
+        "tags": ["Data > Internal Tables"],
         "summary": "Delete a Column  of an Internal Table",
         "parameters": [
           {
@@ -4733,9 +4659,7 @@
     },
     "/connections/{projectId}": {
       "post": {
-        "tags": [
-          "Connections"
-        ],
+        "tags": ["Connections"],
         "summary": "Create a Connection",
         "description": "Each connection type has its own credential schema. See the corresponding examples for the credential schemas.\n\n\"List Available Connections\" endpoint returns the credential schema type and credential object.",
         "requestBody": {
@@ -4857,9 +4781,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Connections"
-        ],
+        "tags": ["Connections"],
         "summary": "List Connections",
         "description": " This HTTP GET request retrieves connections for a specific project by project ID. The response will include an array of connection objects, each containing details such as ID, name, connection type, authorization type, provider, credential schema type, configuration, and group code.\n\n        The response will consist of a status code 200, and an array of connection objects. Each connection object will include the following properties:\n        - \"id\": The unique identifier for the connection.\n        - \"name\": The name of the connection.\n        - \"connectionType\": The type of connection.\n        - \"authorizationType\": The type of authorization used.\n        - \"provider\": The provider of the connection.\n        - \"credentialSchemaType\": The type of credential schema used.\n        - \"configuration\": An array of objects containing configuration details such as name, label, type, required status, advanced status, visibility, description, and nested properties.\n        - \"groupCode\": The group code associated with the connection.\n\n        Here are some examples of the response objects:\n        1. Connection with Stripe: - ID: c6883de8-78ab-49fb-93c0-70a13652a341 - Name: Stripe Code2 - Connection Type: stripe - Authorization Type: bearer_token - Provider: stripe - Credential Schema Type: bearer_token_credential_schema - Configuration:  - Name: token - Label: API Key - Type: password - Required: true - Advanced: false - Visible: true - Description: Api Key - Group Code: stripe\n        2. Connection with Airtable: - ID: 81e6dfd0-4c88-4e81-a28b-422e89cc07c7 - Name: airtable - Connection Type: airtable - Authorization Type: bearer_token - Provider: airtable - Credential Schema Type: airtable_custom_credential_schema - Configuration:  - Name: personalAccessToken - Label: Personal Access Token - Type: password - Required: true - Advanced: false - Visible: true - Description: Personal Access Token - Group Code: airtable (Additional examples provided in the response data)\n",
         "parameters": [
@@ -5048,9 +4970,7 @@
     },
     "/connections/{projectId}/{connectionId}": {
       "put": {
-        "tags": [
-          "Connections"
-        ],
+        "tags": ["Connections"],
         "summary": "Update a Connection",
         "description": "### Update Connection\n\nThis endpoint allows the user to update a specific connection within a project by making an HTTP PUT request to the specified URL.\n\n#### Request Body\n\n- `connectionType` (string): The type of the connection.\n- `credentialSchemaType` (string): The schema type of the credential.\n- `credential` (object): The credential information, including the token.\n\n#### Path Parameters\n\n- `projectId` (string): The ID of the project.\n- `connectionId` (string): The ID of the connection to be updated.\n\n#### Example Request\n\n``` json\n{ \"connectionType\": \"airtable\", \"credentialSchemaType\": \"airtable_custom_credential_schema\", \"credential\": { \"personalAccessToken\": \"patUl5VmJ1v3aYuVV.b5b5c0720ab3ba0fa5d6012ec8cd326354db01db773f244451ff4575f5a968f3\" } }\n```\n#### Response\n\n- `id` (string): The ID of the updated connection.\n- `type` (string): The type of the updated connection.\n- `name` (string): The name of the updated connection.\n- `appId` (string): The application ID associated with the updated connection.\n\n#### Example Response\n\n``` json\n{ \"id\": \"8db17e23-29de-4dab-8886-af9717e0e742\", \"type\": \"airtable\", \"name\": \"airtable2\", \"appId\": \"mtKDhe1U\" }\n```\n``` json\n{ \"id\": \"c6883de8-78ab-49fb-93c0-70a13652a341\", \"type\": \"stripe\", \"name\": \"Stripe Code2\", \"appId\": \"mtKDhe1U\" }\n```",
         "requestBody": {
@@ -5195,9 +5115,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Connections"
-        ],
+        "tags": ["Connections"],
         "summary": "Get a Connection",
         "description": "# Get Connection Details\n\nThis endpoint retrieves the details of a specific connection within a project.\n\n## Request\n\n### Endpoint\n\n`GET /connections/:projectId/:connectionId`\n\n### Path Parameters\n\n- `projectId` (string, required): The ID of the project.\n- `connectionId` (string, required): The ID of the connection.\n\n### Request Body\n\nThis request does not require a request body.\n\n## Response\n\n- `id` (string): The unique identifier of the connection.\n- `name` (string): The name of the connection.\n- `connectionType` (string): The type of the connection.\n- `authorizationType` (string): The type of authorization used for the connection.\n- `provider` (string): The provider of the connection.\n- `credentialSchemaType` (string): The type of credential schema used.\n- `configuration` (array): An array containing configuration details for the connection, including name, label, type, required, advanced, visible, and description. - `name` (string): The name of the configuration. - `label` (string): The label of the configuration. - `type` (string): The type of the configuration. - `required` (boolean): Indicates if the configuration is required. - `advanced` (boolean): Indicates if the configuration is advanced. - `visible` (boolean): Indicates if the configuration is visible. - `description` (string): The description of the configuration. - `nested` (null): Indicates if the configuration is nested. - `groupCode` (string): The group code of the connection.\n\n## Example\n\n``` json\n{ \"id\": \"8db17e23-29de-4dab-8886-af9717e0e742\", \"name\": \"airtable2\", \"connectionType\": \"airtable\", \"authorizationType\": \"bearer_token\", \"provider\": \"airtable\", \"credentialSchemaType\": \"airtable_custom_credential_schema\", \"configuration\": [ { \"name\": \"personalAccessToken\", \"label\": \"Personal Access Token\", \"type\": \"password\", \"required\": true, \"advanced\": false, \"visible\": true, \"description\": \"Personal Access Token\", \"nested\": null } ], \"groupCode\": \"airtable\" }\n```",
         "parameters": [
@@ -5327,9 +5245,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Connections"
-        ],
+        "tags": ["Connections"],
         "summary": "Delete a Connection",
         "parameters": [
           {
@@ -5361,9 +5277,7 @@
     },
     "/connections/public-config": {
       "get": {
-        "tags": [
-          "Connections"
-        ],
+        "tags": ["Connections"],
         "summary": "List Available Connections",
         "description": "# Get Public Connection Configuration\n\nThis endpoint allows you to retrieve the public configuration details for connections.\n\nOnly the connections having \"stage\": \"PRODUCTION\" are available in the production stage. You can use only this type of connections.\n\n## Request\n\n### Endpoint\n\n`GET /connections/public-config`\n\n## Response\n\n- Status: 200 OK\n- Body:\n\n``` json\n[ { \"connectionType\":\"\", \"name\":\"\", \"authorizationType\":\"\", \"credentialSchemaType\":\"\", \"category\":\"\", \"configuration\":[ { \"name\":\"\", \"label\":\"\", \"type\":\"\", \"required\":true, \"advanced\":true, \"visible\":true, \"description\":\"\", \"nested\":null } ], \"groupCode\":null, \"groupLabel\":null, \"documentationUrl\":\"\", \"stage\":\"\", \"earlyAccessRequested\":true } ]\n```\n## Sample For Airtable Connection\n\nconfiguration object lists the parameters to create a connection.\n\ne.g. connectionType=airtable has following configuration.\n\n``` json\n`{ \"connectionType\": \"airtable\", \"name\": \"Airtable\", \"authorizationType\": \"bearer_token\", \"credentialSchemaType\": \"airtable_custom_credential_schema\", \"category\": \"Database\", \"configuration\": [ { \"name\": \"personalAccessToken\", \"label\": \"Personal Access Token\", \"type\": \"password\", \"required\": true, \"advanced\": false, \"visible\": true, \"description\": \"Personal Access Token\", \"nested\": null } ], \"groupCode\": null, \"groupLabel\": null, \"documentationUrl\": \"https://www.peaka.com/docs/integrations/airtable/\", \"stage\": \"PRODUCTION\", \"earlyAccessRequested\": false }\n```\nTo create a connection for Airtable, you should give credentialSchemaType and credential object.\n\nCredential object has attributes listed in configuration object above.\n\n``` json\n{ \"name\": \"exampleAirtableConnection\", \"connectionType\": \"airtable\", \"credentialSchemaType\": \"airtable_custom_credential_schema\", \"credential\": { \"personalAccessToken\": \"\" } }\n```",
         "responses": {
@@ -6644,30 +6558,6 @@
                     "groupCode": null,
                     "groupLabel": null,
                     "documentationUrl": "https://www.peaka.com/docs/integrations/bugzilla/",
-                    "stage": "EARLY_ACCESS",
-                    "earlyAccessRequested": false
-                  },
-                  {
-                    "connectionType": "bullhorn_crm",
-                    "name": "Bullhorn CRM",
-                    "authorizationType": "api_key",
-                    "credentialSchemaType": "api_key_credential_schema",
-                    "category": "CRM & ERP",
-                    "configuration": [
-                      {
-                        "name": "apiKey",
-                        "label": "API Key",
-                        "type": "password",
-                        "required": true,
-                        "advanced": false,
-                        "visible": true,
-                        "description": "Api Key",
-                        "nested": null
-                      }
-                    ],
-                    "groupCode": null,
-                    "groupLabel": null,
-                    "documentationUrl": "https://www.peaka.com/docs/integrations/bullhorn-crm/",
                     "stage": "EARLY_ACCESS",
                     "earlyAccessRequested": false
                   },
@@ -12834,9 +12724,7 @@
     },
     "/connections/{projectId}/{connectionId}/test": {
       "get": {
-        "tags": [
-          "Connections"
-        ],
+        "tags": ["Connections"],
         "summary": "Test Connection",
         "parameters": [
           {
@@ -12868,9 +12756,7 @@
     },
     "/supportedDrivers": {
       "get": {
-        "tags": [
-          "Supported Drivers"
-        ],
+        "tags": ["Supported Drivers"],
         "summary": "List Drivers",
         "security": [
           {
@@ -12971,9 +12857,7 @@
     },
     "/supportedDrivers/jdbc": {
       "get": {
-        "tags": [
-          "Supported Drivers"
-        ],
+        "tags": ["Supported Drivers"],
         "summary": "Get Jdbc Url",
         "security": [
           {
@@ -13073,9 +12957,7 @@
     },
     "/supportedDrivers/sql_alchemy": {
       "get": {
-        "tags": [
-          "Supported Drivers"
-        ],
+        "tags": ["Supported Drivers"],
         "summary": "Get Sql Alchemy Url",
         "security": [
           {
@@ -13185,9 +13067,7 @@
     },
     "/ui/initSession": {
       "get": {
-        "tags": [
-          "Embedded Peaka"
-        ],
+        "tags": ["Embedded Peaka"],
         "summary": "Init Session",
         "description": "The `GET` request to `/ui/initSession` endpoint is used to initialize a new embedded Peaka session. Upon successful execution, the response will be a JSON object with a `sessionUrl` attribute.\n\n### Response\n\n``` json\n{ \"sessionUrl\": \"\" }\n```",
         "security": [
