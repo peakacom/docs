@@ -167,6 +167,7 @@
         "integrations/big-query-oauth",
         "integrations/big-query-service-account",
         "integrations/clickhouse",
+        "integrations/databricks",
         "integrations/google-analytics",
         "integrations/google-sheets",
         "integrations/hubspot",
