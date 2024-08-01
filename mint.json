@@ -168,6 +168,7 @@
         "integrations/big-query-service-account",
         "integrations/clickhouse",
         "integrations/databricks",
+        "integrations/dynamics365",
         "integrations/google-analytics",
         "integrations/google-sheets",
         "integrations/hubspot",
