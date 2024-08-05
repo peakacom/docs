@@ -170,6 +170,7 @@
         "integrations/databricks",
         "integrations/dynamics365",
         "integrations/excel-365",
+        "integrations/facebook-ads",
         "integrations/google-analytics",
         "integrations/google-sheets",
         "integrations/hubspot",
