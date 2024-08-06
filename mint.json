@@ -172,6 +172,7 @@
         "integrations/excel-365",
         "integrations/facebook-ads",
         "integrations/firebase",
+        "integrations/google-ads",
         "integrations/google-analytics",
         "integrations/google-sheets",
         "integrations/hubspot",
