@@ -178,6 +178,7 @@
         "integrations/hubspot",
         "integrations/intercom",
         "integrations/jira",
+        "integrations/linkedin-ads",
         "integrations/mailchimp-marketing",
         "integrations/mailchimp-transactional",
         "integrations/mariadb",
