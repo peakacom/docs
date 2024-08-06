@@ -176,6 +176,7 @@
         "integrations/google-analytics",
         "integrations/google-sheets",
         "integrations/hubspot",
+        "integrations/intercom",
         "integrations/jira",
         "integrations/mailchimp-marketing",
         "integrations/mailchimp-transactional",
