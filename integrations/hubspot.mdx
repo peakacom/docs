@@ -1,26 +1,46 @@
 ---
-title: "HubSpot"
-description: "Discover a seamless integration process! Learn how to connect HubSpot to Peaka effortlessly for streamlined transactions."
+title: "Hubspot"
+description: "Discover a seamless integration process! Learn how to connect Hubspot to Peaka effortlessly for streamlined transactions."
 ---
 
-This article guides you through the process of connecting HubSpot to Peaka, allowing you to seamlessly access your HubSpot data within the Peaka platform.
+This article guides you through the process of connecting Hubspot to Peaka, allowing you to seamlessly access your Hubspot data within the Peaka platform.
 
-Follow these steps to connect HubSpot to Peaka:
+Hubspot connector provides two authentication types:
 
-1. Go to the settings page on Peaka.
+- OAuth
+- Private App Access Token
 
-2. Click the "Add First Connection" button. This will open a modal.
+## Prerequisites
+
+Before you start, you will need the following information from Hubspot.
+
+- OAuth
+
+  - Client ID (required for advanced authentication)
+  - Client Secret (required for advanced authentication)
+
+- Private App Access Token
+
+Follow the steps below to obtain it:
+
+### OAuth
+
+1. To obtain Client ID and Client Secret, refer to this [article](https://developers.hubspot.com/docs/api/working-with-oauth#initiating-an-integration-with-oauth-2-0).
+
+### Private App Access Token
+
+1. To obtain Private App Access Token, refer to this [article](https://developers.hubspot.com/docs/api/private-apps#make-api-calls-with-your-app-s-access-token).
+
+## Connecting HubSpot to Peaka
+
+1. Go to the data model page on Peaka.
+
+2. Click the "Bring your data" button. This will open a modal.
 
 3. In the modal, select "HubSpot" as your connection type.
 
-4. Enter a name for your connection name and click the "Signing in to HubSpot" button. This will open a modal to allow Peaka access to your HubSpot account.
+4. Enter a name for your connection name, select the authentication type and input the credentials you obtained in the previous steps and click the submit button.
 
-<img src="https://cdn.peaka.com/integrations/hubspot-integration-1.png" />
-
-5. In the modal, click the "Choose Account" button to authorize the connection to your HubSpot account.
-
-<img src="https://cdn.peaka.com/integrations/hubspot-integration-2.png" />
+<img src="https://cdn.peaka.com/integrations/hubspot-1.png" />
 
 Congratulations! You've successfully connected HubSpot to Peaka. You can now access and manage your HubSpot data seamlessly within the Peaka platform.
-
-<img src="https://cdn.peaka.com/integrations/hubspot-integration-3.png" />
