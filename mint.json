@@ -196,6 +196,7 @@
         "integrations/pipedrive",
         "integrations/postgresql",
         "integrations/profitwell",
+        "integrations/quickbooks-online",
         "integrations/sap-hana",
         "integrations/segment",
         "integrations/sendgrid",
