@@ -58,6 +58,10 @@
     {
       "name": "How to Guides",
       "url": "how-to-guides"
+    },
+    {
+      "name": "Blogs",
+      "url": "blogs"
     }
   ],
   "anchors": [
@@ -214,6 +218,10 @@
         "bi-tools/preset",
         "bi-tools/superset"
       ]
+    },
+    {
+      "group": "Blogs",
+      "pages": ["blogs/rag-example-with-api"]
     },
     {
       "group": "DB Drivers",
