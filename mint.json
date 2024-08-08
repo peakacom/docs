@@ -185,6 +185,7 @@
         "integrations/mongodb",
         "integrations/mssql",
         "integrations/mysql",
+        "integrations/neo4j",
         "integrations/openai",
         "integrations/oracle",
         "integrations/pipedrive",
