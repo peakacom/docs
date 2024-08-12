@@ -84,15 +84,21 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction"]
+      "pages": [
+        "introduction"
+      ]
     },
     {
       "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "pages": [
+        "api-reference/introduction"
+      ]
     },
     {
       "group": "SQL",
-      "pages": ["sql/introduction"]
+      "pages": [
+        "sql/introduction"
+      ]
     },
     {
       "group": "Reference",
@@ -110,7 +116,9 @@
     },
     {
       "group": "Data Types",
-      "pages": ["sql/reference/types"]
+      "pages": [
+        "sql/reference/types"
+      ]
     },
     {
       "group": "Functions",
@@ -225,7 +233,9 @@
     },
     {
       "group": "Blogs",
-      "pages": ["blogs/rag-example-with-api"]
+      "pages": [
+        "blogs/rag-example-with-api"
+      ]
     },
     {
       "group": "DB Drivers",
@@ -398,12 +408,19 @@
     },
     {
       "group": "Embedded Peaka",
-      "pages": ["api-reference/embedded-peaka/init-session"]
+      "pages": [
+        "api-reference/embedded-peaka/init-session"
+      ]
     }
   ],
   "footerSocials": {
     "twitter": "https://twitter.com/peakacom",
     "github": "https://github.com/peakacom",
     "linkedin": "https://www.linkedin.com/company/peaka"
+  },
+  "analytics": {
+    "gtm": {
+      "tagId": "GTM-NLBSKN8"
+    }
   }
 }
