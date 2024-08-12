@@ -208,6 +208,7 @@
         "integrations/snowflake",
         "integrations/stripe",
         "integrations/twilio",
+        "integrations/youtube-analytics",
         "integrations/zendesk",
         "integrations/zoho-crm"
       ]
