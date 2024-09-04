@@ -84,21 +84,15 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction"
-      ]
+      "pages": ["introduction"]
     },
     {
       "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
+      "pages": ["api-reference/introduction"]
     },
     {
       "group": "SQL",
-      "pages": [
-        "sql/introduction"
-      ]
+      "pages": ["sql/introduction"]
     },
     {
       "group": "Reference",
@@ -116,9 +110,7 @@
     },
     {
       "group": "Data Types",
-      "pages": [
-        "sql/reference/types"
-      ]
+      "pages": ["sql/reference/types"]
     },
     {
       "group": "Functions",
@@ -171,7 +163,7 @@
       "group": "Integrations",
       "pages": [
         "integrations/introduction",
-        "integrations/active-campaign",
+        "integrations/activecampaign",
         "integrations/airtable",
         "integrations/amazon-redshift",
         "integrations/amazon-rds",
@@ -233,9 +225,7 @@
     },
     {
       "group": "Blogs",
-      "pages": [
-        "blogs/rag-example-with-api"
-      ]
+      "pages": ["blogs/rag-example-with-api"]
     },
     {
       "group": "DB Drivers",
@@ -408,9 +398,7 @@
     },
     {
       "group": "Embedded Peaka",
-      "pages": [
-        "api-reference/embedded-peaka/init-session"
-      ]
+      "pages": ["api-reference/embedded-peaka/init-session"]
     }
   ],
   "footerSocials": {
