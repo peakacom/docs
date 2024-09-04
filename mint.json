@@ -172,7 +172,7 @@
         "integrations/big-query-service-account",
         "integrations/clickhouse",
         "integrations/databricks",
-        "integrations/dynamics365",
+        "integrations/dynamics-365",
         "integrations/excel-365",
         "integrations/facebook-ads",
         "integrations/firebase",
