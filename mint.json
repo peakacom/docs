@@ -193,6 +193,7 @@
         "integrations/odoo",
         "integrations/openai",
         "integrations/oracle",
+        "integrations/pinecone",
         "integrations/pipedrive",
         "integrations/postgresql",
         "integrations/profitwell",
