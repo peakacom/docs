@@ -179,6 +179,7 @@
         "integrations/google-analytics",
         "integrations/google-sheets",
         "integrations/hubspot",
+        "integrations/instagram",
         "integrations/intercom",
         "integrations/jira",
         "integrations/linkedin-ads",
