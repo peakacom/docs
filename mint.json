@@ -168,8 +168,6 @@
         "integrations/amazon-redshift",
         "integrations/amazon-rds",
         "integrations/big-query",
-        "integrations/big-query-oauth",
-        "integrations/big-query-service-account",
         "integrations/clickhouse",
         "integrations/databricks",
         "integrations/dynamics-365",
