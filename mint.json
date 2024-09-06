@@ -213,7 +213,8 @@
         "integrations/weaviate",
         "integrations/youtube-analytics",
         "integrations/zendesk",
-        "integrations/zoho-crm"
+        "integrations/zoho-crm",
+        "integrations/zoom"
       ]
     },
     {
