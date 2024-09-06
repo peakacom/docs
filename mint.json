@@ -198,6 +198,7 @@
         "integrations/postgresql",
         "integrations/profitwell",
         "integrations/quickbooks-online",
+        "integrations/qdrant",
         "integrations/salesforce",
         "integrations/sap-hana",
         "integrations/segment",
