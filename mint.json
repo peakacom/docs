@@ -319,91 +319,101 @@
       ]
     },
     {
-      "group": "Projects > Project Api Keys",
-      "pages": [
-        "api-reference/projects->-project-api-keys/list-api-keys",
-        "api-reference/projects->-project-api-keys/create-api-key",
-        "api-reference/projects->-project-api-keys/update-api-key",
-        "api-reference/projects->-project-api-keys/delete-api-key"
-      ]
-    },
-    {
       "group": "Projects",
       "pages": [
-        "api-reference/projects/list-all-projects",
-        "api-reference/projects/create-a-project",
-        "api-reference/projects/get-a-project",
-        "api-reference/projects/delete-project"
+        "api-reference/projects/read-project",
+        "api-reference/projects/update-project",
+        "api-reference/projects/delete-project",
+        "api-reference/projects/list-projects",
+        "api-reference/projects/create-project"
       ]
     },
     {
-      "group": "Data > Cache",
+      "group": "Data -> Internal Tables",
       "pages": [
-        "api-reference/data->-cache/list-caches",
-        "api-reference/data->-cache/create-a-cache",
-        "api-reference/data->-cache/delete-a-cache",
-        "api-reference/data->-cache/startupdate-a-cache",
-        "api-reference/data->-cache/rebuild-a-cache",
-        "api-reference/data->-cache/get-status-of-a-cache"
+        "api-reference/data->-internal-tables/create-table",
+        "api-reference/data->-internal-tables/delete-table",
+        "api-reference/data->-internal-tables/list-tables",
+        "api-reference/data->-internal-tables/add-column",
+        "api-reference/data->-internal-tables/update-column",
+        "api-reference/data->-internal-tables/delete-column",
+        "api-reference/data->-internal-tables/list-columns",
+        "api-reference/data->-internal-tables/create-bi-table",
+        "api-reference/data->-internal-tables/delete-bi-table",
+        "api-reference/data->-internal-tables/list-bi-tables",
+        "api-reference/data->-internal-tables/add-bi-column",
+        "api-reference/data->-internal-tables/update-bi-column",
+        "api-reference/data->-internal-tables/delete-bi-column",
+        "api-reference/data->-internal-tables/list-bi-columns"
       ]
     },
     {
-      "group": "Data > Catalogs",
+      "group": "Data -> Queries",
+      "pages": [
+        "api-reference/data->-queries/read-query",
+        "api-reference/data->-queries/update-query",
+        "api-reference/data->-queries/delete-query",
+        "api-reference/data->-queries/list-queries",
+        "api-reference/data->-queries/create-query",
+        "api-reference/data->-queries/execute-query"
+      ]
+    },
+    {
+      "group": "Connections",
+      "pages": [
+        "api-reference/connections/get-connection",
+        "api-reference/connections/update-connection",
+        "api-reference/connections/delete-connection",
+        "api-reference/connections/list-connections",
+        "api-reference/connections/create-connection",
+        "api-reference/connections/get-connection-detail",
+        "api-reference/connections/list-connection-config",
+        "api-reference/connections/get-connection-config"
+      ]
+    },
+    {
+      "group": "Projects -> Api Key",
+      "pages": [
+        "api-reference/projects->-api-key/list-api-keys",
+        "api-reference/projects->-api-key/create-api-key",
+        "api-reference/projects->-api-key/delete-api-key"
+      ]
+    },
+    {
+      "group": "Data -> Catalogs",
       "pages": [
         "api-reference/data->-catalogs/list-catalogs",
-        "api-reference/data->-catalogs/create-a-catalog",
-        "api-reference/data->-catalogs/get-a-catalog",
-        "api-reference/data->-catalogs/delete-a-catalog",
+        "api-reference/data->-catalogs/create-catalog",
+        "api-reference/data->-catalogs/read-catalog",
+        "api-reference/data->-catalogs/delete-catalog",
         "api-reference/data->-catalogs/list-schemas",
         "api-reference/data->-catalogs/list-tables",
         "api-reference/data->-catalogs/list-columns"
       ]
     },
     {
-      "group": "Data > Query",
+      "group": "Data -> Cache",
       "pages": [
-        "api-reference/data->-query/list-queries",
-        "api-reference/data->-query/create-a-query",
-        "api-reference/data->-query/update-a-query",
-        "api-reference/data->-query/delete-a-query",
-        "api-reference/data->-query/execute-a-query"
+        "api-reference/data->-cache/create-cache",
+        "api-reference/data->-cache/startupdate-cache",
+        "api-reference/data->-cache/rebuild-cache",
+        "api-reference/data->-cache/get-cache-status",
+        "api-reference/data->-cache/delete-cache"
       ]
     },
     {
-      "group": "Data > Internal Tables",
+      "group": "Embedded Peaka",
       "pages": [
-        "api-reference/data->-internal-tables/list-internal-tables",
-        "api-reference/data->-internal-tables/create-an-internal-table",
-        "api-reference/data->-internal-tables/delete-an-internal-table",
-        "api-reference/data->-internal-tables/get-columns-of-an-internal-table",
-        "api-reference/data->-internal-tables/add-a-column-to-an-internal-table",
-        "api-reference/data->-internal-tables/update-a-column-of-an-internal-table",
-        "api-reference/data->-internal-tables/delete-a-column-of-an-internal-table"
-      ]
-    },
-    {
-      "group": "Connections",
-      "pages": [
-        "api-reference/connections/list-connections",
-        "api-reference/connections/create-a-connection",
-        "api-reference/connections/get-a-connection",
-        "api-reference/connections/update-a-connection",
-        "api-reference/connections/delete-a-connection",
-        "api-reference/connections/list-available-connections",
-        "api-reference/connections/test-connection"
+        "api-reference/embedded-peaka/init-session"
       ]
     },
     {
       "group": "Supported Drivers",
       "pages": [
-        "api-reference/supported-drivers/list-drivers",
-        "api-reference/supported-drivers/get-jdbc-url",
-        "api-reference/supported-drivers/get-sql-alchemy-url"
+        "api-reference/supported-drivers/list-supported-drivers",
+        "api-reference/supported-drivers/get-sql-alchemy-driver",
+        "api-reference/supported-drivers/get-jdbc-driver"
       ]
-    },
-    {
-      "group": "Embedded Peaka",
-      "pages": ["api-reference/embedded-peaka/init-session"]
     }
   ],
   "footerSocials": {
