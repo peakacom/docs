@@ -211,6 +211,7 @@
         "integrations/snowflake",
         "integrations/stripe",
         "integrations/twilio",
+        "integrations/upstash-vector",
         "integrations/weaviate",
         "integrations/youtube-analytics",
         "integrations/zendesk",
@@ -403,9 +404,7 @@
     },
     {
       "group": "Embedded Peaka",
-      "pages": [
-        "api-reference/embedded-peaka/init-session"
-      ]
+      "pages": ["api-reference/embedded-peaka/init-session"]
     },
     {
       "group": "Supported Drivers",
