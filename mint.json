@@ -197,6 +197,7 @@
         "integrations/pipedrive",
         "integrations/postgresql",
         "integrations/profitwell",
+        "integrations/provet-cloud",
         "integrations/quickbooks-online",
         "integrations/qdrant",
         "integrations/salesforce",
