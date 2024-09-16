@@ -171,6 +171,7 @@
         "integrations/clickhouse",
         "integrations/databricks",
         "integrations/dynamics-365",
+        "integrations/elastic-search",
         "integrations/excel-365",
         "integrations/facebook-ads",
         "integrations/firebase",
