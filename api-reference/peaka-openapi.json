@@ -1039,7 +1039,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List Queries",
+            "description": "Query created",
             "content": {
               "application/json": {
                 "schema": {
@@ -1047,7 +1047,8 @@
                   "items": {
                     "$ref": "#/components/schemas/Query"
                   }
-                }
+                },
+                "example": "[\n    {\n        \"id\": \"709891320440684892\",\n        \"displayName\": \"sample2\",\n        \"name\": \"sample2\",\n        \"inputQuery\": \"\"\n    },\n    {\n        \"id\": \"702142445051183684\",\n        \"displayName\": \"deneme\",\n        \"name\": \"deneme\",\n        \"inputQuery\": \"SELECT count(*) from \"examplestripecatalogname\".\"payment\".\"customers\"\"\n    },\n    {\n        \"id\": \"709891051854233848\",\n        \"displayName\": \"sample\",\n        \"name\": \"sample\",\n        \"inputQuery\": \"\"\n    },\n    {\n        \"id\": \"709922802836177297\",\n        \"displayName\": \"sampleQuery\",\n        \"name\": \"samplequery\",\n        \"inputQuery\": \"SELECT * from \"mcglynn_keeling\".payment.charges\"\n    }\n]\n"
               }
             }
           }
@@ -1380,25 +1381,6 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "Bad Request": {
-                    "description": "Bad Request",
-                    "value": {
-                      "errorCode": 100,
-                      "message": "There are already a catalog with same name!!"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "200": {
             "description": "Catalog created successfully",
             "content": {
@@ -1425,6 +1407,25 @@
                       "displayName": "exampleStripeCatalog",
                       "catalogType": "stripe",
                       "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "description": "Bad Request",
+                    "value": {
+                      "errorCode": 100,
+                      "message": "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -1856,13 +1857,15 @@
                 "$ref": "#/components/schemas/ConnectionRequest"
               },
               "examples": {
-                "HubSpot Connection Request": {
+                "HubSpot Connection Request with Oauth": {
                   "description": "Sample HubSpot Connection parameters",
                   "value": {
                     "name": "exampleHubspotConnection",
                     "type": "hubspot",
                     "credential": {
-                      "privateAppAccessToken": "\u003ChubspotToken\u003E"
+                      "clientId": "15d6b8c5-48ea-4955-8ce5-d04bb9adad25",
+                      "clientSecret": "64d70b56-ae19-4fee-9fa2-3e9113bcb202",
+                      "refreshToken": "eu1-eae3-1af4-583d-91d4-f6414699feea"
                     }
                   }
                 },
