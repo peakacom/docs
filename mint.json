@@ -425,5 +425,10 @@
     "gtm": {
       "tagId": "GTM-NLBSKN8"
     }
+  },
+  "api": {
+    "auth": {
+      "method": "bearer"
+    }
   }
 }
