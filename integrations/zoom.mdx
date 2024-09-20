@@ -14,13 +14,44 @@ Before you start, you will need the following information from Zoom.
 
 Follow the steps below to obtain it:
 
-1. Navigate to the [Zoom Marketplace](https://marketplace.zoom.us/) site and click 'Manage' from the top right corner of the screen.
+1. Navigate to the [Zoom Marketplace](https://marketplace.zoom.us/) and select 'Build App' from the dropdown menu to begin the app creation process.
 
 <img src="https://cdn.peaka.com/integrations/zoom-1.png" />
 
-2. Select your app and then click the 'App Credentials' tab from the left panel. Use the values for the 'Client ID' and 'Client secret' available on this page.
+2. Choose the type of app you want to create from the available options.
 
 <img src="https://cdn.peaka.com/integrations/zoom-2.png" />
+
+3. In the left-side menu, locate the section highlighted in a red rectangle and copy your Client ID and Client Secret from there.
+
+<img src="https://cdn.peaka.com/integrations/zoom-3.png" />
+
+4. Scroll down to the "Select how the app is managed" section and select "Admin-managed" to specify the management type for your app.
+
+<img src="https://cdn.peaka.com/integrations/zoom-4.png" />
+
+5. Scroll down to the "OAuth Information" section, where you will find the field for the OAuth Redirect URL. Enter `https://peaka.studio/oauth2/callback` in this field, as it is crucial for redirecting users after they complete the authentication process.
+
+<img src="https://cdn.peaka.com/integrations/zoom-5.png" />
+
+6. In the left-side menu, click on the "Scopes" option, then click the "Add Scopes" button to proceed with defining the permissions your app will require.
+
+7. In the modal that appears, choose the following mandatory scopes to ensure your app has the necessary permissions for optimal functionality:
+
+- View users
+- View a user's meetings
+- View a past meeting's instances
+- View a past meeting's participants
+- View a meeting's registrants
+- View a user's upcoming meetings
+- View a meeting
+- View a meeting's participant
+- View a past meeting
+- View a meeting's registrant
+
+<img src="https://cdn.peaka.com/integrations/zoom-6.png" />
+
+8. After reviewing your selected scopes, click the "Continue" button.
 
 ## Connecting Zoom to Peaka
 
@@ -34,8 +65,8 @@ Now that you have obtained the necessary integration data and credentials, you c
 
 4. Enter a name for your connection, input the credentials you obtained in the previous steps.
 
-<img src="https://cdn.peaka.com/integrations/zoom-3.png" />
+<img src="https://cdn.peaka.com/integrations/zoom-7.png" />
 
-5. Click "Sign in" to create your Zoom connection.
+5. Click "Sign In" to connect Zoom and allow access to your data.
 
 Congratulations! You've successfully connected Zoom to Peaka. You can now access and manage your Zoom data seamlessly within the Peaka platform.
