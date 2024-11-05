@@ -143,7 +143,7 @@
     "/data/projects/{projectId}/table/{tableName}/columns/{columnName}": {
       "put": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Update Column",
         "operationId": "updateColumn",
@@ -201,7 +201,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Delete Column",
         "operationId": "deleteColumn",
@@ -241,7 +241,7 @@
     "/data/projects/{projectId}/queries/{queryId}": {
       "get": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "Read Query",
         "operationId": "readQuery",
@@ -279,7 +279,7 @@
       },
       "put": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "Update Query",
         "operationId": "updateQuery",
@@ -339,7 +339,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "Delete Query",
         "operationId": "deleteQuery",
@@ -371,7 +371,7 @@
     "/data/projects/{projectId}/bitable/{tableName}/columns/{columnName}": {
       "put": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Update BI Column",
         "operationId": "updateBiColumn",
@@ -429,7 +429,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Delete BI Column",
         "operationId": "deleteBiColumn",
@@ -556,13 +556,15 @@
                 "$ref": "#/components/schemas/ConnectionRequest"
               },
               "examples": {
-                "HubSpot Connection Request": {
+                "HubSpot Connection Request with Oauth": {
                   "description": "Sample HubSpot Connection parameters",
                   "value": {
                     "name": "exampleHubspotConnection",
                     "type": "hubspot",
                     "credential": {
-                      "privateAppAccessToken": "<hubspotToken>"
+                      "clientId": "15d6b8c5-48ea-4955-8ce5-d04bb9adad25",
+                      "clientSecret": "64d70b56-ae19-4fee-9fa2-3e9113bcb202",
+                      "refreshToken": "eu1-eae3-1af4-583d-91d4-f6414699feea"
                     }
                   }
                 },
@@ -572,7 +574,7 @@
                     "name": "exampleStripeConnection21",
                     "type": "stripe",
                     "credential": {
-                      "token": "<stripeToken>"
+                      "token": "\u003CstripeToken\u003E"
                     }
                   }
                 },
@@ -582,7 +584,7 @@
                     "name": "exampleAirtableConnection",
                     "type": "airtable",
                     "credential": {
-                      "personalAccessToken": "<yourAirtableApiKey>"
+                      "personalAccessToken": "\u003CyourAirtableApiKey\u003E"
                     }
                   }
                 }
@@ -724,7 +726,7 @@
     "/projects/{projectId}/apiKeys": {
       "get": {
         "tags": [
-          "Projects -> Api Key"
+          "Projects -\u003E Api Key"
         ],
         "summary": "List API Keys",
         "operationId": "listApiKeys",
@@ -756,7 +758,7 @@
       },
       "post": {
         "tags": [
-          "Projects -> Api Key"
+          "Projects -\u003E Api Key"
         ],
         "summary": "Create API Key",
         "operationId": "createApiKey",
@@ -816,7 +818,7 @@
     "/data/projects/{projectId}/table/{tableName}": {
       "post": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Create Table",
         "operationId": "createInternalTable",
@@ -862,7 +864,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Delete Table",
         "operationId": "deleteTable",
@@ -894,10 +896,10 @@
     "/data/projects/{projectId}/table/{tableName}/columns": {
       "get": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "List Columns",
-        "description": "See Data -> Catalog / List Columns for more details.",
+        "description": "See Data -\u003E Catalog / List Columns for more details.",
         "operationId": "listColumns",
         "parameters": [
           {
@@ -935,7 +937,7 @@
       },
       "post": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Add Column",
         "operationId": "addColumn",
@@ -1023,7 +1025,7 @@
     "/data/projects/{projectId}/queries": {
       "get": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "List Queries",
         "operationId": "listQueries",
@@ -1056,7 +1058,7 @@
       },
       "post": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "Create Query",
         "operationId": "createQuery",
@@ -1110,7 +1112,7 @@
     "/data/projects/{projectId}/queries/execute": {
       "post": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "Execute Query",
         "operationId": "executeQuery",
@@ -1188,10 +1190,8 @@
                               "columnName": "amount"
                             }
                           },
-                          ">",
-                          [
-                            150
-                          ]
+                          "\u003E",
+                          [150]
                         ]
                       ]
                     },
@@ -1265,7 +1265,7 @@
     "/data/projects/{projectId}/catalogs": {
       "get": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "List Catalogs",
         "operationId": "listCatalogs",
@@ -1339,7 +1339,7 @@
       },
       "post": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "Create Catalog",
         "operationId": "createCatalog",
@@ -1440,7 +1440,7 @@
     "/data/projects/{projectId}/cache": {
       "post": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Create Cache",
         "operationId": "createCache",
@@ -1455,10 +1455,37 @@
           }
         ],
         "requestBody": {
+          "description": "Create Cache Request",
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CacheRequest"
+              },
+              "examples": {
+                "Create Cache - One Time": {
+                  "description": "Create Cache - One Time",
+                  "value": {
+                    "catalogId": "627249916703408649",
+                    "schemaName": "payment",
+                    "tableName": "customers",
+                    "schedule": {
+                      "type": "NONE",
+                      "expression": ""
+                    }
+                  }
+                },
+                "Create Cache - Scheduled": {
+                  "description": "Create Cache - Scheducled at every 6 hrs.",
+                  "value": {
+                    "catalogId": "627249916703408649",
+                    "schemaName": "payment",
+                    "tableName": "customers",
+                    "schedule": {
+                      "type": "BASIC",
+                      "expression": "PT6H"
+                    }
+                  }
+                }
               }
             }
           },
@@ -1470,10 +1497,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
-                  }
+                  "$ref": "#/components/schemas/Cache"
                 }
               }
             }
@@ -1484,7 +1508,7 @@
     "/data/projects/{projectId}/cache/{cacheId}/update": {
       "post": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Start/Update Cache",
         "operationId": "startUpdateCache",
@@ -1526,7 +1550,7 @@
     "/data/projects/{projectId}/cache/{cacheId}/rebuild": {
       "post": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Rebuild Cache",
         "operationId": "rebuildCache",
@@ -1568,7 +1592,7 @@
     "/data/projects/{projectId}/bitable/{tableName}": {
       "post": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Create BI Table",
         "operationId": "createInternalBiTable",
@@ -1614,7 +1638,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Delete BI Table",
         "operationId": "deleteBiTable",
@@ -1646,10 +1670,10 @@
     "/data/projects/{projectId}/bitable/{tableName}/columns": {
       "get": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "List BI Columns",
-        "description": "See Data -> Catalog / List Columns for more details.",
+        "description": "See Data -\u003E Catalog / List Columns for more details.",
         "operationId": "listBiColumns",
         "parameters": [
           {
@@ -1687,7 +1711,7 @@
       },
       "post": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Add BI Column",
         "operationId": "addBiColumn",
@@ -1865,7 +1889,7 @@
                     "name": "exampleStripeConnection21",
                     "type": "stripe",
                     "credential": {
-                      "token": "<stripeToken>"
+                      "token": "\u003CstripeToken\u003E"
                     }
                   }
                 },
@@ -1875,9 +1899,9 @@
                     "name": "exampleOauthConnection",
                     "type": "google_analytics",
                     "credential": {
-                      "clientId": "<googleOauthAppClientId>",
-                      "clientSecret": "<googleOauthAppClientSecret>",
-                      "redirectUrl": "<yourRedirectUrl>"
+                      "clientId": "\u003CgoogleOauthAppClientId\u003E",
+                      "clientSecret": "\u003CgoogleOauthAppClientSecret\u003E",
+                      "redirectUrl": "\u003CyourRedirectUrl\u003E"
                     }
                   }
                 },
@@ -1887,9 +1911,9 @@
                     "name": "exampleHubspotConnection",
                     "type": "hubspot",
                     "credential": {
-                      "clientId": "<hubspotOauthAppClientId>",
-                      "clientSecret": "<hubspotOauthAppClientSecret>",
-                      "refreshToken": "<OauthRefreshToken>"
+                      "clientId": "\u003ChubspotOauthAppClientId\u003E",
+                      "clientSecret": "\u003ChubspotOauthAppClientSecret\u003E",
+                      "refreshToken": "\u003COauthRefreshToken\u003E"
                     }
                   }
                 },
@@ -1899,7 +1923,7 @@
                     "name": "exampleAirtableConnection",
                     "type": "airtable",
                     "credential": {
-                      "personalAccessToken": "<yourAirtableApiKey>"
+                      "personalAccessToken": "\u003CyourAirtableApiKey\u003E"
                     }
                   }
                 }
@@ -1909,6 +1933,16 @@
           "required": true
         },
         "responses": {
+          "307": {
+            "description": "Redirect to oauth consent page",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Connection"
+                }
+              }
+            }
+          },
           "200": {
             "description": "Connection created successfully",
             "content": {
@@ -1925,16 +1959,6 @@
                       "type": "stripe"
                     }
                   }
-                }
-              }
-            }
-          },
-          "307": {
-            "description": "Redirect to oauth consent page",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Connection"
                 }
               }
             }
@@ -2109,10 +2133,10 @@
     "/data/projects/{projectId}/table": {
       "get": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "List Tables",
-        "description": "See Data -> Catalog / List Tables for more details.",
+        "description": "See Data -\u003E Catalog / List Tables for more details.",
         "operationId": "listTables",
         "parameters": [
           {
@@ -2144,7 +2168,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}": {
       "get": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "Read Catalog",
         "operationId": "readCatalog",
@@ -2193,7 +2217,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "Delete Catalog",
         "operationId": "deleteCatalog",
@@ -2225,7 +2249,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas": {
       "get": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "List Schemas",
         "operationId": "listSchemas",
@@ -2278,7 +2302,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables": {
       "get": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "List Tables",
         "operationId": "listTables_1",
@@ -2353,7 +2377,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/columns": {
       "get": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "List Columns",
         "operationId": "listColumns_1",
@@ -2634,7 +2658,7 @@
     "/data/projects/{projectId}/cache/{cacheId}/status": {
       "get": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Get Cache Status",
         "operationId": "getCacheStatus",
@@ -2662,10 +2686,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
-                  }
+                  "$ref": "#/components/schemas/CacheStatus"
                 }
               }
             }
@@ -2676,10 +2697,10 @@
     "/data/projects/{projectId}/bitable": {
       "get": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "List BI Tables",
-        "description": "See Data -> Catalog / List Tables for more details.",
+        "description": "See Data -\u003E Catalog / List Tables for more details.",
         "operationId": "listBiTables",
         "parameters": [
           {
@@ -2823,7 +2844,7 @@
     "/projects/{projectId}/apiKeys/{apiKeyId}": {
       "delete": {
         "tags": [
-          "Projects -> Api Key"
+          "Projects -\u003E Api Key"
         ],
         "summary": "Delete API Key",
         "operationId": "deleteApiKey",
@@ -2855,7 +2876,7 @@
     "/data/projects/{projectId}/cache/{cacheId}": {
       "delete": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Delete Cache",
         "operationId": "deleteCache",
@@ -3024,7 +3045,7 @@
           },
           "name": {
             "type": "string",
-            "description": "The name of the query.\n <br />This is the name of the query which will be used in the sql query.\n e.g. SELECT * FROM \"peaka\".\"query\".\"<name>\""
+            "description": "The name of the query.\n \u003Cbr /\u003EThis is the name of the query which will be used in the sql query.\n e.g. SELECT * FROM \"peaka\".\"query\".\"\u003Cname\u003E\""
           },
           "inputQuery": {
             "type": "string",
@@ -3041,14 +3062,14 @@
           },
           "type": {
             "type": "string",
-            "description": "Type of connection.\n <br />\n Example: airtable for AirTable, stripe for Stripe, hubspot_access_token for HubSpot (with Access Token), etc.\n <br />\n Exact list can be fetched by following url: /connections/public-config"
+            "description": "Type of connection.\n \u003Cbr /\u003E\n Example: airtable for AirTable, stripe for Stripe, hubspot_access_token for HubSpot (with Access Token), etc.\n \u003Cbr /\u003E\n Exact list can be fetched by following url: /connections/public-config"
           },
           "credential": {
             "type": "object",
             "additionalProperties": {
               "type": "object"
             },
-            "description": "Credential object for the connection.\n <br />\n Its structure is dependent on the connection type and can be fetched by following url: /connections/config"
+            "description": "Credential object for the connection.\n \u003Cbr /\u003E\n Its structure is dependent on the connection type and can be fetched by following url: /connections/config"
           },
           "redirectUrl": {
             "type": "string",
@@ -3126,7 +3147,7 @@
           },
           "isDynamicTable": {
             "type": "boolean",
-            "description": "Indicates whether the table has required query parameter columns or not.\n <br />A query parameter column is prefixed with \"_q_\" e.g. \"_q_date\".\n <br />These columns are used to filter the data in the table."
+            "description": "Indicates whether the table has required query parameter columns or not.\n \u003Cbr /\u003EA query parameter column is prefixed with \"_q_\" e.g. \"_q_date\".\n \u003Cbr /\u003EThese columns are used to filter the data in the table."
           },
           "isCached": {
             "type": "boolean",
@@ -3330,14 +3351,42 @@
         "properties": {
           "type": {
             "type": "string",
-            "description": "The type of the schedule."
+            "description": "The type of the schedule. BASIC or NONE."
           },
           "expression": {
             "type": "string",
-            "description": "The expression of the schedule."
+            "description": "The expression of the schedule. \u003Cbr\u003E\n Valid if the type is other than NONE. \u003Cbr\u003E\n For BASIC, the expression is a duration in ISO-8601 format. \u003Cbr\u003E\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds) \u003Cbr\u003E\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds) \u003Cbr\u003E\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
           }
         },
         "description": "This class represents a schedule for a cache request.\n It contains the type and expression of the schedule."
+      },
+      "Cache": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the cache."
+          },
+          "appId": {
+            "type": "string",
+            "description": "The ID of the application for the cache request."
+          },
+          "catalogId": {
+            "type": "string",
+            "description": "The ID of the catalog for the cache request."
+          },
+          "schemaName": {
+            "type": "string",
+            "description": "The name of the schema for the cache request."
+          },
+          "tableName": {
+            "type": "string",
+            "description": "The name of the table for the cache request."
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/Schedule"
+          }
+        }
       },
       "EmbeddedSession": {
         "type": "object",
@@ -3362,6 +3411,43 @@
           "schemaName": {
             "type": "string",
             "description": "The name of the schema."
+          }
+        }
+      },
+      "CacheStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the cache."
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the cache. \u003Cbr\u003E\n RUNNING, CANCELLED, FAILED, COMPLETED, DELETED, NOT_INITIALIZED",
+            "enum": [
+              "RUNNING",
+              "CANCELLED",
+              "FAILED",
+              "COMPLETED",
+              "DELETED",
+              "NOT_INITIALIZED"
+            ]
+          },
+          "appId": {
+            "type": "string",
+            "description": "The ID of the app that the cache belongs to."
+          },
+          "catalogId": {
+            "type": "string",
+            "description": "The ID of the catalog that the cache belongs to."
+          },
+          "schemaName": {
+            "type": "string",
+            "description": "The name of the schema that the cache belongs to."
+          },
+          "tableName": {
+            "type": "string",
+            "description": "The name of the table that the cache belongs to."
           }
         }
       },
