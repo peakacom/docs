@@ -7,6 +7,8 @@ This article guides you through the process of connecting MongoDB to Peaka, allo
 
 ## Prerequisites
 
+**Important**: Ensure that the Peaka IP address 34.42.188.247 is added to your firewall's safelist to enable access to your MongoDB data.
+
 Before you start, you will need the following information from MongoDB.
 
 MongoDB connection has two type connection way;
@@ -28,18 +30,28 @@ MongoDB connection has two type connection way;
 
 ## Connecting MongoDB to Peaka
 
-1. Go to the settings page on Peaka.
+To connect MongoDB to Peaka, follow these steps based on your MongoDB setup:
 
-2. On the Settings page, click "Add First Connection."
+### For MongoDB Atlas Users
 
-3. In the modal, select "MongoDB" from the list of available integrations.
+1. Navigate to the **Settings** page on Peaka.
+2. Click on **Add First Connection**.
+3. In the modal, choose **MongoDB** from the list of integrations.
+4. Select the **Atlas** connection type.
+5. Enter the connection string and other details you have gathered.
+6. Click **Authorize** to complete the connection.
 
-4. Select the connection type (MongoDB Atlas or MongoDB Manual)
+![MongoDB Atlas Connection](https://cdn.peaka.com/integrations/mongodb-2.png)
 
-5. Fill the connection details with the information you gathered earlier.
+### For MongoDB Manual (Self-Hosted) Users
 
-6. Click "Authorize" to establish the connection.
+1. Go to the **Settings** page on Peaka.
+2. Click on **Add First Connection**.
+3. In the modal, select **MongoDB** from the available integrations.
+4. Choose the **Manual** connection type.
+5. Input the host, port, user, password, database name, and any other required details.
+6. Click **Authorize** to establish the connection.
 
-<img src="https://cdn.peaka.com/integrations/mongodb-1.png" />
+![MongoDB Manual Connection](https://cdn.peaka.com/integrations/mongodb-1.png)
 
-Congratulations! You've successfully created a connection between MongoDB and Peaka. You can now access and manage your MongoDB data seamlessly within the Peaka platform.
+Congratulations! You have successfully connected MongoDB to Peaka. You can now effortlessly access and manage your MongoDB data within the Peaka platform.
