@@ -1895,7 +1895,15 @@
                 },
                 "Connection (Oauth2) Request With Redirect Url ": {
                   "description": "Sample Oauth2 Connection with redirect url parameters",
-                  "value": "{\n    \"name\": \"exampleOauthConnection\",\n    \"type\": \"google_analytics\",\n    \"credential\": {\n        \"clientId\": \"\u003CgoogleOauthAppClientId\u003E\",\n        \"clientSecret\": \"\u003CgoogleOauthAppClientSecret\u003E\",\n    },\n    \"redirectUrl\": \"\u003CyourRedirectUrl\u003E\"\n}\n"
+                  "value": {
+                    "name": "exampleOauthConnection",
+                    "type": "google_analytics",
+                    "credential": {
+                      "clientId": "\u003CgoogleOauthAppClientId\u003E",
+                      "clientSecret": "\u003CgoogleOauthAppClientSecret\u003E"
+                    },
+                    "redirectUrl": "\u003CyourRedirectUrl\u003E"
+                  }
                 },
                 "HubSpot Connection (Oauth2) Request": {
                   "description": "Sample HubSpot Connection parameters",
@@ -3117,14 +3125,14 @@
           },
           "type": {
             "type": "string",
-            "description": "Type of connection.\n \u003Cbr /\u003E\n Example: airtable for AirTable, stripe for Stripe, hubspot_access_token for HubSpot (with Access Token), etc.\n \u003Cbr /\u003E\n Exact list can be fetched by following url: /connections/public-config"
+            "description": "Type of connection.\n \n Example: airtable for AirTable, stripe for Stripe, hubspot_access_token for HubSpot (with Access Token), etc.\n\n Exact list can be fetched by following url: /connections/public-config"
           },
           "credential": {
             "type": "object",
             "additionalProperties": {
               "type": "object"
             },
-            "description": "Credential object for the connection.\n \u003Cbr /\u003E\n Its structure is dependent on the connection type and can be fetched by following url: /connections/config"
+            "description": "Credential object for the connection.\n\n Its structure is dependent on the connection type and can be fetched by following url: /connections/config"
           },
           "redirectUrl": {
             "type": "string",
