@@ -331,6 +331,39 @@
       ]
     },
     {
+      "group": "Projects -> Api Key",
+      "pages": [
+        "api-reference/projects->-api-key/list-api-keys",
+        "api-reference/projects->-api-key/create-api-key",
+        "api-reference/projects->-api-key/delete-api-key"
+      ]
+    },
+    {
+      "group": "Connections",
+      "pages": [
+        "api-reference/connections/get-connection",
+        "api-reference/connections/update-connection",
+        "api-reference/connections/delete-connection",
+        "api-reference/connections/list-connections",
+        "api-reference/connections/create-connection",
+        "api-reference/connections/get-connection-detail",
+        "api-reference/connections/list-connection-config",
+        "api-reference/connections/get-connection-config"
+      ]
+    },
+    {
+      "group": "Data -> Catalogs",
+      "pages": [
+        "api-reference/data->-catalogs/list-catalogs",
+        "api-reference/data->-catalogs/create-catalog",
+        "api-reference/data->-catalogs/read-catalog",
+        "api-reference/data->-catalogs/delete-catalog",
+        "api-reference/data->-catalogs/list-schemas",
+        "api-reference/data->-catalogs/list-tables",
+        "api-reference/data->-catalogs/list-columns"
+      ]
+    },
+    {
       "group": "Data -> Internal Tables",
       "pages": [
         "api-reference/data->-internal-tables/create-table",
@@ -358,39 +391,6 @@
         "api-reference/data->-queries/list-queries",
         "api-reference/data->-queries/create-query",
         "api-reference/data->-queries/execute-query"
-      ]
-    },
-    {
-      "group": "Connections",
-      "pages": [
-        "api-reference/connections/get-connection",
-        "api-reference/connections/update-connection",
-        "api-reference/connections/delete-connection",
-        "api-reference/connections/list-connections",
-        "api-reference/connections/create-connection",
-        "api-reference/connections/get-connection-detail",
-        "api-reference/connections/list-connection-config",
-        "api-reference/connections/get-connection-config"
-      ]
-    },
-    {
-      "group": "Projects -> Api Key",
-      "pages": [
-        "api-reference/projects->-api-key/list-api-keys",
-        "api-reference/projects->-api-key/create-api-key",
-        "api-reference/projects->-api-key/delete-api-key"
-      ]
-    },
-    {
-      "group": "Data -> Catalogs",
-      "pages": [
-        "api-reference/data->-catalogs/list-catalogs",
-        "api-reference/data->-catalogs/create-catalog",
-        "api-reference/data->-catalogs/read-catalog",
-        "api-reference/data->-catalogs/delete-catalog",
-        "api-reference/data->-catalogs/list-schemas",
-        "api-reference/data->-catalogs/list-tables",
-        "api-reference/data->-catalogs/list-columns"
       ]
     },
     {
