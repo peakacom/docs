@@ -1383,6 +1383,25 @@
           "required": true
         },
         "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "description": "Bad Request",
+                    "value": {
+                      "errorCode": 100,
+                      "message": "There are already a catalog with same name!!"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "200": {
             "description": "Catalog created successfully",
             "content": {
@@ -1409,25 +1428,6 @@
                       "displayName": "exampleStripeCatalog",
                       "catalogType": "stripe",
                       "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "Bad Request": {
-                    "description": "Bad Request",
-                    "value": {
-                      "errorCode": 100,
-                      "message": "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -3108,7 +3108,7 @@
           },
           "name": {
             "type": "string",
-            "description": "The name of the query.\n \u003Cbr /\u003EThis is the name of the query which will be used in the sql query.\n e.g. SELECT * FROM \"peaka\".\"query\".\"\u003Cname\u003E\""
+            "description": "The name of the query.\n\n This is the name of the query which will be used in the sql query.\n e.g. SELECT * FROM \"peaka\".\"query\".\"\u003Cname\u003E\""
           },
           "inputQuery": {
             "type": "string",
@@ -3214,7 +3214,7 @@
           },
           "isDynamicTable": {
             "type": "boolean",
-            "description": "Indicates whether the table has required query parameter columns or not.\n \u003Cbr /\u003EA query parameter column is prefixed with \"_q_\" e.g. \"_q_date\".\n \u003Cbr /\u003EThese columns are used to filter the data in the table."
+            "description": "Indicates whether the table has required query parameter columns or not.\n A query parameter column is prefixed with \"_q_\" e.g. \"_q_date\".\n These columns are used to filter the data in the table."
           },
           "isCached": {
             "type": "boolean",
@@ -3422,7 +3422,7 @@
           },
           "expression": {
             "type": "string",
-            "description": "The expression of the schedule. \u003Cbr\u003E\n Valid if the type is other than NONE. \u003Cbr\u003E\n For BASIC, the expression is a duration in ISO-8601 format. \u003Cbr\u003E\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds) \u003Cbr\u003E\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds) \u003Cbr\u003E\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
+            "description": "The expression of the schedule.\n Valid if the type is other than NONE.\n For BASIC, the expression is a duration in ISO-8601 format.\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds)\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds)\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
           }
         },
         "description": "This class represents a schedule for a cache request.\n It contains the type and expression of the schedule."
@@ -3499,7 +3499,7 @@
           },
           "status": {
             "type": "string",
-            "description": "The status of the cache. \u003Cbr\u003E\n RUNNING, CANCELLED, FAILED, COMPLETED, DELETED, NOT_INITIALIZED",
+            "description": "The status of the cache.\n RUNNING, CANCELLED, FAILED, COMPLETED, DELETED, NOT_INITIALIZED",
             "enum": [
               "RUNNING",
               "CANCELLED",
