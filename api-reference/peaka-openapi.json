@@ -1895,15 +1895,7 @@
                 },
                 "Connection (Oauth2) Request With Redirect Url ": {
                   "description": "Sample Oauth2 Connection with redirect url parameters",
-                  "value": {
-                    "name": "exampleOauthConnection",
-                    "type": "google_analytics",
-                    "credential": {
-                      "clientId": "\u003CgoogleOauthAppClientId\u003E",
-                      "clientSecret": "\u003CgoogleOauthAppClientSecret\u003E",
-                      "redirectUrl": "\u003CyourRedirectUrl\u003E"
-                    }
-                  }
+                  "value": "{\n    \"name\": \"exampleOauthConnection\",\n    \"type\": \"google_analytics\",\n    \"credential\": {\n        \"clientId\": \"\u003CgoogleOauthAppClientId\u003E\",\n        \"clientSecret\": \"\u003CgoogleOauthAppClientSecret\u003E\",\n    },\n    \"redirectUrl\": \"\u003CyourRedirectUrl\u003E\"\n}\n"
                 },
                 "HubSpot Connection (Oauth2) Request": {
                   "description": "Sample HubSpot Connection parameters",
@@ -2366,6 +2358,69 @@
                         "isCached": false
                       }
                     ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/isCached": {
+      "get": {
+        "tags": [
+          "Data -\u003E Catalogs"
+        ],
+        "summary": "Table is Cached",
+        "operationId": "isCached",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schemaName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableCacheResult"
+                },
+                "examples": {
+                  "Table is Cached": {
+                    "description": "Table is Cached",
+                    "value": {
+                      "isCached": true
+                    }
                   }
                 }
               }
@@ -3091,6 +3146,10 @@
           "type": {
             "type": "string",
             "description": "Type of connection.\n\nExample: airtable for AirTable, stripe for Stripe, hubspot_access_token for HubSpot (with Access Token), etc.\n\nExact list can be fetched by following url: /connections/config\n"
+          },
+          "url": {
+            "type": "string",
+            "description": "Oauth callback url if the connection is Oauth based.\n"
           }
         }
       },
@@ -3411,6 +3470,15 @@
           "schemaName": {
             "type": "string",
             "description": "The name of the schema."
+          }
+        }
+      },
+      "TableCacheResult": {
+        "type": "object",
+        "properties": {
+          "isCached": {
+            "type": "boolean",
+            "description": "Indicates whether the table is cacheable or not."
           }
         }
       },
