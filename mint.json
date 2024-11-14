@@ -226,7 +226,8 @@
         "bi-tools/looker-studio",
         "bi-tools/metabase",
         "bi-tools/preset",
-        "bi-tools/superset"
+        "bi-tools/superset",
+        "bi-tools/tableau-web-data"
       ]
     },
     {
