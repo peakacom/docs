@@ -1050,7 +1050,32 @@
                     "$ref": "#/components/schemas/Query"
                   }
                 },
-                "example": "[\n    {\n        \"id\": \"709891320440684892\",\n        \"displayName\": \"sample2\",\n        \"name\": \"sample2\",\n        \"inputQuery\": \"\"\n    },\n    {\n        \"id\": \"702142445051183684\",\n        \"displayName\": \"deneme\",\n        \"name\": \"deneme\",\n        \"inputQuery\": \"SELECT count(*) from \"examplestripecatalogname\".\"payment\".\"customers\"\"\n    },\n    {\n        \"id\": \"709891051854233848\",\n        \"displayName\": \"sample\",\n        \"name\": \"sample\",\n        \"inputQuery\": \"\"\n    },\n    {\n        \"id\": \"709922802836177297\",\n        \"displayName\": \"sampleQuery\",\n        \"name\": \"samplequery\",\n        \"inputQuery\": \"SELECT * from \"mcglynn_keeling\".payment.charges\"\n    }\n]\n"
+                "example": [
+                  {
+                    "id": "709891320440684892",
+                    "displayName": "sample2",
+                    "name": "sample2",
+                    "inputQuery": ""
+                  },
+                  {
+                    "id": "702142445051183684",
+                    "displayName": "deneme",
+                    "name": "deneme",
+                    "inputQuery": "SELECT count(*) from \"examplestripecatalogname\".\"payment\".\"customers\""
+                  },
+                  {
+                    "id": "709891051854233848",
+                    "displayName": "sample",
+                    "name": "sample",
+                    "inputQuery": ""
+                  },
+                  {
+                    "id": "709922802836177297",
+                    "displayName": "sampleQuery",
+                    "name": "samplequery",
+                    "inputQuery": "SELECT * from \"mcglynn_keeling\".payment.charges"
+                  }
+                ]
               }
             }
           }
@@ -1383,6 +1408,25 @@
           "required": true
         },
         "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "description": "Bad Request",
+                    "value": {
+                      "errorCode": 100,
+                      "message": "There are already a catalog with same name!!"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "200": {
             "description": "Catalog created successfully",
             "content": {
@@ -1409,25 +1453,6 @@
                       "displayName": "exampleStripeCatalog",
                       "catalogType": "stripe",
                       "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "Bad Request": {
-                    "description": "Bad Request",
-                    "value": {
-                      "errorCode": 100,
-                      "message": "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -1474,13 +1499,29 @@
                     }
                   }
                 },
-                "Create Cache - Scheduled": {
-                  "description": "Create Cache - Scheducled at every 6 hrs.",
+                "Create Cache - Incremental Update Scheduled": {
+                  "description": "Create Cache - Incrementally updated every 6 hrs.",
                   "value": {
                     "catalogId": "627249916703408649",
                     "schemaName": "payment",
                     "tableName": "customers",
-                    "schedule": {
+                    "incrementalCacheSchedule": {
+                      "type": "BASIC",
+                      "expression": "PT6H"
+                    }
+                  }
+                },
+                "Create Cache - Incremental and Full Update Scheduled": {
+                  "description": "Create Cache - Incrementally updated every 6 hrs  and Fully refreshed every day.",
+                  "value": {
+                    "catalogId": "627249916703408649",
+                    "schemaName": "payment",
+                    "tableName": "customers",
+                    "fullCacheSchedule": {
+                      "type": "BASIC",
+                      "expression": "PT24H"
+                    },
+                    "incrementalCacheSchedule": {
                       "type": "BASIC",
                       "expression": "PT6H"
                     }
@@ -1900,9 +1941,9 @@
                     "type": "google_analytics",
                     "credential": {
                       "clientId": "\u003CgoogleOauthAppClientId\u003E",
-                      "clientSecret": "\u003CgoogleOauthAppClientSecret\u003E",
-                      "redirectUrl": "\u003CyourRedirectUrl\u003E"
-                    }
+                      "clientSecret": "\u003CgoogleOauthAppClientSecret\u003E"
+                    },
+                    "redirectUrl": "\u003CyourRedirectUrl\u003E"
                   }
                 },
                 "HubSpot Connection (Oauth2) Request": {
@@ -2366,6 +2407,69 @@
                         "isCached": false
                       }
                     ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/isCached": {
+      "get": {
+        "tags": [
+          "Data -\u003E Catalogs"
+        ],
+        "summary": "Table is Cached",
+        "operationId": "isCached",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schemaName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableCacheResult"
+                },
+                "examples": {
+                  "Table is Cached": {
+                    "description": "Table is Cached",
+                    "value": {
+                      "isCached": true
+                    }
                   }
                 }
               }
@@ -3045,7 +3149,7 @@
           },
           "name": {
             "type": "string",
-            "description": "The name of the query.\n \u003Cbr /\u003EThis is the name of the query which will be used in the sql query.\n e.g. SELECT * FROM \"peaka\".\"query\".\"\u003Cname\u003E\""
+            "description": "The name of the query.\n\n This is the name of the query which will be used in the sql query.\n e.g. SELECT * FROM \"peaka\".\"query\".\"\u003Cname\u003E\""
           },
           "inputQuery": {
             "type": "string",
@@ -3062,14 +3166,14 @@
           },
           "type": {
             "type": "string",
-            "description": "Type of connection.\n \u003Cbr /\u003E\n Example: airtable for AirTable, stripe for Stripe, hubspot_access_token for HubSpot (with Access Token), etc.\n \u003Cbr /\u003E\n Exact list can be fetched by following url: /connections/public-config"
+            "description": "Type of connection.\n \n Example: airtable for AirTable, stripe for Stripe, hubspot_access_token for HubSpot (with Access Token), etc.\n\n Exact list can be fetched by following url: /connections/public-config"
           },
           "credential": {
             "type": "object",
             "additionalProperties": {
               "type": "object"
             },
-            "description": "Credential object for the connection.\n \u003Cbr /\u003E\n Its structure is dependent on the connection type and can be fetched by following url: /connections/config"
+            "description": "Credential object for the connection.\n\n Its structure is dependent on the connection type and can be fetched by following url: /connections/config"
           },
           "redirectUrl": {
             "type": "string",
@@ -3091,6 +3195,10 @@
           "type": {
             "type": "string",
             "description": "Type of connection.\n\nExample: airtable for AirTable, stripe for Stripe, hubspot_access_token for HubSpot (with Access Token), etc.\n\nExact list can be fetched by following url: /connections/config\n"
+          },
+          "url": {
+            "type": "string",
+            "description": "Oauth callback url if the connection is Oauth based.\n"
           }
         }
       },
@@ -3147,7 +3255,7 @@
           },
           "isDynamicTable": {
             "type": "boolean",
-            "description": "Indicates whether the table has required query parameter columns or not.\n \u003Cbr /\u003EA query parameter column is prefixed with \"_q_\" e.g. \"_q_date\".\n \u003Cbr /\u003EThese columns are used to filter the data in the table."
+            "description": "Indicates whether the table has required query parameter columns or not.\n A query parameter column is prefixed with \"_q_\" e.g. \"_q_date\".\n These columns are used to filter the data in the table."
           },
           "isCached": {
             "type": "boolean",
@@ -3340,7 +3448,10 @@
             "type": "string",
             "description": "The name of the table for the cache request."
           },
-          "schedule": {
+          "incrementalCacheSchedule": {
+            "$ref": "#/components/schemas/Schedule"
+          },
+          "fullRefreshCacheSchedule": {
             "$ref": "#/components/schemas/Schedule"
           }
         },
@@ -3355,7 +3466,7 @@
           },
           "expression": {
             "type": "string",
-            "description": "The expression of the schedule. \u003Cbr\u003E\n Valid if the type is other than NONE. \u003Cbr\u003E\n For BASIC, the expression is a duration in ISO-8601 format. \u003Cbr\u003E\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds) \u003Cbr\u003E\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds) \u003Cbr\u003E\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
+            "description": "The expression of the schedule.\n Valid if the type is other than NONE.\n For BASIC, the expression is a duration in ISO-8601 format.\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds)\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds)\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
           }
         },
         "description": "This class represents a schedule for a cache request.\n It contains the type and expression of the schedule."
@@ -3414,6 +3525,81 @@
           }
         }
       },
+      "TableCacheResult": {
+        "type": "object",
+        "properties": {
+          "isCached": {
+            "type": "boolean",
+            "description": "Indicates whether the table is cacheable or not."
+          }
+        }
+      },
+      "CacheActionRecord": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "action": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "cacheType": {
+            "type": "string"
+          },
+          "isScheduled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CacheExecutionInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "error": {
+            "type": "object"
+          },
+          "progress": {
+            "$ref": "#/components/schemas/CacheExecutionProgress"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "finishedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CacheExecutionProgress": {
+        "type": "object",
+        "properties": {
+          "numberOfCachedRecords": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalNumberOfRecords": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastOffset": {
+            "type": "string"
+          }
+        }
+      },
       "CacheStatus": {
         "type": "object",
         "properties": {
@@ -3423,7 +3609,7 @@
           },
           "status": {
             "type": "string",
-            "description": "The status of the cache. \u003Cbr\u003E\n RUNNING, CANCELLED, FAILED, COMPLETED, DELETED, NOT_INITIALIZED",
+            "description": "The status of the cache.\n RUNNING, CANCELLED, FAILED, COMPLETED, DELETED, NOT_INITIALIZED",
             "enum": [
               "RUNNING",
               "CANCELLED",
@@ -3448,6 +3634,19 @@
           "tableName": {
             "type": "string",
             "description": "The name of the table that the cache belongs to."
+          },
+          "lastIncrementalCacheExecution": {
+            "$ref": "#/components/schemas/CacheExecutionInfo"
+          },
+          "lastFullRefreshCacheExecution": {
+            "$ref": "#/components/schemas/CacheExecutionInfo"
+          },
+          "cacheActionLogs": {
+            "type": "array",
+            "description": "The list of cache action logs",
+            "items": {
+              "$ref": "#/components/schemas/CacheActionRecord"
+            }
           }
         }
       },
