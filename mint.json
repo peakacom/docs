@@ -162,7 +162,6 @@
     {
       "group": "Integrations",
       "pages": [
-        "integrations/introduction",
         "integrations/activecampaign",
         "integrations/airtable",
         "integrations/amazon-redshift",
