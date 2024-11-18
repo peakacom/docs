@@ -368,6 +368,92 @@
         }
       }
     },
+    "/data/projects/{projectId}/cache/{cacheId}": {
+      "put": {
+        "tags": [
+          "Data -\u003E Cache"
+        ],
+        "summary": "Update Cache Settings",
+        "operationId": "updateCacheSettings",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cacheId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update Cache Settings",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CacheSettingsUpdateRequest"
+              },
+              "examples": {
+                "Update Cache Schedules": {
+                  "description": "Update Cache Schedules",
+                  "value": "    \"fullRefreshCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT24H\"\n    },\n    {\n     \"incrementalCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT6H\"\n    }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cache"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Data -\u003E Cache"
+        ],
+        "summary": "Delete Cache",
+        "operationId": "deleteCache",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cacheId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/data/projects/{projectId}/bitable/{tableName}/columns/{columnName}": {
       "put": {
         "tags": [
@@ -1492,11 +1578,7 @@
                   "value": {
                     "catalogId": "627249916703408649",
                     "schemaName": "payment",
-                    "tableName": "customers",
-                    "schedule": {
-                      "type": "NONE",
-                      "expression": ""
-                    }
+                    "tableName": "customers"
                   }
                 },
                 "Create Cache - Incremental Update Scheduled": {
@@ -1511,13 +1593,13 @@
                     }
                   }
                 },
-                "Create Cache - Incremental and Full Update Scheduled": {
+                "Create Cache - Incremental and Fully Refresh Update Scheduled": {
                   "description": "Create Cache - Incrementally updated every 6 hrs  and Fully refreshed every day.",
                   "value": {
                     "catalogId": "627249916703408649",
                     "schemaName": "payment",
                     "tableName": "customers",
-                    "fullCacheSchedule": {
+                    "fullRefreshCacheSchedule": {
                       "type": "BASIC",
                       "expression": "PT24H"
                     },
@@ -1546,13 +1628,13 @@
         }
       }
     },
-    "/data/projects/{projectId}/cache/{cacheId}/update": {
+    "/data/projects/{projectId}/cache/{cacheId}/incrementalUpdate": {
       "post": {
         "tags": [
           "Data -\u003E Cache"
         ],
-        "summary": "Start/Update Cache",
-        "operationId": "startUpdateCache",
+        "summary": "Update Cache Incrementally",
+        "operationId": "incrementalUpdateCache",
         "parameters": [
           {
             "name": "projectId",
@@ -1588,13 +1670,13 @@
         }
       }
     },
-    "/data/projects/{projectId}/cache/{cacheId}/rebuild": {
+    "/data/projects/{projectId}/cache/{cacheId}/fullRefreshUpdate": {
       "post": {
         "tags": [
           "Data -\u003E Cache"
         ],
-        "summary": "Rebuild Cache",
-        "operationId": "rebuildCache",
+        "summary": "Full Refresh Cache",
+        "operationId": "fullRefreshCache",
         "parameters": [
           {
             "name": "projectId",
@@ -1622,6 +1704,60 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/projects/{projectId}/cache/batch": {
+      "post": {
+        "tags": [
+          "Data -\u003E Cache"
+        ],
+        "summary": "Create Batch Cache",
+        "operationId": "createBatchCache",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create Cache Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CacheRequest"
+                }
+              },
+              "examples": {
+                "Create Multiple Caches": {
+                  "description": "Create Multiple Caches",
+                  "value": "{\n    \"catalogId\": \"627249916703408649\",\n    \"schemaName\": \"payment\",\n    \"tableName\": \"customers\"\n},\n{\n    \"catalogId\": \"627249916703408649\",\n    \"schemaName\": \"payment\",\n    \"tableName\": \"charges\",\n    \"incrementalCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT6H\"\n    }\n},\n{\n    \"catalogId\": \"627249916703408649\",\n    \"schemaName\": \"payment\",\n    \"tableName\": \"invoices\",\n    \"fullRefreshCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT24H\"\n    },\n    \"incrementalCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT6H\"\n    }\n}\n"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CacheCreateStatus"
                   }
                 }
               }
@@ -2976,38 +3112,6 @@
           }
         }
       }
-    },
-    "/data/projects/{projectId}/cache/{cacheId}": {
-      "delete": {
-        "tags": [
-          "Data -\u003E Cache"
-        ],
-        "summary": "Delete Cache",
-        "operationId": "deleteCache",
-        "parameters": [
-          {
-            "name": "projectId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cacheId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
     }
   },
   "components": {
@@ -3154,6 +3258,63 @@
           "inputQuery": {
             "type": "string",
             "description": "The sql query."
+          }
+        }
+      },
+      "CacheSettingsUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "incrementalCacheSchedule": {
+            "$ref": "#/components/schemas/Schedule"
+          },
+          "fullRefreshCacheSchedule": {
+            "$ref": "#/components/schemas/Schedule"
+          }
+        },
+        "description": "This class represents a request to cache data.\n It contains the catalog ID, schema name, table name, and schedule of the cache request."
+      },
+      "Schedule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of the schedule. BASIC or NONE."
+          },
+          "expression": {
+            "type": "string",
+            "description": "The expression of the schedule.\n Valid if the type is other than NONE.\n For BASIC, the expression is a duration in ISO-8601 format.\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds)\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds)\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
+          }
+        },
+        "description": "This class represents a schedule for a cache request.\n It contains the type and expression of the schedule."
+      },
+      "Cache": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the cache."
+          },
+          "appId": {
+            "type": "string",
+            "description": "The ID of the application for the cache request."
+          },
+          "catalogId": {
+            "type": "string",
+            "description": "The ID of the catalog for the cache request."
+          },
+          "schemaName": {
+            "type": "string",
+            "description": "The name of the schema for the cache request."
+          },
+          "tableName": {
+            "type": "string",
+            "description": "The name of the table for the cache request."
+          },
+          "incrementalCacheSchedule": {
+            "$ref": "#/components/schemas/Schedule"
+          },
+          "fullRefreshCacheSchedule": {
+            "$ref": "#/components/schemas/Schedule"
           }
         }
       },
@@ -3457,45 +3618,17 @@
         },
         "description": "This class represents a request to cache data.\n It contains the catalog ID, schema name, table name, and schedule of the cache request."
       },
-      "Schedule": {
+      "CacheCreateStatus": {
         "type": "object",
         "properties": {
-          "type": {
-            "type": "string",
-            "description": "The type of the schedule. BASIC or NONE."
+          "success": {
+            "type": "boolean"
           },
-          "expression": {
-            "type": "string",
-            "description": "The expression of the schedule.\n Valid if the type is other than NONE.\n For BASIC, the expression is a duration in ISO-8601 format.\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds)\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds)\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
-          }
-        },
-        "description": "This class represents a schedule for a cache request.\n It contains the type and expression of the schedule."
-      },
-      "Cache": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The ID of the cache."
+          "error": {
+            "type": "string"
           },
-          "appId": {
-            "type": "string",
-            "description": "The ID of the application for the cache request."
-          },
-          "catalogId": {
-            "type": "string",
-            "description": "The ID of the catalog for the cache request."
-          },
-          "schemaName": {
-            "type": "string",
-            "description": "The name of the schema for the cache request."
-          },
-          "tableName": {
-            "type": "string",
-            "description": "The name of the table for the cache request."
-          },
-          "schedule": {
-            "$ref": "#/components/schemas/Schedule"
+          "cache": {
+            "$ref": "#/components/schemas/Cache"
           }
         }
       },
