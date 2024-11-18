@@ -403,7 +403,7 @@
               "examples": {
                 "Update Cache Schedules": {
                   "description": "Update Cache Schedules",
-                  "value": "    \"fullRefreshCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT24H\"\n    },\n    {\n     \"incrementalCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT6H\"\n    }\n}"
+                  "value": "{\n    \"fullRefreshCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT24H\"\n    },\n    {\n     \"incrementalCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT6H\"\n    }\n}"
                 }
               }
             }
@@ -1742,7 +1742,35 @@
               "examples": {
                 "Create Multiple Caches": {
                   "description": "Create Multiple Caches",
-                  "value": "{\n    \"catalogId\": \"627249916703408649\",\n    \"schemaName\": \"payment\",\n    \"tableName\": \"customers\"\n},\n{\n    \"catalogId\": \"627249916703408649\",\n    \"schemaName\": \"payment\",\n    \"tableName\": \"charges\",\n    \"incrementalCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT6H\"\n    }\n},\n{\n    \"catalogId\": \"627249916703408649\",\n    \"schemaName\": \"payment\",\n    \"tableName\": \"invoices\",\n    \"fullRefreshCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT24H\"\n    },\n    \"incrementalCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT6H\"\n    }\n}\n"
+                  "value": [
+                    {
+                      "catalogId": "627249916703408649",
+                      "schemaName": "payment",
+                      "tableName": "customers"
+                    },
+                    {
+                      "catalogId": "627249916703408649",
+                      "schemaName": "payment",
+                      "tableName": "charges",
+                      "incrementalCacheSchedule": {
+                        "type": "BASIC",
+                        "expression": "PT6H"
+                      }
+                    },
+                    {
+                      "catalogId": "627249916703408649",
+                      "schemaName": "payment",
+                      "tableName": "invoices",
+                      "fullRefreshCacheSchedule": {
+                        "type": "BASIC",
+                        "expression": "PT24H"
+                      },
+                      "incrementalCacheSchedule": {
+                        "type": "BASIC",
+                        "expression": "PT6H"
+                      }
+                    }
+                  ]
                 }
               }
             }
