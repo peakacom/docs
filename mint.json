@@ -403,6 +403,8 @@
         "api-reference/data->-cache/update-cache-incrementally",
         "api-reference/data->-cache/full-refresh-cache",
         "api-reference/data->-cache/create-batch-cache",
+        "api-reference/data->-cache/get-all-cache-statuses-of-a-project",
+        "api-reference/data->-cache/get-all-cache-statuses-of-a-catalog",
         "api-reference/data->-cache/get-cache-status"
       ]
     },
