@@ -2370,40 +2370,6 @@
         }
       }
     },
-    "/data/projects/{projectId}/status": {
-      "get": {
-        "tags": [
-          "Data -\u003E Cache"
-        ],
-        "summary": "Get All Cache Statuses of a Project",
-        "operationId": "getCacheStatusByProject",
-        "parameters": [
-          {
-            "name": "projectId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CacheStatus"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/data/projects/{projectId}/catalogs/{catalogId}": {
       "get": {
         "tags": [
@@ -2957,7 +2923,7 @@
         }
       }
     },
-    "/data/projects/{projectId}/catalog/{catalogId}/status": {
+    "/data/projects/{projectId}/catalog/{catalogId}/cache/status": {
       "get": {
         "tags": [
           "Data -\u003E Cache"
@@ -3031,6 +2997,40 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/CacheStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/projects/{projectId}/cache/status": {
+      "get": {
+        "tags": [
+          "Data -\u003E Cache"
+        ],
+        "summary": "Get All Cache Statuses of a Project",
+        "operationId": "getCacheStatusByProject",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CacheStatus"
+                  }
                 }
               }
             }
@@ -3745,6 +3745,32 @@
           }
         }
       },
+      "Schema": {
+        "type": "object",
+        "properties": {
+          "catalogId": {
+            "type": "string",
+            "description": "The ID of the catalog that the schema belongs to."
+          },
+          "catalogName": {
+            "type": "string",
+            "description": "The name of the catalog that the schema belongs to."
+          },
+          "schemaName": {
+            "type": "string",
+            "description": "The name of the schema."
+          }
+        }
+      },
+      "TableCacheResult": {
+        "type": "object",
+        "properties": {
+          "isCached": {
+            "type": "boolean",
+            "description": "Indicates whether the table is cacheable or not."
+          }
+        }
+      },
       "CacheActionRecord": {
         "type": "object",
         "properties": {
@@ -3858,32 +3884,6 @@
             "items": {
               "$ref": "#/components/schemas/CacheActionRecord"
             }
-          }
-        }
-      },
-      "Schema": {
-        "type": "object",
-        "properties": {
-          "catalogId": {
-            "type": "string",
-            "description": "The ID of the catalog that the schema belongs to."
-          },
-          "catalogName": {
-            "type": "string",
-            "description": "The name of the catalog that the schema belongs to."
-          },
-          "schemaName": {
-            "type": "string",
-            "description": "The name of the schema."
-          }
-        }
-      },
-      "TableCacheResult": {
-        "type": "object",
-        "properties": {
-          "isCached": {
-            "type": "boolean",
-            "description": "Indicates whether the table is cacheable or not."
           }
         }
       },
