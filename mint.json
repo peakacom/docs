@@ -222,7 +222,6 @@
     {
       "group": "BI Tools",
       "pages": [
-        "bi-tools/introduction",
         "bi-tools/looker-studio",
         "bi-tools/metabase",
         "bi-tools/preset",
@@ -237,12 +236,7 @@
     },
     {
       "group": "DB Drivers",
-      "pages": [
-        "db-drivers/introduction",
-        "db-drivers/python",
-        "db-drivers/nodejs",
-        "db-drivers/java"
-      ]
+      "pages": ["db-drivers/python", "db-drivers/nodejs", "db-drivers/java"]
     },
     {
       "group": "Project Operations",
@@ -409,7 +403,6 @@
         "api-reference/data->-cache/get-all-cache-statuses-of-a-project",
         "api-reference/data->-cache/get-all-cache-statuses-of-a-catalog"
       ]
-
     },
     {
       "group": "Embedded Peaka",
