@@ -397,11 +397,13 @@
     {
       "group": "Data -> Cache",
       "pages": [
+        "api-reference/data->-cache/update-cache-settings",
+        "api-reference/data->-cache/delete-cache",
         "api-reference/data->-cache/create-cache",
-        "api-reference/data->-cache/startupdate-cache",
-        "api-reference/data->-cache/rebuild-cache",
-        "api-reference/data->-cache/get-cache-status",
-        "api-reference/data->-cache/delete-cache"
+        "api-reference/data->-cache/update-cache-incrementally",
+        "api-reference/data->-cache/full-refresh-cache",
+        "api-reference/data->-cache/create-batch-cache",
+        "api-reference/data->-cache/get-cache-status"
       ]
     },
     {
