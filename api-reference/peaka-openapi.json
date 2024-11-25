@@ -271,7 +271,12 @@
                 "schema": {
                   "$ref": "#/components/schemas/Query"
                 },
-                "example": "{\n    \"id\": \"709922802836177297\",\n    \"displayName\": \"sampleQuery\",\n    \"name\": \"samplequery\",\n    \"inputQuery\": \"SELECT * from \"mcglynn_keeling\".payment.charges\"\n}\n"
+                "example": {
+                  "id": "709922802836177297",
+                  "displayName": "sampleQuery",
+                  "name": "samplequery",
+                  "inputQuery": "SELECT * from \"mycatalog\".payment.charges"
+                }
               }
             }
           }
@@ -311,7 +316,10 @@
               "examples": {
                 "Create Query": {
                   "description": "Create Query",
-                  "value": "{\n    \"displayName\": \"sampleQuery\",\n    \"inputQuery\": \"SELECT * from \"mcglynn_keeling\".payment.charges\"\n}\n"
+                  "value": {
+                    "displayName": "sampleQuery",
+                    "inputQuery": "SELECT * from \"mycatalog\".payment.charges"
+                  }
                 }
               }
             }
@@ -330,7 +338,7 @@
                   "id": "709922802836177297",
                   "displayName": "sampleQuery",
                   "name": "samplequery",
-                  "inputQuery": "SELECT * from \"mcglynn_keeling\".payment.charges"
+                  "inputQuery": "SELECT * from \"mycatalog\".payment.charges"
                 }
               }
             }
@@ -1159,7 +1167,7 @@
                     "id": "709922802836177297",
                     "displayName": "sampleQuery",
                     "name": "samplequery",
-                    "inputQuery": "SELECT * from \"mcglynn_keeling\".payment.charges"
+                    "inputQuery": "SELECT * from \"mycatalog\".payment.charges"
                   }
                 ]
               }
@@ -1193,7 +1201,10 @@
               "examples": {
                 "Create Query": {
                   "description": "Create Query",
-                  "value": "{\n    \"displayName\": \"sampleQuery\",\n    \"inputQuery\": \"SELECT * from \"mcglynn_keeling\".payment.customers\"\n}\n"
+                  "value": {
+                    "displayName": "sampleQuery",
+                    "inputQuery": "SELECT * from \"mycatalog\".payment.customers"
+                  }
                 }
               }
             }
@@ -1212,7 +1223,7 @@
                   "id": "709922802836177297",
                   "displayName": "sampleQuery",
                   "name": "samplequery",
-                  "inputQuery": "SELECT * from \"mcglynn_keeling\".payment.customers"
+                  "inputQuery": "SELECT * from \"mycatalog\".payment.customers"
                 }
               }
             }
