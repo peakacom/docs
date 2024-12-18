@@ -3839,11 +3839,22 @@
             "type": "integer",
             "format": "int32"
           },
-          "totalNumberOfRecords": {
+          "numberOfInsertedRecords": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberOfUpdatedRecords": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberOfDeletedRecords": {
             "type": "integer",
             "format": "int32"
           },
           "lastOffset": {
+            "type": "string"
+          },
+          "lastCacheTxId": {
             "type": "string"
           }
         }
