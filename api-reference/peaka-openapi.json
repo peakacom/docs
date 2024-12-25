@@ -1818,6 +1818,25 @@
                     "displayName": "sampleQuery",
                     "inputQuery": "SELECT * from \"mycatalog\".payment.customers"
                   }
+                },
+                "Create Materialized Query": {
+                  "description": "Create Materialized Query",
+                  "value": {
+                    "displayName": "sampleQuery",
+                    "inputQuery": "SELECT * from \"mycatalog\".payment.customers",
+                    "queryType": "MATERIALIZED"
+                  }
+                },
+                "Create Materialized Scheduled Query": {
+                  "description": "Create Materialized Scheduled Query",
+                  "value": {
+                    "displayName": "sampleQuery",
+                    "inputQuery": "SELECT * from \"mycatalog\".payment.customers",
+                    "queryType": "MATERIALIZED",
+                    "schedule": {
+                      "expression": "PT6H"
+                    }
+                  }
                 }
               }
             }
@@ -4234,7 +4253,7 @@
           },
           "queryType": {
             "type": "string",
-            "description": "The type of the query:\n PLAIN or MATERIALIZED\n \u003Cp\u003E\n Default is PLAIN."
+            "description": "The type of the query:\n PLAIN or MATERIALIZED\n\n\n Default is PLAIN."
           },
           "schedule": {
             "$ref": "#/components/schemas/Schedule"
@@ -4246,7 +4265,7 @@
         "properties": {
           "expression": {
             "type": "string",
-            "description": "The expression of the schedule.\n Valid if the type is other than NONE.\n For BASIC, the expression is a duration in ISO-8601 format.\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds)\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds)\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
+            "description": "The expression of the schedule.\n The expression is a duration in ISO-8601 format.\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds)\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds)\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
           }
         },
         "description": "This class represents a schedule for a materialized query."
