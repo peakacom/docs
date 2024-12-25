@@ -140,6 +140,214 @@
         }
       }
     },
+    "/metadata/{projectId}/{catalogId}/{schemaName}/{tableName}": {
+      "put": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Update Metadata",
+        "operationId": "updateMetadata",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schemaName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metadata/{projectId}/relations/{catalogId}/{schemaName}/{tableName}/{relationId}": {
+      "put": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Update Relation From Metadata",
+        "operationId": "updateRelation",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schemaName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "relationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataUpdateRelationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Delete Relation From Metadata",
+        "operationId": "deleteRelation",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schemaName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "relationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/data/projects/{projectId}/table/{tableName}/columns/{columnName}": {
       "put": {
         "tags": [
@@ -314,11 +522,22 @@
                 "$ref": "#/components/schemas/QueryRequest"
               },
               "examples": {
-                "Create Query": {
-                  "description": "Create Query",
+                "Update Query": {
+                  "description": "Update Query",
                   "value": {
                     "displayName": "sampleQuery",
                     "inputQuery": "SELECT * from \"mycatalog\".payment.charges"
+                  }
+                },
+                "Update Materialized Query": {
+                  "description": "Update Materialized Query",
+                  "value": {
+                    "displayName": "sampleQuery",
+                    "inputQuery": "SELECT * from \"mycatalog\".payment.charges",
+                    "queryType": "MATERIALIZED",
+                    "schedule": {
+                      "expression": "PT6H"
+                    }
                   }
                 }
               }
@@ -736,6 +955,98 @@
         }
       }
     },
+    "/ai/{projectId}/agent/history/{threadId}": {
+      "put": {
+        "tags": [
+          "AI -\u003E Agent"
+        ],
+        "summary": "Delete AI Chat History",
+        "operationId": "updateChatHistoryDisplayNameByThreadId",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIChatHistoryUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "AI -\u003E Agent"
+        ],
+        "summary": "Delete AI Chat History",
+        "operationId": "deleteChatHistoryByThreadId",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/projects": {
       "get": {
         "tags": [
@@ -901,6 +1212,150 @@
                       "apiKey": "TtgGcQFq.s3fzROFoop8uHG4pS2LYhoqn1rLb6oW6",
                       "apiKeyId": "21fd1a8d-88d5-4295-b792-5b2113138057"
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metadata/{projectId}/semantics/{catalogId}/{schemaName}/{tableName}": {
+      "post": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Generate semantics for the table",
+        "operationId": "generateSemantics",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schemaName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataCreateSemanticsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metadata/{projectId}/relations/{catalogId}/{schemaName}/{tableName}/{columnName}": {
+      "post": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Add Relation To Metadata",
+        "operationId": "addRelation",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schemaName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "columnName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataAddRelationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
                   }
                 }
               }
@@ -1116,6 +1571,164 @@
         }
       }
     },
+    "/data/projects/{projectId}/semantics": {
+      "post": {
+        "tags": [
+          "Data -\u003E Semantic Catalogs"
+        ],
+        "summary": "Create a semantic catalog",
+        "operationId": "createSemanticCatalog",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Semantic Catalog Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SemanticCatalogRequest"
+              },
+              "example": {
+                "name": "myCatalog"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Catalog created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Catalog"
+                },
+                "example": {
+                  "id": "688890918747898103",
+                  "name": "myCatalog",
+                  "displayName": "myCatalog",
+                  "type": "SEMANTIC"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/projects/{projectId}/semantics/{catalogId}": {
+      "post": {
+        "tags": [
+          "Data -\u003E Semantic Catalogs"
+        ],
+        "summary": "Create a semantic table",
+        "operationId": "createSemanticTable",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Semantic Table Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SemanticTableRequest"
+              },
+              "example": {
+                "schemaName": "mySchema",
+                "tableName": "myTableName",
+                "queryId": "788890918747898752"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Table created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SemanticTable"
+                },
+                "example": {
+                  "tableId": "688890918747898103",
+                  "catalogName": "myCatalog",
+                  "schemaName": "mySchema",
+                  "tableName": "myTableName"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/projects/{projectId}/semantics/{catalogId}/share": {
+      "post": {
+        "tags": [
+          "Data -\u003E Semantic Catalogs"
+        ],
+        "summary": "Share a semantic table",
+        "operationId": "shareSemanticTable",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Share Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CatalogShareRequest"
+              },
+              "example": {
+                "target": "MQtMNNBY"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Table shared"
+          }
+        }
+      }
+    },
     "/data/projects/{projectId}/queries": {
       "get": {
         "tags": [
@@ -1218,12 +1831,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Query"
-                },
-                "example": {
-                  "id": "709922802836177297",
-                  "displayName": "sampleQuery",
-                  "name": "samplequery",
-                  "inputQuery": "SELECT * from \"mycatalog\".payment.customers"
                 }
               }
             }
@@ -2182,6 +2789,50 @@
         }
       }
     },
+    "/ai/{projectId}/agent": {
+      "post": {
+        "tags": [
+          "AI -\u003E Agent"
+        ],
+        "summary": "Ask Question To AI Agent",
+        "operationId": "ask",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIAgentTaskRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/ui/initSession": {
       "get": {
         "tags": [
@@ -2338,6 +2989,82 @@
                   "JDBC driver": {
                     "description": "JDBC driver",
                     "value": "{\n    \"JDBC\": \"jdbc:peaka://dbc.peaka.studio:4567/?extraCredentials=peakaKey:gk4aUnCO.IYxkP1NxP67YkVViqYGZe3INpUAr04TE\",\n}\n"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metadata/{projectId}": {
+      "get": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Get Project Metadata",
+        "operationId": "getProjectMetadata",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metadata/{projectId}/relations/{catalogId}": {
+      "get": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Get Project Catalog Metadata Relations",
+        "operationId": "getProjectCatalogMetadataRelations",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
                   }
                 }
               }
@@ -3196,6 +3923,40 @@
         }
       }
     },
+    "/ai/{projectId}/agent/history": {
+      "get": {
+        "tags": [
+          "AI -\u003E Agent"
+        ],
+        "summary": "Get AI Chat History",
+        "operationId": "getChatHistory",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/projects/{projectId}/apiKeys/{apiKeyId}": {
       "delete": {
         "tags": [
@@ -3224,6 +3985,46 @@
         "responses": {
           "200": {
             "description": "API Key deleted"
+          }
+        }
+      }
+    },
+    "/data/projects/{projectId}/semantics/{catalogId}/table/{tableId}": {
+      "delete": {
+        "tags": [
+          "Data -\u003E Semantic Catalogs"
+        ],
+        "summary": "Delete a semantic table",
+        "operationId": "deleteSemanticTable",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Table deleted"
           }
         }
       }
@@ -3278,6 +4079,84 @@
           }
         },
         "description": "Project"
+      },
+      "MetadataColumn": {
+        "type": "object",
+        "properties": {
+          "columnName": {
+            "type": "string"
+          },
+          "columnDescription": {
+            "type": "string"
+          },
+          "dataType": {
+            "type": "string"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isNotNull": {
+            "type": "boolean"
+          },
+          "isSystem": {
+            "type": "boolean"
+          },
+          "isUnique": {
+            "type": "boolean"
+          },
+          "isPrimary": {
+            "type": "boolean"
+          },
+          "lineage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetadataColumnLineage"
+            }
+          }
+        }
+      },
+      "MetadataColumnLineage": {
+        "type": "object",
+        "properties": {
+          "tables": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "column": {
+            "type": "string"
+          },
+          "expression": {
+            "type": "string"
+          }
+        }
+      },
+      "MetadataUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "tableDescription": {
+            "type": "string"
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetadataColumn"
+            }
+          },
+          "useWithAI": {
+            "type": "boolean"
+          }
+        }
+      },
+      "MetadataUpdateRelationRequest": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        }
       },
       "ColumnRequest": {
         "type": "object",
@@ -3352,8 +4231,25 @@
           "inputQuery": {
             "type": "string",
             "description": "The sql query."
+          },
+          "queryType": {
+            "type": "string",
+            "description": "The type of the query:\n PLAIN or MATERIALIZED\n \u003Cp\u003E\n Default is PLAIN."
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/Schedule"
           }
         }
+      },
+      "Schedule": {
+        "type": "object",
+        "properties": {
+          "expression": {
+            "type": "string",
+            "description": "The expression of the schedule.\n Valid if the type is other than NONE.\n For BASIC, the expression is a duration in ISO-8601 format.\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds)\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds)\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
+          }
+        },
+        "description": "This class represents a schedule for a materialized query."
       },
       "Query": {
         "type": "object",
@@ -3373,6 +4269,17 @@
           "inputQuery": {
             "type": "string",
             "description": "The sql query."
+          },
+          "inputQueryRefId": {
+            "type": "string",
+            "description": "The reference id of the input query."
+          },
+          "queryType": {
+            "type": "string",
+            "description": "The type of the query:\n PLAIN or MATERIALIZED"
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/Schedule"
           }
         }
       },
@@ -3387,20 +4294,6 @@
           }
         },
         "description": "This class represents a request to cache data.\n It contains the catalog ID, schema name, table name, and schedule of the cache request."
-      },
-      "Schedule": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "The type of the schedule. BASIC or NONE."
-          },
-          "expression": {
-            "type": "string",
-            "description": "The expression of the schedule.\n Valid if the type is other than NONE.\n For BASIC, the expression is a duration in ISO-8601 format.\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds)\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds)\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
-          }
-        },
-        "description": "This class represents a schedule for a cache request.\n It contains the type and expression of the schedule."
       },
       "Cache": {
         "type": "object",
@@ -3478,6 +4371,14 @@
           }
         }
       },
+      "AIChatHistoryUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
       "ApiKeyRequest": {
         "type": "object",
         "properties": {
@@ -3505,6 +4406,37 @@
           }
         },
         "description": "Represents an API key."
+      },
+      "MetadataCreateSemanticsRequest": {
+        "type": "object",
+        "properties": {
+          "threadId": {
+            "type": "string"
+          },
+          "initialPrompt": {
+            "type": "string"
+          }
+        }
+      },
+      "MetadataAddRelationRequest": {
+        "type": "object",
+        "properties": {
+          "targetCatalogId": {
+            "type": "string"
+          },
+          "targetSchemaName": {
+            "type": "string"
+          },
+          "targetTableName": {
+            "type": "string"
+          },
+          "targetColumnName": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
       },
       "Table": {
         "type": "object",
@@ -3539,6 +4471,93 @@
           }
         },
         "description": "Represents a table in a schema."
+      },
+      "SemanticCatalogRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the catalog"
+          }
+        }
+      },
+      "Catalog": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the catalog."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the catalog."
+          },
+          "displayName": {
+            "type": "string",
+            "description": "The display name of the catalog."
+          },
+          "catalogType": {
+            "type": "string",
+            "description": "The type of the catalog."
+          },
+          "connectionId": {
+            "type": "string",
+            "description": "The connection ID of the catalog."
+          }
+        },
+        "description": "This class represents a Catalog.\n It contains the id, name, display name, type, and connection ID of the catalog."
+      },
+      "SemanticTableRequest": {
+        "type": "object",
+        "properties": {
+          "schemaName": {
+            "type": "string",
+            "description": "The name of the schema."
+          },
+          "tableName": {
+            "type": "string",
+            "description": "The name of the table."
+          },
+          "queryId": {
+            "type": "string",
+            "description": "The ID of the query which is used to populate the semantic table."
+          }
+        }
+      },
+      "SemanticTable": {
+        "type": "object",
+        "properties": {
+          "catalogId": {
+            "type": "string",
+            "description": "The ID of the catalog that the table belongs to."
+          },
+          "catalogName": {
+            "type": "string",
+            "description": "The name of the catalog that the table belongs to."
+          },
+          "schemaName": {
+            "type": "string",
+            "description": "The name of the schema that the table belongs to."
+          },
+          "tableName": {
+            "type": "string",
+            "description": "The name of the table."
+          },
+          "tableId": {
+            "type": "string",
+            "description": "The ID of the semantic table."
+          }
+        },
+        "description": "Represents a table in a schema."
+      },
+      "CatalogShareRequest": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "Target Project ID"
+          }
+        }
       },
       "QueryExecuteRequest": {
         "type": "object",
@@ -3683,32 +4702,6 @@
           }
         }
       },
-      "Catalog": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The ID of the catalog."
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the catalog."
-          },
-          "displayName": {
-            "type": "string",
-            "description": "The display name of the catalog."
-          },
-          "catalogType": {
-            "type": "string",
-            "description": "The type of the catalog."
-          },
-          "connectionId": {
-            "type": "string",
-            "description": "The connection ID of the catalog."
-          }
-        },
-        "description": "This class represents a Catalog.\n It contains the id, name, display name, type, and connection ID of the catalog."
-      },
       "CacheRequest": {
         "type": "object",
         "properties": {
@@ -3744,6 +4737,20 @@
           },
           "cache": {
             "$ref": "#/components/schemas/Cache"
+          }
+        }
+      },
+      "AIAgentTaskRequest": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "threadId": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
           }
         }
       },
