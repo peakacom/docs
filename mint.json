@@ -312,7 +312,8 @@
       "pages": [
         "cdc-setup/cdc-postgresql-setup",
         "cdc-setup/cdc-mysql-setup",
-        "cdc-setup/cdc-mongodb-setup"
+        "cdc-setup/cdc-mongodb-setup",
+        "cdc-setup/cdc-mariadb-setup"
       ]
     },
     {
