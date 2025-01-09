@@ -390,6 +390,15 @@
       ]
     },
     {
+      "group": "Data -> Semantic Catalogs",
+      "pages": [
+        "api-reference/data->-semantic-catalogs/create-a-semantic-catalog",
+        "api-reference/data->-semantic-catalogs/create-a-semantic-table",
+        "api-reference/data->-semantic-catalogs/share-a-semantic-table",
+        "api-reference/data->-semantic-catalogs/delete-a-semantic-table"
+      ]
+    },
+    {
       "group": "Data -> Cache",
       "pages": [
         "api-reference/data->-cache/create-cache",
