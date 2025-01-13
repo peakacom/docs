@@ -304,7 +304,8 @@
         "how-to-guides/how-to-change-flow-name",
         "how-to-guides/how-to-generate-api-keys",
         "how-to-guides/how-to-connect-databases-in-aws-using-iam-credentials",
-        "how-to-guides/how-to-manage-partner-api-key"
+        "how-to-guides/how-to-manage-partner-api-key",
+        "how-to-guides/how-to-embed-peaka-to-my-app"
       ]
     },
     {
@@ -312,7 +313,8 @@
       "pages": [
         "cdc-setup/cdc-postgresql-setup",
         "cdc-setup/cdc-mysql-setup",
-        "cdc-setup/cdc-mongodb-setup"
+        "cdc-setup/cdc-mongodb-setup",
+        "cdc-setup/cdc-mariadb-setup"
       ]
     },
     {
