@@ -348,6 +348,82 @@
         }
       }
     },
+    "/metadata/{projectId}/categorical/{catalogId}/{schemaName}/{tableName}/{columnName}": {
+      "put": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Generate categorical values fro the the column.",
+        "operationId": "generateCategoricalColumnValues",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schemaName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "columnName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataCategoricalColumnRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/data/projects/{projectId}/table/{tableName}/columns/{columnName}": {
       "put": {
         "tags": [
@@ -1364,6 +1440,82 @@
         }
       }
     },
+    "/metadata/{projectId}/golden-sqls": {
+      "get": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "List of golden sqls for the project.",
+        "operationId": "listGoldenSqls",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Create golden sql for the project",
+        "operationId": "addGoldenSql",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataAddGoldenSqlRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/data/projects/{projectId}/table/{tableName}": {
       "post": {
         "tags": [
@@ -1571,7 +1723,7 @@
         }
       }
     },
-    "/data/projects/{projectId}/semantics": {
+    "/data/projects/{projectId}/semantic-catalogs": {
       "post": {
         "tags": [
           "Data -\u003E Semantic Catalogs"
@@ -1622,7 +1774,7 @@
         }
       }
     },
-    "/data/projects/{projectId}/semantics/{catalogId}": {
+    "/data/projects/{projectId}/semantic-catalogs/{catalogId}": {
       "post": {
         "tags": [
           "Data -\u003E Semantic Catalogs"
@@ -1683,7 +1835,7 @@
         }
       }
     },
-    "/data/projects/{projectId}/semantics/{catalogId}/share": {
+    "/data/projects/{projectId}/semantic-catalogs/{catalogId}/share": {
       "post": {
         "tags": [
           "Data -\u003E Semantic Catalogs"
@@ -2131,6 +2283,25 @@
           "required": true
         },
         "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "description": "Bad Request",
+                    "value": {
+                      "errorCode": 100,
+                      "message": "There are already a catalog with same name!!"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "200": {
             "description": "Catalog created successfully",
             "content": {
@@ -2157,25 +2328,6 @@
                       "displayName": "exampleStripeCatalog",
                       "catalogType": "stripe",
                       "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "Bad Request": {
-                    "description": "Bad Request",
-                    "value": {
-                      "errorCode": 100,
-                      "message": "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -2869,6 +3021,14 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "name": "projectId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3069,6 +3229,48 @@
           {
             "name": "catalogId",
             "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metadata/{projectId}/questions/generate": {
+      "get": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Generate sample ai questions for the project",
+        "operationId": "generateSampleQuestions",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "question",
+            "in": "query",
             "required": true,
             "schema": {
               "type": "string"
@@ -4008,7 +4210,49 @@
         }
       }
     },
-    "/data/projects/{projectId}/semantics/{catalogId}/table/{tableId}": {
+    "/metadata/{projectId}/golden-sqls/{id}": {
+      "delete": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Delete golden sql from the project.",
+        "operationId": "deleteGoldenSql",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/projects/{projectId}/semantic-catalogs/{catalogId}/table/{tableId}": {
       "delete": {
         "tags": [
           "Data -\u003E Semantic Catalogs"
@@ -4127,6 +4371,15 @@
           "isPrimary": {
             "type": "boolean"
           },
+          "isCategorical": {
+            "type": "boolean"
+          },
+          "categoricalValues": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "lineage": {
             "type": "array",
             "items": {
@@ -4174,6 +4427,15 @@
         "properties": {
           "type": {
             "type": "string"
+          }
+        }
+      },
+      "MetadataCategoricalColumnRequest": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       },
@@ -4453,6 +4715,17 @@
             "type": "string"
           },
           "type": {
+            "type": "string"
+          }
+        }
+      },
+      "MetadataAddGoldenSqlRequest": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string"
+          },
+          "sql": {
             "type": "string"
           }
         }
