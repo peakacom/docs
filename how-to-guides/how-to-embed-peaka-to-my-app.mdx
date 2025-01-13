@@ -1,0 +1,130 @@
+---
+title: "How to Embed the Peaka's UI to Your Web Application"
+description: "Learn how you can easily embed the Peaka's UI to your web application"
+---
+
+Peaka, let's you to embed its user interface to your web application. In this article we will explain how you use Peaka's UI in your own application.
+
+### Prerequisites
+
+- Partner API Key. In order to create a partner api you can follow this guide [how to manage your partner api key](https://docs.peaka.com/how-to-guides/how-to-manage-partner-api-key#how-to-manage-your-partner-api-key)
+
+## Initiate the Session
+
+- First things first you need to initiate the session with peaka. (You must use your Partner API Key as token)
+
+<CodeGroup>
+    ```javascript cURL
+    curl --request GET \
+        --url https://partner.peaka.studio/api/v1/ui/initSession \
+        --header 'Authorization: Bearer <token>'
+    ```
+    ```javascript JavaScript
+    const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
+
+    fetch('https://partner.peaka.studio/api/v1/ui/initSession', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error(err));
+    ```
+    ```python Python
+    import requests
+
+    url = "https://partner.peaka.studio/api/v1/ui/initSession"
+    headers = {"Authorization": "Bearer <token>"}
+    response = requests.request("GET", url, headers=headers)
+    print(response.text)
+    ```
+    ```php PHP
+    $curl = curl_init();
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => "https://partner.peaka.studio/api/v1/ui/initSession",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => [
+            "Authorization: Bearer <token>"
+        ],
+    ]);
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+
+    if ($err) {
+        echo "cURL Error #:" . $err;
+    } else {
+        echo $response;
+    }
+    ```
+    ```go Go
+   package main
+
+    import (
+        "fmt"
+        "net/http"
+        "io/ioutil"
+    )
+
+    func main() {
+        url := "https://partner.peaka.studio/api/v1/ui/initSession"
+        req, _ := http.NewRequest("GET", url, nil)
+        req.Header.Add("Authorization", "Bearer <token>")
+        res, _ := http.DefaultClient.Do(req)
+        defer res.Body.Close()
+        body, _ := ioutil.ReadAll(res.Body)
+        fmt.Println(res)
+        fmt.Println(string(body))
+    }
+    ```
+    ```java JAVA
+    HttpResponse<String> response = Unirest.get("https://partner.peaka.studio/api/v1/ui/initSession")
+    .header("Authorization", "Bearer <token>")
+    .asString();
+    ```
+
+</CodeGroup>
+
+- The endpoint will return you an url in order to start your session.
+
+```javascript
+{
+  "sessionUrl": "https://partner.peaka.studio/api/v1/ui/session?code=<session_code>"
+}
+```
+You can use the ui with this url.
+
+## Enable Embedded UI to embed peaka in an iframe
+
+For the security issues you cannot use session url in an iframe. If you want to embed Peaka in iframe you should enable embedded ui for your partner api key.
+
+In order to do that you should;
+- Go to `Developer Settings` in your peaka account.
+<img src="https://cdn.peaka.com/how-to-guides/embed-ui-1.png" style={{border: "1px solid #e2e4e7"}} />
+
+- Find your api key in the table then click `...` button.
+<img src="https://cdn.peaka.com/how-to-guides/embed-ui-2.png" style={{border: "1px solid #e2e4e7"}} />
+
+- Select `Enable Embedded UI` option
+<img src="https://cdn.peaka.com/how-to-guides/embed-ui-3.png" style={{border: "1px solid #e2e4e7"}} />
+
+- Enable Embedded UI for this API Key
+<img src="https://cdn.peaka.com/how-to-guides/embed-ui-4.png" style={{border: "1px solid #e2e4e7"}} />
+
+- Enter your domain that you want to embed the Peaka app.
+<img src="https://cdn.peaka.com/how-to-guides/embed-ui-5.png" style={{border: "1px solid #e2e4e7"}} />
+
+- If you want to customize the UI, upload a css file. You can also download the valid example of the customization file ([See more about customization](/how-to-guides/how-to-customize-embedded-ui-style))
+<img src="https://cdn.peaka.com/how-to-guides/embed-ui-6.png" style={{border: "1px solid #e2e4e7"}} />
+
+Then you can embed Peaka's UI to your web application within an iframe.
+
+```html
+<iframe src="<your_session_url>" />
+```
+
+That's all. Your users can use Peaka's interface to manage their data.
