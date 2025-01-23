@@ -4665,12 +4665,12 @@
           },
           "type": {
             "type": "string",
-            "description": "Type of connection.\n \n Example: airtable for AirTable, stripe for Stripe, hubspot_access_token for HubSpot (with Access Token), etc.\n\n Exact list can be fetched by following url: /connections/public-config"
+            "description": "Type of connection.\n \n Example: airtable for AirTable, stripe for Stripe, hubspot_access_token for HubSpot (with Access Token), etc.\n\n Exact list can be fetched by following url: /connections/config"
           },
           "credential": {
             "type": "object",
             "additionalProperties": true,
-            "description": "Credential object for the connection.\n\n Its structure is dependent on the connection type and can be fetched by following url: /connections/config"
+            "description": "Credential object for the connection.\n\nIts structure is dependent on the connection type and can be fetched by following url: /connections/config\n"
           },
           "redirectUrl": {
             "type": "string",
@@ -4929,9 +4929,7 @@
           },
           "filters": {
             "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
+            "additionalProperties": true
           }
         }
       },
