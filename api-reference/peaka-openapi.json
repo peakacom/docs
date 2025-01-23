@@ -4116,7 +4116,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object",
+                  "additionalProperties": true,
+                  "description": "Credential object for the connection.\n\n Its structure is dependent on the connection type and can be fetched by following url: /connections/config"
                 },
                 "examples": {
                   "Connection Detail": {
