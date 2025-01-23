@@ -32,6 +32,10 @@
       "url": "api-reference"
     },
     {
+      "name": "Embedded Peaka",
+      "url": "embedded-peaka"
+    },
+    {
       "name": "SQL Reference",
       "url": "sql"
     },
@@ -89,6 +93,10 @@
     {
       "group": "API Documentation",
       "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Embedded Peaka",
+      "pages": ["embedded-peaka/introduction"]
     },
     {
       "group": "SQL",
