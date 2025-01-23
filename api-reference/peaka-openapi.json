@@ -1144,7 +1144,24 @@
                 "examples": {
                   "List of all projects": {
                     "description": "List of all projects",
-                    "value": "[\n    {\n        \"id\": \"SksnYuxH\",\n        \"name\": \"Anapp23334\",\n        \"description\": null,\n        \"domain\": \"anapp2-rfto\",\n        \"webhookBaseUrl\": \"https://anapp2-rfto--test.api.peaka.host\",\n        \"createdAt\": \"2023-08-21T11:09:04.699714310Z\"\n    },\n    {\n        \"id\": \"0IQ6f4QB\",\n        \"name\": \"App Deneme\",\n        \"description\": null,\n        \"domain\": \"appdeneme-wmdp\",\n        \"webhookBaseUrl\": \"https://appdeneme-wmdp--test.api.peaka.host\",\n        \"createdAt\": \"2023-12-14T12:38:55.025274418Z\"\n    },\n]\n"
+                    "value": [
+                      {
+                        "id": "SksnYuxH",
+                        "name": "Anapp23334",
+                        "description": null,
+                        "domain": "anapp2-rfto",
+                        "webhookBaseUrl": "https://anapp2-rfto--test.api.peaka.host",
+                        "createdAt": "2023-08-21T11:09:04.699714310Z"
+                      },
+                      {
+                        "id": "0IQ6f4QB",
+                        "name": "App Deneme",
+                        "description": null,
+                        "domain": "appdeneme-wmdp",
+                        "webhookBaseUrl": "https://appdeneme-wmdp--test.api.peaka.host",
+                        "createdAt": "2023-12-14T12:38:55.025274418Z"
+                      }
+                    ]
                   }
                 }
               }
@@ -2283,25 +2300,6 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "Bad Request": {
-                    "description": "Bad Request",
-                    "value": {
-                      "errorCode": 100,
-                      "message": "There are already a catalog with same name!!"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "200": {
             "description": "Catalog created successfully",
             "content": {
@@ -2328,6 +2326,25 @@
                       "displayName": "exampleStripeCatalog",
                       "catalogType": "stripe",
                       "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "description": "Bad Request",
+                    "value": {
+                      "errorCode": 100,
+                      "message": "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -2855,7 +2872,7 @@
           "Connections"
         ],
         "summary": "Create Connection",
-        "description": "Create a new connection.",
+        "description": "This endpoint allows you to create a new connection for a specified project.\nYou need to provide the project ID and the connection details in the request body.\nThe connection details include the name, type, and credentials required for the connection.\nDepending on the connection type, additional parameters may be required under credentials.\nYou can view the list of supported connection types by calling the /connections/config endpoint.\nYou can switch examples from the second dropdown of the sample request component. (cURL (first dropdown) - Stripe Connection Request (second dropdown)) \n\n\n**Note**: Typically, the connection creation process involves the following steps:\n1. First, learn about the connection type and the required parameters by calling the /connections/config endpoint.\n2. Create a connection request with the required parameters.\n\n**Example**:\n- POSTGRES Connection Configuration:\nGET /connections/config endpoint displays all of the connection types.\nGET /connection/config/POSTGRES endpoint displays the POSTGRES connection configuration.\n\nThe definition of the POSTGRES connection configuration is as follows:\n```\n    {\n        \"connectionType\": \"POSTGRES\",\n        \"connectionTypeLabel\": \"PostgreSQL\",\n        \"name\": \"PostgreSQL\",\n        \"authorizationType\": \"custom\",\n        \"credentialSchemaType\": \"postgres_credential_schema\",\n        \"category\": \"Database\",\n        \"configuration\": [\n            {\n                \"fieldName\": \"url\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"URL\"\n            },\n            {\n                \"fieldName\": \"port\",\n                \"fieldType\": \"number\",\n                \"required\": true,\n                \"description\": \"Port\"\n            },\n            {\n                \"fieldName\": \"user\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"User\"\n            },\n            {\n                \"fieldName\": \"password\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Password\"\n            },\n            {\n                \"fieldName\": \"databaseName\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Database Name\"\n            },\n            {\n                \"fieldName\": \"useSsl\",\n                \"fieldType\": \"boolean\",\n                \"required\": true,\n                \"description\": \"Use SSL\"\n            }\n        ],\n        \"documentationUrl\": \"https://docs.peaka.com/integrations/postgresql\"\n    }\n```\n\nAccording to the POSTGRES connection configuration, the connection request should include the following parameters (respecting to the required flag):\n- url: URL of the host IP or domain\n- port: Port number\n- user: User of the database\n- password: Password of the user\n- databaseName: Name of the database\n- useSsl: Boolean value to indicate whether to use SSL\n\n```\n{\n    \"name\": \"examplePostgre\",\n    \"type\": \"POSTGRES\",\n    \"credential\": {\n        \"url\": \"\u003Chost ip or domain\u003E\",\n        \"port\": 5432,\n        \"user\": \"userOfYourDB\",\n        \"password\": \"passwordOfUser\",\n        \"databaseName\": \"yourDBName\",\n        \"useSsl\": false\n    }\n}\n```\n\n",
         "operationId": "createConnection",
         "parameters": [
           {
@@ -2918,6 +2935,21 @@
                     "type": "airtable",
                     "credential": {
                       "personalAccessToken": "\u003CyourAirtableApiKey\u003E"
+                    }
+                  }
+                },
+                "PostgreSQL Connection Request": {
+                  "description": "PostgreSQL Connection Request",
+                  "value": {
+                    "name": "examplePostgre",
+                    "type": "POSTGRES",
+                    "credential": {
+                      "url": "\u003Chost ip or domain\u003E",
+                      "port": 5432,
+                      "user": "userOfYourDB",
+                      "password": "passwordOfUser",
+                      "databaseName": "yourDBName",
+                      "useSsl": false
                     }
                   }
                 }
@@ -3028,6 +3060,22 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "theme",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "themeOverride",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
             }
           }
         ],
@@ -4093,6 +4141,7 @@
           "Connections"
         ],
         "summary": "List Connection Config",
+        "description": "List all connection configurations.\nThis will return a list of all connection configurations available in the system.",
         "operationId": "listConnectionConfig",
         "responses": {
           "200": {
@@ -5052,6 +5101,10 @@
           "sessionUrl": {
             "type": "string",
             "description": "The URL of the Embedded Peaka session to be followed.\n\nIt is a one-time use URL that will redirect the user to the Peaka session.\n"
+          },
+          "partnerOrigin": {
+            "type": "string",
+            "description": "The origin of the partner that the embedded studio is coming from.\n"
           }
         }
       },
