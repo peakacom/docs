@@ -16,9 +16,30 @@ Users can run queries to retrieve specific information or perform operations. Pe
 
 ## Step-by-Step Implementation
 
-### 1. Creating a Project
+### 1. Creating Partner API Key
 
-- To get started using Peaka as your data management backend, you need to create a project that will act as a centralized repository for effectively storing and caching your data.
+- Prior to initiating the creation of a project, it is essential to generate a Partner API key. This key serves as a crucial authentication mechanism for your project creation requests to the Peaka API, ensuring secure and authorized access.
+
+- Navigate to the [Developer](https://peaka.studio/home/advanced-settings) section.
+
+- Click on the Partner API Key button to open a dialog box.
+
+- Fill in the form by entering your desired API Key Name.
+
+- Click on the Create button.
+
+- You can copy the API key from the dialog box.
+
+For detailed guidance, please refer to the [Create Project documentation](https://docs.peaka.com/how-to-guides/how-to-manage-partner-api-key#creating-a-partner-api-key).
+
+<img
+  src="https://cdn.peaka.com/how-to-guides/how-to-manage-partner-api-key-3.png"
+  alt="created partner api key dialog"
+/>
+
+### 2. Creating a Project
+
+- Now you have your partner API key, and you need to create a project that will act as a centralized repository for effectively storing and caching your data.
 
 - Create your project by using below API.
 
@@ -138,7 +159,7 @@ For detailed guidance, please refer to the [Create Project documentation](https:
 }
 ```
 
-### 2. Create a API Key
+### 3. Create a API Key
 
 - Now that you have created your project, you need to create a API key for your project.
 
@@ -257,7 +278,7 @@ For detailed guidance, please refer to the [Create API Key documentation](https:
 }
 ```
 
-### 3. Creating a Catalog
+### 4. Creating a Catalog
 
 - You have successfully created your project and obtained your API key.
 
@@ -384,7 +405,7 @@ For detailed guidance, please refer to the [Create Catalog documentation](https:
 }
 ```
 
-### 4. Cache Your Catalog
+### 5. Cache Your Catalog
 
 - In this step, we will cache your catalog. This allows you to store frequently accessed data in a temporary storage area, which significantly enhances data retrieval speeds.
 
@@ -515,7 +536,7 @@ For detailed guidance, please refer to the [Cache Catalog documentation](https:/
 }
 ```
 
-### 5. Write Your Query
+### 6. Write Your Query
 
 - Now you have created your project, API key, and catalog. Also cached your catalog.
 
@@ -644,7 +665,7 @@ For detailed guidance, please refer to the [Create Query documentation](https://
 }
 ```
 
-### 6. Run Your Query
+### 7. Run Your Query
 
 - Last step is to run your query.
 
@@ -810,7 +831,7 @@ For detailed guidance, please refer to the [Run Query documentation](https://doc
 }
 ```
 
-### 7. Success
+### 8. Success
 
 - You have successfully created your project, generated your API key, established your catalog, cached the catalog, and executed your query.
 
