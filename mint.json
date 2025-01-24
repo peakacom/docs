@@ -414,7 +414,12 @@
     },
     {
       "group": "Embedded Peaka",
-      "pages": ["api-reference/embedded-peaka/init-session"]
+      "pages": [
+        "embedded-peaka/introduction",
+        "embedded-peaka/data-source",
+        "embedded-peaka/data-management-backend",
+        "embedded-peaka/data-management-tool-with-ui"
+      ]
     },
     {
       "group": "Supported Drivers",

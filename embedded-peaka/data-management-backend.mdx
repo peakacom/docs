@@ -1,0 +1,63 @@
+---
+title: "Peaka as a Data Management Backend"
+description: ""
+---
+
+Peaka is a powerful data management backend that enables seamless integration and efficient data operations. Users can create projects to organize their data and establish catalogs for easier access.
+
+Users can run queries to retrieve specific information or perform operations. Peaka's caching capabilities enhance performance by storing frequently accessed data, reducing retrieval times. This ensures efficient data operations, allowing users to focus on insights rather than waiting for processes to complete. Overall, Peaka empowers users to manage their data effectively in backend.
+
+## Key Features
+
+- **Seamless Integration**: Easily connect with various third-party services to enhance your data management capabilities.
+- **Efficient Data Operations**: Utilize APIs for creating projects, catalogs, and executing queries to streamline your data workflows.
+- **Advanced Caching**: Optimize performance with a versatile caching API that supports creating, updating, and managing cache states.
+- **Query Execution**: Execute queries to retrieve specific information or perform operations.
+
+## Usage Guide
+
+In this section, I will provide a comprehensive example to illustrate the process effectively.
+
+### Step 1: Creating a Project
+
+To get started, you need to create a project that will act as a centralized repository for effectively storing and caching your data.
+
+To create a project using Peaka as your data management backend, you can leverage the `/projects` endpoint with `POST` method. This API offers a streamlined and user-friendly approach to project creation, ensuring optimal management of your data operations and enhancing overall efficiency.
+
+This API will return a project id, which will be needed for usign below steps.
+
+For detailed guidance, please refer to the [Create Project documentation](http://localhost:3000/api-reference/projects/create-project).
+
+### Step 2: Create a API Key
+
+To create a API key, you can use the `/projects/{projectId}/api-key` endpoint with `POST` method. This API will be needed for usign below steps.
+
+For detailed guidance, please refer to the [Create API Key documentation](http://localhost:3000/api-reference/projects-%3E-api-key/create-api-key).
+
+### Step 3: Creating a Catalog
+
+Next, to create a catalog, use the `/projects/{projectId}/catalogs` endpoint with `POST` method. This API simplifies the catalog creation process, allowing you to manage your data effectively.
+
+For detailed guidance, please refer to the [Create Catalog documentation](http://localhost:3000/api-reference/data->-catalogs/create-catalog).
+
+### Step 4: Cache Your Catalog
+
+In this step, use the `/projects/{projectId}/cache` endpoint with `POST` method to implement caching for your catalog. Caching is a powerful technique that significantly enhances data retrieval speeds by storing frequently accessed data in a temporary storage area. By caching your catalog, you can reduce the time it takes to fetch data, leading to a more responsive application and improved user experience.
+
+For detailed guidance, please refer to the [Cache Catalog documentation](http://localhost:3000/api-reference/data->-cache/create-cache).
+
+### Step 5: Write Your Query
+
+To write your queries, you can use the `/projects/{projectId}/queries` endpoint with `POST` method. This powerful API not only allows you to write and store your queries within your project, but it also offers a range of benefits that enhance your data management capabilities. By utilizing the `createQuery` API, you can ensure that your queries are organized and easily accessible, which streamlines the process of data retrieval and manipulation.
+
+For detailed guidance, please refer to the [Create Query documentation](http://localhost:3000/api-reference/data->-queries/create-query).
+
+### Step 6: Run Your Query
+
+To run your query, you can use the `/projects/{projectId}/queries/execute` endpoint with `POST` method. This API provides a streamlined approach to query execution, ensuring efficient management of your data operations.
+
+For detailed guidance, please refer to the [Run Query documentation](http://localhost:3000/api-reference/data->-queries/execute-query).
+
+### Step 7: Use Your Data
+
+Once your query has been executed successfully, the response will contain the requested data. You can then utilize this data for further processing or analysis as needed.
