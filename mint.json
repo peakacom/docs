@@ -95,10 +95,6 @@
       "pages": ["api-reference/introduction"]
     },
     {
-      "group": "Embedded Peaka",
-      "pages": ["embedded-peaka/introduction"]
-    },
-    {
       "group": "SQL",
       "pages": ["sql/introduction"]
     },
