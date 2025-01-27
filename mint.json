@@ -415,6 +415,32 @@
         "api-reference/supported-drivers/get-sql-alchemy-driver",
         "api-reference/supported-drivers/get-jdbc-driver"
       ]
+    },
+    {
+      "group": "Data -> Metadata",
+      "pages": [
+        "api-reference/data->-metadata/update-metadata",
+        "api-reference/data->-metadata/update-relation-from-metadata",
+        "api-reference/data->-metadata/delete-relation-from-metadata",
+        "api-reference/data->-metadata/generate-categorical-values-fro-the-the-column",
+        "api-reference/data->-metadata/generate-semantics-for-the-table",
+        "api-reference/data->-metadata/add-relation-to-metadata",
+        "api-reference/data->-metadata/list-of-golden-sqls-for-the-project",
+        "api-reference/data->-metadata/create-golden-sql-for-the-project",
+        "api-reference/data->-metadata/get-project-metadata",
+        "api-reference/data->-metadata/get-project-catalog-metadata-relations",
+        "api-reference/data->-metadata/generate-sample-ai-questions-for-the-project",
+        "api-reference/data->-metadata/delete-golden-sql-from-the-project"
+      ]
+    },
+    {
+      "group": "AI -> Agent",
+      "pages": [
+        "api-reference/ai->-agent/delete-ai-chat-history",
+        "api-reference/ai->-agent/delete-ai-chat-history-1",
+        "api-reference/ai->-agent/ask-question-to-ai-agent",
+        "api-reference/ai->-agent/get-ai-chat-history"
+      ]
     }
   ],
   "footerSocials": {
