@@ -108,6 +108,7 @@ package main
 ```javascript
 {
   "sessionUrl": "https://partner.peaka.studio/api/v1/ui/session?code=<session_code>"
+  "partnerOrigin": "https://<partner_origin>.peaka.studio/"
 }
 ```
 
@@ -156,17 +157,40 @@ In order to do that you should;
 
   <Warning>URL is needed for security reasons. Please be aware that your application should be served over HTTPS for use in an iframe.</Warning>
 
-- If you want to customize the UI, upload a css file. You can also download the valid example of the customization file ([See more about customization](/how-to-guides/how-to-customize-embedded-ui-style))
+- If you want to customize the UI, click "Customize UI Theme" button then give a theme name and upload your custom css file. You can also download the valid example of the customization file ([See more about customization](/how-to-guides/how-to-customize-embedded-ui-style)).
+  You can add custom css files more than one and change themes in runtime.
 
   <img
     src="https://cdn.peaka.com/how-to-guides/embed-ui-6.png"
     style={{ border: "1px solid #e2e4e7" }}
   />
 
+  After you set the css file, you should start the session with following parameters to enable custom theme.
+
+  ```json
+    {
+      projectId: <your_project_id>
+      theme: <your_theme_name>,
+      themeOverride: true
+    }
+  ```
+
 Now you are ready to embed Peaka's UI into your web application using an iframe.
 
 ```html
 <iframe src="<your_session_url>" />
 ```
+<Warning>
+Note: If you want to switch between different themes in runtime you can do it with iframe's post message method.
 
+```javascript
+  iframeElement.contentWindow.postMessage(
+    {
+      theme: <your_theme_name>
+      themeOverride: true,
+    },
+    partnerOrigin: <your_partner_origin>
+  );
+```
+</Warning>
 Congratulations! You have successfully embedded Peaka's UI into your web application. Your users can now seamlessly interact with Peaka's interface to manage their data efficiently and effectively.
