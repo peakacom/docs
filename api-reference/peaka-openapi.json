@@ -353,7 +353,7 @@
         "tags": [
           "Data -\u003E Metadata"
         ],
-        "summary": "Generate categorical values fro the the column.",
+        "summary": "Generate categorical values from the the column.",
         "operationId": "generateCategoricalColumnValues",
         "parameters": [
           {
@@ -2872,7 +2872,7 @@
           "Connections"
         ],
         "summary": "Create Connection",
-        "description": "This endpoint allows you to create a new connection for a specified project.\n\nYou need to provide the project ID and the connection details in the request body.\n\nThe connection details include the name, type, and credentials required for the connection.\n\nDepending on the connection type, additional parameters may be required under credentials.\n\nYou can view the list of supported connection types by calling the /connections/config endpoint.\n\nYou can switch examples from the second dropdown of the sample request component. (cURL (first dropdown) - Stripe Connection Request (second dropdown))\n\n**Note**: Typically, the connection creation process involves the following steps:\n1. First, learn about the connection type and the required parameters by calling the /connections/config endpoint.\n2. Create a connection request with the required parameters.\n\n**Example**:\n- POSTGRES Connection Configuration:\n\nGET /connections/config endpoint displays all of the connection types.\n\nGET /connection/config/POSTGRES endpoint displays the POSTGRES connection configuration.\n\nThe definition of the POSTGRES connection configuration is as follows:\n``` json\n    {\n        \"connectionType\": \"POSTGRES\",\n        \"connectionTypeLabel\": \"PostgreSQL\",\n        \"name\": \"PostgreSQL\",\n        \"authorizationType\": \"custom\",\n        \"credentialSchemaType\": \"postgres_credential_schema\",\n        \"category\": \"Database\",\n        \"configuration\": [\n            {\n                \"fieldName\": \"url\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"URL\"\n            },\n            {\n                \"fieldName\": \"port\",\n                \"fieldType\": \"number\",\n                \"required\": true,\n                \"description\": \"Port\"\n            },\n            {\n                \"fieldName\": \"user\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"User\"\n            },\n            {\n                \"fieldName\": \"password\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Password\"\n            },\n            {\n                \"fieldName\": \"databaseName\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Database Name\"\n            },\n            {\n                \"fieldName\": \"useSsl\",\n                \"fieldType\": \"boolean\",\n                \"required\": true,\n                \"description\": \"Use SSL\"\n            }\n        ],\n        \"documentationUrl\": \"https://docs.peaka.com/integrations/postgresql\"\n    }\n```\n\nAccording to the POSTGRES connection configuration, the connection request should include the following parameters (respecting to the required flag):\n- url: URL of the host IP or domain\n- port: Port number\n- user: User of the database\n- password: Password of the user\n- databaseName: Name of the database\n- useSsl: Boolean value to indicate whether to use SSL\n\n``` json\n{\n    \"name\": \"examplePostgre\",\n    \"type\": \"POSTGRES\",\n    \"credential\": {\n        \"url\": \"\u003Chost ip or domain\u003E\",\n        \"port\": 5432,\n        \"user\": \"userOfYourDB\",\n        \"password\": \"passwordOfUser\",\n        \"databaseName\": \"yourDBName\",\n        \"useSsl\": false\n    }\n}\n```\n\n",
+        "description": "This endpoint allows you to create a new connection for a specified project.\n\nYou need to provide the project ID and the connection details in the request body.\n\nThe connection details include the name, type, and credentials required for the connection.\n\nDepending on the connection type, additional parameters may be required under credentials.\n\nYou can view the list of supported connection types by calling the /connections/config endpoint.\n\nYou can switch examples from the second dropdown of the sample request component. (cURL (first dropdown) - Stripe Connection Request (second dropdown))\n\n**Note**: Typically, the connection creation process involves the following steps:\n1. First, learn about the connection type and the required parameters by calling the /connections/config endpoint.\n2. Create a connection request with the required parameters.\n3. If the connection requires Oauth2 authorization, there may be additional steps to follow. See https://docs.peaka.com/how-to-guides/how-to-create-oauth2-based-connections-via-peaka for more information.\n\n**Example**:\n- POSTGRES Connection Configuration:\n\nGET /connections/config endpoint displays all of the connection types.\n\nGET /connection/config/POSTGRES endpoint displays the POSTGRES connection configuration.\n\nThe definition of the POSTGRES connection configuration is as follows:\n``` json\n    {\n        \"connectionType\": \"POSTGRES\",\n        \"connectionTypeLabel\": \"PostgreSQL\",\n        \"name\": \"PostgreSQL\",\n        \"authorizationType\": \"custom\",\n        \"credentialSchemaType\": \"postgres_credential_schema\",\n        \"category\": \"Database\",\n        \"configuration\": [\n            {\n                \"fieldName\": \"url\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"URL\"\n            },\n            {\n                \"fieldName\": \"port\",\n                \"fieldType\": \"number\",\n                \"required\": true,\n                \"description\": \"Port\"\n            },\n            {\n                \"fieldName\": \"user\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"User\"\n            },\n            {\n                \"fieldName\": \"password\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Password\"\n            },\n            {\n                \"fieldName\": \"databaseName\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Database Name\"\n            },\n            {\n                \"fieldName\": \"useSsl\",\n                \"fieldType\": \"boolean\",\n                \"required\": true,\n                \"description\": \"Use SSL\"\n            }\n        ],\n        \"documentationUrl\": \"https://docs.peaka.com/integrations/postgresql\"\n    }\n```\n\nAccording to the POSTGRES connection configuration, the connection request should include the following parameters (respecting to the required flag):\n- url: URL of the host IP or domain\n- port: Port number\n- user: User of the database\n- password: Password of the user\n- databaseName: Name of the database\n- useSsl: Boolean value to indicate whether to use SSL\n\n``` json\n{\n    \"name\": \"examplePostgre\",\n    \"type\": \"POSTGRES\",\n    \"credential\": {\n        \"url\": \"\u003Chost ip or domain\u003E\",\n        \"port\": 5432,\n        \"user\": \"userOfYourDB\",\n        \"password\": \"passwordOfUser\",\n        \"databaseName\": \"yourDBName\",\n        \"useSsl\": false\n    }\n}\n```\n\n",
         "operationId": "createConnection",
         "parameters": [
           {
@@ -2913,7 +2913,7 @@
                       "clientId": "\u003CgoogleOauthAppClientId\u003E",
                       "clientSecret": "\u003CgoogleOauthAppClientSecret\u003E"
                     },
-                    "redirectUrl": "\u003CyourRedirectUrl\u003E"
+                    "connectionCallback": "\u003CconnectionCallbackUrl\u003E"
                   }
                 },
                 "HubSpot Connection (Oauth2) Request": {
@@ -2959,16 +2959,6 @@
           "required": true
         },
         "responses": {
-          "307": {
-            "description": "Redirect to oauth consent page",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Connection"
-                }
-              }
-            }
-          },
           "200": {
             "description": "Connection created successfully",
             "content": {
@@ -2983,6 +2973,58 @@
                       "id": "6243f42a-42d0-4821-a90f-763cda6cda50",
                       "name": "exampleStripeConnection21",
                       "type": "stripe"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/connections/oauth2": {
+      "post": {
+        "tags": [
+          "Connections"
+        ],
+        "summary": "Oauth2 Callback",
+        "description": "This callback/webhook is used while creating a new connection with Oauth2. See https://docs.peaka.com/how-to-guides/how-to-create-oauth2-based-connections-via-peaka for more information.",
+        "operationId": "oauth2Callback",
+        "parameters": [],
+        "requestBody": {
+          "description": "Oauth2 Callback Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Oauth2Callback"
+              },
+              "examples": {
+                "Oauth2 Callback Request": {
+                  "description": "Oauth2 Callback Request",
+                  "value": {
+                    "queryParameters": "code=1234&state=xyz&param1=value1&param2=value2"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Connection created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Connection"
+                },
+                "examples": {
+                  "Successful Oauth2 Connection": {
+                    "description": "Sample Google Analytics Connection",
+                    "value": {
+                      "id": "6243f42a-42d0-4821-a90f-763cda6cda50",
+                      "name": "exampleOauth2Connection",
+                      "type": "google_analytics"
                     }
                   }
                 }
@@ -4674,9 +4716,9 @@
             "additionalProperties": true,
             "description": "Credential object for the connection.\n\nIts structure is dependent on the connection type and can be fetched by following url: /connections/config\n"
           },
-          "redirectUrl": {
+          "connectionCallback": {
             "type": "string",
-            "description": "The url to redirect to after a successful connection"
+            "description": "The url to redirect to after an oauth connection is established."
           }
         }
       },
@@ -5076,6 +5118,15 @@
           },
           "cache": {
             "$ref": "#/components/schemas/Cache"
+          }
+        }
+      },
+      "Oauth2Callback": {
+        "type": "object",
+        "properties": {
+          "queryParameters": {
+            "type": "string",
+            "description": "Query parameters received from the Oauth2 redirection. Pass all query parameters as a single string.\n \u003Cp\u003E\n Example: \"https://yourdomain.com/oauth2/mycallback?code=1234&state=xyz&param1=value1&param2=value2\"\n \u003Cp\u003E\n \"queryParameters\": \"code=1234&state=xyz&param1=value1&param2=value2\""
           }
         }
       },

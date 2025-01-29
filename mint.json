@@ -339,7 +339,8 @@
         "api-reference/connections/create-connection",
         "api-reference/connections/get-connection-detail",
         "api-reference/connections/list-connection-config",
-        "api-reference/connections/get-connection-config"
+        "api-reference/connections/get-connection-config",
+        "api-reference/connections/oauth2-callback"
       ]
     },
     {
