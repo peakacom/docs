@@ -2982,7 +2982,7 @@
         }
       }
     },
-    "/connections/oauth2": {
+    "/connections/{projectId}/oauth2": {
       "post": {
         "tags": [
           "Connections"
@@ -2990,7 +2990,18 @@
         "summary": "Oauth2 Callback",
         "description": "This callback/webhook is used while creating a new connection with Oauth2. See https://docs.peaka.com/how-to-guides/how-to-create-oauth2-based-connections-via-peaka for more information.",
         "operationId": "oauth2Callback",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "ID of the project",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "mtKDhe1U"
+          }
+        ],
         "requestBody": {
           "description": "Oauth2 Callback Body",
           "content": {
