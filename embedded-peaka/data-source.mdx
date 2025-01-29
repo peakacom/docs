@@ -73,7 +73,7 @@ Once you have created the catalog, you will find the catalog table displayed in 
   alt="Start Caching"
 />
 
-- A modal will appear prompting you to confirm the caching action. Click on the "Start Cache" button within this modal.
+- A modal will appear prompting you to confirm the caching action. Click on the "Start Initial Cache" button within this modal.
 
 **Note**: This action may either initiate a cache job for the catalog directly or open a new modal where you can input the required fields. If prompted, fill in the necessary information and then click on the "Start Cache" button to proceed.
 
@@ -105,9 +105,138 @@ For detailed guidance, please refer to the [Create Project documentation](https:
   alt="created partner api key dialog"
 />
 
-### 5. Run Your Query
+### 5. Create Your Query
 
-- Last step is to run your query.
+- Now you have created your project, API key, and catalog. Also cached your catalog.
+
+- You are now ready to create queries that allow you to extract and refine data from your catalog based on your requirements.
+
+For detailed guidance, please refer to the [Create Query documentation](https://docs.peaka.com/api-reference/data->-queries/create-query).
+
+<CodeGroup>
+    ```javascript cURL
+    curl --request POST \
+        --url https://partner.peaka.studio/api/v1/data/projects/{projectId}/queries \
+        --header 'Content-Type: application/json' \
+        --data '{
+        "displayName": "sampleQuery",
+        "inputQuery": "SELECT * from \"mycatalog\".payment.customers"
+    }'
+    ```
+    ```javascript JavaScript
+    const options = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: '{"displayName":"sampleQuery","inputQuery":"SELECT * from \"mycatalog\".payment.customers"}'
+    };
+
+    fetch('https://partner.peaka.studio/api/v1/data/projects/{projectId}/queries', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+    ```
+    ```python Python
+    import requests
+
+    url = "https://partner.peaka.studio/api/v1/data/projects/{projectId}/queries"
+
+    payload = {
+        "displayName": "sampleQuery",
+        "inputQuery": "SELECT * from \"mycatalog\".payment.customers"
+    }
+    headers = {"Content-Type": "application/json"}
+
+    response = requests.request("POST", url, json=payload, headers=headers)
+
+    print(response.text)
+    ```
+    ```php PHP
+    <?php
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => "https://partner.peaka.studio/api/v1/data/projects/{projectId}/queries",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => "{\n  \"displayName\": \"sampleQuery\",\n  \"inputQuery\": \"SELECT * from \\\"mycatalog\\\".payment.customers\"\n}",
+        CURLOPT_HTTPHEADER => [
+            "Content-Type: application/json"
+        ],
+    ]);
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+        echo "cURL Error #:" . $err;
+    } else {
+        echo $response;
+    }
+    ```
+    ```go Go
+    package main
+
+    import (
+        "fmt"
+        "strings"
+        "net/http"
+        "io/ioutil"
+    )
+
+    func main() {
+
+        url := "https://partner.peaka.studio/api/v1/data/projects/{projectId}/queries"
+
+        payload := strings.NewReader("{\n  \"displayName\": \"sampleQuery\",\n  \"inputQuery\": \"SELECT * from \\\"mycatalog\\\".payment.customers\"\n}")
+
+        req, _ := http.NewRequest("POST", url, payload)
+
+        req.Header.Add("Content-Type", "application/json")
+
+        res, _ := http.DefaultClient.Do(req)
+
+        defer res.Body.Close()
+        body, _ := ioutil.ReadAll(res.Body)
+
+        fmt.Println(res)
+        fmt.Println(string(body))
+
+    }
+    ```
+
+    ```java Java
+    HttpResponse<String> response = Unirest.post("https://partner.peaka.studio/api/v1/data/projects/{projectId}/queries")
+        .header("Content-Type", "application/json")
+        .body("{\n  \"displayName\": \"sampleQuery\",\n  \"inputQuery\": \"SELECT * from \\\"mycatalog\\\".payment.customers\"\n}")
+        .asString();
+    ```
+
+</CodeGroup>
+
+```javascript
+{
+    "id": "<string>",
+    "displayName": "<string>",
+    "name": "<string>",
+    "inputQuery": "<string>",
+    "inputQueryRefId": "<string>",
+    "queryType": "<string>",
+    "schedule": {
+        "expression": "<string>"
+    }
+}
+```
+
+### 6. Run Your Query
+
+- After creating query, you can run your query.
 
 - After running query is completed, you will get the data in response. You can use this data for further processing or analysis as needed.
 
@@ -271,7 +400,7 @@ For detailed guidance, please refer to the [Run Query documentation](https://doc
 }
 ```
 
-### 6. Success
+### 7. Success
 
 - You have successfully created your project, generated your API key, established your catalog, cached the catalog, and executed your query.
 
