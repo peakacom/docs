@@ -297,7 +297,9 @@
         "how-to-guides/how-to-change-flow-name",
         "how-to-guides/how-to-generate-api-keys",
         "how-to-guides/how-to-connect-databases-in-aws-using-iam-credentials",
-        "how-to-guides/how-to-manage-partner-api-key"
+        "how-to-guides/how-to-manage-partner-api-key",
+        "how-to-guides/how-to-customize-embedded-ui-style",
+        "how-to-guides/how-to-create-oauth2-based-connections-via-peaka"
       ]
     },
     {
