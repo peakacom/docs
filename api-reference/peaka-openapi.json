@@ -5137,7 +5137,7 @@
         "properties": {
           "queryParameters": {
             "type": "string",
-            "description": "Query parameters received from the Oauth2 redirection. Pass all query parameters as a single string.\n \u003Cp\u003E\n Example: \"https://yourdomain.com/oauth2/mycallback?code=1234&state=xyz&param1=value1&param2=value2\"\n \u003Cp\u003E\n \"queryParameters\": \"code=1234&state=xyz&param1=value1&param2=value2\""
+            "description": "Query parameters received from the Oauth2 redirection. Pass all query parameters as a single string.\n  Example: \"https://yourdomain.com/oauth2/mycallback?code=1234&state=xyz&param1=value1&param2=value2\"\n \n \"queryParameters\": \"code=1234&state=xyz&param1=value1&param2=value2\""
           }
         }
       },
