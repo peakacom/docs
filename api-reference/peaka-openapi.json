@@ -1036,7 +1036,7 @@
         "tags": [
           "AI -\u003E Agent"
         ],
-        "summary": "Delete AI Chat History",
+        "summary": "Update AI Chat History Thread Name",
         "operationId": "updateChatHistoryDisplayNameByThreadId",
         "parameters": [
           {
@@ -1057,10 +1057,19 @@
           }
         ],
         "requestBody": {
+          "description": "New AI Chat Thread Name",
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/AIChatHistoryUpdateRequest"
+              },
+              "examples": {
+                "Update AI Chat History Thread Name": {
+                  "description": "Update AI Chat History Thread Name",
+                  "value": {
+                    "name": "Top Portfolios"
+                  }
+                }
               }
             }
           },
@@ -1068,13 +1077,64 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Update AI Chat History Thread Name",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
+                  "$ref": "#/components/schemas/AIChatHistoryResponse"
+                },
+                "examples": {
+                  "Update AI Chat History Thread Name": {
+                    "description": "Update AI Chat History Thread Name",
+                    "value": {
+                      "history": [
+                        {
+                          "id": "def9ccc7-a791-42f9-b40f-47679cde3b12",
+                          "aiThreadId": "2183372c-7b72-479a-9eec-dd29aafa255b",
+                          "displayName": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                          "tasks": [
+                            {
+                              "step": [
+                                {
+                                  "action": {
+                                    "log": "The first example is very similar to the current question. I will use the SQL query from that example and modify it to fit the current question, ensuring it retrieves the top 5 portfolios ranked by their total market value as of the most recent date recorded.\n\nAction: table-name-semantic-search-tool\nAction Input: portfolios, market value, date",
+                                    "tool": "table-name-semantic-search-tool",
+                                    "toolInput": "portfolios, market value, date"
+                                  },
+                                  "observation": "supabase.public.portfolios,supabase.public.holdings,supabase.public.currencies,supabase.public.assets,supabase.public.assetclasses,supabase.public.assettypes,supabase.public.exchanges,supabase.public.transactiontypes,supabase.public.transactions,supabase.realtime.schema_migrations"
+                                }
+                              ],
+                              "output": {
+                                "data": [
+                                  [
+                                    {
+                                      "name": "portfolio_name",
+                                      "order": 0,
+                                      "value": "102296_9",
+                                      "dataType": "varchar"
+                                    },
+                                    {
+                                      "name": "total_market_value",
+                                      "order": 1,
+                                      "value": 1887237400,
+                                      "dataType": "real"
+                                    }
+                                  ]
+                                ],
+                                "text": "The top 3 portfolios ranked by their total market value as of the most recent date recorded are: Portfolio '102296_9' with a total market value of 1,887,237,400, Portfolio '103100_7' with a total market value of 6,269,447.5, and Portfolio '103271_3' with a total market value of 2,563,462.8.",
+                                "query": "WITH LatestDate AS ( SELECT MAX(\"date\") AS \"latest_date\" FROM \"supabase\".\"public\".\"holdings\" ) SELECT h.\"portfolio_name\", SUM(h.\"ending_market_value\") AS \"total_market_value\" FROM \"supabase\".\"public\".\"holdings\" h JOIN LatestDate ld ON h.\"date\" = ld.\"latest_date\" GROUP BY h.\"portfolio_name\" ORDER BY \"total_market_value\" DESC LIMIT 5"
+                              },
+                              "message": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                              "modelParams": {
+                                "modelName": "gpt-4o",
+                                "temperature": 0
+                              }
+                            }
+                          ],
+                          "source": "API_KEY"
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -1108,13 +1168,64 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Delete AI Chat History",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
+                  "$ref": "#/components/schemas/AIChatHistoryResponse"
+                },
+                "examples": {
+                  "Delete AI Chat History": {
+                    "description": "Delete AI Chat History",
+                    "value": {
+                      "history": [
+                        {
+                          "id": "def9ccc7-a791-42f9-b40f-47679cde3b12",
+                          "aiThreadId": "2183372c-7b72-479a-9eec-dd29aafa255b",
+                          "displayName": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                          "tasks": [
+                            {
+                              "step": [
+                                {
+                                  "action": {
+                                    "log": "The first example is very similar to the current question. I will use the SQL query from that example and modify it to fit the current question, ensuring it retrieves the top 5 portfolios ranked by their total market value as of the most recent date recorded.\n\nAction: table-name-semantic-search-tool\nAction Input: portfolios, market value, date",
+                                    "tool": "table-name-semantic-search-tool",
+                                    "toolInput": "portfolios, market value, date"
+                                  },
+                                  "observation": "supabase.public.portfolios,supabase.public.holdings,supabase.public.currencies,supabase.public.assets,supabase.public.assetclasses,supabase.public.assettypes,supabase.public.exchanges,supabase.public.transactiontypes,supabase.public.transactions,supabase.realtime.schema_migrations"
+                                }
+                              ],
+                              "output": {
+                                "data": [
+                                  [
+                                    {
+                                      "name": "portfolio_name",
+                                      "order": 0,
+                                      "value": "102296_9",
+                                      "dataType": "varchar"
+                                    },
+                                    {
+                                      "name": "total_market_value",
+                                      "order": 1,
+                                      "value": 1887237400,
+                                      "dataType": "real"
+                                    }
+                                  ]
+                                ],
+                                "text": "The top 3 portfolios ranked by their total market value as of the most recent date recorded are: Portfolio '102296_9' with a total market value of 1,887,237,400, Portfolio '103100_7' with a total market value of 6,269,447.5, and Portfolio '103271_3' with a total market value of 2,563,462.8.",
+                                "query": "WITH LatestDate AS ( SELECT MAX(\"date\") AS \"latest_date\" FROM \"supabase\".\"public\".\"holdings\" ) SELECT h.\"portfolio_name\", SUM(h.\"ending_market_value\") AS \"total_market_value\" FROM \"supabase\".\"public\".\"holdings\" h JOIN LatestDate ld ON h.\"date\" = ld.\"latest_date\" GROUP BY h.\"portfolio_name\" ORDER BY \"total_market_value\" DESC LIMIT 5"
+                              },
+                              "message": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                              "modelParams": {
+                                "modelName": "gpt-4o",
+                                "temperature": 0
+                              }
+                            }
+                          ],
+                          "source": "API_KEY"
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -3063,10 +3174,19 @@
           }
         ],
         "requestBody": {
+          "description": "Question to ask",
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/AIAgentTaskRequest"
+              },
+              "examples": {
+                "Ask Question To AI Agent": {
+                  "description": "Ask Question To AI Agent",
+                  "value": {
+                    "message": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?"
+                  }
+                }
               }
             }
           },
@@ -3074,13 +3194,66 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Ask Question To AI Agent",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
+                  "$ref": "#/components/schemas/AIAgentTaskResponse"
+                },
+                "examples": {
+                  "Ask Question To AI Example": {
+                    "description": "Ask Question To AI Example",
+                    "value": {
+                      "output": {
+                        "query": "WITH LatestDate AS ( SELECT MAX(\"date\") AS \"latest_date\" FROM \"supabase\".\"public\".\"holdings\" ) SELECT h.\"portfolio_name\", SUM(h.\"ending_market_value\") AS \"total_market_value\" FROM \"supabase\".\"public\".\"holdings\" h JOIN LatestDate ld ON h.\"date\" = ld.\"latest_date\" GROUP BY h.\"portfolio_name\" ORDER BY \"total_market_value\" DESC LIMIT 5",
+                        "data": [
+                          [
+                            {
+                              "dataType": "varchar",
+                              "name": "portfolio_name",
+                              "order": 0,
+                              "value": "102296_9"
+                            },
+                            {
+                              "dataType": "real",
+                              "name": "total_market_value",
+                              "order": 1,
+                              "value": 1887237400
+                            }
+                          ],
+                          [
+                            {
+                              "dataType": "varchar",
+                              "name": "portfolio_name",
+                              "order": 0,
+                              "value": "103100_7"
+                            },
+                            {
+                              "dataType": "real",
+                              "name": "total_market_value",
+                              "order": 1,
+                              "value": 6269447.5
+                            }
+                          ],
+                          [
+                            {
+                              "dataType": "varchar",
+                              "name": "portfolio_name",
+                              "order": 0,
+                              "value": "103271_3"
+                            },
+                            {
+                              "dataType": "real",
+                              "name": "total_market_value",
+                              "order": 1,
+                              "value": 2563462.8
+                            }
+                          ]
+                        ],
+                        "text": "The top 3 portfolios ranked by their total market value as of the most recent date recorded are: Portfolio '102296_9' with a total market value of 1,887,237,400, Portfolio '103100_7' with a total market value of 6,269,447.5, and Portfolio '103271_3' with a total market value of 2,563,462.8."
+                      },
+                      "threadId": "2183372c-7b72-479a-9eec-dd29aafa255b"
+                    }
                   }
                 }
               }
@@ -4267,13 +4440,64 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Get AI Chat History",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
+                  "$ref": "#/components/schemas/AIChatHistoryResponse"
+                },
+                "examples": {
+                  "Get AI Chat History": {
+                    "description": "Get AI Chat History",
+                    "value": {
+                      "history": [
+                        {
+                          "id": "def9ccc7-a791-42f9-b40f-47679cde3b12",
+                          "aiThreadId": "2183372c-7b72-479a-9eec-dd29aafa255b",
+                          "displayName": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                          "tasks": [
+                            {
+                              "step": [
+                                {
+                                  "action": {
+                                    "log": "The first example is very similar to the current question. I will use the SQL query from that example and modify it to fit the current question, ensuring it retrieves the top 5 portfolios ranked by their total market value as of the most recent date recorded.\n\nAction: table-name-semantic-search-tool\nAction Input: portfolios, market value, date",
+                                    "tool": "table-name-semantic-search-tool",
+                                    "toolInput": "portfolios, market value, date"
+                                  },
+                                  "observation": "supabase.public.portfolios,supabase.public.holdings,supabase.public.currencies,supabase.public.assets,supabase.public.assetclasses,supabase.public.assettypes,supabase.public.exchanges,supabase.public.transactiontypes,supabase.public.transactions,supabase.realtime.schema_migrations"
+                                }
+                              ],
+                              "output": {
+                                "data": [
+                                  [
+                                    {
+                                      "name": "portfolio_name",
+                                      "order": 0,
+                                      "value": "102296_9",
+                                      "dataType": "varchar"
+                                    },
+                                    {
+                                      "name": "total_market_value",
+                                      "order": 1,
+                                      "value": 1887237400,
+                                      "dataType": "real"
+                                    }
+                                  ]
+                                ],
+                                "text": "The top 3 portfolios ranked by their total market value as of the most recent date recorded are: Portfolio '102296_9' with a total market value of 1,887,237,400, Portfolio '103100_7' with a total market value of 6,269,447.5, and Portfolio '103271_3' with a total market value of 2,563,462.8.",
+                                "query": "WITH LatestDate AS ( SELECT MAX(\"date\") AS \"latest_date\" FROM \"supabase\".\"public\".\"holdings\" ) SELECT h.\"portfolio_name\", SUM(h.\"ending_market_value\") AS \"total_market_value\" FROM \"supabase\".\"public\".\"holdings\" h JOIN LatestDate ld ON h.\"date\" = ld.\"latest_date\" GROUP BY h.\"portfolio_name\" ORDER BY \"total_market_value\" DESC LIMIT 5"
+                              },
+                              "message": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                              "modelParams": {
+                                "modelName": "gpt-4o",
+                                "temperature": 0
+                              }
+                            }
+                          ],
+                          "source": "API_KEY"
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -4758,9 +4982,142 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "The new name for the AI chat thread."
           }
-        }
+        },
+        "description": "Represents a request to update AI chat history."
+      },
+      "AIAction": {
+        "type": "object",
+        "description": "Represents an action taken in a chat history step."
+      },
+      "AIChatHistory": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "description": "The unique identifier for the project."
+          },
+          "aiThreadId": {
+            "type": "string",
+            "description": "The unique identifier for the AI thread."
+          },
+          "displayName": {
+            "type": "string",
+            "description": "The display name of the chat history."
+          },
+          "tasks": {
+            "type": "array",
+            "description": "The list of tasks in the chat history.",
+            "items": {
+              "$ref": "#/components/schemas/AIChatHistoryTask"
+            }
+          },
+          "source": {
+            "type": "string",
+            "description": "The source of the chat history."
+          }
+        },
+        "description": "Represents the chat history associated with a project and AI thread."
+      },
+      "AIChatHistoryOutput": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "description": "The structured data representing the chat history query results.\n It is a list of lists of {@link AIChatHistoryQueryData AIChatHistoryQueryData}.",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/AIChatHistoryQueryData"
+              }
+            }
+          },
+          "text": {
+            "type": "string",
+            "description": "The text response associated with the chat history."
+          },
+          "query": {
+            "type": "string",
+            "description": "The query string that was used in the chat."
+          }
+        },
+        "description": "Represents the output of chat history, containing the query, response text,\n and structured data related to the query results."
+      },
+      "AIChatHistoryQueryData": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name associated with the query data."
+          },
+          "order": {
+            "type": "integer",
+            "description": "The order of the data entry within the query results.",
+            "format": "int32"
+          },
+          "value": {
+            "type": "object",
+            "description": "The value of the data entry."
+          },
+          "dataType": {
+            "type": "string",
+            "description": "The data type of the value."
+          }
+        },
+        "description": "Represents a single data entry in a chat history query result."
+      },
+      "AIChatHistoryResponse": {
+        "type": "object",
+        "properties": {
+          "history": {
+            "type": "array",
+            "description": "The list of AI chat history records.",
+            "items": {
+              "$ref": "#/components/schemas/AIChatHistory"
+            }
+          }
+        },
+        "description": "Represents the response containing AI chat history."
+      },
+      "AIChatHistoryStep": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/AIAction"
+          },
+          "observation": {
+            "type": "string",
+            "description": "The observation resulting from the action."
+          }
+        },
+        "description": "Represents a step in a chat history task, containing an action and its observation."
+      },
+      "AIChatHistoryTask": {
+        "type": "object",
+        "properties": {
+          "step": {
+            "type": "array",
+            "description": "The list of steps in the task.",
+            "items": {
+              "$ref": "#/components/schemas/AIChatHistoryStep"
+            }
+          },
+          "output": {
+            "$ref": "#/components/schemas/AIChatHistoryOutput"
+          },
+          "message": {
+            "type": "string",
+            "description": "The message associated with the task."
+          },
+          "modelParams": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "The model parameters used in the task."
+          }
+        },
+        "description": "Represents a task in the chat history, which contains steps and output."
       },
       "ApiKeyRequest": {
         "type": "object",
@@ -4798,6 +5155,10 @@
           },
           "initialPrompt": {
             "type": "string"
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       },
@@ -5137,7 +5498,7 @@
         "properties": {
           "queryParameters": {
             "type": "string",
-            "description": "Query parameters received from the Oauth2 redirection. Pass all query parameters as a single string.\n  Example: \"https://yourdomain.com/oauth2/mycallback?code=1234&state=xyz&param1=value1&param2=value2\"\n \n \"queryParameters\": \"code=1234&state=xyz&param1=value1&param2=value2\""
+            "description": "Query parameters received from the Oauth2 redirection. Pass all query parameters as a single string.\n\n Example: \"https://yourdomain.com/oauth2/mycallback?code=1234&state=xyz&param1=value1&param2=value2\"\n\n \"queryParameters\": \"code=1234&state=xyz&param1=value1&param2=value2\""
           }
         }
       },
@@ -5145,13 +5506,29 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "description": "The message content of the AI agent task request."
           },
           "threadId": {
-            "type": "string"
+            "type": "string",
+            "description": "The optional thread ID associated with the AI chat thread.\n Can be used to track conversations within the same thread."
           },
           "source": {
-            "type": "string"
+            "type": "string",
+            "description": "An optional source tag to categorize or tag the chat history."
+          }
+        },
+        "description": "Represents a request for an AI agent task.\n \u003Cp\u003E\n This class holds the necessary information for processing an AI agent task,\n including the message content, an optional thread ID for tracking the AI chat thread,\n and an optional source tag for categorizing chat history.\n \u003C/p\u003E"
+      },
+      "AIAgentTaskResponse": {
+        "type": "object",
+        "properties": {
+          "threadId": {
+            "type": "string",
+            "description": "The thread ID associated with the AI chat thread.\n Can be used to track conversations within the same thread."
+          },
+          "output": {
+            "$ref": "#/components/schemas/AIChatHistoryOutput"
           }
         }
       },
@@ -5343,6 +5720,10 @@
           "credentialSchemaType": {
             "type": "string",
             "description": "The type of the credential schema used for the connection."
+          },
+          "redirectRequired": {
+            "type": "boolean",
+            "description": "Flag to indicate if the connection requires redirection to a 3rd party platform.\n\n e.g. OAuth2 connections often require redirection to the 3rd party platform for authorization.\n\n If this flag is set to true, the connection will be redirected to the 3rd party platform for authorization.\n\n According to your use case, some extra steps may be required to complete the authorization process.\n\n See: https://docs.peaka.com/how-to-guides/how-to-create-oauth2-based-connections-via-peaka"
           },
           "category": {
             "type": "string",
