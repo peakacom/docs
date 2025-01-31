@@ -1091,13 +1091,13 @@
                         {
                           "id": "def9ccc7-a791-42f9-b40f-47679cde3b12",
                           "aiThreadId": "2183372c-7b72-479a-9eec-dd29aafa255b",
-                          "displayName": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                          "displayName": "What are the top 3 portfolios ranked by their total market value as of the most recent date recorded?",
                           "tasks": [
                             {
                               "step": [
                                 {
                                   "action": {
-                                    "log": "The first example is very similar to the current question. I will use the SQL query from that example and modify it to fit the current question, ensuring it retrieves the top 5 portfolios ranked by their total market value as of the most recent date recorded.\n\nAction: table-name-semantic-search-tool\nAction Input: portfolios, market value, date",
+                                    "log": "The first example is very similar to the current question. I will use the SQL query from that example and modify it to fit the current question, ensuring it retrieves the top 3 portfolios ranked by their total market value as of the most recent date recorded.\n\nAction: table-name-semantic-search-tool\nAction Input: portfolios, market value, date",
                                     "tool": "table-name-semantic-search-tool",
                                     "toolInput": "portfolios, market value, date"
                                   },
@@ -1124,7 +1124,7 @@
                                 "text": "The top 3 portfolios ranked by their total market value as of the most recent date recorded are: Portfolio '102296_9' with a total market value of 1,887,237,400, Portfolio '103100_7' with a total market value of 6,269,447.5, and Portfolio '103271_3' with a total market value of 2,563,462.8.",
                                 "query": "WITH LatestDate AS ( SELECT MAX(\"date\") AS \"latest_date\" FROM \"supabase\".\"public\".\"holdings\" ) SELECT h.\"portfolio_name\", SUM(h.\"ending_market_value\") AS \"total_market_value\" FROM \"supabase\".\"public\".\"holdings\" h JOIN LatestDate ld ON h.\"date\" = ld.\"latest_date\" GROUP BY h.\"portfolio_name\" ORDER BY \"total_market_value\" DESC LIMIT 5"
                               },
-                              "message": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                              "message": "What are the top 3 portfolios ranked by their total market value as of the most recent date recorded?",
                               "modelParams": {
                                 "modelName": "gpt-4o",
                                 "temperature": 0
@@ -1182,13 +1182,13 @@
                         {
                           "id": "def9ccc7-a791-42f9-b40f-47679cde3b12",
                           "aiThreadId": "2183372c-7b72-479a-9eec-dd29aafa255b",
-                          "displayName": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                          "displayName": "What are the top 3 portfolios ranked by their total market value as of the most recent date recorded?",
                           "tasks": [
                             {
                               "step": [
                                 {
                                   "action": {
-                                    "log": "The first example is very similar to the current question. I will use the SQL query from that example and modify it to fit the current question, ensuring it retrieves the top 5 portfolios ranked by their total market value as of the most recent date recorded.\n\nAction: table-name-semantic-search-tool\nAction Input: portfolios, market value, date",
+                                    "log": "The first example is very similar to the current question. I will use the SQL query from that example and modify it to fit the current question, ensuring it retrieves the top 3 portfolios ranked by their total market value as of the most recent date recorded.\n\nAction: table-name-semantic-search-tool\nAction Input: portfolios, market value, date",
                                     "tool": "table-name-semantic-search-tool",
                                     "toolInput": "portfolios, market value, date"
                                   },
@@ -1215,7 +1215,7 @@
                                 "text": "The top 3 portfolios ranked by their total market value as of the most recent date recorded are: Portfolio '102296_9' with a total market value of 1,887,237,400, Portfolio '103100_7' with a total market value of 6,269,447.5, and Portfolio '103271_3' with a total market value of 2,563,462.8.",
                                 "query": "WITH LatestDate AS ( SELECT MAX(\"date\") AS \"latest_date\" FROM \"supabase\".\"public\".\"holdings\" ) SELECT h.\"portfolio_name\", SUM(h.\"ending_market_value\") AS \"total_market_value\" FROM \"supabase\".\"public\".\"holdings\" h JOIN LatestDate ld ON h.\"date\" = ld.\"latest_date\" GROUP BY h.\"portfolio_name\" ORDER BY \"total_market_value\" DESC LIMIT 5"
                               },
-                              "message": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                              "message": "What are the top 3 portfolios ranked by their total market value as of the most recent date recorded?",
                               "modelParams": {
                                 "modelName": "gpt-4o",
                                 "temperature": 0
@@ -2411,25 +2411,6 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "Bad Request": {
-                    "description": "Bad Request",
-                    "value": {
-                      "errorCode": 100,
-                      "message": "There are already a catalog with same name!!"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "200": {
             "description": "Catalog created successfully",
             "content": {
@@ -2456,6 +2437,25 @@
                       "displayName": "exampleStripeCatalog",
                       "catalogType": "stripe",
                       "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "description": "Bad Request",
+                    "value": {
+                      "errorCode": 100,
+                      "message": "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -3184,7 +3184,7 @@
                 "Ask Question To AI Agent": {
                   "description": "Ask Question To AI Agent",
                   "value": {
-                    "message": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?"
+                    "message": "What are the top 3 portfolios ranked by their total market value as of the most recent date recorded?"
                   }
                 }
               }
@@ -4454,13 +4454,13 @@
                         {
                           "id": "def9ccc7-a791-42f9-b40f-47679cde3b12",
                           "aiThreadId": "2183372c-7b72-479a-9eec-dd29aafa255b",
-                          "displayName": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                          "displayName": "What are the top 3 portfolios ranked by their total market value as of the most recent date recorded?",
                           "tasks": [
                             {
                               "step": [
                                 {
                                   "action": {
-                                    "log": "The first example is very similar to the current question. I will use the SQL query from that example and modify it to fit the current question, ensuring it retrieves the top 5 portfolios ranked by their total market value as of the most recent date recorded.\n\nAction: table-name-semantic-search-tool\nAction Input: portfolios, market value, date",
+                                    "log": "The first example is very similar to the current question. I will use the SQL query from that example and modify it to fit the current question, ensuring it retrieves the top 3 portfolios ranked by their total market value as of the most recent date recorded.\n\nAction: table-name-semantic-search-tool\nAction Input: portfolios, market value, date",
                                     "tool": "table-name-semantic-search-tool",
                                     "toolInput": "portfolios, market value, date"
                                   },
@@ -4487,7 +4487,7 @@
                                 "text": "The top 3 portfolios ranked by their total market value as of the most recent date recorded are: Portfolio '102296_9' with a total market value of 1,887,237,400, Portfolio '103100_7' with a total market value of 6,269,447.5, and Portfolio '103271_3' with a total market value of 2,563,462.8.",
                                 "query": "WITH LatestDate AS ( SELECT MAX(\"date\") AS \"latest_date\" FROM \"supabase\".\"public\".\"holdings\" ) SELECT h.\"portfolio_name\", SUM(h.\"ending_market_value\") AS \"total_market_value\" FROM \"supabase\".\"public\".\"holdings\" h JOIN LatestDate ld ON h.\"date\" = ld.\"latest_date\" GROUP BY h.\"portfolio_name\" ORDER BY \"total_market_value\" DESC LIMIT 5"
                               },
-                              "message": "What are the top 5 portfolios ranked by their total market value as of the most recent date recorded?",
+                              "message": "What are the top 3 portfolios ranked by their total market value as of the most recent date recorded?",
                               "modelParams": {
                                 "modelName": "gpt-4o",
                                 "temperature": 0
@@ -5026,7 +5026,7 @@
         "properties": {
           "data": {
             "type": "array",
-            "description": "The structured data representing the chat history query results.\n It is a list of lists of {@link AIChatHistoryQueryData AIChatHistoryQueryData}.",
+            "description": "The structured data representing the chat history query results.",
             "items": {
               "type": "array",
               "items": {
@@ -5518,7 +5518,7 @@
             "description": "An optional source tag to categorize or tag the chat history."
           }
         },
-        "description": "Represents a request for an AI agent task.\n \u003Cp\u003E\n This class holds the necessary information for processing an AI agent task,\n including the message content, an optional thread ID for tracking the AI chat thread,\n and an optional source tag for categorizing chat history.\n \u003C/p\u003E"
+        "description": "Represents a request for an AI agent task.\n This class holds the necessary information for processing an AI agent task,\n including the message content, an optional thread ID for tracking the AI chat thread,\n and an optional source tag for categorizing chat history."
       },
       "AIAgentTaskResponse": {
         "type": "object",
