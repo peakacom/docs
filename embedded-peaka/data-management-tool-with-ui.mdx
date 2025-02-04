@@ -12,12 +12,14 @@ You can easily integrate **Peaka's UI** into your own web application. This allo
 ---
 
 ### Key Benefits:
+
 - Access all premium features via API or UI.
 - Embed Peaka's UI directly into your web application.
 - Deliver a unified experience for your users.
 - Enhance productivity with Peaka's advanced tools.
 
 ---
+
 ### Prerequisites
 
 - Partner API Key: To create a Partner API Key, please refer to this [guide](https://docs.peaka.com/how-to-guides/how-to-manage-partner-api-key#how-to-manage-your-partner-api-key) on managing your Partner API Key.
@@ -28,12 +30,19 @@ You can easily integrate **Peaka's UI** into your own web application. This allo
 
 <CodeGroup>
     ```javascript cURL
-    curl --request GET \
-        --url https://partner.peaka.studio/api/v1/ui/initSession \
-        --header 'Authorization: Bearer <token>'
+    curl --request POST \
+      --url https://partner.peaka.studio/api/v1/ui/initSession \
+      --header 'Content-Type: application/json' 'Authorization: Bearer <token>'\
+      --data '{
+        "projectId": <your_project_id>
+      }'
     ```
     ```javascript JavaScript
-    const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
+    const options = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: '{"projectId":"projectId"}'
+    };
 
     fetch('https://partner.peaka.studio/api/v1/ui/initSession', options)
       .then(response => response.json())
@@ -44,60 +53,81 @@ You can easily integrate **Peaka's UI** into your own web application. This allo
     import requests
 
     url = "https://partner.peaka.studio/api/v1/ui/initSession"
-    headers = {"Authorization": "Bearer <token>"}
-    response = requests.request("GET", url, headers=headers)
+
+    payload = {
+        "projectId": "projectId",
+    }
+    headers = {"Content-Type": "application/json"}
+
+    response = requests.request("POST", url, json=payload, headers=headers)
+
     print(response.text)
     ```
     ```php PHP
-    $curl = curl_init();
+    <?php
 
-    curl_setopt_array($curl, [
+      $curl = curl_init();
+
+      curl_setopt_array($curl, [
         CURLOPT_URL => "https://partner.peaka.studio/api/v1/ui/initSession",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
         CURLOPT_TIMEOUT => 30,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => "{\n \"projectId\": \"projectId\" \n}",
         CURLOPT_HTTPHEADER => [
-            "Authorization: Bearer <token>"
+          "Content-Type: application/json"
         ],
-    ]);
+      ]);
 
-    $response = curl_exec($curl);
-    $err = curl_error($curl);
-    curl_close($curl);
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
 
-    if ($err) {
+      curl_close($curl);
+
+      if ($err) {
         echo "cURL Error #:" . $err;
-    } else {
+      } else {
         echo $response;
-    }
+      }
     ```
     ```go Go
 
-package main
+    package main
 
     import (
-        "fmt"
-        "net/http"
-        "io/ioutil"
+      "fmt"
+      "strings"
+      "net/http"
+      "io/ioutil"
     )
 
     func main() {
-        url := "https://partner.peaka.studio/api/v1/ui/initSession"
-        req, _ := http.NewRequest("GET", url, nil)
-        req.Header.Add("Authorization", "Bearer <token>")
-        res, _ := http.DefaultClient.Do(req)
-        defer res.Body.Close()
-        body, _ := ioutil.ReadAll(res.Body)
-        fmt.Println(res)
-        fmt.Println(string(body))
+
+      url := "https://partner.peaka.studio/api/v1/ui/initSession"
+
+      payload := strings.NewReader("{\n  \"projectId\": \"projectId\" \n}")
+
+      req, _ := http.NewRequest("POST", url, payload)
+
+      req.Header.Add("Content-Type", "application/json")
+
+      res, _ := http.DefaultClient.Do(req)
+
+      defer res.Body.Close()
+      body, _ := ioutil.ReadAll(res.Body)
+
+      fmt.Println(res)
+      fmt.Println(string(body))
+
     }
     ```
     ```java JAVA
-    HttpResponse<String> response = Unirest.get("https://partner.peaka.studio/api/v1/ui/initSession")
-    .header("Authorization", "Bearer <token>")
+    HttpResponse<String> response = Unirest.post("https://partner.peaka.studio/api/v1/ui/initSession")
+    .header("Content-Type", "application/json")
+    .body("{\"projectId\": \"projectId\"}")
     .asString();
     ```
 
@@ -155,7 +185,10 @@ In order to do that you should;
     style={{ border: "1px solid #e2e4e7" }}
   />
 
-  <Warning>URL is needed for security reasons. Please be aware that your application should be served over HTTPS for use in an iframe.</Warning>
+  <Warning>
+    URL is needed for security reasons. Please be aware that your application
+    should be served over HTTPS for use in an iframe.
+  </Warning>
 
 - If you want to customize the UI, click "Customize UI Theme" button then give a theme name and upload your custom css file. You can also download the valid example of the customization file ([See more about customization](/how-to-guides/how-to-customize-embedded-ui-style)).
   You can add custom css files more than one and change themes in runtime.
@@ -180,6 +213,7 @@ Now you are ready to embed Peaka's UI into your web application using an iframe.
 ```html
 <iframe src="<your_session_url>" />
 ```
+
 <Warning>
 Note: If you want to switch between different themes in runtime you can do it with iframe's post message method.
 
@@ -192,5 +226,30 @@ Note: If you want to switch between different themes in runtime you can do it wi
     partnerOrigin: <your_partner_origin>
   );
 ```
+
 </Warning>
 Congratulations! You have successfully embedded Peaka's UI into your web application. Your users can now seamlessly interact with Peaka's interface to manage their data efficiently and effectively.
+
+## Hiding Parts of the Embedded UI
+
+In **Embedded Mode**, you can customize the Peaka UI by hiding specific components or features. To do this, use the `featureFlag` key when initiating the UI session. This allows you to tailor the interface to your application’s needs, ensuring a seamless and focused user experience.
+
+### Example:
+
+When initializing the UI session, specify the features you want to hide or disable using the `featureFlag` configuration. This ensures that only the relevant parts of the UI are displayed to your users. For example you can hide **queries** sections in Peaka's UI with following configuration.
+
+```javascript
+curl --request POST \
+  --url https://partner.peaka.studio/api/v1/ui/initSession \
+  --header 'Content-Type: application/json' 'Authorization: Bearer <token>'\
+  --data '{
+    "projectId": <your_project_id>
+    "theme": <your_theme_name>,
+    "themeOverride": true,
+    "featureFlag": {
+      "queries": false,
+    }
+}'
+```
+
+For more details, refer to the [Embedded API Reference](https://docs.peaka.com/api-reference/embedded-peaka-api/init-session).
