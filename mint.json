@@ -312,6 +312,15 @@
       ]
     },
     {
+      "group": "Embedded Peaka",
+      "pages": [
+        "embedded-peaka/introduction",
+        "embedded-peaka/data-source",
+        "embedded-peaka/data-management-backend",
+        "embedded-peaka/data-management-tool-with-ui"
+      ]
+    },
+    {
       "group": "Projects",
       "pages": [
         "api-reference/projects/read-project",
@@ -411,12 +420,10 @@
       ]
     },
     {
-      "group": "Embedded Peaka",
+      "group": "Embedded Peaka Api",
       "pages": [
-        "embedded-peaka/introduction",
-        "embedded-peaka/data-source",
-        "embedded-peaka/data-management-backend",
-        "embedded-peaka/data-management-tool-with-ui"
+        "api-reference/embedded-peaka-api/init-session-deprecated",
+        "api-reference/embedded-peaka-api/init-session"
       ]
     },
     {

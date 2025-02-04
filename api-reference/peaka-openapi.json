@@ -1234,6 +1234,126 @@
         }
       }
     },
+    "/ui/initSession": {
+      "get": {
+        "tags": [
+          "Embedded Peaka Api"
+        ],
+        "summary": "Init Session (Deprecated)",
+        "description": "Init session for the user (Deprecated)",
+        "operationId": "initSession_1",
+        "parameters": [
+          {
+            "name": "timeoutInSeconds",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "theme",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "themeOverride",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Session created successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmbeddedSession"
+                },
+                "examples": {
+                  "Session created successfully": {
+                    "description": "Session created successfully",
+                    "value": {
+                      "sessionUrl": "https://partner.peaka.studio/api/v1/ui/session?code=2eccdbf31efa110943b470b9023e9a52587c166e4d1c21f23fabbcd7de5b74ab"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      },
+      "post": {
+        "tags": [
+          "Embedded Peaka Api"
+        ],
+        "summary": "Init Session",
+        "description": "Init session for the user",
+        "operationId": "initSession",
+        "requestBody": {
+          "description": "Session Initialization Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InitSessionRequest"
+              },
+              "examples": {
+                "Session Initialization Request": {
+                  "description": "Session Initialization Request",
+                  "value": {
+                    "timeoutInSeconds": 300,
+                    "projectId": "projectId",
+                    "theme": "dark",
+                    "themeOverride": true,
+                    "featureFlags": {
+                      "feature1": true,
+                      "feature2": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Session created successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmbeddedSession"
+                },
+                "examples": {
+                  "Session created successfully": {
+                    "description": "Session created successfully",
+                    "value": {
+                      "sessionUrl": "https://partner.peaka.studio/api/v1/ui/session?code=2eccdbf31efa110943b470b9023e9a52587c166e4d1c21f23fabbcd7de5b74ab"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/projects": {
       "get": {
         "tags": [
@@ -2411,6 +2531,25 @@
           "required": true
         },
         "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "description": "Bad Request",
+                    "value": {
+                      "errorCode": 100,
+                      "message": "There are already a catalog with same name!!"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "200": {
             "description": "Catalog created successfully",
             "content": {
@@ -2437,25 +2576,6 @@
                       "displayName": "exampleStripeCatalog",
                       "catalogType": "stripe",
                       "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "Bad Request": {
-                    "description": "Bad Request",
-                    "value": {
-                      "errorCode": 100,
-                      "message": "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -3253,71 +3373,6 @@
                         "text": "The top 3 portfolios ranked by their total market value as of the most recent date recorded are: Portfolio '102296_9' with a total market value of 1,887,237,400, Portfolio '103100_7' with a total market value of 6,269,447.5, and Portfolio '103271_3' with a total market value of 2,563,462.8."
                       },
                       "threadId": "2183372c-7b72-479a-9eec-dd29aafa255b"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/ui/initSession": {
-      "get": {
-        "tags": [
-          "Embedded Peaka"
-        ],
-        "summary": "Init Session",
-        "description": "Init session for the user",
-        "operationId": "initSession",
-        "parameters": [
-          {
-            "name": "timeoutInSeconds",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "projectId",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "theme",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "themeOverride",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Session created successfully",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/EmbeddedSession"
-                },
-                "examples": {
-                  "Session created successfully": {
-                    "description": "Session created successfully",
-                    "value": {
-                      "sessionUrl": "https://partner.peaka.studio/api/v1/ui/session?code=2eccdbf31efa110943b470b9023e9a52587c166e4d1c21f23fabbcd7de5b74ab"
                     }
                   }
                 }
@@ -5119,6 +5174,48 @@
         },
         "description": "Represents a task in the chat history, which contains steps and output."
       },
+      "InitSessionRequest": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "description": "The project ID."
+          },
+          "theme": {
+            "type": "string",
+            "description": "The theme to be used."
+          },
+          "themeOverride": {
+            "type": "boolean",
+            "description": "Flag indicating whether the theme should be overridden."
+          },
+          "timeoutInSeconds": {
+            "type": "integer",
+            "description": "The timeout duration in seconds.",
+            "format": "int32"
+          },
+          "featureFlags": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "boolean"
+            },
+            "description": "A map of feature flags, where the key is the feature name and the value indicates if it is enabled.\n Defined feature flags are:\n  - createDataInPeaka : Flag indicating whether the user can create data in Peaka.\n  - queries : Flag indicating whether the user can use query functions."
+          }
+        }
+      },
+      "EmbeddedSession": {
+        "type": "object",
+        "properties": {
+          "sessionUrl": {
+            "type": "string",
+            "description": "The URL of the Embedded Peaka session to be followed.\n\nIt is a one-time use URL that will redirect the user to the Peaka session.\n"
+          },
+          "partnerOrigin": {
+            "type": "string",
+            "description": "The origin of the partner that the embedded studio is coming from.\n"
+          }
+        }
+      },
       "ApiKeyRequest": {
         "type": "object",
         "properties": {
@@ -5529,19 +5626,6 @@
           },
           "output": {
             "$ref": "#/components/schemas/AIChatHistoryOutput"
-          }
-        }
-      },
-      "EmbeddedSession": {
-        "type": "object",
-        "properties": {
-          "sessionUrl": {
-            "type": "string",
-            "description": "The URL of the Embedded Peaka session to be followed.\n\nIt is a one-time use URL that will redirect the user to the Peaka session.\n"
-          },
-          "partnerOrigin": {
-            "type": "string",
-            "description": "The origin of the partner that the embedded studio is coming from.\n"
           }
         }
       },
