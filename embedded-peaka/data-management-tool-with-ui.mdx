@@ -232,11 +232,11 @@ Congratulations! You have successfully embedded Peaka's UI into your web applica
 
 ## Hiding Parts of the Embedded UI
 
-In **Embedded Mode**, you can customize the Peaka UI by hiding specific components or features. To do this, use the `featureFlag` key when initiating the UI session. This allows you to tailor the interface to your application’s needs, ensuring a seamless and focused user experience.
+In **Embedded Mode**, you can customize the Peaka UI by hiding specific components or features. To do this, use the `featureFlags` key when initiating the UI session. This allows you to tailor the interface to your application’s needs, ensuring a seamless and focused user experience.
 
 ### Example:
 
-When initializing the UI session, specify the features you want to hide or disable using the `featureFlag` configuration. This ensures that only the relevant parts of the UI are displayed to your users. For example you can hide **queries** sections in Peaka's UI with following configuration.
+When initializing the UI session, specify the features you want to hide or disable using the `featureFlags` configuration. This ensures that only the relevant parts of the UI are displayed to your users. For example you can hide **queries** sections in Peaka's UI with following configuration.
 
 ```javascript
 curl --request POST \
@@ -246,7 +246,7 @@ curl --request POST \
     "projectId": <your_project_id>
     "theme": <your_theme_name>,
     "themeOverride": true,
-    "featureFlag": {
+    "featureFlags": {
       "queries": false,
     }
 }'
