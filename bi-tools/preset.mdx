@@ -37,6 +37,8 @@ Check out Peaka Documentation for creating your API Key and follow detailed inst
 
 - In the next screen you need to enter Display Name and SQL Alchemy URI. You can enter anything you like for the Display Name.The SQL Alchemy URI format is like below:
 
+**Note:** If you are using Peaka in EU, you need to use `trino://dbc.eu.peaka.studio:4567` instead of `trino://dbc.peaka.studio:4567`.
+
 `trino://dbc.peaka.studio:4567/<catalog>/<schema>?http_scheme=https&extra_credential=[["peakaKey","<YOUR_API_KEY>"]]&access_token=true`
 
 You need to fill `<catalog>`, `<schema>` and `<YOUR_API_KEY>`. For example if I want to see work on the tables under stripe catalog and payment schema created in Peaka with API Key `abc` , then my SQL Alchemy URI would look like below:
