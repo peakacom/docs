@@ -15,8 +15,9 @@
     "/{organizationId}/workspaces/{workspaceId}": {
       "get": {
         "tags": [
-          "organization-controller"
+          "Organization -\u003E Workspaces"
         ],
+        "summary": "Read Workspace",
         "operationId": "getWorkspace",
         "parameters": [
           {
@@ -51,8 +52,9 @@
       },
       "put": {
         "tags": [
-          "organization-controller"
+          "Organization -\u003E Workspaces"
         ],
+        "summary": "Update Workspace",
         "operationId": "updateWorkspace",
         "parameters": [
           {
@@ -97,8 +99,9 @@
       },
       "delete": {
         "tags": [
-          "organization-controller"
+          "Organization -\u003E Workspaces"
         ],
+        "summary": "Delete Workspace",
         "operationId": "deleteWorkspace",
         "parameters": [
           {
@@ -128,7 +131,7 @@
     "/{organizationId}/workspaces/{workspaceId}/projects/{projectId}": {
       "get": {
         "tags": [
-          "Projects"
+          "Organization -\u003E Projects"
         ],
         "summary": "Read Project",
         "operationId": "readProject",
@@ -187,7 +190,7 @@
       },
       "put": {
         "tags": [
-          "Projects"
+          "Organization -\u003E Projects"
         ],
         "summary": "Update Project",
         "operationId": "updateProject",
@@ -266,7 +269,7 @@
       },
       "delete": {
         "tags": [
-          "Projects"
+          "Organization -\u003E Projects"
         ],
         "summary": "Delete Project",
         "operationId": "deleteProject",
@@ -344,7 +347,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       },
       "put": {
         "tags": [
@@ -406,7 +410,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       },
       "delete": {
         "tags": [
@@ -428,7 +433,8 @@
           "200": {
             "description": "Project deleted"
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/metadata/{projectId}/{catalogId}/{schemaName}/{tableName}": {
@@ -1532,8 +1538,9 @@
     "/{organizationId}/workspaces": {
       "get": {
         "tags": [
-          "organization-controller"
+          "Organization -\u003E Workspaces"
         ],
+        "summary": "List Workspaces",
         "operationId": "listWorkspaces",
         "parameters": [
           {
@@ -1563,8 +1570,9 @@
       },
       "post": {
         "tags": [
-          "organization-controller"
+          "Organization -\u003E Workspaces"
         ],
+        "summary": "Create Workspace",
         "operationId": "createWorkspace",
         "parameters": [
           {
@@ -1603,7 +1611,7 @@
     "/{organizationId}/workspaces/{workspaceId}/projects": {
       "get": {
         "tags": [
-          "Projects"
+          "Organization -\u003E Projects"
         ],
         "summary": "List Projects",
         "operationId": "listProjects",
@@ -1668,7 +1676,7 @@
       },
       "post": {
         "tags": [
-          "Projects"
+          "Organization -\u003E Projects"
         ],
         "summary": "Create Project",
         "operationId": "createProject",
@@ -1901,7 +1909,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       },
       "post": {
         "tags": [
@@ -1952,7 +1961,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/projects/{projectId}/apiKeys": {
@@ -4024,8 +4034,9 @@
     "/organizations": {
       "get": {
         "tags": [
-          "organization-controller"
+          "Organization -\u003E Organizations"
         ],
+        "summary": "List Organizations",
         "operationId": "listOrganizations",
         "responses": {
           "200": {
@@ -4047,8 +4058,9 @@
     "/organizations/{organizationId}": {
       "get": {
         "tags": [
-          "organization-controller"
+          "Organization -\u003E Organizations"
         ],
+        "summary": "Read Organization",
         "operationId": "getOrganization",
         "parameters": [
           {
