@@ -308,7 +308,8 @@
         "cdc-setup/cdc-postgresql-setup",
         "cdc-setup/cdc-mysql-setup",
         "cdc-setup/cdc-mongodb-setup",
-        "cdc-setup/cdc-mariadb-setup"
+        "cdc-setup/cdc-mariadb-setup",
+        "cdc-setup/cdc-oracle-setup"
       ]
     },
     {
@@ -450,7 +451,6 @@
         "api-reference/data->-metadata/get-project-catalog-metadata-relations",
         "api-reference/data->-metadata/generate-sample-ai-questions-for-the-project",
         "api-reference/data->-metadata/delete-golden-sql-from-the-project"
-
       ]
     },
     {

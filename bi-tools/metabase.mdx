@@ -48,6 +48,8 @@ The Peaka Metabase integration uses the Starburst Connector right now. Startburs
   Then enter trino to the User name field and select Use Secure Connection checkbox.
   Your form should look like the screenshot below after you enter correct values:
 
+  **Note:** If you are using Peaka in EU, you need to use `dbc.eu.peaka.studio` instead of `dbc.peaka.studio` for the host name.
+
 <img
   src="https://cdn.peaka.com/bi-tools/metabase/metabase-4.png"
   style={{ border: "1px solid #e2e4e7" }}
@@ -92,6 +94,8 @@ If you are using Metabase On-Prem or Open Source Edition, follow these steps to 
 2. Copy the JAR file into the `/plugins/` directory of your Metabase installation. If you aren’t sure where to find the plugins directory, review the [Metabase driver installation guide](https://www.metabase.com/docs/latest/developers-guide-drivers.html#how-to-use-a-third-party-driver)
 3. Restart Metabase.
 4. After here follow the same steps as explained in the Metabase Cloud Setup part of this documentation. Only change is Peaka Connector requires different connection parameters than the Startburst. When you enter the Add Database form you will need to. Select Peaka for Database Type. Then give a name to your database connection. For the host name enter `_dbc.peaka.studio._` For the port enter `_4567._` As for the Catalog Name and Schema Name enter the catalog name and schema name of your Peaka Catalog. Your form should look like the screenshot below after you enter correct values:
+
+**Note:** If you are using Peaka in EU, you need to use `_dbc.eu.peaka.studio._` instead of `_dbc.peaka.studio._` for the host name.
 
 <img
   src="https://cdn.peaka.com/bi-tools/metabase/metabase-9.png"

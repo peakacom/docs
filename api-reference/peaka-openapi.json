@@ -143,7 +143,7 @@
     "/metadata/{projectId}/{catalogId}/{schemaName}/{tableName}": {
       "put": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "Update Metadata",
         "operationId": "updateMetadata",
@@ -211,7 +211,7 @@
     "/metadata/{projectId}/relations/{catalogId}/{schemaName}/{tableName}/{relationId}": {
       "put": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "Update Relation From Metadata",
         "operationId": "updateRelation",
@@ -285,7 +285,7 @@
       },
       "delete": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "Delete Relation From Metadata",
         "operationId": "deleteRelation",
@@ -351,7 +351,7 @@
     "/metadata/{projectId}/categorical/{catalogId}/{schemaName}/{tableName}/{columnName}": {
       "put": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "Generate categorical values from the the column.",
         "operationId": "generateCategoricalColumnValues",
@@ -427,7 +427,7 @@
     "/data/projects/{projectId}/table/{tableName}/columns/{columnName}": {
       "put": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "Update Column",
         "operationId": "updateColumn",
@@ -485,7 +485,7 @@
       },
       "delete": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "Delete Column",
         "operationId": "deleteColumn",
@@ -525,7 +525,7 @@
     "/data/projects/{projectId}/queries/{queryId}": {
       "get": {
         "tags": [
-          "Data -\u003E Queries"
+          "Data -> Queries"
         ],
         "summary": "Read Query",
         "operationId": "readQuery",
@@ -568,7 +568,7 @@
       },
       "put": {
         "tags": [
-          "Data -\u003E Queries"
+          "Data -> Queries"
         ],
         "summary": "Update Query",
         "operationId": "updateQuery",
@@ -642,7 +642,7 @@
       },
       "delete": {
         "tags": [
-          "Data -\u003E Queries"
+          "Data -> Queries"
         ],
         "summary": "Delete Query",
         "operationId": "deleteQuery",
@@ -674,7 +674,7 @@
     "/data/projects/{projectId}/cache/{cacheId}": {
       "put": {
         "tags": [
-          "Data -\u003E Cache"
+          "Data -> Cache"
         ],
         "summary": "Update Cache Settings",
         "operationId": "updateCacheSettings",
@@ -728,7 +728,7 @@
       },
       "delete": {
         "tags": [
-          "Data -\u003E Cache"
+          "Data -> Cache"
         ],
         "summary": "Delete Cache",
         "operationId": "deleteCache",
@@ -760,7 +760,7 @@
     "/data/projects/{projectId}/bitable/{tableName}/columns/{columnName}": {
       "put": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "Update BI Column",
         "operationId": "updateBiColumn",
@@ -818,7 +818,7 @@
       },
       "delete": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "Delete BI Column",
         "operationId": "deleteBiColumn",
@@ -963,7 +963,7 @@
                     "name": "exampleStripeConnection21",
                     "type": "stripe",
                     "credential": {
-                      "token": "\u003CstripeToken\u003E"
+                      "token": "<stripeToken>"
                     }
                   }
                 },
@@ -973,7 +973,7 @@
                     "name": "exampleAirtableConnection",
                     "type": "airtable",
                     "credential": {
-                      "personalAccessToken": "\u003CyourAirtableApiKey\u003E"
+                      "personalAccessToken": "<yourAirtableApiKey>"
                     }
                   }
                 }
@@ -1034,7 +1034,7 @@
     "/ai/{projectId}/agent/history/{threadId}": {
       "put": {
         "tags": [
-          "AI -\u003E Agent"
+          "AI -> Agent"
         ],
         "summary": "Update AI Chat History Thread Name",
         "operationId": "updateChatHistoryDisplayNameByThreadId",
@@ -1144,7 +1144,7 @@
       },
       "delete": {
         "tags": [
-          "AI -\u003E Agent"
+          "AI -> Agent"
         ],
         "summary": "Delete AI Chat History",
         "operationId": "deleteChatHistoryByThreadId",
@@ -1455,7 +1455,7 @@
     "/projects/{projectId}/apiKeys": {
       "get": {
         "tags": [
-          "Projects -\u003E Api Key"
+          "Projects -> Api Key"
         ],
         "summary": "List API Keys",
         "operationId": "listApiKeys",
@@ -1487,7 +1487,7 @@
       },
       "post": {
         "tags": [
-          "Projects -\u003E Api Key"
+          "Projects -> Api Key"
         ],
         "summary": "Create API Key",
         "operationId": "createApiKey",
@@ -1547,7 +1547,7 @@
     "/metadata/{projectId}/semantics/{catalogId}/{schemaName}/{tableName}": {
       "post": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "Generate semantics for the table",
         "operationId": "generateSemantics",
@@ -1615,7 +1615,7 @@
     "/metadata/{projectId}/relations/{catalogId}/{schemaName}/{tableName}/{columnName}": {
       "post": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "Add Relation To Metadata",
         "operationId": "addRelation",
@@ -1691,7 +1691,7 @@
     "/metadata/{projectId}/golden-sqls": {
       "get": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "List of golden sqls for the project.",
         "operationId": "listGoldenSqls",
@@ -1723,7 +1723,7 @@
       },
       "post": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "Create golden sql for the project",
         "operationId": "addGoldenSql",
@@ -1767,7 +1767,7 @@
     "/data/projects/{projectId}/table/{tableName}": {
       "post": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "Create Table",
         "operationId": "createInternalTable",
@@ -1813,7 +1813,7 @@
       },
       "delete": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "Delete Table",
         "operationId": "deleteTable",
@@ -1845,10 +1845,10 @@
     "/data/projects/{projectId}/table/{tableName}/columns": {
       "get": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "List Columns",
-        "description": "See Data -\u003E Catalog / List Columns for more details.",
+        "description": "See Data -> Catalog / List Columns for more details.",
         "operationId": "listColumns",
         "parameters": [
           {
@@ -1886,7 +1886,7 @@
       },
       "post": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "Add Column",
         "operationId": "addColumn",
@@ -1974,7 +1974,7 @@
     "/data/projects/{projectId}/semantic-catalogs": {
       "post": {
         "tags": [
-          "Data -\u003E Semantic Catalogs"
+          "Data -> Semantic Catalogs"
         ],
         "summary": "Create a semantic catalog",
         "operationId": "createSemanticCatalog",
@@ -2025,7 +2025,7 @@
     "/data/projects/{projectId}/semantic-catalogs/{catalogId}": {
       "post": {
         "tags": [
-          "Data -\u003E Semantic Catalogs"
+          "Data -> Semantic Catalogs"
         ],
         "summary": "Create a semantic table",
         "operationId": "createSemanticTable",
@@ -2086,7 +2086,7 @@
     "/data/projects/{projectId}/semantic-catalogs/{catalogId}/share": {
       "post": {
         "tags": [
-          "Data -\u003E Semantic Catalogs"
+          "Data -> Semantic Catalogs"
         ],
         "summary": "Share a semantic table",
         "operationId": "shareSemanticTable",
@@ -2132,7 +2132,7 @@
     "/data/projects/{projectId}/queries": {
       "get": {
         "tags": [
-          "Data -\u003E Queries"
+          "Data -> Queries"
         ],
         "summary": "List Queries",
         "operationId": "listQueries",
@@ -2190,7 +2190,7 @@
       },
       "post": {
         "tags": [
-          "Data -\u003E Queries"
+          "Data -> Queries"
         ],
         "summary": "Create Query",
         "operationId": "createQuery",
@@ -2260,7 +2260,7 @@
     "/data/projects/{projectId}/queries/execute": {
       "post": {
         "tags": [
-          "Data -\u003E Queries"
+          "Data -> Queries"
         ],
         "summary": "Execute Query",
         "operationId": "executeQuery",
@@ -2338,8 +2338,10 @@
                               "columnName": "amount"
                             }
                           },
-                          "\u003E",
-                          [150]
+                          ">",
+                          [
+                            150
+                          ]
                         ]
                       ]
                     },
@@ -2413,7 +2415,7 @@
     "/data/projects/{projectId}/catalogs": {
       "get": {
         "tags": [
-          "Data -\u003E Catalogs"
+          "Data -> Catalogs"
         ],
         "summary": "List Catalogs",
         "operationId": "listCatalogs",
@@ -2487,7 +2489,7 @@
       },
       "post": {
         "tags": [
-          "Data -\u003E Catalogs"
+          "Data -> Catalogs"
         ],
         "summary": "Create Catalog",
         "operationId": "createCatalog",
@@ -2588,7 +2590,7 @@
     "/data/projects/{projectId}/cache": {
       "post": {
         "tags": [
-          "Data -\u003E Cache"
+          "Data -> Cache"
         ],
         "summary": "Create Cache",
         "operationId": "createCache",
@@ -2668,7 +2670,7 @@
     "/data/projects/{projectId}/cache/{cacheId}/incrementalUpdate": {
       "post": {
         "tags": [
-          "Data -\u003E Cache"
+          "Data -> Cache"
         ],
         "summary": "Update Cache Incrementally",
         "operationId": "incrementalUpdateCache",
@@ -2710,7 +2712,7 @@
     "/data/projects/{projectId}/cache/{cacheId}/fullRefreshUpdate": {
       "post": {
         "tags": [
-          "Data -\u003E Cache"
+          "Data -> Cache"
         ],
         "summary": "Full Refresh Cache",
         "operationId": "fullRefreshCache",
@@ -2752,7 +2754,7 @@
     "/data/projects/{projectId}/cache/batch": {
       "post": {
         "tags": [
-          "Data -\u003E Cache"
+          "Data -> Cache"
         ],
         "summary": "Create Batch Cache",
         "operationId": "createBatchCache",
@@ -2834,7 +2836,7 @@
     "/data/projects/{projectId}/bitable/{tableName}": {
       "post": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "Create BI Table",
         "operationId": "createInternalBiTable",
@@ -2880,7 +2882,7 @@
       },
       "delete": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "Delete BI Table",
         "operationId": "deleteBiTable",
@@ -2912,10 +2914,10 @@
     "/data/projects/{projectId}/bitable/{tableName}/columns": {
       "get": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "List BI Columns",
-        "description": "See Data -\u003E Catalog / List Columns for more details.",
+        "description": "See Data -> Catalog / List Columns for more details.",
         "operationId": "listBiColumns",
         "parameters": [
           {
@@ -2953,7 +2955,7 @@
       },
       "post": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "Add BI Column",
         "operationId": "addBiColumn",
@@ -3103,7 +3105,7 @@
           "Connections"
         ],
         "summary": "Create Connection",
-        "description": "This endpoint allows you to create a new connection for a specified project.\n\nYou need to provide the project ID and the connection details in the request body.\n\nThe connection details include the name, type, and credentials required for the connection.\n\nDepending on the connection type, additional parameters may be required under credentials.\n\nYou can view the list of supported connection types by calling the /connections/config endpoint.\n\nYou can switch examples from the second dropdown of the sample request component. (cURL (first dropdown) - Stripe Connection Request (second dropdown))\n\n**Note**: Typically, the connection creation process involves the following steps:\n1. First, learn about the connection type and the required parameters by calling the /connections/config endpoint.\n2. Create a connection request with the required parameters.\n3. If the connection requires Oauth2 authorization, there may be additional steps to follow. See https://docs.peaka.com/how-to-guides/how-to-create-oauth2-based-connections-via-peaka for more information.\n\n**Example**:\n- POSTGRES Connection Configuration:\n\nGET /connections/config endpoint displays all of the connection types.\n\nGET /connection/config/POSTGRES endpoint displays the POSTGRES connection configuration.\n\nThe definition of the POSTGRES connection configuration is as follows:\n``` json\n    {\n        \"connectionType\": \"POSTGRES\",\n        \"connectionTypeLabel\": \"PostgreSQL\",\n        \"name\": \"PostgreSQL\",\n        \"authorizationType\": \"custom\",\n        \"credentialSchemaType\": \"postgres_credential_schema\",\n        \"category\": \"Database\",\n        \"configuration\": [\n            {\n                \"fieldName\": \"url\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"URL\"\n            },\n            {\n                \"fieldName\": \"port\",\n                \"fieldType\": \"number\",\n                \"required\": true,\n                \"description\": \"Port\"\n            },\n            {\n                \"fieldName\": \"user\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"User\"\n            },\n            {\n                \"fieldName\": \"password\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Password\"\n            },\n            {\n                \"fieldName\": \"databaseName\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Database Name\"\n            },\n            {\n                \"fieldName\": \"useSsl\",\n                \"fieldType\": \"boolean\",\n                \"required\": true,\n                \"description\": \"Use SSL\"\n            }\n        ],\n        \"documentationUrl\": \"https://docs.peaka.com/integrations/postgresql\"\n    }\n```\n\nAccording to the POSTGRES connection configuration, the connection request should include the following parameters (respecting to the required flag):\n- url: URL of the host IP or domain\n- port: Port number\n- user: User of the database\n- password: Password of the user\n- databaseName: Name of the database\n- useSsl: Boolean value to indicate whether to use SSL\n\n``` json\n{\n    \"name\": \"examplePostgre\",\n    \"type\": \"POSTGRES\",\n    \"credential\": {\n        \"url\": \"\u003Chost ip or domain\u003E\",\n        \"port\": 5432,\n        \"user\": \"userOfYourDB\",\n        \"password\": \"passwordOfUser\",\n        \"databaseName\": \"yourDBName\",\n        \"useSsl\": false\n    }\n}\n```\n\n",
+        "description": "This endpoint allows you to create a new connection for a specified project.\n\nYou need to provide the project ID and the connection details in the request body.\n\nThe connection details include the name, type, and credentials required for the connection.\n\nDepending on the connection type, additional parameters may be required under credentials.\n\nYou can view the list of supported connection types by calling the /connections/config endpoint.\n\nYou can switch examples from the second dropdown of the sample request component. (cURL (first dropdown) - Stripe Connection Request (second dropdown))\n\n**Note**: Typically, the connection creation process involves the following steps:\n1. First, learn about the connection type and the required parameters by calling the /connections/config endpoint.\n2. Create a connection request with the required parameters.\n3. If the connection requires Oauth2 authorization, there may be additional steps to follow. See https://docs.peaka.com/how-to-guides/how-to-create-oauth2-based-connections-via-peaka for more information.\n\n**Example**:\n- POSTGRES Connection Configuration:\n\nGET /connections/config endpoint displays all of the connection types.\n\nGET /connection/config/POSTGRES endpoint displays the POSTGRES connection configuration.\n\nThe definition of the POSTGRES connection configuration is as follows:\n``` json\n    {\n        \"connectionType\": \"POSTGRES\",\n        \"connectionTypeLabel\": \"PostgreSQL\",\n        \"name\": \"PostgreSQL\",\n        \"authorizationType\": \"custom\",\n        \"credentialSchemaType\": \"postgres_credential_schema\",\n        \"category\": \"Database\",\n        \"configuration\": [\n            {\n                \"fieldName\": \"url\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"URL\"\n            },\n            {\n                \"fieldName\": \"port\",\n                \"fieldType\": \"number\",\n                \"required\": true,\n                \"description\": \"Port\"\n            },\n            {\n                \"fieldName\": \"user\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"User\"\n            },\n            {\n                \"fieldName\": \"password\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Password\"\n            },\n            {\n                \"fieldName\": \"databaseName\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Database Name\"\n            },\n            {\n                \"fieldName\": \"useSsl\",\n                \"fieldType\": \"boolean\",\n                \"required\": true,\n                \"description\": \"Use SSL\"\n            }\n        ],\n        \"documentationUrl\": \"https://docs.peaka.com/integrations/postgresql\"\n    }\n```\n\nAccording to the POSTGRES connection configuration, the connection request should include the following parameters (respecting to the required flag):\n- url: URL of the host IP or domain\n- port: Port number\n- user: User of the database\n- password: Password of the user\n- databaseName: Name of the database\n- useSsl: Boolean value to indicate whether to use SSL\n\n``` json\n{\n    \"name\": \"examplePostgre\",\n    \"type\": \"POSTGRES\",\n    \"credential\": {\n        \"url\": \"<host ip or domain>\",\n        \"port\": 5432,\n        \"user\": \"userOfYourDB\",\n        \"password\": \"passwordOfUser\",\n        \"databaseName\": \"yourDBName\",\n        \"useSsl\": false\n    }\n}\n```\n\n",
         "operationId": "createConnection",
         "parameters": [
           {
@@ -3131,7 +3133,7 @@
                     "name": "exampleStripeConnection21",
                     "type": "stripe",
                     "credential": {
-                      "token": "\u003CstripeToken\u003E"
+                      "token": "<stripeToken>"
                     }
                   }
                 },
@@ -3141,10 +3143,10 @@
                     "name": "exampleOauthConnection",
                     "type": "google_analytics",
                     "credential": {
-                      "clientId": "\u003CgoogleOauthAppClientId\u003E",
-                      "clientSecret": "\u003CgoogleOauthAppClientSecret\u003E"
+                      "clientId": "<googleOauthAppClientId>",
+                      "clientSecret": "<googleOauthAppClientSecret>"
                     },
-                    "connectionCallback": "\u003CconnectionCallbackUrl\u003E"
+                    "connectionCallback": "<connectionCallbackUrl>"
                   }
                 },
                 "HubSpot Connection (Oauth2) Request": {
@@ -3153,9 +3155,9 @@
                     "name": "exampleHubspotConnection",
                     "type": "hubspot",
                     "credential": {
-                      "clientId": "\u003ChubspotOauthAppClientId\u003E",
-                      "clientSecret": "\u003ChubspotOauthAppClientSecret\u003E",
-                      "refreshToken": "\u003COauthRefreshToken\u003E"
+                      "clientId": "<hubspotOauthAppClientId>",
+                      "clientSecret": "<hubspotOauthAppClientSecret>",
+                      "refreshToken": "<OauthRefreshToken>"
                     }
                   }
                 },
@@ -3165,7 +3167,7 @@
                     "name": "exampleAirtableConnection",
                     "type": "airtable",
                     "credential": {
-                      "personalAccessToken": "\u003CyourAirtableApiKey\u003E"
+                      "personalAccessToken": "<yourAirtableApiKey>"
                     }
                   }
                 },
@@ -3175,7 +3177,7 @@
                     "name": "examplePostgre",
                     "type": "POSTGRES",
                     "credential": {
-                      "url": "\u003Chost ip or domain\u003E",
+                      "url": "<host ip or domain>",
                       "port": 5432,
                       "user": "userOfYourDB",
                       "password": "passwordOfUser",
@@ -3279,7 +3281,7 @@
     "/ai/{projectId}/agent": {
       "post": {
         "tags": [
-          "AI -\u003E Agent"
+          "AI -> Agent"
         ],
         "summary": "Ask Question To AI Agent",
         "operationId": "ask",
@@ -3508,7 +3510,7 @@
     "/metadata/{projectId}": {
       "get": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "Get Project Metadata",
         "operationId": "getProjectMetadata",
@@ -3542,7 +3544,7 @@
     "/metadata/{projectId}/relations/{catalogId}": {
       "get": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "Get Project Catalog Metadata Relations",
         "operationId": "getProjectCatalogMetadataRelations",
@@ -3584,7 +3586,7 @@
     "/metadata/{projectId}/questions/generate": {
       "get": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "Generate sample ai questions for the project",
         "operationId": "generateSampleQuestions",
@@ -3626,10 +3628,10 @@
     "/data/projects/{projectId}/table": {
       "get": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "List Tables",
-        "description": "See Data -\u003E Catalog / List Tables for more details.",
+        "description": "See Data -> Catalog / List Tables for more details.",
         "operationId": "listTables",
         "parameters": [
           {
@@ -3661,7 +3663,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}": {
       "get": {
         "tags": [
-          "Data -\u003E Catalogs"
+          "Data -> Catalogs"
         ],
         "summary": "Read Catalog",
         "operationId": "readCatalog",
@@ -3710,7 +3712,7 @@
       },
       "delete": {
         "tags": [
-          "Data -\u003E Catalogs"
+          "Data -> Catalogs"
         ],
         "summary": "Delete Catalog",
         "operationId": "deleteCatalog",
@@ -3742,7 +3744,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas": {
       "get": {
         "tags": [
-          "Data -\u003E Catalogs"
+          "Data -> Catalogs"
         ],
         "summary": "List Schemas",
         "operationId": "listSchemas",
@@ -3795,7 +3797,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables": {
       "get": {
         "tags": [
-          "Data -\u003E Catalogs"
+          "Data -> Catalogs"
         ],
         "summary": "List Tables",
         "operationId": "listTables_1",
@@ -3953,7 +3955,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/isCached": {
       "get": {
         "tags": [
-          "Data -\u003E Catalogs"
+          "Data -> Catalogs"
         ],
         "summary": "Table is Cached",
         "operationId": "isCached",
@@ -4016,7 +4018,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/columns": {
       "get": {
         "tags": [
-          "Data -\u003E Catalogs"
+          "Data -> Catalogs"
         ],
         "summary": "List Columns",
         "operationId": "listColumns_1",
@@ -4297,7 +4299,7 @@
     "/data/projects/{projectId}/catalog/{catalogId}/cache/status": {
       "get": {
         "tags": [
-          "Data -\u003E Cache"
+          "Data -> Cache"
         ],
         "summary": "Get All Cache Statuses of a Catalog",
         "operationId": "getCacheStatusByCatalog",
@@ -4339,7 +4341,7 @@
     "/data/projects/{projectId}/cache/{cacheId}/status": {
       "get": {
         "tags": [
-          "Data -\u003E Cache"
+          "Data -> Cache"
         ],
         "summary": "Get Cache Status",
         "operationId": "getCacheStatus",
@@ -4386,7 +4388,7 @@
     "/data/projects/{projectId}/cache/status": {
       "get": {
         "tags": [
-          "Data -\u003E Cache"
+          "Data -> Cache"
         ],
         "summary": "Get All Cache Statuses of a Project",
         "operationId": "getCacheStatusByProject",
@@ -4420,10 +4422,10 @@
     "/data/projects/{projectId}/bitable": {
       "get": {
         "tags": [
-          "Data -\u003E Internal Tables"
+          "Data -> Internal Tables"
         ],
         "summary": "List BI Tables",
-        "description": "See Data -\u003E Catalog / List Tables for more details.",
+        "description": "See Data -> Catalog / List Tables for more details.",
         "operationId": "listBiTables",
         "parameters": [
           {
@@ -4570,7 +4572,7 @@
     "/ai/{projectId}/agent/history": {
       "get": {
         "tags": [
-          "AI -\u003E Agent"
+          "AI -> Agent"
         ],
         "summary": "Get AI Chat History",
         "operationId": "getChatHistory",
@@ -4655,7 +4657,7 @@
     "/projects/{projectId}/apiKeys/{apiKeyId}": {
       "delete": {
         "tags": [
-          "Projects -\u003E Api Key"
+          "Projects -> Api Key"
         ],
         "summary": "Delete API Key",
         "operationId": "deleteApiKey",
@@ -4687,7 +4689,7 @@
     "/metadata/{projectId}/golden-sqls/{id}": {
       "delete": {
         "tags": [
-          "Data -\u003E Metadata"
+          "Data -> Metadata"
         ],
         "summary": "Delete golden sql from the project.",
         "operationId": "deleteGoldenSql",
@@ -4729,7 +4731,7 @@
     "/data/projects/{projectId}/semantic-catalogs/{catalogId}/table/{tableId}": {
       "delete": {
         "tags": [
-          "Data -\u003E Semantic Catalogs"
+          "Data -> Semantic Catalogs"
         ],
         "summary": "Delete a semantic table",
         "operationId": "deleteSemanticTable",
@@ -5027,7 +5029,7 @@
           },
           "name": {
             "type": "string",
-            "description": "The name of the query.\n\n This is the name of the query which will be used in the sql query.\n e.g. SELECT * FROM \"peaka\".\"query\".\"\u003Cname\u003E\""
+            "description": "The name of the query.\n\n This is the name of the query which will be used in the sql query.\n e.g. SELECT * FROM \"peaka\".\"query\".\"<name>\""
           },
           "inputQuery": {
             "type": "string",

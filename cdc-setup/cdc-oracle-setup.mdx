@@ -1,0 +1,126 @@
+---
+title: "CDC - Oracle Setup Documentation"
+description: "How to setup CDC Oracle"
+---
+
+## **Prerequisites**
+
+To setup CDC between your Oracle database and Peaka Big Table, you need:
+
+- Oracle Database (12c, 19c, 21c)
+- Oracle administrative permissions (SYSDBA)
+
+## **Setup Instructions**
+
+### Preparing the database
+
+**Configuration needed for Oracle LogMiner**
+
+Create a database user for Peaka's exclusive use that can perform CDC operations.
+
+(Although, by default, SYSDBA users have all necessary privileges, you can create another user that has the minimum required privileges.)
+
+To provide a user with CDC permissions, grant the following privileges to the user:
+
+```sql
+    CONNECT sys/<password> AS SYSDBA
+
+    GRANT CREATE SESSION TO <username>;
+    GRANT EXECUTE_CATALOG_ROLE TO <username>;
+    GRANT SELECT ON V_$DATABASE TO <username>;
+    GRANT FLASHBACK ANY TABLE TO <username>;
+    GRANT SELECT ANY TABLE TO <username>;
+    GRANT EXECUTE_CATALOG_ROLE TO <username>;
+    GRANT SELECT ANY TRANSACTION TO <username>;
+    GRANT LOGMINING TO <username>;
+    GRANT CREATE SESSION TO <username>;
+    GRANT EXECUTE_CATALOG_ROLE TO <username>;
+    GRANT SELECT ON V_$DATABASE TO <username>;
+    GRANT FLASHBACK ANY TABLE TO <username>;
+    GRANT SELECT ANY TABLE TO <username>;
+    GRANT EXECUTE_CATALOG_ROLE TO <username>;
+    GRANT SELECT ANY TRANSACTION TO <username>;
+    GRANT LOGMINING TO <username>;
+    GRANT CREATE TABLE TO <username>;
+    GRANT LOCK ANY TABLE TO <username>;
+    GRANT CREATE SEQUENCE TO <username>;
+    GRANT EXECUTE ON DBMS_LOGMNR TO <username>;
+    GRANT EXECUTE ON DBMS_LOGMNR_D TO <username>;
+    GRANT SELECT ON V_$LOG TO <username>;
+    GRANT SELECT ON V_$LOG_HISTORY TO <username>;
+    GRANT SELECT ON V_$LOGMNR_LOGS TO <username>;
+    GRANT SELECT ON V_$LOGMNR_CONTENTS TO <username>;
+    GRANT SELECT ON V_$LOGMNR_PARAMETERS TO <username>;
+    GRANT SELECT ON V_$LOGFILE TO <username>;
+    GRANT SELECT ON V_$ARCHIVED_LOG TO <username>;
+    GRANT SELECT ON V_$ARCHIVE_DEST_STATUS TO <username>;
+    GRANT SELECT ON V_$TRANSACTION TO <username>;
+    GRANT SELECT ON V_$MYSTAT TO <username>;
+    GRANT SELECT ON V_$STATNAME TO <username>;
+
+    EXIT;
+```
+
+**Note**: The connector captures database changes that are made by its own Oracle user account. However, it does not capture changes that are made by the `SYS` or `SYSTEM` user accounts.
+
+**Enable supplemental logging for the tables you want to replicate**
+
+## Configure Oracle Database for CDC
+
+1. Enable ARCHIVELOG mode for the database:
+
+```sql
+    CONNECT sys/<password> AS SYSDBA
+
+    ALTER SYSTEM SET db_recovery_file_dest_size = 10G;
+    ALTER SYSTEM SET db_recovery_file_dest = '/opt/oracle/oradata/recovery_area' scope=spfile;
+    SHUTDOWN IMMEDIATE;
+    STARTUP MOUNT;
+    ALTER DATABASE ARCHIVELOG;
+    ALTER DATABASE OPEN;
+
+    -- Should now "Database log mode: Archive Mode"
+    ARCHIVE LOG LIST
+
+    EXIT;
+```
+
+2. Enable supplemental logging at the database level:
+
+```sql
+   ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
+```
+
+3. Enable minimal supplemental logging for the tables you want to monitor:
+
+```sql
+   ALTER TABLE <schema>.<table> ADD SUPPLEMENTAL LOG DATA (ALL) COLUMNS;
+```
+
+**Note**: You need to enable supplemental logging for each table you want to monitor with CDC.
+
+## Schemas excluded from capture
+
+When the Debezium Oracle connector captures tables, it automatically excludes tables from the following schemas:
+
+- `appqossys`
+- `audsys`
+- `ctxsys`
+- `dvsys`
+- `dbsfwuser`
+- `dbsnmp`
+- `qsmadmin_internal`
+- `lbacsys`
+- `mdsys`
+- `ojvmsys`
+- `olapsys`
+- `orddata`
+- `ordsys`
+- `outln`
+- `sys`
+- `system`
+- `vecsys` (Oracle 23+)
+- `wmsys`
+- `xdb`
+
+To enable the connector to capture changes from a table, the table must use a schema that is not named in the preceding list.
