@@ -2531,25 +2531,6 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "Bad Request": {
-                    "description": "Bad Request",
-                    "value": {
-                      "errorCode": 100,
-                      "message": "There are already a catalog with same name!!"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "200": {
             "description": "Catalog created successfully",
             "content": {
@@ -2576,6 +2557,25 @@
                       "displayName": "exampleStripeCatalog",
                       "catalogType": "stripe",
                       "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "description": "Bad Request",
+                    "value": {
+                      "errorCode": 100,
+                      "message": "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -3867,6 +3867,89 @@
         }
       }
     },
+    "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/statistics": {
+      "get": {
+        "tags": [
+          "Data -\u003E Catalogs"
+        ],
+        "summary": "Table Statistics",
+        "operationId": "getTableStatistics",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schemaName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableStatistics"
+                },
+                "examples": {
+                  "Table Statistics": {
+                    "description": "Table Statistics",
+                    "value": {
+                      "catalogId": "846085284821991568",
+                      "schemaName": "public",
+                      "tableName": "actor",
+                      "columnStatistics": [
+                        {
+                          "columnName": "actor_id",
+                          "distinctFraction": -1
+                        },
+                        {
+                          "columnName": "first_name",
+                          "distinctFraction": -0.64
+                        },
+                        {
+                          "columnName": "last_name",
+                          "distinctFraction": -0.605
+                        },
+                        {
+                          "columnName": "last_update",
+                          "distinctFraction": 1
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/isCached": {
       "get": {
         "tags": [
@@ -4275,6 +4358,14 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "excludeLogs",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
             }
           }
         ],
@@ -4722,6 +4813,14 @@
           "createdAt": {
             "type": "string",
             "description": "The date and time the project was created"
+          },
+          "owner": {
+            "type": "string",
+            "description": "The owner of the project"
+          },
+          "workspaceId": {
+            "type": "string",
+            "description": "The workspace to which the project belongs"
           }
         },
         "description": "Project"
@@ -5643,6 +5742,44 @@
           "schemaName": {
             "type": "string",
             "description": "The name of the schema."
+          }
+        }
+      },
+      "ColumnStatistics": {
+        "type": "object",
+        "properties": {
+          "columnName": {
+            "type": "string",
+            "description": "The name of the column."
+          },
+          "distinctFraction": {
+            "type": "number",
+            "description": "The estimated fraction of distinct values in a column compared to the total number of rows in the table. It helps in query optimization, statistics collection, and cardinality estimation in database systems.",
+            "format": "double"
+          }
+        }
+      },
+      "TableStatistics": {
+        "type": "object",
+        "properties": {
+          "catalogId": {
+            "type": "string",
+            "description": "The ID of the catalog."
+          },
+          "schemaName": {
+            "type": "string",
+            "description": "The name of the schema."
+          },
+          "tableName": {
+            "type": "string",
+            "description": "The name of the table."
+          },
+          "columnStatistics": {
+            "type": "array",
+            "description": "Statistics for each column in the table.",
+            "items": {
+              "$ref": "#/components/schemas/ColumnStatistics"
+            }
           }
         }
       },

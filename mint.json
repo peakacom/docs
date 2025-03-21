@@ -361,7 +361,8 @@
         "api-reference/data->-catalogs/delete-catalog",
         "api-reference/data->-catalogs/list-schemas",
         "api-reference/data->-catalogs/list-tables",
-        "api-reference/data->-catalogs/list-columns"
+        "api-reference/data->-catalogs/list-columns",
+        "api-reference/data->-catalogs/table-statistics"
       ]
     },
     {
