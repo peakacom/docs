@@ -12,7 +12,138 @@
     }
   ],
   "paths": {
-    "/{organizationId}/workspaces/{workspaceId}": {
+    "/projects/{projectId}": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Read Project",
+        "operationId": "readProject",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Read Project Example": {
+                    "description": "Read Project Example",
+                    "value": {
+                      "id": "SksnYuxH",
+                      "name": "Anapp23334",
+                      "description": null,
+                      "domain": "anapp2-rfto",
+                      "webhookBaseUrl": "https://anapp2-rfto--test.api.peaka.host",
+                      "createdAt": "2023-08-21T11:09:04.699714310Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      },
+      "put": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Update Project",
+        "operationId": "updateProject",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Project to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectRequest"
+              },
+              "examples": {
+                "Update Project Example": {
+                  "description": "Update Project Example",
+                  "value": {
+                    "name": "Updated Project Name",
+                    "description": "Iste aut quo maxime dolorem atque. Alias neque porro. Fugiat ipsam similique voluptate quam libero deserunt consequuntur dolorum nobis."
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Project updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Update Project Example": {
+                    "description": "Update Project Example",
+                    "value": {
+                      "id": "URNg0GIj",
+                      "name": "Updated Project Name",
+                      "description": "Iste aut quo maxime dolorem atque. Alias neque porro. Fugiat ipsam similique voluptate quam libero deserunt consequuntur dolorum nobis.",
+                      "domain": "sampleprojectname-cdcn",
+                      "webhookBaseUrl": null,
+                      "createdAt": "2024-09-10T10:11:02.385253956Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      },
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Delete Project",
+        "operationId": "deleteProject",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Project deleted"
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/organizations/{organizationId}/workspaces/{workspaceId}": {
       "get": {
         "tags": [
           "Organization -\u003E Workspaces"
@@ -128,13 +259,13 @@
         }
       }
     },
-    "/{organizationId}/workspaces/{workspaceId}/projects/{projectId}": {
+    "/organizations/{organizationId}/workspaces/{workspaceId}/projects/{projectId}": {
       "get": {
         "tags": [
           "Organization -\u003E Projects"
         ],
         "summary": "Read Project",
-        "operationId": "readProject",
+        "operationId": "readProject_1",
         "parameters": [
           {
             "name": "organizationId",
@@ -193,7 +324,7 @@
           "Organization -\u003E Projects"
         ],
         "summary": "Update Project",
-        "operationId": "updateProject",
+        "operationId": "updateProject_1",
         "parameters": [
           {
             "name": "organizationId",
@@ -272,7 +403,7 @@
           "Organization -\u003E Projects"
         ],
         "summary": "Delete Project",
-        "operationId": "deleteProject",
+        "operationId": "deleteProject_1",
         "parameters": [
           {
             "name": "organizationId",
@@ -304,137 +435,6 @@
             "description": "Project deleted"
           }
         }
-      }
-    },
-    "/projects/{projectId}": {
-      "get": {
-        "tags": [
-          "Projects"
-        ],
-        "summary": "Read Project",
-        "operationId": "readProject_1",
-        "parameters": [
-          {
-            "name": "projectId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Project"
-                },
-                "examples": {
-                  "Read Project Example": {
-                    "description": "Read Project Example",
-                    "value": {
-                      "id": "SksnYuxH",
-                      "name": "Anapp23334",
-                      "description": null,
-                      "domain": "anapp2-rfto",
-                      "webhookBaseUrl": "https://anapp2-rfto--test.api.peaka.host",
-                      "createdAt": "2023-08-21T11:09:04.699714310Z"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "deprecated": true
-      },
-      "put": {
-        "tags": [
-          "Projects"
-        ],
-        "summary": "Update Project",
-        "operationId": "updateProject_1",
-        "parameters": [
-          {
-            "name": "projectId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Project to update",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProjectRequest"
-              },
-              "examples": {
-                "Update Project Example": {
-                  "description": "Update Project Example",
-                  "value": {
-                    "name": "Updated Project Name",
-                    "description": "Iste aut quo maxime dolorem atque. Alias neque porro. Fugiat ipsam similique voluptate quam libero deserunt consequuntur dolorum nobis."
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Project updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Project"
-                },
-                "examples": {
-                  "Update Project Example": {
-                    "description": "Update Project Example",
-                    "value": {
-                      "id": "URNg0GIj",
-                      "name": "Updated Project Name",
-                      "description": "Iste aut quo maxime dolorem atque. Alias neque porro. Fugiat ipsam similique voluptate quam libero deserunt consequuntur dolorum nobis.",
-                      "domain": "sampleprojectname-cdcn",
-                      "webhookBaseUrl": null,
-                      "createdAt": "2024-09-10T10:11:02.385253956Z"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "deprecated": true
-      },
-      "delete": {
-        "tags": [
-          "Projects"
-        ],
-        "summary": "Delete Project",
-        "operationId": "deleteProject_1",
-        "parameters": [
-          {
-            "name": "projectId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Project deleted"
-          }
-        },
-        "deprecated": true
       }
     },
     "/metadata/{projectId}/{catalogId}/{schemaName}/{tableName}": {
@@ -1535,216 +1535,6 @@
         }
       }
     },
-    "/{organizationId}/workspaces": {
-      "get": {
-        "tags": [
-          "Organization -\u003E Workspaces"
-        ],
-        "summary": "List Workspaces",
-        "operationId": "listWorkspaces",
-        "parameters": [
-          {
-            "name": "organizationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Workspace"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Organization -\u003E Workspaces"
-        ],
-        "summary": "Create Workspace",
-        "operationId": "createWorkspace",
-        "parameters": [
-          {
-            "name": "organizationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/WorkspaceRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Workspace"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/{organizationId}/workspaces/{workspaceId}/projects": {
-      "get": {
-        "tags": [
-          "Organization -\u003E Projects"
-        ],
-        "summary": "List Projects",
-        "operationId": "listProjects",
-        "parameters": [
-          {
-            "name": "organizationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "workspaceId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Project"
-                  }
-                },
-                "examples": {
-                  "List of all projects": {
-                    "description": "List of all projects",
-                    "value": [
-                      {
-                        "id": "SksnYuxH",
-                        "name": "Anapp23334",
-                        "description": null,
-                        "domain": "anapp2-rfto",
-                        "webhookBaseUrl": "https://anapp2-rfto--test.api.peaka.host",
-                        "createdAt": "2023-08-21T11:09:04.699714310Z",
-                        "workspaceId": "d7f282d2-b392-4b5c-8cea-05f7523df2d2"
-                      },
-                      {
-                        "id": "0IQ6f4QB",
-                        "name": "App Deneme",
-                        "description": null,
-                        "domain": "appdeneme-wmdp",
-                        "webhookBaseUrl": "https://appdeneme-wmdp--test.api.peaka.host",
-                        "createdAt": "2023-12-14T12:38:55.025274418Z",
-                        "workspaceId": "d7f282d2-b392-4b5c-8cea-05f7523df2d2"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Organization -\u003E Projects"
-        ],
-        "summary": "Create Project",
-        "operationId": "createProject",
-        "parameters": [
-          {
-            "name": "organizationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "workspaceId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Project to create",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProjectRequest"
-              },
-              "examples": {
-                "Create Project Example": {
-                  "description": "Create Project Example",
-                  "value": {
-                    "name": "Sample Project Name"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Project created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Project"
-                },
-                "examples": {
-                  "Create Project Example": {
-                    "description": "Create Project Example",
-                    "value": {
-                      "id": "URNg0GIj",
-                      "name": "Sample Project Name",
-                      "description": "Non accusantium ducimus accusantium. Laborum eum accusamus sit sit hic eaque doloremque. Occaecati blanditiis facere consequuntur consectetur culpa reiciendis hic tempore dolorem. Saepe impedit nam necessitatibus maxime numquam voluptatum cum. Adipisci mollitia blanditiis sint inventore ex commodi occaecati ipsam quas.",
-                      "domain": "sampleprojectname-cdcn",
-                      "webhookBaseUrl": "https://sampleprojectname-cdcn--test.api.peaka.host",
-                      "createdAt": "2024-09-10T10:11:02.385253956Z",
-                      "workspaceId": "d7f282d2-b392-4b5c-8cea-05f7523df2d2"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/ui/initSession": {
       "get": {
         "tags": [
@@ -1871,7 +1661,7 @@
           "Projects"
         ],
         "summary": "List Projects",
-        "operationId": "listProjects_1",
+        "operationId": "listProjects",
         "responses": {
           "200": {
             "description": "Successful operation",
@@ -1917,7 +1707,7 @@
           "Projects"
         ],
         "summary": "Create Project",
-        "operationId": "createProject_1",
+        "operationId": "createProject",
         "requestBody": {
           "description": "Project to create",
           "content": {
@@ -2052,6 +1842,216 @@
                       "name": "test",
                       "apiKey": "TtgGcQFq.s3fzROFoop8uHG4pS2LYhoqn1rLb6oW6",
                       "apiKeyId": "21fd1a8d-88d5-4295-b792-5b2113138057"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/workspaces": {
+      "get": {
+        "tags": [
+          "Organization -\u003E Workspaces"
+        ],
+        "summary": "List Workspaces",
+        "operationId": "listWorkspaces",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Workspace"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Organization -\u003E Workspaces"
+        ],
+        "summary": "Create Workspace",
+        "operationId": "createWorkspace",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkspaceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Workspace"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/workspaces/{workspaceId}/projects": {
+      "get": {
+        "tags": [
+          "Organization -\u003E Projects"
+        ],
+        "summary": "List Projects",
+        "operationId": "listProjects_1",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                },
+                "examples": {
+                  "List of all projects": {
+                    "description": "List of all projects",
+                    "value": [
+                      {
+                        "id": "SksnYuxH",
+                        "name": "Anapp23334",
+                        "description": null,
+                        "domain": "anapp2-rfto",
+                        "webhookBaseUrl": "https://anapp2-rfto--test.api.peaka.host",
+                        "createdAt": "2023-08-21T11:09:04.699714310Z",
+                        "workspaceId": "d7f282d2-b392-4b5c-8cea-05f7523df2d2"
+                      },
+                      {
+                        "id": "0IQ6f4QB",
+                        "name": "App Deneme",
+                        "description": null,
+                        "domain": "appdeneme-wmdp",
+                        "webhookBaseUrl": "https://appdeneme-wmdp--test.api.peaka.host",
+                        "createdAt": "2023-12-14T12:38:55.025274418Z",
+                        "workspaceId": "d7f282d2-b392-4b5c-8cea-05f7523df2d2"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Organization -\u003E Projects"
+        ],
+        "summary": "Create Project",
+        "operationId": "createProject_1",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Project to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectRequest"
+              },
+              "examples": {
+                "Create Project Example": {
+                  "description": "Create Project Example",
+                  "value": {
+                    "name": "Sample Project Name"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Project created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Create Project Example": {
+                    "description": "Create Project Example",
+                    "value": {
+                      "id": "URNg0GIj",
+                      "name": "Sample Project Name",
+                      "description": "Non accusantium ducimus accusantium. Laborum eum accusamus sit sit hic eaque doloremque. Occaecati blanditiis facere consequuntur consectetur culpa reiciendis hic tempore dolorem. Saepe impedit nam necessitatibus maxime numquam voluptatum cum. Adipisci mollitia blanditiis sint inventore ex commodi occaecati ipsam quas.",
+                      "domain": "sampleprojectname-cdcn",
+                      "webhookBaseUrl": "https://sampleprojectname-cdcn--test.api.peaka.host",
+                      "createdAt": "2024-09-10T10:11:02.385253956Z",
+                      "workspaceId": "d7f282d2-b392-4b5c-8cea-05f7523df2d2"
                     }
                   }
                 }
@@ -5408,56 +5408,6 @@
   },
   "components": {
     "schemas": {
-      "WorkspaceRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "The name of the workspace"
-          },
-          "description": {
-            "type": "string",
-            "description": "Descriptive text about the workspace"
-          }
-        }
-      },
-      "Workspace": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The unique identifier of the workspace",
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the workspace"
-          },
-          "createdBy": {
-            "type": "string",
-            "description": "The unique identifier of the user who created the workspace",
-            "format": "uuid"
-          },
-          "organizationId": {
-            "type": "string",
-            "description": "The unique identifier of the organization to which the workspace belongs",
-            "format": "uuid"
-          },
-          "description": {
-            "type": "string",
-            "description": "Descriptive text about the workspace"
-          },
-          "createdAt": {
-            "type": "string",
-            "description": "The date and time the workspace was created",
-            "format": "date-time"
-          },
-          "defaultWorkspace": {
-            "type": "boolean",
-            "description": "Whether the workspace is the default workspace for the organization.\n\n\n This is a backward compatibility field in order to create projects in the default workspace if the workspace is not specified."
-          }
-        }
-      },
       "ProjectRequest": {
         "required": [
           "name"
@@ -5513,6 +5463,56 @@
           }
         },
         "description": "Project"
+      },
+      "WorkspaceRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the workspace"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descriptive text about the workspace"
+          }
+        }
+      },
+      "Workspace": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the workspace",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the workspace"
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "The unique identifier of the user who created the workspace",
+            "format": "uuid"
+          },
+          "organizationId": {
+            "type": "string",
+            "description": "The unique identifier of the organization to which the workspace belongs",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descriptive text about the workspace"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "The date and time the workspace was created",
+            "format": "date-time"
+          },
+          "defaultWorkspace": {
+            "type": "boolean",
+            "description": "Whether the workspace is the default workspace for the organization.\n\n\n This is a backward compatibility field in order to create projects in the default workspace if the workspace is not specified."
+          }
+        }
       },
       "MetadataColumn": {
         "type": "object",
