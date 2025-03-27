@@ -322,6 +322,33 @@
       ]
     },
     {
+      "group": "Organization -> Organizations",
+      "pages": [
+        "api-reference/organization->-organizations/list-organizations",
+        "api-reference/organization->-organizations/read-organization"
+      ]
+    },
+    {
+      "group": "Organization -> Workspaces",
+      "pages": [
+        "api-reference/organization->-workspaces/read-workspace",
+        "api-reference/organization->-workspaces/update-workspace",
+        "api-reference/organization->-workspaces/delete-workspace",
+        "api-reference/organization->-workspaces/list-workspaces",
+        "api-reference/organization->-workspaces/create-workspace"
+      ]
+    },
+    {
+      "group": "Organization -> Projects",
+      "pages": [
+        "api-reference/organization->-projects/read-project",
+        "api-reference/organization->-projects/update-project",
+        "api-reference/organization->-projects/delete-project",
+        "api-reference/organization->-projects/list-projects",
+        "api-reference/organization->-projects/create-project"
+      ]
+    },
+    {
       "group": "Projects",
       "pages": [
         "api-reference/projects/read-project",
