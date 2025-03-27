@@ -351,11 +351,11 @@
     {
       "group": "Projects (Deprecated)",
       "pages": [
-        "api-reference/projects/read-project",
-        "api-reference/projects/update-project",
-        "api-reference/projects/delete-project",
-        "api-reference/projects/list-projects",
-        "api-reference/projects/create-project"
+        "api-reference/projects-deprecated/read-project",
+        "api-reference/projects-deprecated/update-project",
+        "api-reference/projects-deprecated/delete-project",
+        "api-reference/projects-deprecated/list-projects",
+        "api-reference/projects-deprecated/create-project"
       ]
     },
     {
