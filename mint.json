@@ -349,7 +349,7 @@
       ]
     },
     {
-      "group": "Projects",
+      "group": "Projects (Deprecated)",
       "pages": [
         "api-reference/projects/read-project",
         "api-reference/projects/update-project",
