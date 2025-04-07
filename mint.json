@@ -178,6 +178,7 @@
         "integrations/excel-365",
         "integrations/facebook-ads",
         "integrations/firebase",
+        "integrations/freshdesk",
         "integrations/github",
         "integrations/google-ads",
         "integrations/google-analytics",
