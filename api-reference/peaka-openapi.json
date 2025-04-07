@@ -15,7 +15,7 @@
     "/projects/{projectId}": {
       "get": {
         "tags": [
-          "Projects"
+          "Projects (Deprecated)"
         ],
         "summary": "Read Project",
         "operationId": "readProject",
@@ -53,11 +53,12 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       },
       "put": {
         "tags": [
-          "Projects"
+          "Projects (Deprecated)"
         ],
         "summary": "Update Project",
         "operationId": "updateProject",
@@ -115,15 +116,311 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       },
       "delete": {
         "tags": [
-          "Projects"
+          "Projects (Deprecated)"
         ],
         "summary": "Delete Project",
         "operationId": "deleteProject",
         "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Project deleted"
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/organizations/{organizationId}/workspaces/{workspaceId}": {
+      "get": {
+        "tags": [
+          "Organization -\u003E Workspaces"
+        ],
+        "summary": "Read Workspace",
+        "operationId": "getWorkspace",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Workspace"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Organization -\u003E Workspaces"
+        ],
+        "summary": "Update Workspace",
+        "operationId": "updateWorkspace",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkspaceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Workspace"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Organization -\u003E Workspaces"
+        ],
+        "summary": "Delete Workspace",
+        "operationId": "deleteWorkspace",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/workspaces/{workspaceId}/projects/{projectId}": {
+      "get": {
+        "tags": [
+          "Organization -\u003E Projects"
+        ],
+        "summary": "Read Project",
+        "operationId": "readProject_1",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Read Project Example": {
+                    "description": "Read Project Example",
+                    "value": {
+                      "id": "SksnYuxH",
+                      "name": "Anapp23334",
+                      "description": null,
+                      "domain": "anapp2-rfto",
+                      "webhookBaseUrl": "https://anapp2-rfto--test.api.peaka.host",
+                      "createdAt": "2023-08-21T11:09:04.699714310Z",
+                      "workspaceId": "d7f282d2-b392-4b5c-8cea-05f7523df2d2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Organization -\u003E Projects"
+        ],
+        "summary": "Update Project",
+        "operationId": "updateProject_1",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Project to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectRequest"
+              },
+              "examples": {
+                "Update Project Example": {
+                  "description": "Update Project Example",
+                  "value": {
+                    "name": "Updated Project Name",
+                    "description": "Iste aut quo maxime dolorem atque. Alias neque porro. Fugiat ipsam similique voluptate quam libero deserunt consequuntur dolorum nobis."
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Project updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Update Project Example": {
+                    "description": "Update Project Example",
+                    "value": {
+                      "id": "URNg0GIj",
+                      "name": "Updated Project Name",
+                      "description": "Iste aut quo maxime dolorem atque. Alias neque porro. Fugiat ipsam similique voluptate quam libero deserunt consequuntur dolorum nobis.",
+                      "domain": "sampleprojectname-cdcn",
+                      "webhookBaseUrl": null,
+                      "createdAt": "2024-09-10T10:11:02.385253956Z",
+                      "workspaceId": "d7f282d2-b392-4b5c-8cea-05f7523df2d2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Organization -\u003E Projects"
+        ],
+        "summary": "Delete Project",
+        "operationId": "deleteProject_1",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "projectId",
             "in": "path",
@@ -143,7 +440,7 @@
     "/metadata/{projectId}/{catalogId}/{schemaName}/{tableName}": {
       "put": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "Update Metadata",
         "operationId": "updateMetadata",
@@ -211,7 +508,7 @@
     "/metadata/{projectId}/relations/{catalogId}/{schemaName}/{tableName}/{relationId}": {
       "put": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "Update Relation From Metadata",
         "operationId": "updateRelation",
@@ -285,7 +582,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "Delete Relation From Metadata",
         "operationId": "deleteRelation",
@@ -351,7 +648,7 @@
     "/metadata/{projectId}/categorical/{catalogId}/{schemaName}/{tableName}/{columnName}": {
       "put": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "Generate categorical values from the the column.",
         "operationId": "generateCategoricalColumnValues",
@@ -427,7 +724,7 @@
     "/data/projects/{projectId}/table/{tableName}/columns/{columnName}": {
       "put": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Update Column",
         "operationId": "updateColumn",
@@ -485,7 +782,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Delete Column",
         "operationId": "deleteColumn",
@@ -525,7 +822,7 @@
     "/data/projects/{projectId}/queries/{queryId}": {
       "get": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "Read Query",
         "operationId": "readQuery",
@@ -568,7 +865,7 @@
       },
       "put": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "Update Query",
         "operationId": "updateQuery",
@@ -642,7 +939,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "Delete Query",
         "operationId": "deleteQuery",
@@ -674,7 +971,7 @@
     "/data/projects/{projectId}/cache/{cacheId}": {
       "put": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Update Cache Settings",
         "operationId": "updateCacheSettings",
@@ -682,18 +979,22 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "Project ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           },
           {
             "name": "cacheId",
             "in": "path",
+            "description": "Cache ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "960bd651-7b3c-4511-9a88-18e14ac7742a"
           }
         ],
         "requestBody": {
@@ -728,7 +1029,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Delete Cache",
         "operationId": "deleteCache",
@@ -760,7 +1061,7 @@
     "/data/projects/{projectId}/bitable/{tableName}/columns/{columnName}": {
       "put": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Update BI Column",
         "operationId": "updateBiColumn",
@@ -818,7 +1119,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Delete BI Column",
         "operationId": "deleteBiColumn",
@@ -963,7 +1264,7 @@
                     "name": "exampleStripeConnection21",
                     "type": "stripe",
                     "credential": {
-                      "token": "<stripeToken>"
+                      "token": "\u003CstripeToken\u003E"
                     }
                   }
                 },
@@ -973,7 +1274,7 @@
                     "name": "exampleAirtableConnection",
                     "type": "airtable",
                     "credential": {
-                      "personalAccessToken": "<yourAirtableApiKey>"
+                      "personalAccessToken": "\u003CyourAirtableApiKey\u003E"
                     }
                   }
                 }
@@ -1034,7 +1335,7 @@
     "/ai/{projectId}/agent/history/{threadId}": {
       "put": {
         "tags": [
-          "AI -> Agent"
+          "AI -\u003E Agent"
         ],
         "summary": "Update AI Chat History Thread Name",
         "operationId": "updateChatHistoryDisplayNameByThreadId",
@@ -1144,7 +1445,7 @@
       },
       "delete": {
         "tags": [
-          "AI -> Agent"
+          "AI -\u003E Agent"
         ],
         "summary": "Delete AI Chat History",
         "operationId": "deleteChatHistoryByThreadId",
@@ -1357,7 +1658,7 @@
     "/projects": {
       "get": {
         "tags": [
-          "Projects"
+          "Projects (Deprecated)"
         ],
         "summary": "List Projects",
         "operationId": "listProjects",
@@ -1398,11 +1699,12 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       },
       "post": {
         "tags": [
-          "Projects"
+          "Projects (Deprecated)"
         ],
         "summary": "Create Project",
         "operationId": "createProject",
@@ -1449,13 +1751,14 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/projects/{projectId}/apiKeys": {
       "get": {
         "tags": [
-          "Projects -> Api Key"
+          "Projects -\u003E Api Key"
         ],
         "summary": "List API Keys",
         "operationId": "listApiKeys",
@@ -1463,10 +1766,12 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "Project ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           }
         ],
         "responses": {
@@ -1487,7 +1792,7 @@
       },
       "post": {
         "tags": [
-          "Projects -> Api Key"
+          "Projects -\u003E Api Key"
         ],
         "summary": "Create API Key",
         "operationId": "createApiKey",
@@ -1495,10 +1800,12 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "Project ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           }
         ],
         "requestBody": {
@@ -1544,10 +1851,220 @@
         }
       }
     },
+    "/organizations/{organizationId}/workspaces": {
+      "get": {
+        "tags": [
+          "Organization -\u003E Workspaces"
+        ],
+        "summary": "List Workspaces",
+        "operationId": "listWorkspaces",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Workspace"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Organization -\u003E Workspaces"
+        ],
+        "summary": "Create Workspace",
+        "operationId": "createWorkspace",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkspaceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Workspace"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/workspaces/{workspaceId}/projects": {
+      "get": {
+        "tags": [
+          "Organization -\u003E Projects"
+        ],
+        "summary": "List Projects",
+        "operationId": "listProjects_1",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                },
+                "examples": {
+                  "List of all projects": {
+                    "description": "List of all projects",
+                    "value": [
+                      {
+                        "id": "SksnYuxH",
+                        "name": "Anapp23334",
+                        "description": null,
+                        "domain": "anapp2-rfto",
+                        "webhookBaseUrl": "https://anapp2-rfto--test.api.peaka.host",
+                        "createdAt": "2023-08-21T11:09:04.699714310Z",
+                        "workspaceId": "d7f282d2-b392-4b5c-8cea-05f7523df2d2"
+                      },
+                      {
+                        "id": "0IQ6f4QB",
+                        "name": "App Deneme",
+                        "description": null,
+                        "domain": "appdeneme-wmdp",
+                        "webhookBaseUrl": "https://appdeneme-wmdp--test.api.peaka.host",
+                        "createdAt": "2023-12-14T12:38:55.025274418Z",
+                        "workspaceId": "d7f282d2-b392-4b5c-8cea-05f7523df2d2"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Organization -\u003E Projects"
+        ],
+        "summary": "Create Project",
+        "operationId": "createProject_1",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Project to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectRequest"
+              },
+              "examples": {
+                "Create Project Example": {
+                  "description": "Create Project Example",
+                  "value": {
+                    "name": "Sample Project Name"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Project created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Create Project Example": {
+                    "description": "Create Project Example",
+                    "value": {
+                      "id": "URNg0GIj",
+                      "name": "Sample Project Name",
+                      "description": "Non accusantium ducimus accusantium. Laborum eum accusamus sit sit hic eaque doloremque. Occaecati blanditiis facere consequuntur consectetur culpa reiciendis hic tempore dolorem. Saepe impedit nam necessitatibus maxime numquam voluptatum cum. Adipisci mollitia blanditiis sint inventore ex commodi occaecati ipsam quas.",
+                      "domain": "sampleprojectname-cdcn",
+                      "webhookBaseUrl": "https://sampleprojectname-cdcn--test.api.peaka.host",
+                      "createdAt": "2024-09-10T10:11:02.385253956Z",
+                      "workspaceId": "d7f282d2-b392-4b5c-8cea-05f7523df2d2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/metadata/{projectId}/semantics/{catalogId}/{schemaName}/{tableName}": {
       "post": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "Generate semantics for the table",
         "operationId": "generateSemantics",
@@ -1615,7 +2132,7 @@
     "/metadata/{projectId}/relations/{catalogId}/{schemaName}/{tableName}/{columnName}": {
       "post": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "Add Relation To Metadata",
         "operationId": "addRelation",
@@ -1691,7 +2208,7 @@
     "/metadata/{projectId}/golden-sqls": {
       "get": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "List of golden sqls for the project.",
         "operationId": "listGoldenSqls",
@@ -1723,7 +2240,7 @@
       },
       "post": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "Create golden sql for the project",
         "operationId": "addGoldenSql",
@@ -1767,7 +2284,7 @@
     "/data/projects/{projectId}/table/{tableName}": {
       "post": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Create Table",
         "operationId": "createInternalTable",
@@ -1813,7 +2330,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Delete Table",
         "operationId": "deleteTable",
@@ -1845,10 +2362,10 @@
     "/data/projects/{projectId}/table/{tableName}/columns": {
       "get": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "List Columns",
-        "description": "See Data -> Catalog / List Columns for more details.",
+        "description": "See Data -\u003E Catalog / List Columns for more details.",
         "operationId": "listColumns",
         "parameters": [
           {
@@ -1886,7 +2403,7 @@
       },
       "post": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Add Column",
         "operationId": "addColumn",
@@ -1974,7 +2491,7 @@
     "/data/projects/{projectId}/semantic-catalogs": {
       "post": {
         "tags": [
-          "Data -> Semantic Catalogs"
+          "Data -\u003E Semantic Catalogs"
         ],
         "summary": "Create a semantic catalog",
         "operationId": "createSemanticCatalog",
@@ -2025,7 +2542,7 @@
     "/data/projects/{projectId}/semantic-catalogs/{catalogId}": {
       "post": {
         "tags": [
-          "Data -> Semantic Catalogs"
+          "Data -\u003E Semantic Catalogs"
         ],
         "summary": "Create a semantic table",
         "operationId": "createSemanticTable",
@@ -2086,7 +2603,7 @@
     "/data/projects/{projectId}/semantic-catalogs/{catalogId}/share": {
       "post": {
         "tags": [
-          "Data -> Semantic Catalogs"
+          "Data -\u003E Semantic Catalogs"
         ],
         "summary": "Share a semantic table",
         "operationId": "shareSemanticTable",
@@ -2132,7 +2649,7 @@
     "/data/projects/{projectId}/queries": {
       "get": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "List Queries",
         "operationId": "listQueries",
@@ -2190,7 +2707,7 @@
       },
       "post": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "Create Query",
         "operationId": "createQuery",
@@ -2260,7 +2777,7 @@
     "/data/projects/{projectId}/queries/execute": {
       "post": {
         "tags": [
-          "Data -> Queries"
+          "Data -\u003E Queries"
         ],
         "summary": "Execute Query",
         "operationId": "executeQuery",
@@ -2338,10 +2855,8 @@
                               "columnName": "amount"
                             }
                           },
-                          ">",
-                          [
-                            150
-                          ]
+                          "\u003E",
+                          [150]
                         ]
                       ]
                     },
@@ -2415,7 +2930,7 @@
     "/data/projects/{projectId}/catalogs": {
       "get": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "List Catalogs",
         "operationId": "listCatalogs",
@@ -2423,10 +2938,12 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "ID of the project",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           }
         ],
         "responses": {
@@ -2489,7 +3006,7 @@
       },
       "post": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "Create Catalog",
         "operationId": "createCatalog",
@@ -2497,10 +3014,12 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "ID of the project",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           }
         ],
         "requestBody": {
@@ -2533,25 +3052,6 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "Bad Request": {
-                    "description": "Bad Request",
-                    "value": {
-                      "errorCode": 100,
-                      "message": "There are already a catalog with same name!!"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "200": {
             "description": "Catalog created successfully",
             "content": {
@@ -2583,6 +3083,25 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "description": "Bad Request",
+                    "value": {
+                      "errorCode": 100,
+                      "message": "There are already a catalog with same name!!"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -2590,7 +3109,7 @@
     "/data/projects/{projectId}/cache": {
       "post": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Create Cache",
         "operationId": "createCache",
@@ -2598,10 +3117,12 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "Project ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           }
         ],
         "requestBody": {
@@ -2615,6 +3136,7 @@
                 "Create Cache - One Time": {
                   "description": "Create Cache - One Time",
                   "value": {
+                    "id": "960bd651-7b3c-4511-9a88-18e14ac7742a",
                     "catalogId": "627249916703408649",
                     "schemaName": "payment",
                     "tableName": "customers"
@@ -2623,6 +3145,7 @@
                 "Create Cache - Incremental Update Scheduled": {
                   "description": "Create Cache - Incrementally updated every 6 hrs.",
                   "value": {
+                    "id": "960bd651-7b3c-4511-9a88-18e14ac7742a",
                     "catalogId": "627249916703408649",
                     "schemaName": "payment",
                     "tableName": "customers",
@@ -2635,6 +3158,7 @@
                 "Create Cache - Incremental and Fully Refresh Update Scheduled": {
                   "description": "Create Cache - Incrementally updated every 6 hrs  and Fully refreshed every day.",
                   "value": {
+                    "id": "960bd651-7b3c-4511-9a88-18e14ac7742a",
                     "catalogId": "627249916703408649",
                     "schemaName": "payment",
                     "tableName": "customers",
@@ -2670,7 +3194,7 @@
     "/data/projects/{projectId}/cache/{cacheId}/incrementalUpdate": {
       "post": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Update Cache Incrementally",
         "operationId": "incrementalUpdateCache",
@@ -2712,7 +3236,7 @@
     "/data/projects/{projectId}/cache/{cacheId}/fullRefreshUpdate": {
       "post": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Full Refresh Cache",
         "operationId": "fullRefreshCache",
@@ -2754,7 +3278,7 @@
     "/data/projects/{projectId}/cache/batch": {
       "post": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Create Batch Cache",
         "operationId": "createBatchCache",
@@ -2836,7 +3360,7 @@
     "/data/projects/{projectId}/bitable/{tableName}": {
       "post": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Create BI Table",
         "operationId": "createInternalBiTable",
@@ -2882,7 +3406,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Delete BI Table",
         "operationId": "deleteBiTable",
@@ -2914,10 +3438,10 @@
     "/data/projects/{projectId}/bitable/{tableName}/columns": {
       "get": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "List BI Columns",
-        "description": "See Data -> Catalog / List Columns for more details.",
+        "description": "See Data -\u003E Catalog / List Columns for more details.",
         "operationId": "listBiColumns",
         "parameters": [
           {
@@ -2955,7 +3479,7 @@
       },
       "post": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "Add BI Column",
         "operationId": "addBiColumn",
@@ -3105,7 +3629,7 @@
           "Connections"
         ],
         "summary": "Create Connection",
-        "description": "This endpoint allows you to create a new connection for a specified project.\n\nYou need to provide the project ID and the connection details in the request body.\n\nThe connection details include the name, type, and credentials required for the connection.\n\nDepending on the connection type, additional parameters may be required under credentials.\n\nYou can view the list of supported connection types by calling the /connections/config endpoint.\n\nYou can switch examples from the second dropdown of the sample request component. (cURL (first dropdown) - Stripe Connection Request (second dropdown))\n\n**Note**: Typically, the connection creation process involves the following steps:\n1. First, learn about the connection type and the required parameters by calling the /connections/config endpoint.\n2. Create a connection request with the required parameters.\n3. If the connection requires Oauth2 authorization, there may be additional steps to follow. See https://docs.peaka.com/how-to-guides/how-to-create-oauth2-based-connections-via-peaka for more information.\n\n**Example**:\n- POSTGRES Connection Configuration:\n\nGET /connections/config endpoint displays all of the connection types.\n\nGET /connection/config/POSTGRES endpoint displays the POSTGRES connection configuration.\n\nThe definition of the POSTGRES connection configuration is as follows:\n``` json\n    {\n        \"connectionType\": \"POSTGRES\",\n        \"connectionTypeLabel\": \"PostgreSQL\",\n        \"name\": \"PostgreSQL\",\n        \"authorizationType\": \"custom\",\n        \"credentialSchemaType\": \"postgres_credential_schema\",\n        \"category\": \"Database\",\n        \"configuration\": [\n            {\n                \"fieldName\": \"url\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"URL\"\n            },\n            {\n                \"fieldName\": \"port\",\n                \"fieldType\": \"number\",\n                \"required\": true,\n                \"description\": \"Port\"\n            },\n            {\n                \"fieldName\": \"user\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"User\"\n            },\n            {\n                \"fieldName\": \"password\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Password\"\n            },\n            {\n                \"fieldName\": \"databaseName\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Database Name\"\n            },\n            {\n                \"fieldName\": \"useSsl\",\n                \"fieldType\": \"boolean\",\n                \"required\": true,\n                \"description\": \"Use SSL\"\n            }\n        ],\n        \"documentationUrl\": \"https://docs.peaka.com/integrations/postgresql\"\n    }\n```\n\nAccording to the POSTGRES connection configuration, the connection request should include the following parameters (respecting to the required flag):\n- url: URL of the host IP or domain\n- port: Port number\n- user: User of the database\n- password: Password of the user\n- databaseName: Name of the database\n- useSsl: Boolean value to indicate whether to use SSL\n\n``` json\n{\n    \"name\": \"examplePostgre\",\n    \"type\": \"POSTGRES\",\n    \"credential\": {\n        \"url\": \"<host ip or domain>\",\n        \"port\": 5432,\n        \"user\": \"userOfYourDB\",\n        \"password\": \"passwordOfUser\",\n        \"databaseName\": \"yourDBName\",\n        \"useSsl\": false\n    }\n}\n```\n\n",
+        "description": "This endpoint allows you to create a new connection for a specified project.\n\nYou need to provide the project ID and the connection details in the request body.\n\nThe connection details include the name, type, and credentials required for the connection.\n\nDepending on the connection type, additional parameters may be required under credentials.\n\nYou can view the list of supported connection types by calling the /connections/config endpoint.\n\nYou can switch examples from the second dropdown of the sample request component. (cURL (first dropdown) - Stripe Connection Request (second dropdown))\n\n**Note**: Typically, the connection creation process involves the following steps:\n1. First, learn about the connection type and the required parameters by calling the /connections/config endpoint.\n2. Create a connection request with the required parameters.\n3. If the connection requires Oauth2 authorization, there may be additional steps to follow. See https://docs.peaka.com/how-to-guides/how-to-create-oauth2-based-connections-via-peaka for more information.\n\n**Example**:\n- POSTGRES Connection Configuration:\n\nGET /connections/config endpoint displays all of the connection types.\n\nGET /connection/config/POSTGRES endpoint displays the POSTGRES connection configuration.\n\nThe definition of the POSTGRES connection configuration is as follows:\n``` json\n    {\n        \"connectionType\": \"POSTGRES\",\n        \"connectionTypeLabel\": \"PostgreSQL\",\n        \"name\": \"PostgreSQL\",\n        \"authorizationType\": \"custom\",\n        \"credentialSchemaType\": \"postgres_credential_schema\",\n        \"category\": \"Database\",\n        \"configuration\": [\n            {\n                \"fieldName\": \"url\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"URL\"\n            },\n            {\n                \"fieldName\": \"port\",\n                \"fieldType\": \"number\",\n                \"required\": true,\n                \"description\": \"Port\"\n            },\n            {\n                \"fieldName\": \"user\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"User\"\n            },\n            {\n                \"fieldName\": \"password\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Password\"\n            },\n            {\n                \"fieldName\": \"databaseName\",\n                \"fieldType\": \"text\",\n                \"required\": true,\n                \"description\": \"Database Name\"\n            },\n            {\n                \"fieldName\": \"useSsl\",\n                \"fieldType\": \"boolean\",\n                \"required\": true,\n                \"description\": \"Use SSL\"\n            }\n        ],\n        \"documentationUrl\": \"https://docs.peaka.com/integrations/postgresql\"\n    }\n```\n\nAccording to the POSTGRES connection configuration, the connection request should include the following parameters (respecting to the required flag):\n- url: URL of the host IP or domain\n- port: Port number\n- user: User of the database\n- password: Password of the user\n- databaseName: Name of the database\n- useSsl: Boolean value to indicate whether to use SSL\n\n``` json\n{\n    \"name\": \"examplePostgre\",\n    \"type\": \"POSTGRES\",\n    \"credential\": {\n        \"url\": \"\u003Chost ip or domain\u003E\",\n        \"port\": 5432,\n        \"user\": \"userOfYourDB\",\n        \"password\": \"passwordOfUser\",\n        \"databaseName\": \"yourDBName\",\n        \"useSsl\": false\n    }\n}\n```\n\n",
         "operationId": "createConnection",
         "parameters": [
           {
@@ -3133,7 +3657,7 @@
                     "name": "exampleStripeConnection21",
                     "type": "stripe",
                     "credential": {
-                      "token": "<stripeToken>"
+                      "token": "\u003CstripeToken\u003E"
                     }
                   }
                 },
@@ -3143,10 +3667,10 @@
                     "name": "exampleOauthConnection",
                     "type": "google_analytics",
                     "credential": {
-                      "clientId": "<googleOauthAppClientId>",
-                      "clientSecret": "<googleOauthAppClientSecret>"
+                      "clientId": "\u003CgoogleOauthAppClientId\u003E",
+                      "clientSecret": "\u003CgoogleOauthAppClientSecret\u003E"
                     },
-                    "connectionCallback": "<connectionCallbackUrl>"
+                    "connectionCallback": "\u003CconnectionCallbackUrl\u003E"
                   }
                 },
                 "HubSpot Connection (Oauth2) Request": {
@@ -3155,9 +3679,9 @@
                     "name": "exampleHubspotConnection",
                     "type": "hubspot",
                     "credential": {
-                      "clientId": "<hubspotOauthAppClientId>",
-                      "clientSecret": "<hubspotOauthAppClientSecret>",
-                      "refreshToken": "<OauthRefreshToken>"
+                      "clientId": "\u003ChubspotOauthAppClientId\u003E",
+                      "clientSecret": "\u003ChubspotOauthAppClientSecret\u003E",
+                      "refreshToken": "\u003COauthRefreshToken\u003E"
                     }
                   }
                 },
@@ -3167,7 +3691,7 @@
                     "name": "exampleAirtableConnection",
                     "type": "airtable",
                     "credential": {
-                      "personalAccessToken": "<yourAirtableApiKey>"
+                      "personalAccessToken": "\u003CyourAirtableApiKey\u003E"
                     }
                   }
                 },
@@ -3177,7 +3701,7 @@
                     "name": "examplePostgre",
                     "type": "POSTGRES",
                     "credential": {
-                      "url": "<host ip or domain>",
+                      "url": "\u003Chost ip or domain\u003E",
                       "port": 5432,
                       "user": "userOfYourDB",
                       "password": "passwordOfUser",
@@ -3281,7 +3805,7 @@
     "/ai/{projectId}/agent": {
       "post": {
         "tags": [
-          "AI -> Agent"
+          "AI -\u003E Agent"
         ],
         "summary": "Ask Question To AI Agent",
         "operationId": "ask",
@@ -3507,10 +4031,65 @@
         }
       }
     },
+    "/organizations": {
+      "get": {
+        "tags": [
+          "Organization -\u003E Organizations"
+        ],
+        "summary": "List Organizations",
+        "operationId": "listOrganizations",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Organization"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}": {
+      "get": {
+        "tags": [
+          "Organization -\u003E Organizations"
+        ],
+        "summary": "Read Organization",
+        "operationId": "getOrganization",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Organization"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/metadata/{projectId}": {
       "get": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "Get Project Metadata",
         "operationId": "getProjectMetadata",
@@ -3544,7 +4123,7 @@
     "/metadata/{projectId}/relations/{catalogId}": {
       "get": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "Get Project Catalog Metadata Relations",
         "operationId": "getProjectCatalogMetadataRelations",
@@ -3586,7 +4165,7 @@
     "/metadata/{projectId}/questions/generate": {
       "get": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "Generate sample ai questions for the project",
         "operationId": "generateSampleQuestions",
@@ -3628,10 +4207,10 @@
     "/data/projects/{projectId}/table": {
       "get": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "List Tables",
-        "description": "See Data -> Catalog / List Tables for more details.",
+        "description": "See Data -\u003E Catalog / List Tables for more details.",
         "operationId": "listTables",
         "parameters": [
           {
@@ -3663,7 +4242,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}": {
       "get": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "Read Catalog",
         "operationId": "readCatalog",
@@ -3671,18 +4250,22 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "ID of the project",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           },
           {
             "name": "catalogId",
             "in": "path",
+            "description": "ID of the catalog",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": 846085284821991600
           }
         ],
         "responses": {
@@ -3712,7 +4295,7 @@
       },
       "delete": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "Delete Catalog",
         "operationId": "deleteCatalog",
@@ -3720,18 +4303,22 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "ID of the project",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           },
           {
             "name": "catalogId",
             "in": "path",
+            "description": "ID of the catalog",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": 846085284821991600
           }
         ],
         "responses": {
@@ -3744,7 +4331,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas": {
       "get": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "List Schemas",
         "operationId": "listSchemas",
@@ -3752,18 +4339,22 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "ID of the project",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           },
           {
             "name": "catalogId",
             "in": "path",
+            "description": "ID of the catalog",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": 846085284821991600
           }
         ],
         "responses": {
@@ -3797,7 +4388,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables": {
       "get": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "List Tables",
         "operationId": "listTables_1",
@@ -3805,26 +4396,32 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "ID of the project",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           },
           {
             "name": "catalogId",
             "in": "path",
+            "description": "ID of the catalog",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": 846085284821991600
           },
           {
             "name": "schemaName",
             "in": "path",
+            "description": "Name of the schema",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "public"
           }
         ],
         "responses": {
@@ -3869,10 +4466,101 @@
         }
       }
     },
+    "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/statistics": {
+      "get": {
+        "tags": [
+          "Data -\u003E Catalogs"
+        ],
+        "summary": "Table Statistics",
+        "operationId": "getTableStatistics",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "ID of the project",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "mtKDhe1U"
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "description": "ID of the catalog",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": 846085284821991600
+          },
+          {
+            "name": "schemaName",
+            "in": "path",
+            "description": "Name of the schema",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "public"
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "description": "Name of the table",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "actor"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableStatistics"
+                },
+                "examples": {
+                  "Table Statistics": {
+                    "description": "Table Statistics",
+                    "value": {
+                      "catalogId": "846085284821991568",
+                      "schemaName": "public",
+                      "tableName": "actor",
+                      "columnStatistics": [
+                        {
+                          "columnName": "actor_id",
+                          "distinctFraction": -1
+                        },
+                        {
+                          "columnName": "first_name",
+                          "distinctFraction": -0.64
+                        },
+                        {
+                          "columnName": "last_name",
+                          "distinctFraction": -0.605
+                        },
+                        {
+                          "columnName": "last_update",
+                          "distinctFraction": 1
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/isCached": {
       "get": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "Table is Cached",
         "operationId": "isCached",
@@ -3880,34 +4568,42 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "ID of the project",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           },
           {
             "name": "catalogId",
             "in": "path",
+            "description": "ID of the catalog",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": 846085284821991600
           },
           {
             "name": "schemaName",
             "in": "path",
+            "description": "Name of the schema",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "public"
           },
           {
             "name": "tableName",
             "in": "path",
+            "description": "Name of the table",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "actor"
           }
         ],
         "responses": {
@@ -3935,7 +4631,7 @@
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/columns": {
       "get": {
         "tags": [
-          "Data -> Catalogs"
+          "Data -\u003E Catalogs"
         ],
         "summary": "List Columns",
         "operationId": "listColumns_1",
@@ -3943,34 +4639,42 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "ID of the project",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           },
           {
             "name": "catalogId",
             "in": "path",
+            "description": "ID of the catalog",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": 846085284821991600
           },
           {
             "name": "schemaName",
             "in": "path",
+            "description": "Name of the schema",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "public"
           },
           {
             "name": "tableName",
             "in": "path",
+            "description": "Name of the table",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "actor"
           }
         ],
         "responses": {
@@ -4216,7 +4920,7 @@
     "/data/projects/{projectId}/catalog/{catalogId}/cache/status": {
       "get": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Get All Cache Statuses of a Catalog",
         "operationId": "getCacheStatusByCatalog",
@@ -4224,18 +4928,22 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "Project ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           },
           {
             "name": "catalogId",
             "in": "path",
+            "description": "Catalog ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": 627249916703408600
           }
         ],
         "responses": {
@@ -4258,7 +4966,7 @@
     "/data/projects/{projectId}/cache/{cacheId}/status": {
       "get": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Get Cache Status",
         "operationId": "getCacheStatus",
@@ -4266,26 +4974,32 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "Project ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           },
           {
             "name": "cacheId",
             "in": "path",
+            "description": "Cache ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "960bd651-7b3c-4511-9a88-18e14ac7742a"
           },
           {
             "name": "excludeLogs",
             "in": "query",
+            "description": "Exclude Logs",
             "required": false,
             "schema": {
               "type": "boolean"
-            }
+            },
+            "example": true
           }
         ],
         "responses": {
@@ -4305,7 +5019,7 @@
     "/data/projects/{projectId}/cache/status": {
       "get": {
         "tags": [
-          "Data -> Cache"
+          "Data -\u003E Cache"
         ],
         "summary": "Get All Cache Statuses of a Project",
         "operationId": "getCacheStatusByProject",
@@ -4313,10 +5027,12 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "Project ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           }
         ],
         "responses": {
@@ -4339,10 +5055,10 @@
     "/data/projects/{projectId}/bitable": {
       "get": {
         "tags": [
-          "Data -> Internal Tables"
+          "Data -\u003E Internal Tables"
         ],
         "summary": "List BI Tables",
-        "description": "See Data -> Catalog / List Tables for more details.",
+        "description": "See Data -\u003E Catalog / List Tables for more details.",
         "operationId": "listBiTables",
         "parameters": [
           {
@@ -4489,7 +5205,7 @@
     "/ai/{projectId}/agent/history": {
       "get": {
         "tags": [
-          "AI -> Agent"
+          "AI -\u003E Agent"
         ],
         "summary": "Get AI Chat History",
         "operationId": "getChatHistory",
@@ -4574,7 +5290,7 @@
     "/projects/{projectId}/apiKeys/{apiKeyId}": {
       "delete": {
         "tags": [
-          "Projects -> Api Key"
+          "Projects -\u003E Api Key"
         ],
         "summary": "Delete API Key",
         "operationId": "deleteApiKey",
@@ -4582,18 +5298,22 @@
           {
             "name": "projectId",
             "in": "path",
+            "description": "Project ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "mtKDhe1U"
           },
           {
             "name": "apiKeyId",
             "in": "path",
+            "description": "API Key ID",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "21fd1a8d-88d5-4295-b792-5b2113138057"
           }
         ],
         "responses": {
@@ -4606,7 +5326,7 @@
     "/metadata/{projectId}/golden-sqls/{id}": {
       "delete": {
         "tags": [
-          "Data -> Metadata"
+          "Data -\u003E Metadata"
         ],
         "summary": "Delete golden sql from the project.",
         "operationId": "deleteGoldenSql",
@@ -4648,7 +5368,7 @@
     "/data/projects/{projectId}/semantic-catalogs/{catalogId}/table/{tableId}": {
       "delete": {
         "tags": [
-          "Data -> Semantic Catalogs"
+          "Data -\u003E Semantic Catalogs"
         ],
         "summary": "Delete a semantic table",
         "operationId": "deleteSemanticTable",
@@ -4732,9 +5452,66 @@
           "createdAt": {
             "type": "string",
             "description": "The date and time the project was created"
+          },
+          "owner": {
+            "type": "string",
+            "description": "The owner of the project"
+          },
+          "workspaceId": {
+            "type": "string",
+            "description": "The workspace to which the project belongs"
           }
         },
         "description": "Project"
+      },
+      "WorkspaceRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the workspace"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descriptive text about the workspace"
+          }
+        }
+      },
+      "Workspace": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the workspace",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the workspace"
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "The unique identifier of the user who created the workspace",
+            "format": "uuid"
+          },
+          "organizationId": {
+            "type": "string",
+            "description": "The unique identifier of the organization to which the workspace belongs",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descriptive text about the workspace"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "The date and time the workspace was created"
+          },
+          "defaultWorkspace": {
+            "type": "boolean",
+            "description": "Whether the workspace is the default workspace for the organization.\n\n\n This is a backward compatibility field in order to create projects in the default workspace if the workspace is not specified."
+          }
+        }
       },
       "MetadataColumn": {
         "type": "object",
@@ -4938,7 +5715,7 @@
           },
           "name": {
             "type": "string",
-            "description": "The name of the query.\n\n This is the name of the query which will be used in the sql query.\n e.g. SELECT * FROM \"peaka\".\"query\".\"<name>\""
+            "description": "The name of the query.\n\n This is the name of the query which will be used in the sql query.\n e.g. SELECT * FROM \"peaka\".\"query\".\"\u003Cname\u003E\""
           },
           "inputQuery": {
             "type": "string",
@@ -5639,6 +6416,37 @@
           }
         }
       },
+      "Organization": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the organization",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the organization"
+          },
+          "owner": {
+            "type": "string",
+            "description": "The unique identifier of the user who created the organization",
+            "format": "uuid"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "The date and time the organization was created"
+          },
+          "iconFileId": {
+            "type": "string",
+            "description": "The identifier of the file that contains the icon of the organization"
+          },
+          "description": {
+            "type": "string",
+            "description": "Descriptive text about the organization"
+          }
+        }
+      },
       "Schema": {
         "type": "object",
         "properties": {
@@ -5653,6 +6461,44 @@
           "schemaName": {
             "type": "string",
             "description": "The name of the schema."
+          }
+        }
+      },
+      "ColumnStatistics": {
+        "type": "object",
+        "properties": {
+          "columnName": {
+            "type": "string",
+            "description": "The name of the column."
+          },
+          "distinctFraction": {
+            "type": "number",
+            "description": "The estimated fraction of distinct values in a column compared to the total number of rows in the table. It helps in query optimization, statistics collection, and cardinality estimation in database systems.",
+            "format": "double"
+          }
+        }
+      },
+      "TableStatistics": {
+        "type": "object",
+        "properties": {
+          "catalogId": {
+            "type": "string",
+            "description": "The ID of the catalog."
+          },
+          "schemaName": {
+            "type": "string",
+            "description": "The name of the schema."
+          },
+          "tableName": {
+            "type": "string",
+            "description": "The name of the table."
+          },
+          "columnStatistics": {
+            "type": "array",
+            "description": "Statistics for each column in the table.",
+            "items": {
+              "$ref": "#/components/schemas/ColumnStatistics"
+            }
           }
         }
       },

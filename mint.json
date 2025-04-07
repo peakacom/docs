@@ -323,13 +323,40 @@
       ]
     },
     {
-      "group": "Projects",
+      "group": "Organization -> Organizations",
       "pages": [
-        "api-reference/projects/read-project",
-        "api-reference/projects/update-project",
-        "api-reference/projects/delete-project",
-        "api-reference/projects/list-projects",
-        "api-reference/projects/create-project"
+        "api-reference/organization->-organizations/list-organizations",
+        "api-reference/organization->-organizations/read-organization"
+      ]
+    },
+    {
+      "group": "Organization -> Workspaces",
+      "pages": [
+        "api-reference/organization->-workspaces/read-workspace",
+        "api-reference/organization->-workspaces/update-workspace",
+        "api-reference/organization->-workspaces/delete-workspace",
+        "api-reference/organization->-workspaces/list-workspaces",
+        "api-reference/organization->-workspaces/create-workspace"
+      ]
+    },
+    {
+      "group": "Organization -> Projects",
+      "pages": [
+        "api-reference/organization->-projects/read-project",
+        "api-reference/organization->-projects/update-project",
+        "api-reference/organization->-projects/delete-project",
+        "api-reference/organization->-projects/list-projects",
+        "api-reference/organization->-projects/create-project"
+      ]
+    },
+    {
+      "group": "Projects (Deprecated)",
+      "pages": [
+        "api-reference/projects-deprecated/read-project",
+        "api-reference/projects-deprecated/update-project",
+        "api-reference/projects-deprecated/delete-project",
+        "api-reference/projects-deprecated/list-projects",
+        "api-reference/projects-deprecated/create-project"
       ]
     },
     {
@@ -363,7 +390,8 @@
         "api-reference/data->-catalogs/delete-catalog",
         "api-reference/data->-catalogs/list-schemas",
         "api-reference/data->-catalogs/list-tables",
-        "api-reference/data->-catalogs/list-columns"
+        "api-reference/data->-catalogs/list-columns",
+        "api-reference/data->-catalogs/table-statistics"
       ]
     },
     {
