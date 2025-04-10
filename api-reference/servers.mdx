@@ -3,7 +3,6 @@ title: 'Servers'
 description: 'Available Servers'
 ---
 
-import Highlight from '@site/src/components/Highlight'; // Example import for custom components (optional)
 
 ## Overview
 
@@ -36,18 +35,17 @@ Both zones offer identical API functionality, endpoints, and features. The only 
 
 To interact with the Peaka API, include the appropriate base URL (depending on your chosen zone) in your API requests. For example:
 
-<Highlight>
 
-    For a US-based request to retrieve data:
+For a US-based request to retrieve data:
 
-    ```bash
-    GET https://partner.peaka.studio/api/v1/supportedDrivers
-    ```
+```bash
+GET https://partner.peaka.studio/api/v1/supportedDrivers
+```
 
-    For an EU-based request to retrieve data:
+For an EU-based request to retrieve data:
 
-    ```bash
-    GET https://eu.partner.peaka.studio/api/v1/supportedDrivers
-    ```
-</Highlight>
+```bash
+GET https://eu.partner.peaka.studio/api/v1/supportedDrivers
+```
+
 Ensure that your API key or authentication token is included in the request headers as specified in the  section of this documentation.
