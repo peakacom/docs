@@ -95,6 +95,14 @@
       "pages": ["api-reference/introduction"]
     },
     {
+      "group": "API Documentation",
+      "pages": ["api-reference/servers"]
+    },
+    {
+      "group": "API Documentation",
+      "pages": ["api-reference/authentication"]
+    },
+    {
       "group": "SQL",
       "pages": ["sql/introduction"]
     },

@@ -1,0 +1,53 @@
+---
+title: 'Servers'
+description: 'Available Servers'
+---
+
+import Highlight from '@site/src/components/Highlight'; // Example import for custom components (optional)
+
+## Overview
+
+The Peaka API is hosted in two geographic zones to ensure optimal performance, compliance, and data residency for users worldwide. The available zones are the United States (US) and Europe (EU). Each zone has its own server endpoint, allowing you to choose the one that best suits your location, regulatory requirements, and latency needs.
+
+Below are the server endpoints for each zone:
+
+- **US Zone**: `https://partner.peaka.studio/api/v1`
+- **EU Zone**: `https://eu.partner.peaka.studio/api/v1`
+
+## Choosing the Right Zone
+
+When deciding which server to use, consider the following factors:
+
+### Geographic Proximity
+
+- Use the **US Zone** if your operations or users are primarily based in North America. This reduces latency and improves performance for users in that region.
+- Use the **EU Zone** if your operations or users are primarily based in Europe or if you need to comply with EU data protection regulations, such as GDPR.
+
+### Compliance and Data Residency
+
+- The EU zone is designed to meet strict data residency and privacy requirements, making it ideal for organizations operating under European regulations.
+- The US zone is optimized for users in North America but may also be suitable for global operations outside the EU, depending on your compliance needs.
+
+### API Functionality
+
+Both zones offer identical API functionality, endpoints, and features. The only difference is the geographic location of the servers and the domain used to access them.
+
+## Making API Requests
+
+To interact with the Peaka API, include the appropriate base URL (depending on your chosen zone) in your API requests. For example:
+
+<Highlight>
+
+    For a US-based request to retrieve data:
+
+    ```bash
+    GET https://partner.peaka.studio/api/v1/supportedDrivers
+    ```
+
+    For an EU-based request to retrieve data:
+
+    ```bash
+    GET https://eu.partner.peaka.studio/api/v1/supportedDrivers
+    ```
+</Highlight>
+Ensure that your API key or authentication token is included in the request headers as specified in the  section of this documentation.
