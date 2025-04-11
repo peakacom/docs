@@ -92,7 +92,7 @@
     },
     {
       "group": "API Documentation",
-      "pages": ["api-reference/introduction", "api-reference/servers", "api-reference/authentication"]
+      "pages": ["api-reference/introduction"]
     },
     {
       "group": "SQL",
