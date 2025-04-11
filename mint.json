@@ -484,10 +484,10 @@
     {
       "group": "AI -> Agent",
       "pages": [
-        "api-reference/ai->-agent/update-ai-chat-history-thread-name",
-        "api-reference/ai->-agent/delete-ai-chat-history",
-        "api-reference/ai->-agent/ask-question-to-ai-agent",
-        "api-reference/ai->-agent/get-ai-chat-history"
+        "api-reference/ai-agent/update-ai-chat-history-thread-name",
+        "api-reference/ai-agent/delete-ai-chat-history",
+        "api-reference/ai-agent/ask-question-to-ai-agent",
+        "api-reference/ai-agent/get-ai-chat-history"
       ]
     }
   ],
