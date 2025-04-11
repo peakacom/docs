@@ -325,28 +325,28 @@
     {
       "group": "Organization -> Organizations",
       "pages": [
-        "api-reference/organization->-organizations/list-organizations",
-        "api-reference/organization->-organizations/read-organization"
+        "api-reference/organization-organizations/list-organizations",
+        "api-reference/organization-organizations/read-organization"
       ]
     },
     {
       "group": "Organization -> Workspaces",
       "pages": [
-        "api-reference/organization->-workspaces/read-workspace",
-        "api-reference/organization->-workspaces/update-workspace",
-        "api-reference/organization->-workspaces/delete-workspace",
-        "api-reference/organization->-workspaces/list-workspaces",
-        "api-reference/organization->-workspaces/create-workspace"
+        "api-reference/organization-workspaces/read-workspace",
+        "api-reference/organization-workspaces/update-workspace",
+        "api-reference/organization-workspaces/delete-workspace",
+        "api-reference/organization-workspaces/list-workspaces",
+        "api-reference/organization-workspaces/create-workspace"
       ]
     },
     {
       "group": "Organization -> Projects",
       "pages": [
-        "api-reference/organization->-projects/read-project",
-        "api-reference/organization->-projects/update-project",
-        "api-reference/organization->-projects/delete-project",
-        "api-reference/organization->-projects/list-projects",
-        "api-reference/organization->-projects/create-project"
+        "api-reference/organization-projects/read-project",
+        "api-reference/organization-projects/update-project",
+        "api-reference/organization-projects/delete-project",
+        "api-reference/organization-projects/list-projects",
+        "api-reference/organization-projects/create-project"
       ]
     },
     {
@@ -362,9 +362,9 @@
     {
       "group": "Projects -> Api Key",
       "pages": [
-        "api-reference/projects->-api-key/list-api-keys",
-        "api-reference/projects->-api-key/create-api-key",
-        "api-reference/projects->-api-key/delete-api-key"
+        "api-reference/projects-api-key/list-api-keys",
+        "api-reference/projects-api-key/create-api-key",
+        "api-reference/projects-api-key/delete-api-key"
       ]
     },
     {
@@ -384,69 +384,69 @@
     {
       "group": "Data -> Catalogs",
       "pages": [
-        "api-reference/data->-catalogs/list-catalogs",
-        "api-reference/data->-catalogs/create-catalog",
-        "api-reference/data->-catalogs/read-catalog",
-        "api-reference/data->-catalogs/delete-catalog",
-        "api-reference/data->-catalogs/list-schemas",
-        "api-reference/data->-catalogs/list-tables",
-        "api-reference/data->-catalogs/list-columns",
-        "api-reference/data->-catalogs/table-statistics"
+        "api-reference/data-catalogs/list-catalogs",
+        "api-reference/data-catalogs/create-catalog",
+        "api-reference/data-catalogs/read-catalog",
+        "api-reference/data-catalogs/delete-catalog",
+        "api-reference/data-catalogs/list-schemas",
+        "api-reference/data-catalogs/list-tables",
+        "api-reference/data-catalogs/list-columns",
+        "api-reference/data-catalogs/table-statistics"
       ]
     },
     {
       "group": "Data -> Internal Tables",
       "pages": [
-        "api-reference/data->-internal-tables/create-table",
-        "api-reference/data->-internal-tables/delete-table",
-        "api-reference/data->-internal-tables/list-tables",
-        "api-reference/data->-internal-tables/add-column",
-        "api-reference/data->-internal-tables/update-column",
-        "api-reference/data->-internal-tables/delete-column",
-        "api-reference/data->-internal-tables/list-columns",
-        "api-reference/data->-internal-tables/create-bi-table",
-        "api-reference/data->-internal-tables/delete-bi-table",
-        "api-reference/data->-internal-tables/list-bi-tables",
-        "api-reference/data->-internal-tables/add-bi-column",
-        "api-reference/data->-internal-tables/update-bi-column",
-        "api-reference/data->-internal-tables/delete-bi-column",
-        "api-reference/data->-internal-tables/list-bi-columns"
+        "api-reference/data-internal-tables/create-table",
+        "api-reference/data-internal-tables/delete-table",
+        "api-reference/data-internal-tables/list-tables",
+        "api-reference/data-internal-tables/add-column",
+        "api-reference/data-internal-tables/update-column",
+        "api-reference/data-internal-tables/delete-column",
+        "api-reference/data-internal-tables/list-columns",
+        "api-reference/data-internal-tables/create-bi-table",
+        "api-reference/data-internal-tables/delete-bi-table",
+        "api-reference/data-internal-tables/list-bi-tables",
+        "api-reference/data-internal-tables/add-bi-column",
+        "api-reference/data-internal-tables/update-bi-column",
+        "api-reference/data-internal-tables/delete-bi-column",
+        "api-reference/data-internal-tables/list-bi-columns"
       ]
     },
     {
       "group": "Data -> Queries",
       "pages": [
-        "api-reference/data->-queries/read-query",
-        "api-reference/data->-queries/update-query",
-        "api-reference/data->-queries/delete-query",
-        "api-reference/data->-queries/list-queries",
-        "api-reference/data->-queries/create-query",
-        "api-reference/data->-queries/execute-query"
+        "api-reference/data-queries/read-query",
+        "api-reference/data-queries/update-query",
+        "api-reference/data-queries/delete-query",
+        "api-reference/data-queries/list-queries",
+        "api-reference/data-queries/create-query",
+        "api-reference/data-queries/execute-query"
       ]
     },
     {
       "group": "Data -> Semantic Catalogs",
       "pages": [
-        "api-reference/data->-semantic-catalogs/create-a-semantic-catalog",
-        "api-reference/data->-semantic-catalogs/create-a-semantic-table",
-        "api-reference/data->-semantic-catalogs/share-a-semantic-table",
-        "api-reference/data->-semantic-catalogs/delete-a-semantic-table"
+        "api-reference/data-semantic-catalogs/create-a-semantic-catalog",
+        "api-reference/data-semantic-catalogs/create-a-semantic-table",
+        "api-reference/data-semantic-catalogs/share-a-semantic-table",
+        "api-reference/data-semantic-catalogs/delete-a-semantic-table"
       ]
     },
     {
       "group": "Data -> Cache",
       "pages": [
-        "api-reference/data->-cache/create-cache",
-        "api-reference/data->-cache/create-batch-cache",
-        "api-reference/data->-cache/update-cache-settings",
-        "api-reference/data->-cache/delete-cache",
+        "api-reference/data-cache/create-cache",
+        "api-reference/data-cache/create-batch-cache",
+        "api-reference/data-cache/update-cache-settings",
+        "api-reference/data-cache/delete-cache",
 
-        "api-reference/data->-cache/update-cache-incrementally",
-        "api-reference/data->-cache/full-refresh-cache",
+        "api-reference/data-cache/update-cache-incrementally",
+        "api-reference/data-cache/full-refresh-cache",
 
-        "api-reference/data->-cache/get-cache-status",
-        "api-reference/data->-cache/get-all-cache-statuses-of-a-project",
-        "api-reference/data->-cache/get-all-cache-statuses-of-a-catalog"
+        "api-reference/data-cache/get-cache-status",
+        "api-reference/data-cache/get-all-cache-statuses-of-a-project",
+        "api-reference/data-cache/get-all-cache-statuses-of-a-catalog"
       ]
     },
     {
@@ -467,18 +467,18 @@
     {
       "group": "Data -> Metadata",
       "pages": [
-        "api-reference/data->-metadata/update-metadata",
-        "api-reference/data->-metadata/update-relation-from-metadata",
-        "api-reference/data->-metadata/delete-relation-from-metadata",
-        "api-reference/data->-metadata/generate-categorical-values-from-the-the-column",
-        "api-reference/data->-metadata/generate-semantics-for-the-table",
-        "api-reference/data->-metadata/add-relation-to-metadata",
-        "api-reference/data->-metadata/list-of-golden-sqls-for-the-project",
-        "api-reference/data->-metadata/create-golden-sql-for-the-project",
-        "api-reference/data->-metadata/get-project-metadata",
-        "api-reference/data->-metadata/get-project-catalog-metadata-relations",
-        "api-reference/data->-metadata/generate-sample-ai-questions-for-the-project",
-        "api-reference/data->-metadata/delete-golden-sql-from-the-project"
+        "api-reference/data-metadata/update-metadata",
+        "api-reference/data-metadata/update-relation-from-metadata",
+        "api-reference/data-metadata/delete-relation-from-metadata",
+        "api-reference/data-metadata/generate-categorical-values-from-the-the-column",
+        "api-reference/data-metadata/generate-semantics-for-the-table",
+        "api-reference/data-metadata/add-relation-to-metadata",
+        "api-reference/data-metadata/list-of-golden-sqls-for-the-project",
+        "api-reference/data-metadata/create-golden-sql-for-the-project",
+        "api-reference/data-metadata/get-project-metadata",
+        "api-reference/data-metadata/get-project-catalog-metadata-relations",
+        "api-reference/data-metadata/generate-sample-ai-questions-for-the-project",
+        "api-reference/data-metadata/delete-golden-sql-from-the-project"
       ]
     },
     {
