@@ -1,0 +1,544 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Peaka",
+  "colors": {
+    "primary": "#5F62F0",
+    "light": "#9EA0F6",
+    "dark": "#4547A9"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction"
+            ]
+          },
+          {
+            "group": "Project Operations",
+            "pages": [
+              "project-operations/how-to-create-a-project",
+              "project-operations/clone-a-project",
+              "project-operations/delete-a-project",
+              "project-operations/rename-a-project",
+              "project-operations/send-a-copy-of-a-project",
+              "project-operations/share-your-project"
+            ]
+          },
+          {
+            "group": "Connecting Your Data",
+            "pages": [
+              "connecting-your-data/peaka-query",
+              "connecting-your-data/peaka-table",
+              "connecting-your-data/peaka-big-table",
+              "connecting-your-data/differences-of-peaka-table-and-peaka-big-table",
+              "connecting-your-data/creating-query",
+              "connecting-your-data/creating-peaka-table",
+              "connecting-your-data/add-connection",
+              "connecting-your-data/what-is-catalog-schema-virtual-table"
+            ]
+          },
+          {
+            "group": "CDC Setup",
+            "pages": [
+              "cdc-setup/cdc-postgresql-setup",
+              "cdc-setup/cdc-mysql-setup",
+              "cdc-setup/cdc-mongodb-setup",
+              "cdc-setup/cdc-mariadb-setup",
+              "cdc-setup/cdc-oracle-setup"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API Documentation",
+            "pages": [
+              "api-reference/introduction",
+              "api-reference/servers",
+              "api-reference/authentication"
+            ]
+          },
+          {
+            "group": "Organization -> Organizations",
+            "pages": [
+              "api-reference/organization-organizations/list-organizations",
+              "api-reference/organization-organizations/read-organization"
+            ]
+          },
+          {
+            "group": "Organization -> Workspaces",
+            "pages": [
+              "api-reference/organization-workspaces/read-workspace",
+              "api-reference/organization-workspaces/update-workspace",
+              "api-reference/organization-workspaces/delete-workspace",
+              "api-reference/organization-workspaces/list-workspaces",
+              "api-reference/organization-workspaces/create-workspace"
+            ]
+          },
+          {
+            "group": "Organization -> Projects",
+            "pages": [
+              "api-reference/organization-projects/read-project",
+              "api-reference/organization-projects/update-project",
+              "api-reference/organization-projects/delete-project",
+              "api-reference/organization-projects/list-projects",
+              "api-reference/organization-projects/create-project"
+            ]
+          },
+          {
+            "group": "Projects (Deprecated)",
+            "pages": [
+              "api-reference/projects-deprecated/read-project",
+              "api-reference/projects-deprecated/update-project",
+              "api-reference/projects-deprecated/delete-project",
+              "api-reference/projects-deprecated/list-projects",
+              "api-reference/projects-deprecated/create-project"
+            ]
+          },
+          {
+            "group": "Projects -> Api Key",
+            "pages": [
+              "api-reference/projects-api-key/list-api-keys",
+              "api-reference/projects-api-key/create-api-key",
+              "api-reference/projects-api-key/delete-api-key"
+            ]
+          },
+          {
+            "group": "Connections",
+            "pages": [
+              "api-reference/connections/get-connection",
+              "api-reference/connections/update-connection",
+              "api-reference/connections/delete-connection",
+              "api-reference/connections/list-connections",
+              "api-reference/connections/create-connection",
+              "api-reference/connections/get-connection-detail",
+              "api-reference/connections/list-connection-config",
+              "api-reference/connections/get-connection-config",
+              "api-reference/connections/oauth2-callback"
+            ]
+          },
+          {
+            "group": "Data -> Catalogs",
+            "pages": [
+              "api-reference/data-catalogs/list-catalogs",
+              "api-reference/data-catalogs/create-catalog",
+              "api-reference/data-catalogs/read-catalog",
+              "api-reference/data-catalogs/delete-catalog",
+              "api-reference/data-catalogs/list-schemas",
+              "api-reference/data-catalogs/list-tables",
+              "api-reference/data-catalogs/list-columns",
+              "api-reference/data-catalogs/table-statistics"
+            ]
+          },
+          {
+            "group": "Data -> Internal Tables",
+            "pages": [
+              "api-reference/data-internal-tables/create-table",
+              "api-reference/data-internal-tables/delete-table",
+              "api-reference/data-internal-tables/list-tables",
+              "api-reference/data-internal-tables/add-column",
+              "api-reference/data-internal-tables/update-column",
+              "api-reference/data-internal-tables/delete-column",
+              "api-reference/data-internal-tables/list-columns",
+              "api-reference/data-internal-tables/create-bi-table",
+              "api-reference/data-internal-tables/delete-bi-table",
+              "api-reference/data-internal-tables/list-bi-tables",
+              "api-reference/data-internal-tables/add-bi-column",
+              "api-reference/data-internal-tables/update-bi-column",
+              "api-reference/data-internal-tables/delete-bi-column",
+              "api-reference/data-internal-tables/list-bi-columns"
+            ]
+          },
+          {
+            "group": "Data -> Queries",
+            "pages": [
+              "api-reference/data-queries/read-query",
+              "api-reference/data-queries/update-query",
+              "api-reference/data-queries/delete-query",
+              "api-reference/data-queries/list-queries",
+              "api-reference/data-queries/create-query",
+              "api-reference/data-queries/execute-query"
+            ]
+          },
+          {
+            "group": "Data -> Semantic Catalogs",
+            "pages": [
+              "api-reference/data-semantic-catalogs/create-a-semantic-catalog",
+              "api-reference/data-semantic-catalogs/create-a-semantic-table",
+              "api-reference/data-semantic-catalogs/share-a-semantic-table",
+              "api-reference/data-semantic-catalogs/delete-a-semantic-table"
+            ]
+          },
+          {
+            "group": "Data -> Cache",
+            "pages": [
+              "api-reference/data-cache/create-cache",
+              "api-reference/data-cache/create-batch-cache",
+              "api-reference/data-cache/update-cache-settings",
+              "api-reference/data-cache/delete-cache",
+              "api-reference/data-cache/update-cache-incrementally",
+              "api-reference/data-cache/full-refresh-cache",
+              "api-reference/data-cache/get-cache-status",
+              "api-reference/data-cache/get-all-cache-statuses-of-a-project",
+              "api-reference/data-cache/get-all-cache-statuses-of-a-catalog"
+            ]
+          },
+          {
+            "group": "Embedded Peaka Api",
+            "pages": [
+              "api-reference/embedded-peaka-api/init-session-deprecated",
+              "api-reference/embedded-peaka-api/init-session"
+            ]
+          },
+          {
+            "group": "Supported Drivers",
+            "pages": [
+              "api-reference/supported-drivers/list-supported-drivers",
+              "api-reference/supported-drivers/get-sql-alchemy-driver",
+              "api-reference/supported-drivers/get-jdbc-driver"
+            ]
+          },
+          {
+            "group": "Data -> Metadata",
+            "pages": [
+              "api-reference/data-metadata/update-metadata",
+              "api-reference/data-metadata/update-relation-from-metadata",
+              "api-reference/data-metadata/delete-relation-from-metadata",
+              "api-reference/data-metadata/generate-categorical-values-from-the-the-column",
+              "api-reference/data-metadata/generate-semantics-for-the-table",
+              "api-reference/data-metadata/add-relation-to-metadata",
+              "api-reference/data-metadata/list-of-golden-sqls-for-the-project",
+              "api-reference/data-metadata/create-golden-sql-for-the-project",
+              "api-reference/data-metadata/get-project-metadata",
+              "api-reference/data-metadata/get-project-catalog-metadata-relations",
+              "api-reference/data-metadata/generate-sample-ai-questions-for-the-project",
+              "api-reference/data-metadata/delete-golden-sql-from-the-project"
+            ]
+          },
+          {
+            "group": "AI -> Agent",
+            "pages": [
+              "api-reference/ai-agent/update-ai-chat-history-thread-name",
+              "api-reference/ai-agent/delete-ai-chat-history",
+              "api-reference/ai-agent/ask-question-to-ai-agent",
+              "api-reference/ai-agent/get-ai-chat-history"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Embedded Peaka",
+        "groups": [
+          {
+            "group": "Embedded Peaka",
+            "pages": [
+              "embedded-peaka/introduction",
+              "embedded-peaka/data-source",
+              "embedded-peaka/data-management-backend",
+              "embedded-peaka/data-management-tool-with-ui"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "SQL Reference",
+        "groups": [
+          {
+            "group": "SQL",
+            "pages": [
+              "sql/introduction"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "sql/reference/describe",
+              "sql/reference/execute",
+              "sql/reference/prepare",
+              "sql/reference/select",
+              "sql/reference/show-catalogs",
+              "sql/reference/show-columns",
+              "sql/reference/show-schemas",
+              "sql/reference/use",
+              "sql/reference/values"
+            ]
+          },
+          {
+            "group": "Data Types",
+            "pages": [
+              "sql/reference/types"
+            ]
+          },
+          {
+            "group": "Functions",
+            "pages": [
+              "sql/functions/aggregate",
+              "sql/functions/array",
+              "sql/functions/binary",
+              "sql/functions/bitwise",
+              "sql/functions/comparison",
+              "sql/functions/conditional",
+              "sql/functions/conversion",
+              "sql/functions/datetime",
+              "sql/functions/decimal",
+              "sql/functions/hyperloglog",
+              "sql/functions/json",
+              "sql/functions/lambda",
+              "sql/functions/map",
+              "sql/functions/ml",
+              "sql/functions/qdigest",
+              "sql/functions/regexp",
+              "sql/functions/setdigest",
+              "sql/functions/string",
+              "sql/functions/table",
+              "sql/functions/teradata",
+              "sql/functions/url",
+              "sql/functions/uuid",
+              "sql/functions/window"
+            ]
+          },
+          {
+            "group": "Routines",
+            "pages": [
+              "sql/routines/introduction",
+              "sql/routines/examples",
+              "sql/routines/begin",
+              "sql/routines/case",
+              "sql/routines/declare",
+              "sql/routines/function",
+              "sql/routines/if",
+              "sql/routines/iterate",
+              "sql/routines/leave",
+              "sql/routines/loop",
+              "sql/routines/repeat",
+              "sql/routines/return",
+              "sql/routines/set",
+              "sql/routines/while"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integrations",
+        "groups": [
+          {
+            "group": "Integrations",
+            "pages": [
+              "integrations/activecampaign",
+              "integrations/airtable",
+              "integrations/amazon-redshift",
+              "integrations/amazon-rds",
+              "integrations/big-query",
+              "integrations/clickhouse",
+              "integrations/databricks",
+              "integrations/dynamics-365",
+              "integrations/elastic-search",
+              "integrations/excel-365",
+              "integrations/facebook-ads",
+              "integrations/firebase",
+              "integrations/freshdesk",
+              "integrations/github",
+              "integrations/google-ads",
+              "integrations/google-analytics",
+              "integrations/google-sheets",
+              "integrations/hubspot",
+              "integrations/instagram",
+              "integrations/intercom",
+              "integrations/jira",
+              "integrations/linkedin-ads",
+              "integrations/mailchimp-marketing",
+              "integrations/mailchimp-transactional",
+              "integrations/mariadb",
+              "integrations/mongodb",
+              "integrations/mssql",
+              "integrations/mysql",
+              "integrations/neo4j",
+              "integrations/odoo",
+              "integrations/openai",
+              "integrations/oracle",
+              "integrations/pinecone",
+              "integrations/pipedrive",
+              "integrations/postgresql",
+              "integrations/profitwell",
+              "integrations/provet-cloud",
+              "integrations/quickbooks-online",
+              "integrations/qdrant",
+              "integrations/salesforce",
+              "integrations/sap-hana",
+              "integrations/segment",
+              "integrations/sendgrid",
+              "integrations/service-titan",
+              "integrations/shopify",
+              "integrations/single-store",
+              "integrations/slack",
+              "integrations/snowflake",
+              "integrations/stripe",
+              "integrations/twilio",
+              "integrations/upstash-vector",
+              "integrations/weaviate",
+              "integrations/youtube-analytics",
+              "integrations/zendesk",
+              "integrations/zoho-crm",
+              "integrations/zoom"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "BI Tools",
+        "groups": [
+          {
+            "group": "BI Tools",
+            "pages": [
+              "bi-tools/looker-studio",
+              "bi-tools/metabase",
+              "bi-tools/preset",
+              "bi-tools/superset",
+              "bi-tools/tableau",
+              "bi-tools/tableau-web-data"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "DB Drivers",
+        "groups": [
+          {
+            "group": "DB Drivers",
+            "pages": [
+              "db-drivers/python",
+              "db-drivers/nodejs",
+              "db-drivers/java"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "JEXL",
+        "groups": [
+          {
+            "group": "JEXL",
+            "pages": [
+              "jexl/using-jexl",
+              "jexl/advanced-jexl",
+              "jexl/built-in-functions",
+              "jexl/lodash-functions"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Flows",
+        "groups": [
+          {
+            "group": "Flows",
+            "pages": [
+              "flows/how-to-create-a-flow",
+              "flows/reusable-flows",
+              "flows/what-is-output-and-how-to-use-it",
+              "flows/set-flow-variable",
+              "flows/loops",
+              "flows/http-request",
+              "flows/switch-case",
+              "flows/success-fail",
+              "flows/connections"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "How to Guides",
+        "groups": [
+          {
+            "group": "How to Guides",
+            "pages": [
+              "how-to-guides/how-to-combine-connector-and-peaka-table-data",
+              "how-to-guides/how-to-filter-your-data-with-visual-filter",
+              "how-to-guides/how-to-change-flow-name",
+              "how-to-guides/how-to-generate-api-keys",
+              "how-to-guides/how-to-connect-databases-in-aws-using-iam-credentials",
+              "how-to-guides/how-to-manage-partner-api-key",
+              "how-to-guides/how-to-customize-embedded-ui-style",
+              "how-to-guides/how-to-create-oauth2-based-connections-via-peaka"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Blogs",
+        "groups": [
+          {
+            "group": "Blogs",
+            "pages": [
+              "blogs/rag-example-with-api"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Documentation",
+          "href": "https://docs.peaka.com",
+          "icon": "book-open-cover"
+        },
+        {
+          "anchor": "Community",
+          "href": "https://www.peaka.com/community",
+          "icon": "discord"
+        },
+        {
+          "anchor": "Blog",
+          "href": "https://www.peaka.com/blog",
+          "icon": "newspaper"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://www.peaka.com/"
+  },
+  "api": {
+    "mdx": {
+      "auth": {
+        "method": "bearer"
+      }
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@peaka.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Peaka Studio",
+      "href": "https://peaka.studio"
+    }
+  },
+  "footer": {
+    "socials": {
+      "twitter": "https://twitter.com/peakacom",
+      "github": "https://github.com/peakacom",
+      "linkedin": "https://www.linkedin.com/company/peaka"
+    }
+  },
+  "integrations": {
+    "gtm": {
+      "tagId": "GTM-NLBSKN8"
+    }
+  }
+}
