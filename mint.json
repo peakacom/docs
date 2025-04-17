@@ -186,6 +186,7 @@
         "integrations/hubspot",
         "integrations/instagram",
         "integrations/intercom",
+        "integrations/jira-service-management",
         "integrations/jira",
         "integrations/linkedin-ads",
         "integrations/mailchimp-marketing",
