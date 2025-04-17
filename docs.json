@@ -15,9 +15,7 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction"
-            ]
+            "pages": ["introduction"]
           },
           {
             "group": "Project Operations",
@@ -253,9 +251,7 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": [
-              "sql/introduction"
-            ]
+            "pages": ["sql/introduction"]
           },
           {
             "group": "Reference",
@@ -273,9 +269,7 @@
           },
           {
             "group": "Data Types",
-            "pages": [
-              "sql/reference/types"
-            ]
+            "pages": ["sql/reference/types"]
           },
           {
             "group": "Functions",
@@ -352,6 +346,7 @@
               "integrations/hubspot",
               "integrations/instagram",
               "integrations/intercom",
+              "integrations/jira-service-management",
               "integrations/jira",
               "integrations/linkedin-ads",
               "integrations/mailchimp-marketing",
@@ -477,9 +472,7 @@
         "groups": [
           {
             "group": "Blogs",
-            "pages": [
-              "blogs/rag-example-with-api"
-            ]
+            "pages": ["blogs/rag-example-with-api"]
           }
         ]
       }
