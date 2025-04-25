@@ -340,6 +340,7 @@
               "integrations/firebase",
               "integrations/freshdesk",
               "integrations/github",
+              "integrations/gorgias",
               "integrations/google-ads",
               "integrations/google-analytics",
               "integrations/google-sheets",
