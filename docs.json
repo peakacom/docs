@@ -348,6 +348,7 @@
               "integrations/intercom",
               "integrations/jira-service-management",
               "integrations/jira",
+              "integrations/klaviyo",
               "integrations/linkedin-ads",
               "integrations/mailchimp-marketing",
               "integrations/mailchimp-transactional",
