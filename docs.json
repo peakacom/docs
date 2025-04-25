@@ -364,6 +364,7 @@
               "integrations/pinecone",
               "integrations/pipedrive",
               "integrations/postgresql",
+              "integrations/posthog",
               "integrations/profitwell",
               "integrations/provet-cloud",
               "integrations/quickbooks-online",
