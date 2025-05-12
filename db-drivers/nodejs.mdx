@@ -28,9 +28,13 @@ const connection: Peaka = connectToPeaka("<YOUR_API_KEY>")
 ```typescript
 import type { QueryResult } from "@peaka/client";
 
-const iter: Iterator<QueryResult> = await connection.query(
-  'select * from <CATALOG_NAME>.<SCHEMA_NAME>.<TABLE_NAME> limit 100'
-);
+try{
+  const iter: Iterator<QueryResult> = await connection.query(
+    'select * from <CATALOG_NAME>.<SCHEMA_NAME>.<TABLE_NAME> limit 100'
+  );
+}catch(err){
+  console.error(err.response.data);
+})
 ```
 
 ### Iterate through the query results
@@ -50,3 +54,12 @@ const data: QueryData[] = await iter
   .map(r => r.data ?? [])
   .fold<QueryData[]>([], (row, acc) => [...acc, ...row]);
 ```
+
+## Handle the Errors
+Query errors are returned in the `error.response.data` object, and this object contains the following properties:
+
+| Error Property | Description |
+| :-- | :-- |
+| errorCode      | Code of error |
+| message        | Description of the error |
+| traceId        | The identifier that you can give Peaka Team to learn more about the error |
