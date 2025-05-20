@@ -383,6 +383,7 @@
               "integrations/twilio",
               "integrations/upstash-vector",
               "integrations/weaviate",
+              "integrations/xero-accounting",
               "integrations/youtube-analytics",
               "integrations/zendesk",
               "integrations/zoho-crm",
