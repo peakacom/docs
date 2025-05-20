@@ -354,6 +354,7 @@
               "integrations/mailchimp-marketing",
               "integrations/mailchimp-transactional",
               "integrations/mariadb",
+              "integrations/mixpanel",
               "integrations/mongodb",
               "integrations/mssql",
               "integrations/mysql",
