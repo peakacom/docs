@@ -112,9 +112,11 @@ Disadvantages:
   src="https://cdn.peaka.com/how-to-guides/how-to-create-oauth2-based-connections-via-peaka-2.png"
   alt="create connection request"
 />
+
 1. Your user clicks a button in your application in order to create connection. e.g.
-Google Analytics connection. The response of this http request will be done in Step
-4. 2. Your server should make a create connection request
+Google Analytics connection. The response of this http request will be done in Step 4.
+
+2. Your server should make a create connection request
 
 ```bash
 curl --request POST \
@@ -130,7 +132,7 @@ curl --request POST \
 
 Here `partner_callback_url` is the full url of your server endpoint responsible to complete creation process. We will use `partner_callback_url` at Step 10 and 11.
 
-1. As a response to the request in Step 2
+3. As a response to the request in Step 2
 
 ```bash
 200
@@ -144,7 +146,7 @@ Here `partner_callback_url` is the full url of your server endpoint responsible 
 
 Peaka will return the url of the consent screen of the Platform.
 
-1. Your server should return redirect:&#60;platform_consent_url&#62; to the browser as response to the request initiated at Step 1. Also it is a good practice to store `connection_id`and the location where the user has started the connection.
+4. Your server should return redirect:&#60;platform_consent_url&#62; to the browser as response to the request initiated at Step 1. Also it is a good practice to store `connection_id`and the location where the user has started the connection.
 
 An example for Step 1-4 can be given in Node.js as follows:
 
@@ -216,16 +218,16 @@ app.listen(PORT, () => {
 });
 ```
 
-1. Browser will automatically redirect to Platform Consent Screen.
-2. Browser shows the Consent Screen.
-3. User will approve the consents.
-4. Platform will return the Peaka OAuth app’s redirect (oauth2 callback of Peaka) redirect:https://peaka.studio/oauth2/callback
-5. Browser will be redirected to Peaka Callback.
-6. Peaka will return a redirection to your `partner_callback_url`:
+5. Browser will automatically redirect to Platform Consent Screen.
+6. Browser shows the Consent Screen.
+7. User will approve the consents.
+8. Platform will return the Peaka OAuth app’s redirect (oauth2 callback of Peaka) redirect:https://peaka.studio/oauth2/callback
+9. Browser will be redirected to Peaka Callback.
+10. Peaka will return a redirection to your `partner_callback_url`:
 
    &#60;partnerCallback &#62;?connectionId=&#60;connectionId &#62;?status=&#60; success or fail &#62;
 
-7. The browser will be redirected to your `<partner_callback_url>` with query parameters `connectionId` and `status`. If `status` is `success`, the connection has been created successfully. Otherwise, if `status` is `fail`, it indicates a problem, such as a platform error or a timeout in the flow.
+11. The browser will be redirected to your `<partner_callback_url>` with query parameters `connectionId` and `status`. If `status` is `success`, the connection has been created successfully. Otherwise, if `status` is `fail`, it indicates a problem, such as a platform error or a timeout in the flow.
 
 A typical implementation of Step 10 and Step 11 in Node.js:
 
@@ -315,7 +317,7 @@ curl --request POST \
 }'
 ```
 
-1. **You can use your own redirect url and then redirect it to the Peaka’s callback.**
+2. **You can use your own redirect url and then redirect it to the Peaka’s callback.**
 
 If you do the appropriate redirection, the implementation steps will be same as the above case.
 
@@ -396,7 +398,7 @@ app.listen(3000, () => {
 });
 ```
 
-1. **You can use your own callback url and the user’s browser will never redirected to Peaka’s domain.**
+3. **You can use your own callback url and the user’s browser will never redirected to Peaka’s domain.**
 
 This approach requires a different implementation compared to the previous cases when integrating your OAuth app.
 
@@ -427,7 +429,7 @@ curl --request POST \
 
 Here `redirect_url` under “credential” object should be the callback (or redirect) url you give to the Platform OAuth app.
 
-1. As a response to the request in (2)
+3. As a response to the request in (2)
 
 ```bash
 200
@@ -441,7 +443,7 @@ Here `redirect_url` under “credential” object should be the callback (or red
 
 Peaka will return the url of the consent screen of the Platform.
 
-1. Your server should return redirect:&#60;platform_consent_url&#62; to the browser as response to the request initiated at Step 1. Also it is a good practice to store `connection_id`and the location where the user has started the connection.
+4. Your server should return redirect:&#60;platform_consent_url&#62; to the browser as response to the request initiated at Step 1. Also it is a good practice to store `connection_id`and the location where the user has started the connection.
 
 An example for Step 1-4 can be given in Node.js as follows: (Note that it is not a complete working example)
 
@@ -499,12 +501,12 @@ app.listen(PORT, () => {
 });
 ```
 
-1. Browser will automatically redirect to Platform Consent Screen
-2. Browser shows the Consent Screen.
-3. User will approve the consents.
-4. Platform will return the your OAuth app’s redirect url - you give in Step 2 - with some query parameters.
-5. Browser will be redirected to your callback with some query parameters.
-6. A typical `redirect_url` will be
+5. Browser will automatically redirect to Platform Consent Screen
+6. Browser shows the Consent Screen.
+7. User will approve the consents.
+8. Platform will return the your OAuth app’s redirect url - you give in Step 2 - with some query parameters.
+9. Browser will be redirected to your callback with some query parameters.
+10. A typical `redirect_url` will be
 
 ```
 https://yourdomain.com/oauth2/mycallback?state=2def...&code=2asd...&...
@@ -522,7 +524,7 @@ curl --request POST \
 }'
 ```
 
-1. Response of Step 10 will be
+11. Response of Step 10 will be
 
 ```bash
 200
