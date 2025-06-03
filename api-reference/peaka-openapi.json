@@ -771,7 +771,7 @@
         "tags": [
           "Data -\u003E Metadata"
         ],
-        "summary": "Generate categorical values from the the column.",
+        "summary": "Generate categorical values from the column.",
         "operationId": "generateCategoricalColumnValues",
         "parameters": [
           {
@@ -825,6 +825,70 @@
           },
           "required": true
         },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Delete categorical values from the column meta and remove the scheduled job",
+        "operationId": "deleteCategoricalColumnValues",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "catalogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schemaName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "columnName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2370,6 +2434,49 @@
         }
       }
     },
+    "/metadata/{projectId}/refresh": {
+      "post": {
+        "tags": [
+          "Data -\u003E Metadata"
+        ],
+        "summary": "Refresh Project Metadata",
+        "operationId": "refreshMetaddata",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataRefreshMetadataRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/metadata/{projectId}/golden-sqls": {
       "get": {
         "tags": [
@@ -2520,6 +2627,70 @@
         "responses": {
           "200": {
             "description": "Table deleted successfully"
+          }
+        }
+      }
+    },
+    "/data/projects/{projectId}/table/{tableName}/import": {
+      "post": {
+        "tags": [
+          "Data -\u003E Internal Tables"
+        ],
+        "summary": "Import CSV",
+        "operationId": "importCsv",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "file",
+                  "request"
+                ],
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "description": "CSV file",
+                    "format": "binary"
+                  },
+                  "request": {
+                    "type": "string",
+                    "description": "JSON string with import config",
+                    "format": "json"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Import job created successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportJob"
+                }
+              }
+            }
           }
         }
       }
@@ -3199,16 +3370,26 @@
                   "description": "Create Airtable Catalog",
                   "value": {
                     "name": "exampleAirtableCatalog",
-                    "catalogType": "airtable",
                     "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
                   }
                 },
-                "Create AirTable": {
-                  "description": "Create AirTable",
+                "Create GoogleSheets Catalog": {
+                  "description": "Create GoogleSheets Catalog",
                   "value": {
-                    "name": "exampleAirtableCatalog",
-                    "catalogType": "airtable",
-                    "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
+                    "name": "exampleGoogleSheetsCatalog",
+                    "connectionId": "p3fb17l83-g9de-46mb-8823-yu9717e0ekl8",
+                    "extraParameters": {
+                      "sheets": [
+                        {
+                          "id": "1zBlTlAarZ94Z-xbo8T-GZEckV93VGSse7qq0_S0Kdzc",
+                          "name": "Customers"
+                        },
+                        {
+                          "id": "glkuldqwerqwAarZ94Z-xbo8T-GdfhsdgVGSse7qq0_S0Kdzc",
+                          "name": "Sales"
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -3217,25 +3398,6 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "Bad Request": {
-                    "description": "Bad Request",
-                    "value": {
-                      "errorCode": 100,
-                      "message": "There are already a catalog with same name!!"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "200": {
             "description": "Catalog created successfully",
             "content": {
@@ -3262,6 +3424,25 @@
                       "displayName": "exampleStripeCatalog",
                       "catalogType": "stripe",
                       "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "description": "Bad Request",
+                    "value": {
+                      "errorCode": 100,
+                      "message": "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -4266,6 +4447,22 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "catalogId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schemaName",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4481,6 +4678,46 @@
                   "items": {
                     "$ref": "#/components/schemas/Table"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/projects/{projectId}/table/{tableName}/sample": {
+      "get": {
+        "tags": [
+          "Data -\u003E Internal Tables"
+        ],
+        "summary": "Get Sample CSV",
+        "operationId": "csvSample",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tableName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample CSV returned successfully",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
                 }
               }
             }
@@ -5863,6 +6100,9 @@
           "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "frequency": {
+            "type": "string"
           }
         }
       },
@@ -6010,10 +6250,6 @@
             "type": "string",
             "description": "The ID of the cache."
           },
-          "appId": {
-            "type": "string",
-            "description": "The ID of the application for the cache request."
-          },
           "catalogId": {
             "type": "string",
             "description": "The ID of the catalog for the cache request."
@@ -6031,6 +6267,14 @@
           },
           "fullRefreshCacheSchedule": {
             "$ref": "#/components/schemas/Schedule"
+          },
+          "appId": {
+            "type": "string",
+            "writeOnly": true
+          },
+          "projectId": {
+            "type": "string",
+            "description": "The ID of the project for the cache request."
           }
         }
       },
@@ -6331,6 +6575,14 @@
           }
         }
       },
+      "MetadataRefreshMetadataRequest": {
+        "type": "object",
+        "properties": {
+          "catalogId": {
+            "type": "string"
+          }
+        }
+      },
       "MetadataAddGoldenSqlRequest": {
         "type": "object",
         "properties": {
@@ -6375,6 +6627,33 @@
           }
         },
         "description": "Represents a table in a schema."
+      },
+      "ImportJob": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "startTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "endTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "progress": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "result": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
       },
       "SemanticCatalogRequest": {
         "type": "object",
@@ -6601,6 +6880,11 @@
           "connectionId": {
             "type": "string",
             "description": "Connection ID.\n\nThis is the ID of the connection that is used to connect to the catalog.\n\nYou must create a connection before creating a catalog.\n"
+          },
+          "extraParameters": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Extra parameters for the catalog"
           }
         }
       },
@@ -6872,10 +7156,6 @@
               "NOT_INITIALIZED"
             ]
           },
-          "appId": {
-            "type": "string",
-            "description": "The ID of the app that the cache belongs to."
-          },
           "catalogId": {
             "type": "string",
             "description": "The ID of the catalog that the cache belongs to."
@@ -6900,6 +7180,14 @@
             "items": {
               "$ref": "#/components/schemas/CacheActionRecord"
             }
+          },
+          "appId": {
+            "type": "string",
+            "writeOnly": true
+          },
+          "projectId": {
+            "type": "string",
+            "description": "The ID of the project that the cache belongs to."
           }
         }
       },
