@@ -56,10 +56,42 @@ const data: QueryData[] = await iter
 ```
 
 ## Handle the Errors
-Query errors are returned in the `error.response.data` object, and this object contains the following properties:
+Query errors are returned in two different ways. 
+
+- The `connection.query()` method throws an error object, and the `error.response.data` object contains the following properties:
 
 | Error Property | Description |
 | :-- | :-- |
 | errorCode      | Code of error |
 | message        | Description of the error |
 | traceId        | The identifier that you can give Peaka Team to learn more about the error |
+
+- The `connection.query()` method returns successfully, but the response may include an `error` object with the following structure:
+
+```typescript
+type QueryError = {
+    message: string;
+    errorCode: number;
+    errorName: string;
+    errorType: string;
+    failureInfo: QueryFailureInfo;
+};
+```
+
+In order to handle all possible errors, please make sure to check both objects, as demonstrated in the example below:
+
+```typescript
+try{
+  const iter = await connection.query(
+    'SELECT * FROM "peaka"."table"."lookup table"'
+  );
+  
+  for await (const queryResult of iter) {
+    if(queryResult.error){
+      console.log("error", queryResult.error);
+    }
+  }
+}catch(e){
+  console.log("e", e.response.data);
+}
+```
