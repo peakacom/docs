@@ -225,7 +225,6 @@
               "api-reference/data-metadata/semantic-query-metadata-for-the-project",
               "api-reference/data-metadata/semantic-query-golden-sqls-for-the-project",
               "api-reference/data-metadata/delete-golden-sql-from-the-project"
-
             ]
           },
           {
@@ -475,7 +474,8 @@
               "how-to-guides/how-to-manage-partner-api-key",
               "how-to-guides/how-to-customize-embedded-ui-style",
               "how-to-guides/how-to-create-oauth2-based-connections-via-peaka",
-              "how-to-guides/how-to-create-peaka-rest-api-catalog-with-authentication"
+              "how-to-guides/how-to-create-peaka-rest-api-catalog-with-authentication",
+              "how-to-guides/how-to-integrate-10-plus-data-sources-into-your-v0-app-in-minutes-using-peaka"
             ]
           }
         ]
