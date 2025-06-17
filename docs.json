@@ -225,7 +225,6 @@
               "api-reference/data-metadata/semantic-query-metadata-for-the-project",
               "api-reference/data-metadata/semantic-query-golden-sqls-for-the-project",
               "api-reference/data-metadata/delete-golden-sql-from-the-project"
-
             ]
           },
           {
@@ -235,6 +234,18 @@
               "api-reference/ai-agent/delete-ai-chat-history",
               "api-reference/ai-agent/ask-question-to-ai-agent",
               "api-reference/ai-agent/get-ai-chat-history"
+            ]
+          },
+          {
+            "group": "AI -> AgentV2",
+            "pages": [
+              "api-reference/ai-agentv2/chat-with-agent-via-stream",
+              "api-reference/ai-agentv2/chat-with-agent",
+              "api-reference/ai-agentv2/delete-ai-agent-thread",
+              "api-reference/ai-agentv2/get-ai-agent-thread",
+              "api-reference/ai-agentv2/get-png-image-of-current-ai-workflow",
+              "api-reference/ai-agentv2/list-ai-agent-threads",
+              "api-reference/ai-agentv2/update-ai-agent-thread-display-name"
             ]
           }
         ]
