@@ -486,7 +486,8 @@
               "how-to-guides/how-to-manage-partner-api-key",
               "how-to-guides/how-to-customize-embedded-ui-style",
               "how-to-guides/how-to-create-oauth2-based-connections-via-peaka",
-              "how-to-guides/how-to-create-peaka-rest-api-catalog-with-authentication"
+              "how-to-guides/how-to-create-peaka-rest-api-catalog-with-authentication",
+              "how-to-guides/how-to-use-new-ai-api-api"
             ]
           }
         ]
