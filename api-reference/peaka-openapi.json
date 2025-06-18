@@ -7,6 +7,10 @@
   },
   "servers": [
     {
+      "url": "https://partner.peaka.studio/api/v1",
+      "description": "Default Server URL"
+    },
+    {
       "url": "https://partner.eu.peaka.studio/api/v1",
       "description": "EU Zone"
     }
