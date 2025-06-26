@@ -15,7 +15,9 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": ["introduction"]
+            "pages": [
+              "introduction"
+            ]
           },
           {
             "group": "Project Operations",
@@ -225,7 +227,6 @@
               "api-reference/data-metadata/semantic-query-metadata-for-the-project",
               "api-reference/data-metadata/semantic-query-golden-sqls-for-the-project",
               "api-reference/data-metadata/delete-golden-sql-from-the-project"
-
             ]
           },
           {
@@ -258,7 +259,9 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": ["sql/introduction"]
+            "pages": [
+              "sql/introduction"
+            ]
           },
           {
             "group": "Reference",
@@ -276,7 +279,9 @@
           },
           {
             "group": "Data Types",
-            "pages": ["sql/reference/types"]
+            "pages": [
+              "sql/reference/types"
+            ]
           },
           {
             "group": "Functions",
@@ -485,7 +490,10 @@
         "groups": [
           {
             "group": "Blogs",
-            "pages": ["blogs/rag-example-with-api"]
+            "pages": [
+              "blogs/rag-example-with-api",
+              "blogs/how-to-build-churn-dashboard"
+            ]
           }
         ]
       }
