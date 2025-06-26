@@ -237,6 +237,18 @@
               "api-reference/ai-agent/ask-question-to-ai-agent",
               "api-reference/ai-agent/get-ai-chat-history"
             ]
+          },
+          {
+            "group": "AI -> AgentV2",
+            "pages": [
+              "api-reference/ai-agentv2/chat-with-agent-via-stream",
+              "api-reference/ai-agentv2/chat-with-agent",
+              "api-reference/ai-agentv2/delete-ai-agent-thread",
+              "api-reference/ai-agentv2/get-ai-agent-thread",
+              "api-reference/ai-agentv2/get-png-image-of-current-ai-workflow",
+              "api-reference/ai-agentv2/list-ai-agent-threads",
+              "api-reference/ai-agentv2/update-ai-agent-thread-display-name"
+            ]
           }
         ]
       },
@@ -480,7 +492,8 @@
               "how-to-guides/how-to-manage-partner-api-key",
               "how-to-guides/how-to-customize-embedded-ui-style",
               "how-to-guides/how-to-create-oauth2-based-connections-via-peaka",
-              "how-to-guides/how-to-create-peaka-rest-api-catalog-with-authentication"
+              "how-to-guides/how-to-create-peaka-rest-api-catalog-with-authentication",
+              "how-to-guides/how-to-use-new-ai-api-api"
             ]
           }
         ]

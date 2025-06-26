@@ -1,0 +1,53 @@
+---
+title: "How to use new AI API"
+description: "This guide explains on how to use new ai agent API of Peaka"
+---
+
+### Architecture
+
+Peaka text2SQL agent has a new version which is written with popular agent library [LangGraph](https://www.langchain.com/langgraph).
+
+Previous implementation was using tool based implementation new version uses workflow based approach to get more predictable results.
+
+Below you can see workflow of the agent. Peaka AI agent is a workflow implemented in LangGraph.
+
+<img
+  src="https://cdn.peaka.com/how-to-guides/how-to-use-new-ai-api-workflow-diagram.png"
+  alt="open developer page"
+/>
+
+### Internal state of agent
+
+Below you can see internal state of the agent and its description. When agent completes a given task it updates the internal state. If agent provides answer to the user it is added to `messages` state.
+
+```json
+{
+  "projectId": "Peaka Project id",
+  "messages": "Array containing all the chat messages between user and AI Agent",
+  "noExecute": "State whether agent should execute generated sql on Peaka takes true of false",
+  "userIntentReasoning": "State for classifying user intent. Values are: WAITING_FOR_INPUT, TEXT_TO_SQL,DB_SCHEMA_DISCOVERY,USER_INTENT_NOT_CLEAR ",
+  "tableNames": "Array containing table names extracted from user question by the agent",
+  "metadata": "Metadata for the tables used by the agent.",
+  "currentGeneratedQuery": "Generated sql query during generate-query node execution",
+  "currentQueryError": "Error when generated sql is executed on Peaka",
+  "invalidQuery": "Flag to current executed query is valid or not",
+  "currentQueryResult": "Data returned after generated sql is run on Peaka",
+  "goldSQLs": "Gold sql used in query generation",
+  "currentQueryReasoning": "Reasoning of the agent during query generation",
+  "catalogs": "Catalogs of Peaka Project"
+}
+```
+
+### Stream Modes
+
+You can stream agent internal state via stream modes.
+
+Currently we have these stream modes:
+When using the stream and methods with LangGraph, you can one or more streaming mode which allow you to control the type of output that is streamed. The available streaming modes are:
+
+- `values`: Emit all values of the state for each step.
+- `updates`: Emit only the node name(s) and updates that were returned by the node(s) after each step.
+- `debug`: Emit debug events for each step.
+- `messages`: Emit LLM messages token-by-token.
+
+Default stream mode is `messages`.
