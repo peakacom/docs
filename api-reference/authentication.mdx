@@ -24,20 +24,9 @@ Authorization: Bearer <API Key>
 
 This ensures secure authentication for API requests, with access based on the type of API key used.
 
-**Example: Using a Project API Key**
-
-You can use a **Project API Key** to access endpoints scoped to a specific project. For example, to list catalogs within a project:
-
-```http
-GET api/v1/data/projects/{projectId}/catalogs
-Authorization: Bearer <Project API Key>
-```
-
-Replace {projectId} with the ID of your project.
-
-This returns data catalogs associated only with that project.
 
 **Example: Using a Partner API Key**
+
 A **Partner API Key** can perform all actions that a **Project API Key** can, plus additional partner-level operations. For example, to list all organizations accessible by the partner:
 
 ```http
@@ -52,3 +41,22 @@ GET api/v1/data/projects/{projectId}/catalogs
 Authorization: Bearer <Partner API Key>
 ```
 This returns data catalogs associated only with that project.
+
+
+
+**Example: Using a Project API Key**
+
+You can use a **Project API Key** to access endpoints scoped to a specific project. (Whenever you see `projects/{projectId}` in the path of an endpoint, it is scoped to the project.)
+
+For example, to list catalogs within a project:
+
+```http
+GET api/v1/data/projects/{projectId}/catalogs
+Authorization: Bearer <Project API Key>
+```
+
+Replace `{projectId}` with the ID of your project.
+
+This returns data catalogs associated only with that project.
+
+
