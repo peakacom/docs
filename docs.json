@@ -63,7 +63,8 @@
             "pages": [
               "api-reference/introduction",
               "api-reference/servers",
-              "api-reference/authentication"
+              "api-reference/authentication",
+              "api-reference/structure"
             ]
           },
           {
