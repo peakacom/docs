@@ -67,30 +67,30 @@
             ]
           },
           {
-            "group": "Organization -> Organizations",
+            "group": "Organization -- Organizations",
             "pages": [
-              "api-reference/organization-organizations/list-organizations",
-              "api-reference/organization-organizations/read-organization"
+              "api-reference/organization--organizations/list-organizations",
+              "api-reference/organization--organizations/read-organization"
             ]
           },
           {
-            "group": "Organization -> Workspaces",
+            "group": "Organization -- Workspaces",
             "pages": [
-              "api-reference/organization-workspaces/read-workspace",
-              "api-reference/organization-workspaces/update-workspace",
-              "api-reference/organization-workspaces/delete-workspace",
-              "api-reference/organization-workspaces/list-workspaces",
-              "api-reference/organization-workspaces/create-workspace"
+              "api-reference/organization--workspaces/read-workspace",
+              "api-reference/organization--workspaces/update-workspace",
+              "api-reference/organization--workspaces/delete-workspace",
+              "api-reference/organization--workspaces/list-workspaces",
+              "api-reference/organization--workspaces/create-workspace"
             ]
           },
           {
-            "group": "Organization -> Projects",
+            "group": "Organization -- Projects",
             "pages": [
-              "api-reference/organization-projects/read-project",
-              "api-reference/organization-projects/update-project",
-              "api-reference/organization-projects/delete-project",
-              "api-reference/organization-projects/list-projects",
-              "api-reference/organization-projects/create-project"
+              "api-reference/organization--projects/read-project",
+              "api-reference/organization--projects/update-project",
+              "api-reference/organization--projects/delete-project",
+              "api-reference/organization--projects/list-projects",
+              "api-reference/organization--projects/create-project"
             ]
           },
           {
@@ -104,11 +104,11 @@
             ]
           },
           {
-            "group": "Projects -> Api Key",
+            "group": "Projects -- Api Key",
             "pages": [
-              "api-reference/projects-api-key/list-api-keys",
-              "api-reference/projects-api-key/create-api-key",
-              "api-reference/projects-api-key/delete-api-key"
+              "api-reference/projects--api-key/list-api-keys",
+              "api-reference/projects--api-key/create-api-key",
+              "api-reference/projects--api-key/delete-api-key"
             ]
           },
           {
@@ -126,69 +126,80 @@
             ]
           },
           {
-            "group": "Data -> Catalogs",
+            "group": "Data -- Catalogs",
             "pages": [
-              "api-reference/data-catalogs/list-catalogs",
-              "api-reference/data-catalogs/create-catalog",
-              "api-reference/data-catalogs/read-catalog",
-              "api-reference/data-catalogs/delete-catalog",
-              "api-reference/data-catalogs/list-schemas",
-              "api-reference/data-catalogs/list-tables",
-              "api-reference/data-catalogs/list-columns",
-              "api-reference/data-catalogs/table-statistics"
+              "api-reference/data--catalogs/list-catalogs",
+              "api-reference/data--catalogs/create-catalog",
+              "api-reference/data--catalogs/read-catalog",
+              "api-reference/data--catalogs/delete-catalog",
+              "api-reference/data--catalogs/list-schemas",
+              "api-reference/data--catalogs/list-tables",
+              "api-reference/data--catalogs/list-columns",
+              "api-reference/data--catalogs/table-statistics",
+              "api-reference/data--catalogs/table-is-cached"
             ]
           },
           {
-            "group": "Data -> Internal Tables",
+            "group": "Data -- Internal Tables",
             "pages": [
-              "api-reference/data-internal-tables/create-table",
-              "api-reference/data-internal-tables/delete-table",
-              "api-reference/data-internal-tables/list-tables",
-              "api-reference/data-internal-tables/add-column",
-              "api-reference/data-internal-tables/update-column",
-              "api-reference/data-internal-tables/delete-column",
-              "api-reference/data-internal-tables/list-columns",
-              "api-reference/data-internal-tables/create-bi-table",
-              "api-reference/data-internal-tables/delete-bi-table",
-              "api-reference/data-internal-tables/list-bi-tables",
-              "api-reference/data-internal-tables/add-bi-column",
-              "api-reference/data-internal-tables/update-bi-column",
-              "api-reference/data-internal-tables/delete-bi-column",
-              "api-reference/data-internal-tables/list-bi-columns"
+              "api-reference/data--internal-tables/create-table",
+              "api-reference/data--internal-tables/delete-table",
+              "api-reference/data--internal-tables/list-tables",
+              "api-reference/data--internal-tables/add-column",
+              "api-reference/data--internal-tables/update-column",
+              "api-reference/data--internal-tables/delete-column",
+              "api-reference/data--internal-tables/list-columns",
+              "api-reference/data--internal-tables/create-bi-table",
+              "api-reference/data--internal-tables/delete-bi-table",
+              "api-reference/data--internal-tables/list-bi-tables",
+              "api-reference/data--internal-tables/add-bi-column",
+              "api-reference/data--internal-tables/update-bi-column",
+              "api-reference/data--internal-tables/delete-bi-column",
+              "api-reference/data--internal-tables/list-bi-columns",
+              "api-reference/data--internal-tables/import-csv",
+              "api-reference/data--internal-tables/get-sample-csv"
             ]
           },
           {
-            "group": "Data -> Queries",
+            "group": "Data -- Queries",
             "pages": [
-              "api-reference/data-queries/read-query",
-              "api-reference/data-queries/update-query",
-              "api-reference/data-queries/delete-query",
-              "api-reference/data-queries/list-queries",
-              "api-reference/data-queries/create-query",
-              "api-reference/data-queries/execute-query"
+              "api-reference/data--queries/read-query",
+              "api-reference/data--queries/update-query",
+              "api-reference/data--queries/delete-query",
+              "api-reference/data--queries/list-queries",
+              "api-reference/data--queries/create-query",
+              "api-reference/data--queries/execute-query"
             ]
           },
           {
-            "group": "Data -> Semantic Catalogs",
+            "group": "Data -- Semantic Catalogs",
             "pages": [
-              "api-reference/data-semantic-catalogs/create-a-semantic-catalog",
-              "api-reference/data-semantic-catalogs/create-a-semantic-table",
-              "api-reference/data-semantic-catalogs/share-a-semantic-table",
-              "api-reference/data-semantic-catalogs/delete-a-semantic-table"
+              "api-reference/data--semantic-catalogs/create-a-semantic-catalog",
+              "api-reference/data--semantic-catalogs/create-a-semantic-table",
+              "api-reference/data--semantic-catalogs/share-a-semantic-table",
+              "api-reference/data--semantic-catalogs/delete-a-semantic-table"
             ]
           },
           {
-            "group": "Data -> Cache",
+            "group": "Data -- Cache",
             "pages": [
-              "api-reference/data-cache/create-cache",
-              "api-reference/data-cache/create-batch-cache",
-              "api-reference/data-cache/update-cache-settings",
-              "api-reference/data-cache/delete-cache",
-              "api-reference/data-cache/update-cache-incrementally",
-              "api-reference/data-cache/full-refresh-cache",
-              "api-reference/data-cache/get-cache-status",
-              "api-reference/data-cache/get-all-cache-statuses-of-a-project",
-              "api-reference/data-cache/get-all-cache-statuses-of-a-catalog"
+              "api-reference/data--cache/create-cache",
+              "api-reference/data--cache/create-batch-cache",
+              "api-reference/data--cache/update-cache-settings",
+              "api-reference/data--cache/delete-cache",
+              "api-reference/data--cache/update-cache-incrementally",
+              "api-reference/data--cache/full-refresh-cache",
+              "api-reference/data--cache/get-cache-status",
+              "api-reference/data--cache/get-all-cache-statuses-of-a-project",
+              "api-reference/data--cache/get-all-cache-statuses-of-a-catalog"
+            ]
+          },
+          {
+            "group": "Data -- Parametric Tables",
+            "pages": [
+              "api-reference/data--parametric-tables/list-parametric-tables",
+              "api-reference/data--parametric-tables/create-parametric-table",
+              "api-reference/data--parametric-tables/delete-parametric-table-by-toschema-and-totable"
             ]
           },
           {
@@ -207,47 +218,59 @@
             ]
           },
           {
-            "group": "Data -> Metadata",
+            "group": "Data -- Metadata",
             "pages": [
-              "api-reference/data-metadata/update-metadata-ai-usage-per-catalog-level",
-              "api-reference/data-metadata/update-metadata-ai-usage-per-schema-level",
-              "api-reference/data-metadata/update-metadata",
-              "api-reference/data-metadata/update-relation-from-metadata",
-              "api-reference/data-metadata/delete-relation-from-metadata",
-              "api-reference/data-metadata/generate-categorical-values-from-the-column",
-              "api-reference/data-metadata/delete-categorical-values-from-the-column-meta-and-remove-the-scheduled-job",
-              "api-reference/data-metadata/generate-semantics-for-the-table",
-              "api-reference/data-metadata/add-relation-to-metadata",
-              "api-reference/data-metadata/refresh-project-metadata",
-              "api-reference/data-metadata/list-of-golden-sqls-for-the-project",
-              "api-reference/data-metadata/create-golden-sql-for-the-project",
-              "api-reference/data-metadata/get-project-metadata",
-              "api-reference/data-metadata/get-project-catalog-metadata-relations",
-              "api-reference/data-metadata/generate-sample-ai-questions-for-the-project",
-              "api-reference/data-metadata/semantic-query-metadata-for-the-project",
-              "api-reference/data-metadata/semantic-query-golden-sqls-for-the-project",
-              "api-reference/data-metadata/delete-golden-sql-from-the-project"
+              "api-reference/data--metadata/update-metadata-ai-usage-per-catalog-level",
+              "api-reference/data--metadata/update-metadata-ai-usage-per-schema-level",
+              "api-reference/data--metadata/update-metadata",
+              "api-reference/data--metadata/update-relation-from-metadata",
+              "api-reference/data--metadata/delete-relation-from-metadata",
+              "api-reference/data--metadata/generate-categorical-values-from-the-column",
+              "api-reference/data--metadata/delete-categorical-values-from-the-column-meta-and-remove-the-scheduled-job",
+              "api-reference/data--metadata/generate-semantics-for-the-table",
+              "api-reference/data--metadata/add-relation-to-metadata",
+              "api-reference/data--metadata/refresh-project-metadata",
+              "api-reference/data--metadata/list-of-golden-sqls-for-the-project",
+              "api-reference/data--metadata/create-golden-sql-for-the-project",
+              "api-reference/data--metadata/get-project-metadata",
+              "api-reference/data--metadata/get-project-catalog-metadata-relations",
+              "api-reference/data--metadata/generate-sample-ai-questions-for-the-project",
+              "api-reference/data--metadata/semantic-query-metadata-for-the-project",
+              "api-reference/data--metadata/semantic-query-golden-sqls-for-the-project",
+              "api-reference/data--metadata/delete-golden-sql-from-the-project"
             ]
           },
           {
-            "group": "AI -> Agent",
+            "group": "AI -- Agent",
             "pages": [
-              "api-reference/ai-agent/update-ai-chat-history-thread-name",
-              "api-reference/ai-agent/delete-ai-chat-history",
-              "api-reference/ai-agent/ask-question-to-ai-agent",
-              "api-reference/ai-agent/get-ai-chat-history"
+              "api-reference/ai--agent/update-ai-chat-history-thread-name",
+              "api-reference/ai--agent/delete-ai-chat-history",
+              "api-reference/ai--agent/ask-question-to-ai-agent",
+              "api-reference/ai--agent/get-ai-chat-history"
             ]
           },
           {
-            "group": "AI -> AgentV2",
+            "group": "AI -- AgentV2",
             "pages": [
-              "api-reference/ai-agentv2/chat-with-agent-via-stream",
-              "api-reference/ai-agentv2/chat-with-agent",
-              "api-reference/ai-agentv2/delete-ai-agent-thread",
-              "api-reference/ai-agentv2/get-ai-agent-thread",
-              "api-reference/ai-agentv2/get-png-image-of-current-ai-workflow",
-              "api-reference/ai-agentv2/list-ai-agent-threads",
-              "api-reference/ai-agentv2/update-ai-agent-thread-display-name"
+              "api-reference/ai--agentv2/chat-with-agent-via-stream",
+              "api-reference/ai--agentv2/chat-with-agent",
+              "api-reference/ai--agentv2/delete-ai-agent-thread",
+              "api-reference/ai--agentv2/get-ai-agent-thread",
+              "api-reference/ai--agentv2/get-png-image-of-current-ai-workflow",
+              "api-reference/ai--agentv2/list-ai-agent-threads",
+              "api-reference/ai--agentv2/update-ai-agent-thread-display-name"
+            ]
+          },
+          {
+            "group": "Data -- SQL",
+            "pages": [
+              "api-reference/data--sql/transpile-a-sql-query-into-given-dialect"
+            ]
+          },
+          {
+            "group": "ai-agent-controller",
+            "pages": [
+              "api-reference/ai-agent-controller/post-ai-agent-chatstream"
             ]
           }
         ]
