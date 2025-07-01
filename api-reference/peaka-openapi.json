@@ -2218,6 +2218,7 @@
           "Organization -- Workspaces"
         ],
         "summary": "List Workspaces",
+        "description": "Returns all workspaces under the specified Organization.\n\nA Workspace is used to group Projects within an Organization.\n",
         "operationId": "listWorkspaces",
         "parameters": [
           {
@@ -2231,13 +2232,44 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "List of Workspaces",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Workspace"
+                  "$ref": "#/components/schemas/Workspace"
+                },
+                "examples": {
+                  "List Workspace Example": {
+                    "description": "List Workspace Example",
+                    "value": [
+                      {
+                        "id": "56d43968-e31d-4010-9b75-018a79a51b17",
+                        "name": "workspace 1",
+                        "createdBy": "1673d60f-a0ea-41f4-9420-c91dbc2864f5",
+                        "organizationId": "d0d3c83f-29ed-4f2e-899d-1bfa00eb3cef",
+                        "description": "sample description",
+                        "createdAt": "2025-04-17T08:08:15.687751Z",
+                        "defaultWorkspace": false
+                      },
+                      {
+                        "id": "78cf8c83-8569-4d7c-a1ce-404dee7c5c6b",
+                        "name": "workspace 2",
+                        "createdBy": "1673d60f-a0ea-41f4-9420-c91dbc2864f5",
+                        "organizationId": "d0d3c83f-29ed-4f2e-899d-1bfa00eb3cef",
+                        "description": "sample description",
+                        "createdAt": "2025-04-17T08:05:58.312996Z",
+                        "defaultWorkspace": false
+                      },
+                      {
+                        "id": "eaa442d7-82ac-4a65-b302-093d0465eb67",
+                        "name": "Default Workspace",
+                        "createdBy": "1673d60f-a0ea-41f4-9420-c91dbc2864f5",
+                        "organizationId": "d0d3c83f-29ed-4f2e-899d-1bfa00eb3cef",
+                        "description": "Default Workspace",
+                        "createdAt": "2025-03-25T12:28:51.147125Z",
+                        "defaultWorkspace": true
+                      }
+                    ]
                   }
                 }
               }
@@ -2291,6 +2323,7 @@
           "Organization -- Projects"
         ],
         "summary": "List Projects",
+        "description": "Fetches all projects within the given Workspace.\n\nA unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside workspaces.\n",
         "operationId": "listProjects_1",
         "parameters": [
           {
@@ -4810,16 +4843,29 @@
           "Organization -- Organizations"
         ],
         "summary": "List Organizations",
+        "description": "Retrieves all the organizations accessible by the authenticated user.\n\nAn Organization is the highest-level resource that can contain multiple Workspaces.\n",
         "operationId": "listOrganizations",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "List of Organizations",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Organization"
+                  "$ref": "#/components/schemas/Organization"
+                },
+                "examples": {
+                  "List Organizations Example": {
+                    "description": "List Organizations Example",
+                    "value": [
+                      {
+                        "id": "d0d3c83f-29ed-4f2e-899d-1bfa00eb3cef",
+                        "name": "ABC Organization",
+                        "owner": "1673d60f-a0ea-41f4-9420-c91dbc2864f5",
+                        "createdAt": "2025-03-25T12:28:48.737355Z",
+                        "iconFileId": null,
+                        "description": "Default Organization"
+                      }
+                    ]
                   }
                 }
               }
@@ -4834,24 +4880,40 @@
           "Organization -- Organizations"
         ],
         "summary": "Read Organization",
+        "description": "Returns the specified Organization.\n\nAn Organization is the highest-level resource that can contain multiple Workspaces.\n",
         "operationId": "getOrganization",
         "parameters": [
           {
             "name": "organizationId",
             "in": "path",
+            "description": "ID of the Organization",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "8db17e23-29de-4dab-8886-af9717e0e742"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Successful operation",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Organization"
+                  "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Read Organization Example": {
+                    "description": "Read Organization Example",
+                    "value": {
+                      "id": "d0d3c83f-29ed-4f2e-899d-1bfa00eb3cef",
+                      "name": "ABC Organization",
+                      "owner": "1673d60f-a0ea-41f4-9420-c91dbc2864f5",
+                      "createdAt": "2025-03-25T12:28:48.737355Z",
+                      "iconFileId": null,
+                      "description": "Default Organization"
+                    }
+                  }
                 }
               }
             }
