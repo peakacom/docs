@@ -52,7 +52,7 @@ graph TD
 
 ## 🔹 Project
 
-- **Definition**: A specific initiative or task within a workspace, encompassing data connections and analytics workflows.
+- **Definition**: A unit within a workspace where data connections are established and workflows are executed. This is the core component of Peaka. Projects are isolated from other projects within the same workspace. You can create **Project Api Key**s to enable access to only this project without access to other projects.
 - **Role**: Central unit for data operations, including queries, tables, and integrations.
 - **API Endpoint**: `POST /organizations/{organizationId}/workspaces/{workspaceId}/projects` to create a new project.
 
@@ -67,8 +67,8 @@ graph TD
 
 - **Definition**: A structured representation of data schemas and tables associated with a connection.
 - **Role**: Provides metadata and structure for querying and analyzing data.
-- **API Endpoint**: `GET /projects/{projectId}/catalogs` to retrieve the catalogs of a project.
-- **Note**: Multiple catalogs can be created from a single connection, each representing different data schemas or tables.
+- **API Endpoint**: `POST /projects/{projectId}/catalogs` to create a catalog using a connection.
+- **Note**: Multiple catalogs can be created from a single connection, each representing different naming of same external source.
 
 
 
