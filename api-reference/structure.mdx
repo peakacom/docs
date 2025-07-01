@@ -1,5 +1,5 @@
 ---
-title: Peaka API Architecture Overview
+title: Structure
 description: Understanding the core components and their relationships in the Peaka API ecosystem.
 ---
 
@@ -45,9 +45,33 @@ Peaka provides a structured environment for managing data integrations and analy
 
 ```mermaid
 graph TD
-  A[Organization] --> B[Workspace]
-  B --> C[Project]
-  C --> D[Connection]
-  D --> E[Catalog]
-  D --> F[Catalog]
-  D --> G[Catalog]
+  A[Organization]
+  B1[Workspace 1]
+  B2[Workspace 2]
+  C1[Project 1]
+  C2[Project 2]
+  C3[Project 3]
+  D1[Connection 1]
+  D2[Connection 2]
+  E1[Catalog 1]
+  E2[Catalog 2]
+  E3[Catalog 3]
+  E4[Catalog 4]
+  E5[Catalog 5]
+  E6[Catalog 6]
+
+  A --> B1
+  A --> B2
+  B1 --> C1
+  B2 --> C2
+  B2 --> C3
+  C1 --> D1
+  C2 --> D1
+  C3 --> D2
+  D1 --> E1
+  D1 --> E2
+  D1 --> E3
+  D2 --> E4
+  D2 --> E5
+  D2 --> E6
+```
