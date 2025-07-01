@@ -5,13 +5,18 @@ description: 'API Authentication'
 
 ## Overview
 
-The Peaka Partner API uses API keys to authenticate requests.
+The Peaka Partner API uses API keys for authentication.
 
 There are two types of API keys:
-- **Partner API Key**: Used to authenticate requests that require partner-level access
-- **Project API Key**: Used to authenticate requests that require project-level access
 
-Project API keys can access only the resources associated with the project they are created for. Partner API keys can access all resources.
+- **Partner API Key**: Grants access to all resources for partner-level access. [Learn how to manage a Partner API Key](/how-to-guides/how-to-manage-partner-api-key)
+- **Project API Key**: Grants access to resources specific to the project for which the key was created. [Learn how to generate API Keys](/how-to-guides/how-to-generate-api-keys)
 
-Authorization headers are used to pass the API key in the request. The API key is passed as a Bearer token in the format
-`Authorization : Bearer <API Key>`.
+While **Project API Keys** are restricted to project-specific resources, **Partner API Keys** provide broader access across all available resources.
+
+## Authentication
+
+To authenticate requests, include the API key in the `Authorization` header as a Bearer token. The format is as follows:
+
+```http
+Authorization: Bearer <API Key>
