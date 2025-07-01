@@ -59,9 +59,9 @@ graph TD
 ## 🔹 Connection
 
 - **Definition**: A configuration that links a project to external data sources, such as databases or APIs, including necessary credentials.
-- **Role**: Enables data ingestion and synchronization from various external systems.
+- **Role**: Holds the necessary details for connecting to external data sources.
 - **API Endpoint**: `POST /projects/{projectId}/connections` to establish a new connection.
-- **Note**: A single connection can be used to create multiple catalogs, allowing for the reuse of credentials across different data sources.
+- **Note**: A single connection can be used to create multiple catalogs, allowing for the reuse of credentials across different catalogs of same external data source.
 
 ## 🔹 Catalog
 
