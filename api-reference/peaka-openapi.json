@@ -7899,6 +7899,7 @@
     "securitySchemes": {
       "bearerAuth": {
         "type": "http",
+        "description": "Use the Authorization header with the value 'Bearer \u003CapiKey\u003E' to authenticate. Partner API Keys have full access; Project API Keys are limited to their project scope. Learn more: https://docs.peaka.com/api-reference/authentication",
         "scheme": "bearer",
         "bearerFormat": "Api Key"
       }
