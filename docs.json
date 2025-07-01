@@ -267,12 +267,6 @@
             "pages": [
               "api-reference/data--sql/transpile-a-sql-query-into-given-dialect"
             ]
-          },
-          {
-            "group": "ai-agent-controller",
-            "pages": [
-              "api-reference/ai-agent-controller/post-ai-agent-chatstream"
-            ]
           }
         ]
       },
