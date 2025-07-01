@@ -199,7 +199,7 @@
             "pages": [
               "api-reference/data--parametric-tables/list-parametric-tables",
               "api-reference/data--parametric-tables/create-parametric-table",
-              "api-reference/data--parametric-tables/delete-parametric-table-by-toschema-and-totable"
+              "api-reference/data--parametric-tables/delete-parametric-table"
             ]
           },
           {

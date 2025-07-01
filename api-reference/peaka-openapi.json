@@ -3738,7 +3738,7 @@
         "tags": [
           "Data -- Parametric Tables"
         ],
-        "summary": "Delete Parametric Table by toSchema and toTable",
+        "summary": "Delete Parametric Table",
         "operationId": "deleteParametricTable",
         "parameters": [
           {
