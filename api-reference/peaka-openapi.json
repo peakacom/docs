@@ -4674,8 +4674,9 @@
     "/ai-agent/{projectId}/chat/stream": {
       "post": {
         "tags": [
-          "ai-agent-controller"
+          "AI -- AgentV2"
         ],
+        "summary": "Chat with agent via stream",
         "operationId": "chatStream",
         "parameters": [
           {
