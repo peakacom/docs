@@ -158,6 +158,7 @@
           "Organization -- Workspaces"
         ],
         "summary": "Read Workspace",
+        "description": "This endpoint returns the details of a specified workspace, which is a collaborative environment within an organization where teams can manage projects. A workspace is used to group projects within an organization and facilitates team collaboration and resource management.\n",
         "operationId": "getWorkspace",
         "parameters": [
           {
@@ -2282,6 +2283,7 @@
           "Organization -- Workspaces"
         ],
         "summary": "Create Workspace",
+        "description": "The endpoint allows you to create a new workspace within an organization.\n\nA workspace serves as a collaborative environment where teams can manage projects and organize their data operations.\n\nA workspace is used to group projects within an organization, facilitating team collaboration and resource management. It sits in the middle of Peaka's hierarchical structure:\n\nOrganization (top level) → Workspace → Project (contains data catalogs and workflows)\n",
         "operationId": "createWorkspace",
         "parameters": [
           {
@@ -3563,6 +3565,25 @@
           "required": true
         },
         "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "description": "Bad Request",
+                    "value": {
+                      "errorCode": 100,
+                      "message": "There are already a catalog with same name!!"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "200": {
             "description": "Catalog created successfully",
             "content": {
@@ -3589,25 +3610,6 @@
                       "displayName": "exampleStripeCatalog",
                       "catalogType": "stripe",
                       "connectionId": "8db17e23-29de-4dab-8886-af9717e0e742"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "Bad Request": {
-                    "description": "Bad Request",
-                    "value": {
-                      "errorCode": 100,
-                      "message": "There are already a catalog with same name!!"
                     }
                   }
                 }
