@@ -7,6 +7,44 @@ SCRAPED_JSON="scraped.json"
 TMP_FILE="docs.tmp.json"
 OPENAPI_PATH="api-reference/peaka-openapi.json"
 
+# OpenAPI indirme seçenekleri
+echo "Select OpenAPI source to download (default 0 - do not update):"
+echo "[0] Do not update OpenAPI"
+echo "[1] https://partner-test.peaka.host/v3/api-docs"
+echo "[2] http://localhost:8080/v3/api-docs"
+echo "[3] http://localhost:8080/v3/api-docs"
+echo "[4] https://partner.peaka.studio/v3/api-docs"
+echo -n "Enter choice [0]: "
+read choice
+
+choice=${choice:-0}
+
+case $choice in
+  1)
+    OPENAPI_URL="https://partner-test.peaka.host/v3/api-docs"
+    ;;
+  2)
+    OPENAPI_URL="http://localhost:8080/v3/api-docs"
+    ;;
+  3)
+    OPENAPI_URL="https://localhost:8080/v3/api-docs"
+    ;;
+  4)
+    OPENAPI_URL="https://partner.peaka.studio/v3/api-docs"
+    ;;
+  *)
+    OPENAPI_URL=""
+    ;;
+esac
+
+if [ -n "$OPENAPI_URL" ]; then
+  echo "🌐 Downloading OpenAPI spec from $OPENAPI_URL ..."
+  curl -sSL "$OPENAPI_URL" -o "$OPENAPI_PATH"
+else
+  echo "⏭️ Skipping OpenAPI update."
+fi
+
+
 
 echo "🧹 Cleaning up old folders under api-reference..."
 find api-reference -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} +
