@@ -7,19 +7,38 @@ SCRAPED_JSON="scraped.json"
 TMP_FILE="docs.tmp.json"
 OPENAPI_PATH="api-reference/peaka-openapi.json"
 
-# OpenAPI indirme seçenekleri
-echo "Select OpenAPI source to download (default 0 - do not update):"
-echo "[0] Do not update OpenAPI"
-echo "[1] https://partner-test.peaka.host/v3/api-docs"
-echo "[2] http://localhost:8080/v3/api-docs"
-echo "[3] http://localhost:8080/v3/api-docs"
-echo "[4] https://partner.peaka.studio/v3/api-docs"
-echo -n "Enter choice [0]: "
-read choice
+# OpenAPI download options
+# Default choice is empty
+CHOICE=""
 
-choice=${choice:-0}
 
-case $choice in
+# Read choice from CLI argument (example: --choice=3)
+for arg in "$@"; do
+  case $arg in
+    --choice=*)
+      CHOICE="${arg#*=}"
+      shift
+      ;;
+  esac
+done
+
+if [ -n "$CHOICE" ]; then
+  echo "ℹ️ Using choice from CLI argument: $CHOICE"
+else
+  # If choice is not set, prompt the user
+  echo "You can set the OpenAPI source to download with --choice=0, 1, 2, 3 or 4 from command line, too."
+  echo "Select OpenAPI source to download (default 0 - do not update):"
+  echo "[0] Do not update OpenAPI"
+  echo "[1] https://partner-test.peaka.host/v3/api-docs"
+  echo "[2] http://localhost:8080/v3/api-docs"
+  echo "[3] https://localhost:8080/v3/api-docs"
+  echo "[4] https://partner.peaka.studio/v3/api-docs"
+  echo -n "Enter choice [0]: "
+  read input_choice
+  CHOICE=${input_choice:-0}
+fi
+
+case $CHOICE in
   1)
     OPENAPI_URL="https://partner-test.peaka.host/v3/api-docs"
     ;;
