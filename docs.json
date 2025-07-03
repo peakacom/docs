@@ -15,9 +15,7 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction"
-            ]
+            "pages": ["introduction"]
           },
           {
             "group": "Project Operations",
@@ -289,9 +287,7 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": [
-              "sql/introduction"
-            ]
+            "pages": ["sql/introduction"]
           },
           {
             "group": "Reference",
@@ -309,9 +305,7 @@
           },
           {
             "group": "Data Types",
-            "pages": [
-              "sql/reference/types"
-            ]
+            "pages": ["sql/reference/types"]
           },
           {
             "group": "Functions",
@@ -523,7 +517,8 @@
             "group": "Blogs",
             "pages": [
               "blogs/rag-example-with-api",
-              "blogs/how-to-build-churn-dashboard"
+              "blogs/how-to-build-churn-dashboard",
+              "blogs/mastra-agent-with-peaka-mcp"
             ]
           }
         ]
