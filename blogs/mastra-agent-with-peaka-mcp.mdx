@@ -83,7 +83,7 @@ OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
 
 Next, Import the following packages and Instantiate the Mastra MCP client in **mcp.ts** file: 
 
-```ts
+```tsx
 import { createTool } from "@mastra/core";
 import { MCPClient } from "@mastra/mcp";
 
@@ -110,7 +110,7 @@ Here’s how the agent is instantiated:
 Import required packages in **agent.ts** file:
 
 
-```ts
+```tsx
 import { openai } from "@ai-sdk/openai";
 import { Agent } from "@mastra/core/agent";
 import { mcp } from "../agents/mcp";
@@ -137,7 +137,7 @@ Peaka's MCP server doesn't just expose tools like SQL execution and data retriev
 
 To make the assistant more accurate, I pulled in these rules dynamically and added them to the agent's instructions. By including the following function in mcp.ts file:
 
-```ts
+```tsx
 export const getSQLRuleSet = async () => {
   const resources = await mcp.resources.list();
   
@@ -156,7 +156,7 @@ export const getSQLRuleSet = async () => {
 
 In addition to updating agent.ts file to combine SQL rules with the base instructions:
 
-```ts
+```tsx
 import { getSQLRuleSet, mcp } from "../agents/mcp";
 
 export const peakaAgent = new Agent({
@@ -198,13 +198,13 @@ Vercel is a cloud platform that makes it easy to deploy frontend and backend app
 
 in **index.ts**, import the Vercel Deployer which handles the API routing and deployement structure Vercel expects:
 
-```ts
+```tsx
 import { VercelDeployer } from “@mastra/deployer-vercel”;
 ```
 
 Then modify your Mastra setup to include deployer:
 
-```TypeScript
+```tsx
 export const mastra = new Mastra({
   deployer: new VercelDeployer(),
   agents: { peakaAgent },
@@ -221,14 +221,14 @@ export const mastra = new Mastra({
 
 In your **mcp.ts** file, before creating the MPCLient, add the following lines:
 
-```jsx
+```tsx
 process.env.HOME = "/tmp";
 console.log("PEAKA_API_KEY: " + process.env.PEAKA_API_KEY);
 ```
 
 Then proceed with the MCP client as usual:
 
-```jsx
+```tsx
 export const mcp = new MCPClient({
 // ...
 });
