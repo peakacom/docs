@@ -3,8 +3,6 @@ title: "Mastra Agent with Peaka's MCP server"
 description: "Creating a Smart SQL Agent with Mastra Framework and Peaka Tools"
 ---
 
-# Table Of Contents
-
 # Introduction
 
 Ever wondered how to turn a simple natural language question into a valid SQL query and get an answer from a live database?
@@ -153,6 +151,7 @@ export const getSQLRuleSet = async () => {
     return result.contents[0].text;
    }
 };
+```
 
 In addition to updating agent.ts file to combine SQL rules with the base instructions:
 
@@ -177,7 +176,7 @@ export const peakaAgent = new Agent({
 
 Open that link in your browser to access the Mastra Playground, where you can click on “Peaka Data Assistant” and interact with your agent by testing queries from Peaka sample data. 
 
-![image.png](https://cdn.peaka.com/blogs/mastra-agent/image.png)
+![Peaka Assisstant](https://cdn.peaka.com/blogs/mastra-agent/image.png)
 
 In the following example, I asked the assistant to list 5 Airbnb listings with exactly 3 bedrooms and a price under $600.
 
