@@ -3,13 +3,23 @@ title: "Mastra Agent with Peaka's MCP server"
 description: "Creating a Smart SQL Agent with Mastra Framework and Peaka Tools"
 ---
 
-# Introduction
+## Introduction
 
 Ever wondered how to turn a simple natural language question into a valid SQL query and get an answer from a live database?
 
 During my internship, I worked on a project using Mastra framework and the Peaka MCP server to build a conversational agent that understands user questions, writes SQL, and retrieves answers from Peaka’s sample data.
 
 In this blog, I’ll walk you through what I built, and how it works.
+
+## What is an MCP Server?
+
+While Mastra lets you build agents, those agents often need external tools like querying a database, fetching files, or calling APIs. That’s where the MCP server comes in.
+
+MCP stands for Model Context Protocol. An MCP server is a standardized interface that exposes tools or data sources to agents. The agent doesn’t need to know how a database works or where an API is hosted. For example, in my project, the Peaka MCP server exposed the following tools:
+
+- `peaka_schema_retriever`: Retrieves metadata and schema info
+- `peaka_query_golden_sqls`: Queries question/SQL pairs from Peaka’s store
+- `peaka_execute_sql_query`: Executes SQL queries on Peaka
 
 ## Prerequisites
 
@@ -23,7 +33,7 @@ To build and run this project, you will need:
   npm install @mastra/core @mastra/mcp @ai-sdk/openai
   ```
 
-### Tech Stack
+## Tech Stack
 
 | **Technology**                                | **Description**                                                                                                                      |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -34,7 +44,7 @@ To build and run this project, you will need:
 | [Next.js](https://nextjs.org/)                | The React Framework for the Web. Next.js was used for building the chatbot app.                                                      |
 | [assistant-ui](https://www.assistant-ui.com/) | An open-source chat interface designed to connect easily with Mastra agents.                                                         |
 
-## Why Peaka?
+### Why Peaka?
 
 Peaka is a no-code data platform that allows you to:
 
@@ -48,29 +58,19 @@ For this project, Peaka powered the backend intelligence of the Mastra agent by:
 - Understanding the data schema to support structured, SQL-based querying,
 - Returning reliable results through a single API call, without building a custom backend.
 
-## Why Mastra?
+### Why Mastra?
 
 Mastra is a developer-friendly, open-source framework for building AI applications, especially ones that rely on large language models (LLMs). It’s written in TypeScript and provides everything you need to build intelligent agents.
 
-## What is an MCP Server?
-
-While Mastra lets you build agents, those agents often need external tools like querying a database, fetching files, or calling APIs. That’s where the MCP server comes in.
-
-MCP stands for Model Context Protocol. An MCP server is a standardized interface that exposes tools or data sources to agents. The agent doesn’t need to know how a database works or where an API is hosted. For example, in my project, the Peaka MCP server exposed the following tools:
-
-- `peaka_schema_retriever`: Retrieves metadata and schema info
-- `peaka_query_golden_sqls`: Queries question/SQL pairs from Peaka’s store
-- `peaka_execute_sql_query`: Executes SQL queries on Peaka
-
-# TL;DR
+## TL;DR
 
 If you want to skip the implementation details, check out the finished code on [GitHub](https://github.com/peakacom/peaka-mastra-ai-agent). Follow the instructions in the README to run the project locally.
 
-You can also try the live demo [here](https://peaka-mastra-agent-ui.vercel.app).
+You can also [try the live demo](https://peaka-mastra-agent-ui.vercel.app).
 
-# How to Use Peaka with Mastra via its MCP Server Tools
+## How to Use Peaka with Mastra via its MCP Server Tools
 
-## Building the Peaka Agent
+### Building the Peaka Agent
 
 First, set the environment for Peaka API and OpenAI API keys in a `.env` file:
 
@@ -125,11 +125,11 @@ export const peakaAgent = new Agent({
   tools: await mcp.getTools(),
 });
 ```
-## Why Customize the Instructions?
+### Why Customize the Instructions?
 
 By default, Mastra agents work well with basic prompting. But I found that explicit instructions help guide the LLM more reliably and add big difference in consistency. To improve the assistants's performance, I manually tested different user questions and tweaked instructions to fix edge cases.
 
-### Injecting SQL rules resources from the MCP server
+#### Injecting SQL rules resources from the MCP server
 
 Peaka's MCP server doesn't just expose tools like SQL execution and data retrieval. It also provides resources, including a rule set that guidelines how to write valid SQL using Trino, which is the SQL engine Peaka relies on.
 
@@ -172,7 +172,7 @@ export const peakaAgent = new Agent({
   tools: await mcp.getTools(),
 });
 ```
-## Running the Chatbot
+### Running the Chatbot
 
 Open that link in your browser to access the Mastra Playground, where you can click on “Peaka Data Assistant” and interact with your agent by testing queries from Peaka sample data. 
 
@@ -189,11 +189,12 @@ When exact matches aren’t found, the assistant prompts the user for clarificat
 ![Fail American Restaurants Query](https://cdn.peaka.com/blogs/mastra-agent/image-3.png)
 
 ![Success American Restaurnts Query Results](https://cdn.peaka.com/blogs/mastra-agent/image-4.png)
-# Deploying to Vercel
+
+### Deploying to Vercel
 
 Vercel is a cloud platform that makes it easy to deploy frontend and backend applications. For this project, we can use Vercel to host and serve our Mastra agent API, making it accessible online with just a few configuration steps.
 
-### Step 1: Add the Vercel Deployer to your Mastra Project:
+#### Step 1: Add the Vercel Deployer to your Mastra Project:
 
 in **index.ts**, import the Vercel Deployer which handles the API routing and deployement structure Vercel expects:
 
@@ -216,7 +217,7 @@ export const mastra = new Mastra({
   }),
 });
 ```
-### Step 2: Patch The MCP Client for Vercel
+#### Step 2: Patch The MCP Client for Vercel
 
 In your **mcp.ts** file, before creating the MPCLient, add the following lines:
 
@@ -243,7 +244,7 @@ https://<your-vercel-app>.vercel.app/api/agents
 
 This validated that the **Vercel deployment was not only live but also correctly integrated with the Peaka toolset**.
 
-### Step 3: Building the Chat Interface with Assistant-UI
+#### Step 3: Building the Chat Interface with Assistant-UI
 
 To provide a user friendly interface for interacting with my Mastra agent, I used assistant-ui , which is an open source frontend built specifically for Mastra deployments. I connected it to my Vercel-hosted Mastra Backend, allowing real time responses from deployed agent. This setup made it simple to test and showcase the Peaka agent’s capabilities without building a custom frontend from scratch since Vercel doesn't offer it.
 
@@ -252,13 +253,13 @@ You can access The Peaka assistant-UI finished code on [Github](https://github.c
 ![Finalinterface](https://cdn.peaka.com/blogs/mastra-agent/image-5.png)
 
 
-# Key Takeaways
+## Key Takeaways
 
 - **Peaka simplifies data access:** Query real data without setting up ETL, modeling it as virtual tables to the agents access and let it do its work. Peaka MCP server is backed by tools that enables agents to query structured data using natural language.
 - **Mastra smart interface:** with Mastra powering the logic and assistant-ui providing the frontend, you can build and deploy conversational agents in minutes.
 - **Vercel makes it production-ready:** Deploy your agent as a server-less API with zero config and share it instantly online
 
-# Conclusion
+## Conclusion
 
 In this blog, we walked through how to deploy Peaka AI agent using Mastra framework to Vercel and connect to a user friendly frontend using assistant-ui. Resulting a fully functional chatbot that doesn't just guess but understands the data schema, follows the right SQL syntax, and gives useful feedback even when something goes wrong.
 
