@@ -516,7 +516,7 @@
           {
             "group": "Blogs",
             "pages": [
-              "blogs/rag-example-with-api",
+              "blogs/how-to-build-rag-with-peaka",
               "blogs/how-to-build-churn-dashboard",
               "blogs/mastra-agent-with-peaka-mcp"
             ]
