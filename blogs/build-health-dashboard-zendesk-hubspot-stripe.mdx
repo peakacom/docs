@@ -1,0 +1,366 @@
+---
+title: "How to Build a Customer Health Dashboard Using Zendesk, Hubspot, and Stripe Data"
+description: "Get real-time customer insights by combining data from HubSpot, Stripe, and Zendesk without complex setups or ETL pipelines. Learn how to quickly build a customer health dashboard that helps spot risks and boost retention."
+---
+
+## Project Overview
+
+Before customer dissatisfaction snowballs into churn, what if you could spot the early signs from support tickets, health scores, and revenue trends, all in one dashboard?
+
+In this tutorial, you will build a **customer health dashboard** that integrates data from **Zendesk**, **Hubspot**, and **Stripe** to track key metrics like **support tickets**, **average MRR (Monthly Recurring Revenue)**, **health scores**, and **churn risk**, all in one unified view. The goal is to help **customer success teams**, **product managers**, and **sales leaders** spot early warning signs, improve retention, and reduce churn.
+
+This dashboard delivers real value for:
+
+- **Customer success teams** focused on proactive churn prevention
+- **Product managers** looking for deeper insights into account health
+- **Growth and revenue teams** aiming to maximize customer lifetime value and reduce churn costs
+
+Best of all, instead of spending weeks on complex **data integration** and dashboard development, you will build this entire solution in just a few hours using **Peaka** for seamless data unification and **v0.dev** for fast frontend generation.
+
+This dashboard serves as a starting point, a foundational solution that you can build upon and customize further as your needs grow. While it covers key customer health metrics, you can easily extend it with more data sources, advanced analytics, or deeper integrations over time.
+
+## The Tools We Need
+
+To build this customer health dashboard, we'll rely on a streamlined set of tools that simplify data integration and frontend development without the complexity of traditional data engineering.
+
+### Peaka
+
+Peaka acts as the central platform that connects to your existing data sources and lets you join, transform, and model your data in one place using SQL queries. This approach eliminates the need for setting up complex ETL pipelines or managing separate data warehouses, making it faster and easier to create unified views of your customer data while keeping full control over the data logic.
+
+### v0.dev
+
+Once your data models are ready in Peaka, v0.dev enables you to generate a polished, functional dashboard interface using prompt-based UI creation. This allows you to build and iterate on your frontend quickly without writing boilerplate code.
+
+### Data Sources
+
+We'll connect Peaka to familiar platforms like Zendesk, Hubspot, and Stripe to pull support ticket data, customer health scores, and subscription revenue information. These integrations provide the raw data needed to power the dashboard's key metrics.
+
+## What is Peaka?
+
+Peaka is a cloud-native data platform that enables teams to connect, transform, and query data from multiple sources in real-time using standard SQL. Unlike traditional data warehouses that require complex ETL pipelines and data duplication, Peaka provides **virtualized data models** that join and aggregate live data without moving it.
+
+In this project, Peaka acts as the **central data layer**, unifying disparate datasets from Zendesk, Hubspot, and Stripe into clean, queryable virtual tables. This approach allows you to maintain data freshness and consistency while avoiding the overhead of managing separate infrastructure.
+
+Peaka's SQL-first design empowers data engineers and analysts to define business logic directly in the platform, accelerating development cycles and improving data governance. Its seamless integration with downstream tools like v0.dev enables rapid frontend development based on these robust data models.
+
+By using Peaka, you get the best of both worlds: the flexibility and control of SQL with the efficiency and scalability of a modern data platform.
+
+## Let's Dive In
+
+### Step 1: Setting Up Your Peaka Project
+
+Before connecting data sources or writing queries, you'll need to create a Peaka project and generate an API key for authentication.
+
+Follow these steps:
+
+1. Go to [peaka. studio](https://peaka.studio/) and log in.
+    
+    > If you don't have an account yet, sign up. It only takes a couple of minutes.
+    > 
+2. From your dashboard, click **Create New Project** and give it a name.
+3. Open your newly created project and click the gear icon (⚙️) in the bottom-left sidebar to open **Settings**.
+4. In the **Settings** panel, go to the **API Keys** tab and click **Create API Key**.
+5. Copy your **Project ID** from the URL in your browser's address bar. It should look like this:
+
+```
+https://peaka.studio/studio/{project_id}/...
+```
+
+> Make sure to save both your API key and Project ID somewhere safe, you'll need them in the next step when connecting Peaka to your app.
+
+### Step 2: Connect Your Data Sources
+
+Let's start by connecting your first data source, **Zendesk**.
+
+1. Go to your Peaka workspace and click the **+ Data Source** button at the top left.
+2. In the search bar, type **Zendesk**, then select it from the list.
+3. Click **Add New Connection**.
+4. Enter a **Connection Name** and your **Zendesk subdomain**.
+5. Click **Sign In**, and authorize Peaka to access your Zendesk account.
+
+Once this process is complete, your Zendesk data will be ready to use inside Peaka.
+
+Next, follow a similar process to connect **HubSpot,** search, select, and authorize via the OAuth screen. For **Stripe**, you'll instead use your Stripe API key when creating the connection.
+
+Need help? You can find step-by-step instructions for each connector in the Peaka documentation:
+
+- [Zendesk Integration Guide](https://docs.peaka.com/integrations/zendesk)
+- [HubSpot Integration Guide](https://docs.peaka.com/integrations/hubspot)
+- [Stripe Integration Guide](https://docs.peaka.com/integrations/stripe)
+
+### Step 3: Creating Your Queries
+
+To build a dashboard, you'll first need to define the queries that power your metrics. Here’s how you can create a query on Peaka:
+
+1. Navigate to the **Queries** section in the left sidebar.
+2. Click **➕ New Query** to start creating a new SQL query.
+3. Choose **Start from Scratch** instead of using a template. (You can explore templates later for common use cases.)
+4. Write your SQL and click **Run** to preview the results.
+
+For a more detailed guide on how to create queries in Peaka, check out [this documentation page](https://docs.peaka.com/connecting-your-data/creating-query).
+
+Let’s go through the core queries you'll need:
+
+### 1. Active Tickets
+
+This query shows how many active support tickets (with statuses "open" or "pending") each user has created in the past 30 days. It helps identify users who may need more urgent support.
+
+```sql
+SELECT 
+  u.email AS requester_email, -- Requester's email address
+  COUNT(*) AS active_ticket_count -- Count of active tickets per user
+FROM "zendesk"."public"."tickets" t
+JOIN "zendesk"."public"."users" u ON t.requester_id = u.id
+WHERE t.status IN ('open', 'pending') -- Only tickets that are still open or pending
+  AND t.created_at >= CURRENT_DATE - INTERVAL '30' DAY -- Tickets created in the last 30 days
+GROUP BY u.email; -- Group results by user email
+```
+
+### 2. Monthly Recurring Revenue (MRR)
+
+This query calculates the monthly recurring revenue (MRR) per customer by summing up the unit amounts of active or recently incomplete subscriptions. Useful for understanding current revenue flow.
+
+```sql
+SELECT 
+  c.email AS customer_email, -- Customer's email address
+  SUM(p.unit_amount / 100) AS mrr_usd -- Sum of subscription amounts (converted from cents to dollars)
+FROM "stripe"."payment"."subscriptions" s
+JOIN "stripe"."payment"."customers" c ON s.customer_id = c.id
+JOIN "stripe"."payment"."prices" p ON s.plan_id = p.id
+WHERE s.status IN ('active', 'incomplete_expired', 'incomplete') -- Active or recently incomplete subscriptions
+GROUP BY c.email; -- Group results by customer email
+```
+
+### 3. Churn Risk
+
+This query identifies customers who have recently submitted a high number of support tickets and cross-references them with their subscription activity to assess churn risk levels.
+
+```sql
+WITH active_tickets AS (
+  SELECT 
+    u.email AS customer_email, -- Email of the customer who submitted tickets
+    COUNT(*) AS ticket_count -- Number of tickets created in the last 30 days
+  FROM "zendesk"."public"."tickets" t
+  JOIN "zendesk"."public"."users" u ON t.requester_id = u.id
+  WHERE t.created_at >= CURRENT_DATE - INTERVAL '30' DAY
+  GROUP BY u.email
+),
+active_subscriptions AS (
+  SELECT 
+    c.email AS customer_email, -- Customer email from Stripe
+    MAX(s.ended_at) AS last_payment_date -- Last subscription end date
+  FROM "stripe"."payment"."subscriptions" s
+  JOIN "stripe"."payment"."customers" c ON s.customer_id = c.id
+  WHERE s.status = 'active'
+  GROUP BY c.email
+)
+
+SELECT 
+  at.customer_email, -- Email from active tickets
+  at.ticket_count, -- Number of tickets submitted
+  CASE 
+    WHEN at.ticket_count > 5 AND (asub.last_payment_date IS NULL OR asub.last_payment_date < CURRENT_DATE - INTERVAL '30' DAY) THEN 'High' -- High risk if many tickets and no recent payment
+    WHEN at.ticket_count > 3 THEN 'Medium' -- Medium risk if moderate ticket count
+    ELSE 'Low' -- Otherwise low risk
+  END AS churn_risk
+FROM active_tickets at
+LEFT JOIN active_subscriptions asub ON at.customer_email = asub.customer_email;
+```
+
+### 4. Account Health Score
+
+This query calculates a composite health score for each customer by combining their active subscription status, recent open tickets, and churn risk level. The score helps prioritize accounts needing attention.
+
+```sql
+WITH ticket_stats AS (
+  SELECT 
+    u.email AS customer_email, -- Customer email from Zendesk users
+    COUNT(*) FILTER (WHERE t.status IN ('open', 'pending') AND t.created_at >= CURRENT_DATE - INTERVAL '30' DAY) AS open_tickets_last_30d, -- Number of open tickets in last 30 days
+    COUNT(*) AS total_tickets -- Total number of tickets
+  FROM "zendesk"."public"."tickets" t
+  JOIN "zendesk"."public"."users" u ON t.requester_id = u.id
+  GROUP BY u.email
+),
+active_subscriptions AS (
+  SELECT 
+    c.email AS customer_email, -- Customer email from Stripe
+    COUNT(*) > 0 AS has_active_subscription -- Boolean flag for active subscription
+  FROM "stripe"."payment"."subscriptions" s
+  JOIN "stripe"."payment"."customers" c ON s.customer_id = c.id
+  WHERE s.status = 'active'
+  GROUP BY c.email
+),
+churn_risk_calc AS (
+  SELECT 
+    ts.customer_email,
+    CASE 
+      WHEN ts.open_tickets_last_30d > 5 AND (asub.has_active_subscription = false OR asub.has_active_subscription IS NULL) THEN 'High' -- High churn risk if many open tickets and no active subscription
+      WHEN ts.open_tickets_last_30d > 3 THEN 'Medium' -- Medium churn risk for moderate open tickets
+      ELSE 'Low' -- Otherwise low risk
+    END AS churn_risk
+  FROM ticket_stats ts
+  LEFT JOIN active_subscriptions asub ON ts.customer_email = asub.customer_email
+)
+
+SELECT
+  ts.customer_email,
+  COALESCE(asub.has_active_subscription, false) AS active_subscription, -- Whether customer has active subscription
+  ts.open_tickets_last_30d, -- Number of open tickets in last 30 days
+  crc.churn_risk, -- Churn risk level
+  (
+    CASE WHEN COALESCE(asub.has_active_subscription, false) THEN 50 ELSE 0 END + -- Add 50 points if active subscription
+    CASE WHEN ts.open_tickets_last_30d = 0 THEN 20 ELSE 0 END + -- Add 20 points if no open tickets
+    CASE WHEN ts.open_tickets_last_30d > 5 THEN -20 ELSE 0 END + -- Subtract 20 points if more than 5 open tickets
+    CASE WHEN crc.churn_risk = 'High' THEN -30 ELSE 0 END -- Subtract 30 points if high churn risk
+  ) AS account_health_score -- Final calculated health score
+FROM ticket_stats ts
+LEFT JOIN active_subscriptions asub ON ts.customer_email = asub.customer_email
+LEFT JOIN churn_risk_calc crc ON ts.customer_email = crc.customer_email;
+```
+### Step 4: How to Build the Dashboard on v0.dev
+
+Once your queries are ready on Peaka, the next step is turning them into a full-stack dashboard UI. This section explains how to use [v0.dev](https://v0.dev/), an AI tool that generates production-grade UIs from prompts, to build a fully responsive dashboard with zero boilerplate.
+
+Here's how to go from saved queries to a fully functional customer health dashboard:
+
+---
+
+### Write the Prompt for v0.dev
+
+Begin by preparing a detailed prompt that describes your goal. Here's an example prompt you can adapt:
+
+```
+I have a Peaka account and a Peaka project that contains four saved queries:
+- active_tickets: Returns number of active support tickets per customer
+- mrr: Returns monthly recurring revenue (MRR) per customer
+- account_health_score: Returns a numeric health score between 0 and 100 for each customer
+- churn_risk: Returns churn risk category ("Low", "Medium", or "High")
+
+I want to build a full-stack customer health dashboard in Next.js, using React and Tailwind CSS.
+
+The dashboard layout should include:
+
+Top section (4 metric cards):
+- Total active tickets
+- Average MRR
+- Average account health score
+- High churn risk percentage
+
+Bottom section (charts):
+- Bar chart showing MRR by customer
+- Pie chart showing churn risk distribution
+- Histogram (bar chart) of health score distribution in buckets
+- Scatter plot of active tickets vs MRR, with churn risk as point color
+
+All data should be fetched directly from Peaka's data API using fetch.
+
+To get data from a Peaka query, I will use the following API pattern:
+
+POST https://partner.peaka.studio/api/v1/data/projects/{projectId}/queries/execute
+Authorization: Bearer <token>
+Content-Type: application/json
+
+Body:
+{
+  "from": [
+    {
+      "catalogName": "peaka",
+      "schemaName": "query",
+      "tableName": "mrr" // or "active_tickets", etc.
+    }
+  ]
+}
+
+Each query will be executed this way from the frontend. You can assume the token is stored in an .env file or injected via a helper function.
+
+Please generate the full dashboard code as a single `dashboard.tsx` page, using `fetch` to call these APIs from the browser. Use Tailwind CSS for layout. For charts, you can use Recharts or another modern charting library.
+
+You can check Peaka's API reference here: https://docs.peaka.com/api-reference/introduction
+
+Make the code developer-friendly and easy to customize.
+```
+
+This prompt provides enough context for v0 to generate a complete dashboard layout with proper data bindings and visualizations.
+
+---
+
+### Set Up Environment Variables
+
+After generating the UI, v0 will request environment variables for secure access to your Peaka project. Add the following to your `.env` file:
+
+```
+PEAKA_API_KEY=your_api_key_here
+PEAKA_PROJECT_ID=your_project_id_here
+```
+
+These values are injected into your app and used when making authenticated `fetch` calls to Peaka's Data API.
+
+---
+
+### Verify API Calls and Response Handling
+
+v0 generates initial API logic based on your prompt. To ensure accuracy:
+
+- Review how `fetch` requests are constructed (especially the body structure)
+- Compare it with [Peaka's API documentation](https://docs.peaka.com/api-reference/data--queries/execute-query)
+- Add sample request and response objects from the docs directly into your prompt (if needed) to improve alignment
+
+Pay close attention to fields like `catalogName`, `schemaName`, and `tableName`, these need to be exactly as defined in your Peaka query setup.
+
+---
+
+### Make Final Adjustments
+
+Once the initial dashboard is generated:
+
+- Refine how response data is parsed into metrics and chart series
+- Tweak chart components (tooltips, colors, legends, bucket logic)
+- Adjust layout and spacing using Tailwind utility classes
+- Simplify or restructure component logic for maintainability
+
+These small improvements will help polish the UI and make the dashboard easier to customize for future use cases.
+
+---
+
+Within minutes, you'll have a live, responsive, developer-friendly customer health dashboard, powered by real-time data from Peaka and built entirely through prompt-driven development.
+
+## Real-World Use Cases
+
+Different roles across a company can benefit from these metrics in meaningful ways. For instance, a **Customer Success Manager** might regularly track Account Health Scores and Active Tickets to prioritize accounts that need immediate attention or proactive engagement. If an account shows a declining health score and an increasing number of unresolved tickets, it's a clear signal to intervene before churn becomes inevitable.
+
+On the other hand, a **Revenue Manager** could use MRR data to analyze revenue growth trends and identify which customer segments are driving the most value. By tying this insight with churn risk data, they can spot weak points in the customer journey and collaborate with other teams to improve retention.
+
+Meanwhile, **Product Teams** can look at churn-prone accounts to understand usage patterns, or the lack thereof. If many of the accounts with high churn risk share a common behavior (e.g., not using a key feature), it becomes a product insight that could inform roadmap priorities or onboarding improvements.
+
+And of course, **Executives** benefit from seeing the bigger picture, how health scores, support loads, and revenue trends correlate across the business. Having these metrics aggregated and visualized in one place enables faster, more informed strategic decisions.
+
+## The Alternative / Conventional / Old Way
+
+Before tools like Peaka, tracking customer metrics across Stripe and other platforms meant stitching together multiple data sources manually.
+
+To calculate metrics like MRR or active support tickets, teams often relied on:
+
+- Exporting CSVs from Stripe, Intercom, and Jira
+- Writing custom SQL scripts in local notebooks or BI tools
+- Setting up and maintaining pipelines to sync these exports into a central database
+- Using spreadsheet formulas to aggregate or visualize key numbers
+
+This approach was:
+
+- **Time-consuming**: Writing and maintaining queries required technical expertise.
+- **Error-prone**: Each manual export introduced chances for mismatched data or outdated snapshots.
+- **Hard to scale**: As the number of metrics or tools increased, keeping everything in sync became a full-time job.
+- **Poorly democratized**: Business and support teams had to wait for engineers or analysts to fetch the numbers they needed.
+
+Even with all this effort, the insights often remained fragmented and delayed.
+
+## Key takeaways
+
+- With v0 and Peaka, you can build customer dashboards from natural language prompts, no coding or manual setup required.
+- Peaka brings data from multiple platforms into one place, eliminating the need for custom pipelines or integrations.
+- Teams like Customer Success, Product, and Account Management can monitor churn risk, MRR, and ticket activity in real time.
+- By replacing spreadsheets and scattered tools, Peaka creates a single source of truth for customer health metrics.
+
+## Conclusion
+
+In this example, we combined data from different sources using Peaka's robust integration layer and SQL-based interface. Then, with just a few steps, we plugged that data into v0 and built a working dashboard UI in no time. The seamless integration between Peaka and v0 made it incredibly easy to go from raw data to visual output, without setting up a backend or writing complex code. It's a simple yet powerful way to prototype data-driven apps fast.
