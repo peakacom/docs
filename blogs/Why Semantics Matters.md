@@ -1,4 +1,3 @@
-
 ---
 title: "Why Semantics Matters in Text-to-SQL Systems"
 description: "Comparing Spider results with Peaka AI to show how semantics boost SQL accuracy."
