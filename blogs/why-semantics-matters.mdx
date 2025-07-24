@@ -8,17 +8,17 @@ Querying databases using natural language has become increasingly accessible tha
 
 In this project, we evaluate the performance of Peaka AI Agent, a no-code tool that converts natural language questions into executable SQL queries, by using the Spider dataset as the testbed.
 
-# TL;DR
+## TL;DR
 
 If you’d like to skip the implementation details, you can review the finished code on [Peaka's GitHub account](https://github.com/peakacom/PeakaSemantics). Follow the instructions in the README to run the project locally.
 
 You can also [try the live demo](https://peakasemantics-gboxymwyv55rvleuxckhwv.streamlit.app/).
 
-# What is Peaka?
+## What is Peaka?
 
 Peaka is a no-code data management platform that connects and transforms data from multiple sources, making it easier to access, manage, and utilize across various applications. Peaka provides a unique semantics generation tool that completes table columns with human-readable descriptions. These semantics help the AI Agent better understand schema context, leading to more accurate SQL generation. We’ll be showing you how applying Peaka’s semantics tool can narrow the gap between AI-generated queries and ground-truth Spider SQL results, especially when raw schema names are vague or ambiguous.
 
-# What is Spider?
+## What is Spider?
 
 Spider is a large-scale, cross-domain text-to-SQL benchmark designed to evaluate the performance of natural language interfaces for complex database queries. Unlike simpler datasets, Spider challenges systems to understand diverse schemas and generate accurate SQL queries from natural language questions without access to query templates or hard-coded logic.
 
@@ -26,11 +26,11 @@ It contains 10,000 natural language questions across 200 databases covering a wi
 
 Spider is used to assess the effectiveness of semantic parsers and AI agents that attempt to bridge the gap between users and relational databases using plain languages.
 
-# What is Snowflake?
+## What is Snowflake?
 
 Snowflake is a modern cloud-based data warehouse platform known for its scalability, speed, and SQL-native environment. In the context of Spider benchmark, Snowflake serves as the execution environment for evaluating generated SQL queries. Since Spider provides natural language questions and corresponding SQL queries, these can be executed against databases hosted in Snowflake to validate whether the SQL returns correct results.
 
-# What is a Semantic Layer?
+## What is a Semantic Layer?
 
 A semantic layer is a method for making data easier to understand and utilize. It connects technical database terms to more familiar business language. By defining key terms, establishing relationships between tables, and implementing standard filters, a semantic layer helps tools like AI agents generate more accurate and meaningful queries. 
 
@@ -41,7 +41,7 @@ A semantic layer is a method for making data easier to understand and utilize. I
 - **Use RAG for real-time schema access:** Retrieval-Augmented Generation allows your system to pull in up-to-date schema information when generating queries, thereby reducing errors caused by outdated or missing context.
 - **Leverage query templates:** Keep a library of tried and true query patterns. Instead of generating queries from scratch, the model can modify these blueprints to fit new questions more accurately.
 
-# Prerequisites
+## Prerequisites
 
 Before running this project, make sure you have the following:
 
@@ -55,7 +55,7 @@ Before running this project, make sure you have the following:
 pip install requests streamlit python-dotenv
 ```
 
-# Tech Stack
+## Tech Stack
 
 | Tool/Library | **Purpose** |
 | --- | --- |
@@ -65,9 +65,9 @@ pip install requests streamlit python-dotenv
 | Requests | Used to make authenticated API calls to Peaka AI Agent  |
 | [Streamlit](https://streamlit.io) | To build an interactive web UI for comparing question results |
 
-# Let’s Start
+## Let’s Start
 
-## Combining natural language questions with sql queries
+### Combining natural language questions with sql queries
 
 In this step, we prepare a dataset that combines:
 
@@ -78,7 +78,7 @@ In this step, we prepare a dataset that combines:
 
 Our goal is to create a JSON file **output.json** that will later be used to test the Peaka AI agent’s ability to answer the same questions accurately.
 
-### Step 1: Load Natural Language Questions
+#### Step 1: Load Natural Language Questions
 
 Import the required libraries:
 
@@ -111,7 +111,7 @@ with open(INSTRUCTION_FILE, 'r', encoding="utf-8") as f:
 				instruction_map[instruction_id] = (instruction, database)
 ```
 
-### Step 2: Matching SQL files to Questions
+#### Step 2: Matching SQL files to Questions
 
 Each SQL file in sql/ is named using instance_id (e.g. q_1001.sql). We read the file and try to transpile it to Trino dialect that Peaka recognize using sqlglot.
 
@@ -180,7 +180,7 @@ except Exception:
     transpiled_sql = original_sql
 ```
 
-### Step 3: Assemble the Output Dataset
+#### Step 3: Assemble the Output Dataset
 
 Combine everything — instruction, database, transpiled SQL, and the result file name — into a structured list.
 
@@ -203,7 +203,7 @@ with open(OUTPUT_FILE, "w", encoding="utf-8") as out_file:
 json.dump(output_data, out_file, indent=2, ensure_ascii=False)
 ```
 
-## Sending Instructions to Peaka AI Agent
+### Sending Instructions to Peaka AI Agent
 
 Peaka serves a powerful data management backend, enabling seamless integration between your front-end apps and structured data sources. It provides a unified layer to manage, query, and expose data securely. With features like API generation, data federation, and access controls, Peaka is designed to support use cases such as AI agents, dashboards, and automation tools. You can visit our documentation section to learn more about [how Peaka handles data management](https://docs.peaka.com/embedded-peaka/data-management-backend).
 
@@ -219,7 +219,7 @@ Now, use the outputs.json file from the previous step, and for each instruction:
 4. Measure response time.
 5. Save all results in a structured file.
 
-### Step 1: Loading needed dependencies
+#### Step 1: Loading needed dependencies
 
 Start by importing requests, time, json, and os for API calls and file handling.
 
@@ -259,7 +259,7 @@ headers = {
 }
 ```
 
-### Step 2: Get Peaka Project Id
+#### Step 2: Get Peaka Project Id
 
 ```python
 with open(INPUT_FILE, 'r') as f:
@@ -270,7 +270,7 @@ project_info= response.json()
 project_id = project_info.get("projectId")
 ```
 
-### Step 3: Loop through instructions and Send to the AI Agent
+#### Step 3: Loop through instructions and Send to the AI Agent
 
 ```python
 results = []
@@ -294,7 +294,7 @@ end_time = time.time()
 elapsed_time = round(end_time - start_time)
 ```
 
-### Step 4: Process Response and Collect Results
+#### Step 4: Process Response and Collect Results
 
 ```python
 reply = response.json()
@@ -313,7 +313,7 @@ with open("results.json", "w", encoding="utf-8") as f:
 json.dump(results, f, indent=2, ensure_ascii=False)
 ```
 
-## Visualizing Results with Streamlit
+### Visualizing Results with Streamlit
 
 To explore and compare the AI-generated SQL outputs visually, I built a simple Streamlit Dashboard. It lets you browse through databases and its instructions, view Peaka’s results alongside the original Spider queries, and evaluate differences if any. You can find the full Streamlit implementation in the [Github repository.](https://github.com/ramamatar/PeakaSemantics/blob/main/streamlit.py) To launch the app locally, just run:
 
@@ -325,7 +325,7 @@ It will appear on your browser like the following, where you can select the spec
 
 ![Streamlit](https://cdn.peaka.com/blogs/semantics/streamlit.png)
 
-## Enhancing Accuracy with Peaka’s Semantic Tool
+### Enhancing Accuracy with Peaka’s Semantic Tool
 
 Peaka comes with a tool that analyzes the database schema and automatically generates rich semantic metadata (such as column descriptions, table purposes, and relationships), which are then used by the AI agent during query generation. By providing deeper context about the data, the agent is able to produce significantly more accurate SQL outputs, enhancing the performance of the agent.
 
@@ -369,15 +369,15 @@ Peaka’s initial results significantly lag behind Spider’s performance before
 
 After generating the Semantics of data, we retrieve an accurate answer more quickly.
 
-# Key takeaways
+## Key takeaways
 
 - Spider is a widely used benchmark for evaluating the performance of natural language to SQL systems, offering complex, multi-domain instructions and queries.
 - Transpiring SQL syntax makes Snowflake compatible with Spider queries.
 - Peaka AI Agent was tested using real Spider instructions, with responses retrieved via API.
 - Response accuracy improves significantly when adding semantic to the data with the help of Peaka, as it adds meaning and structure to database columns.
 
-# Conclusion
+## Conclusion
 
 This project demonstrates how combining the Spider benchmark with Peaka AI Agent reveals the power of semantics in natural language to SQL generation. While raw AI responses can approximate correct queries, enabling semantics bridges the gap between vague column names and their true intent, leading to more accurate, reliable SQL output. Tools like Peaka’s semantic enhancer not only improve model understanding but also make AI-powered data access far more effective in real-world applications.
 
-Feel free to reach out to me on [on my Github account](https://github.com/ramamatar) for any questions or comments.
+Feel free to reach out to me on [my Github account](https://github.com/ramamatar) for any questions or comments.
