@@ -2836,6 +2836,7 @@
       "post" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Import CSV",
+        "description" : "Imports data from a CSV file into a specified internal table in a given project.\n\nThis endpoint accepts a `multipart/form-data` request with two parts:\n\n- **file**: The CSV file to be imported.\n- **request**: A JSON string describing how the CSV columns map to the table's columns.\n\nCSV file format can be get from `/projects/{projectId}/table/{tableName}/sample`.\n\n\n#### Request JSON syntax\nThe `request` part must contain:\n- `mappings`: A list of objects, each with:\n  - `name`: The name of the target column in the internal table.\n  - Either `csvColumnName` or `csvColumnIndex` to define the corresponding column in the CSV.\n- `containsHeader`: A boolean indicating whether the CSV includes a header row.\n\n#### Examples\nWith column names:\n```\n{\n  \"mappings\": [\n    { \"name\": \"numcol\", \"csvColumnName\": \"numcol\" },\n    { \"name\": \"text\", \"csvColumnName\": \"text\" },\n    { \"name\": \"decimalcol\", \"csvColumnName\": \"decimalcol\" }\n  ],\n  \"containsHeader\": true\n}\n```\n\nWith column indexes:\n```\n{\n  \"mappings\": [\n    { \"name\": \"numcol\", \"csvColumnIndex\": 0 },\n    { \"name\": \"text\", \"csvColumnIndex\": 1 },\n    { \"name\": \"decimalcol\", \"csvColumnIndex\": 2 }\n  ],\n  \"containsHeader\": false\n}\n```\n\n- When the CSV contains a header row (`containsHeader: true`), you can use either `csvColumnName` or `csvColumnIndex`.\n- When the CSV does **not** contain a header row (`containsHeader: false`), you **must** use `csvColumnIndex`.\n\n#### Response\nThe endpoint currently runs synchronously and returns an `ImportJob` object with the job status and number of processed rows.\n\nIn future versions, this endpoint will return only the `jobId`, and the progress/result will be tracked via a separate job status endpoint:\n`GET /jobs/{id}`\n",
         "operationId" : "importCsv",
         "parameters" : [ {
           "name" : "projectId",
@@ -2892,6 +2893,7 @@
       "get" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Get Sample CSV",
+        "description" : "Returns a downloadable sample CSV file for the specified internal table in a project.\n\nThis CSV sample contains a few rows of mock or representative data from the table's schema.\nIt helps users understand the structure of the table and prepare matching CSV files for import.\n\n#### Response\n- Content-Type: `text/csv`\n- Disposition: Attachment (`sample.csv`)\n- The first row contains column headers.\n- The following rows contain example values for each column.\n\n#### Example Output\n```\ntext,num19,numcol,decimalcol\n\"sample text\",1176,1044,77.3711303273\n\"sample text\",9354,7923,96.6658831270\n\"sample text\",7658,8750,30.3928941706\n```\n\nThis sample can be used as a template when preparing files to upload using the `/import` endpoint.\n",
         "operationId" : "csvSample",
         "parameters" : [ {
           "name" : "projectId",
