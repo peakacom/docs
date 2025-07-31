@@ -1,6 +1,6 @@
 ---
-title: "Mastra Agent with Peaka's MCP server"
-description: "Creating a Smart SQL Agent with Mastra Framework and Peaka Tools"
+title: "Mastra Agent with Peaka's MCP Server"
+description: "Create a smart SQL agent using the Mastra framework and Peaka, then deploy it with Vercel. Query your data easily with natural language."
 ---
 
 ## Introduction
@@ -129,7 +129,7 @@ export const peakaAgent = new Agent({
 
 By default, Mastra agents work well with basic prompting. But I found that explicit instructions help guide the LLM more reliably and make a big difference in consistency. To improve the assistants's performance, I manually tested different user questions and tweaked instructions to fix edge cases.
 
-#### Injecting SQL rules resources from the MCP server
+#### Injecting SQL Rules Resources from the MCP Server
 
 Peaka's MCP server doesn't just expose tools like SQL execution and data retrieval. It also provides resources, including a rule set that guidelines how to write valid SQL using Trino, which is the SQL engine Peaka relies on.
 

@@ -1,6 +1,6 @@
 ---
 title: "Why Semantics Matters in Text-to-SQL Systems"
-description: "Comparing Spider results with Peaka AI to show how semantics boost SQL accuracy."
+description: "See how semantic modeling dramatically improves SQL accuracy, consistency, and query relevance, helping Peaka AI surpass Spider benchmarks."
 ---
 # Project Overview
 
@@ -67,7 +67,7 @@ pip install requests streamlit python-dotenv
 
 ## Let’s Start
 
-### Combining natural language questions with sql queries
+### Combining Natural Language Questions with SQL Queries
 
 In this step, we prepare a dataset that combines:
 
@@ -111,7 +111,7 @@ with open(INSTRUCTION_FILE, 'r', encoding="utf-8") as f:
 				instruction_map[instruction_id] = (instruction, database)
 ```
 
-#### Step 2: Matching SQL files to Questions
+#### Step 2: Matching SQL Files to Questions
 
 Each SQL file in sql/ is named using instance_id (e.g. q_1001.sql). We read the file and try to transpile it to Trino dialect that Peaka recognize using sqlglot.
 
@@ -219,7 +219,7 @@ Now, use the outputs.json file from the previous step, and for each instruction:
 4. Measure response time.
 5. Save all results in a structured file.
 
-#### Step 1: Loading needed dependencies
+#### Step 1: Loading Needed Dependencies
 
 Start by importing requests, time, json, and os for API calls and file handling.
 
@@ -259,7 +259,7 @@ headers = {
 }
 ```
 
-#### Step 2: Get Peaka Project Id
+#### Step 2: Get Peaka Project ID
 
 ```python
 with open(INPUT_FILE, 'r') as f:
@@ -270,7 +270,7 @@ project_info= response.json()
 project_id = project_info.get("projectId")
 ```
 
-#### Step 3: Loop through instructions and Send to the AI Agent
+#### Step 3: Loop through Instructions and Send to the AI Agent
 
 ```python
 results = []
@@ -369,7 +369,7 @@ Peaka’s initial results significantly lag behind Spider’s performance before
 
 After generating the Semantics of data, we retrieve an accurate answer more quickly.
 
-## Key takeaways
+## Key Takeaways
 
 - Spider is a widely used benchmark for evaluating the performance of natural language to SQL systems, offering complex, multi-domain instructions and queries.
 - Transpiring SQL syntax makes Snowflake compatible with Spider queries.
