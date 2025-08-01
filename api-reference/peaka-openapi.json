@@ -4695,7 +4695,7 @@
       "post" : {
         "tags" : [ "Data -- Metadata" ],
         "summary" : "Refresh Project Metadata",
-        "operationId" : "refreshMetaddata",
+        "operationId" : "refreshMetadata",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
@@ -4722,6 +4722,46 @@
                   "type" : "object",
                   "additionalProperties" : {
                     "type" : "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metadata/{projectId}/refresh/{catalogId}" : {
+      "get" : {
+        "tags" : [ "Data -- Metadata" ],
+        "summary" : "Get Metadata Refresh Job Status",
+        "operationId" : "getRefreshMetadataJobStatus",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "catalogId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get Metadata Refresh Job Status",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MetadataRefreshJobStatusResult"
+                },
+                "examples" : {
+                  "Get Metadata Refresh Job Response Example" : {
+                    "description" : "Get Metadata Refresh Job Response Example",
+                    "value" : "        {\n            \"status\": \"active\" // Possible values: active, not-active,completed, waiting, delayed, failed, paused, stuck\n        }\n"
                   }
                 }
               }
@@ -6987,6 +7027,15 @@
           "description" : {
             "type" : "string",
             "description" : "Descriptive text about the organization"
+          }
+        }
+      },
+      "MetadataRefreshJobStatusResult" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "NOT_ACTIVE", "COMPLETED", "WAITING", "ACTIVE", "DELAYED", "FAILED", "PAUSED", "STUCK" ]
           }
         }
       },
