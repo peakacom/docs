@@ -167,6 +167,12 @@
               "api-reference/data--queries/list-queries",
               "api-reference/data--queries/create-query",
               "api-reference/data--queries/execute-query",
+              "api-reference/data--queries/list-query-folders",
+              "api-reference/data--queries/create-query-folder-at-root",
+              "api-reference/data--queries/read-query-folder",
+              "api-reference/data--queries/addremove-query-infrom-folder",
+              "api-reference/data--queries/create-query-folder-with-folder-id",
+              "api-reference/data--queries/delete-query-folder-with-folder-id",
               "api-reference/data--queries/read-query",
               "api-reference/data--queries/update-query",
               "api-reference/data--queries/delete-query"

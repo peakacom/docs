@@ -3159,6 +3159,221 @@
         }
       }
     },
+    "/data/projects/{projectId}/queries/folders" : {
+      "get" : {
+        "tags" : [ "Data -- Queries" ],
+        "summary" : "List Query Folders",
+        "operationId" : "listQueryFolders",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Folder Listed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/QueryFolderItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Data -- Queries" ],
+        "summary" : "Create Query Folder at Root",
+        "operationId" : "createQueryFolderAtRoot",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QueryFolderCreateRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Folder Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/projects/{projectId}/queries/folders/{folderId}" : {
+      "get" : {
+        "tags" : [ "Data -- Queries" ],
+        "summary" : "Read Query Folder",
+        "operationId" : "readQueryFolder",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "folderId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Folder Read",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Data -- Queries" ],
+        "summary" : "Add/Remove Query In/From Folder",
+        "operationId" : "addOrRemoveQueryFromFolder",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "folderId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QueryFolderUpdateRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Folder Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Data -- Queries" ],
+        "summary" : "Create Query Folder With Folder Id",
+        "operationId" : "createQueryFolderWithFolderId",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "folderId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QueryFolderCreateRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Folder Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Data -- Queries" ],
+        "summary" : "Delete Query Folder With Folder Id",
+        "operationId" : "deleteQueryFolderWithFolderId",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "folderId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Folder Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/data/projects/{projectId}/queries/{queryId}" : {
       "get" : {
         "tags" : [ "Data -- Queries" ],
@@ -6177,6 +6392,54 @@
           }
         }
       },
+      "QueryFolderUpdateRequest" : {
+        "type" : "object",
+        "properties" : {
+          "queryIdsAdded" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "queryIdsRemoved" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "QueryFolderItem" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "createdAt" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "modifiedAt" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "children" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/QueryFolderItem"
+            }
+          },
+          "queryIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
       "CacheSettingsUpdateRequest" : {
         "type" : "object",
         "properties" : {
@@ -6694,6 +6957,14 @@
           "target" : {
             "type" : "string",
             "description" : "Target Project ID"
+          }
+        }
+      },
+      "QueryFolderCreateRequest" : {
+        "type" : "object",
+        "properties" : {
+          "folderName" : {
+            "type" : "string"
           }
         }
       },
