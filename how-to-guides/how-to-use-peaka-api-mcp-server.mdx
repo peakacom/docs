@@ -1,0 +1,86 @@
+---
+title: "How to use Peaka API MCP Server"
+description: "Learn how you can use Peaka API MCP Server to build your own tools with AI assistants"
+---
+
+# Peaka API MCP Server
+
+The **Peaka API MCP Server** is a Model Context Protocol (MCP) server that provides seamless access to Peaka's comprehensive API endpoints for programmatic interaction with your data platform. This server enables Large Language Models (LLMs) to interact directly with Peaka's powerful data integration and analytics capabilities.
+
+## What is Model Context Protocol (MCP)?
+
+[Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) is a new, standardized protocol for managing context between large language models (LLMs) and external systems. It allows AI assistants to access and interact with external APIs and services in a structured, secure way.
+
+## Overview
+
+The Peaka API MCP Server acts as a bridge between AI assistants (like Claude Desktop or Cursor) and Peaka's API, enabling you to:
+
+- **Manage Organizations & Projects**: Create, read, update, and delete organizations, workspaces, and projects
+- **Handle Data Connections**: Set up and manage connections to various data sources (databases, SaaS tools, APIs)
+- **Work with Data Catalogs**: Create and manage data catalogs from your connected sources
+- **Execute Queries**: Run SQL queries and retrieve results programmatically
+- **Manage Caching**: Set up data caching strategies for better performance
+- **Use AI Agents**: Interact with Peaka's AI-powered data analysis capabilities
+- **Handle Internal Tables**: Create and manage Peaka's internal data tables
+- **More**: And more...
+
+## Prerequisites
+
+Before using the Peaka API MCP Server, you'll need:
+
+1. **Peaka Partner API Key**: You must have a valid Peaka Partner API key to access the endpoints.
+
+   📚 **Learn how to get your API key**: Check out our [Partner API Key Management Guide](https://docs.peaka.com/how-to-guides/how-to-manage-partner-api-key) for detailed instructions on creating and managing your API key.
+
+2. **MCP-Compatible AI Assistant**:
+   - [Claude Desktop](https://www.anthropic.com/products/claude-desktop)
+   - [Cursor IDE](https://www.cursor.com/)
+   - Others...
+
+## Installation & Setup
+
+### For Claude Desktop
+
+1. **Locate the configuration file**:
+
+   - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+2. **Add the MCP server configuration**:
+
+   ```json
+   {
+     "mcpServers": {
+       "peaka-api": {
+         "command": "npx",
+         "args": ["-y", "@peaka/mcp-server-peaka-api@latest"]
+       }
+     }
+   }
+   ```
+
+3. **Restart Claude Desktop** to apply the changes.
+
+### For Cursor IDE
+
+1. **Locate the configuration file**:
+
+   - **macOS**: `~/.cursor/mcp.json`
+   - **Windows**: `%USERPROFILE%\.cursor\mcp.json`
+
+2. **Add the MCP server configuration**:
+
+   ```json
+   {
+     "mcpServers": {
+       "peaka-api": {
+         "command": "npx",
+         "args": ["-y", "@peaka/mcp-server-peaka-api@latest"]
+       }
+     }
+   }
+   ```
+
+3. **Enable the MCP Server** in Cursor's settings.
+
+That's it! You can now use Peaka API MCP Server in your AI assistant.
