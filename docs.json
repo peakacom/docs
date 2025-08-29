@@ -503,8 +503,7 @@
               "how-to-guides/how-to-customize-embedded-ui-style",
               "how-to-guides/how-to-create-oauth2-based-connections-via-peaka",
               "how-to-guides/how-to-create-peaka-rest-api-catalog-with-authentication",
-              "how-to-guides/how-to-use-new-ai-api-api",
-              "how-to-guides/how-to-use-peaka-api-mcp-server"
+              "how-to-guides/how-to-use-new-ai-api-api"
             ]
           }
         ]
@@ -519,7 +518,8 @@
               "blogs/how-to-build-churn-dashboard",
               "blogs/mastra-agent-with-peaka-mcp",
               "blogs/build-health-dashboard-zendesk-hubspot-stripe",
-              "blogs/why-semantics-matters"
+              "blogs/why-semantics-matters",
+              "blogs/how-to-use-peaka-api-mcp-server"
             ]
           }
         ]

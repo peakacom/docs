@@ -1,0 +1,315 @@
+---
+title: "Build AI Assistants with Peaka's API MCP Server"
+description: "Learn how to supercharge your AI assistants with Peaka's comprehensive API through the Model Context Protocol server, enabling seamless data management and querying capabilities."
+---
+
+## Introduction
+
+Ever wanted to give your AI assistant the power to manage entire data platforms, create connections to databases, and execute complex queries across multiple data sources?
+
+With Peaka's API MCP Server, you can transform any MCP-compatible AI assistant into a powerful data management tool that understands your infrastructure, connects to various data sources, and helps you build comprehensive data solutions without writing a single line of integration code.
+
+In this blog, I'll show you how to set up and use Peaka's API MCP Server to unlock the full potential of AI-powered data management.
+
+## What is an MCP Server?
+
+While AI assistants are great at understanding and generating text, they often need external tools to interact with real systems like databases, APIs, or data platforms. That's where MCP servers shine.
+
+MCP stands for Model Context Protocol. An MCP server is a standardized interface that exposes tools or data sources to AI assistants. The assistant doesn't need to know the intricacies of how a specific API works or where services are hosted.
+
+For example, Peaka's API MCP server provides comprehensive access to Peaka's most of API endpoints, including:
+
+- **Complete API Documentation**: URLs, endpoints, HTTP methods, and parameters
+- **Authentication Details**: Headers, authorization rules, and API key management
+- **Request/Response Examples**: Sample payloads and expected returns
+- **Error Handling**: Status codes and troubleshooting guidance
+
+## Prerequisites
+
+To get started with Peaka's API MCP Server, you'll need:
+
+- **Peaka Partner API Key**: Access to Peaka's comprehensive API endpoints. Get yours from the [Partner API Key Management Guide](https://docs.peaka.com/how-to-guides/how-to-manage-partner-api-key).
+- **MCP-Compatible AI Assistant**: Such as [Claude Desktop](https://www.anthropic.com/products/claude-desktop) or [Cursor IDE](https://www.cursor.com/)
+
+## Tech Stack
+
+| **Technology**                                                      | **Description**                                                                              |
+| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| [Peaka](https://www.peaka.com/)                                     | A zero-ETL data integration platform with comprehensive API for programmatic data management |
+| [Model Context Protocol](https://modelcontextprotocol.io/)          | A standardized protocol for connecting AI assistants with external systems and APIs          |
+| [Claude Desktop](https://www.anthropic.com/products/claude-desktop) | Anthropic's desktop AI assistant with MCP support                                            |
+| [Cursor IDE](https://www.cursor.com/)                               | AI-powered code editor with integrated MCP capabilities                                      |
+
+### Why Peaka's API MCP Server?
+
+Peaka's API MCP Server is a comprehensive solution that provides **complete access to Peaka's most of API endpoints**. Unlike traditional API documentation, this MCP server acts as an intelligent API companion that:
+
+#### **Exposes the Full Peaka API Suite**
+
+- **Organization Management APIs**: Create, read, update, delete organizations and workspaces
+- **Connection APIs**: Set up and manage data source connections
+- **Data Catalog APIs**: Discover, create, and manage data catalogs and schemas
+- **Query Execution APIs**: Run SQL queries and retrieve results programmatically
+- **Caching APIs**: Configure and manage data caching strategies
+- **AI Agent APIs**: Interact with Peaka's conversational AI capabilities
+- **Internal Table APIs**: Create and manage Peaka's internal data structures
+- **More**: And more...
+
+#### **Enables Seamless Code Integration**
+
+Your AI assistant can help you:
+
+- **Generate API Calls**: Create ready-to-use code in Python, JavaScript, cURL, and more
+- **Handle Authentication**: Set up proper headers and API key management
+- **Parse Responses**: Extract and process API return data efficiently
+- **Implement Error Handling**: Add robust error checking and retry logic
+- **Build Complete Applications**: From simple scripts to full data applications
+
+### Why MCP?
+
+The Model Context Protocol represents a paradigm shift in how AI assistants interact with external systems. Instead of custom integrations for each service, MCP provides:
+
+- **Standardized Communication**: One protocol for all external tools
+- **Security**: Controlled access to external resources
+- **Extensibility**: Easy to add new capabilities without changing the AI assistant
+- **Reliability**: Structured error handling and consistent responses
+
+## Quick Start Guide
+
+### Setting up Claude Desktop
+
+1. **Locate your Claude Desktop configuration file**:
+
+   - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+2. **Add the Peaka API MCP server**:
+
+   ```json
+   {
+     "mcpServers": {
+       "peaka-api": {
+         "command": "npx",
+         "args": ["-y", "@peaka/mcp-server-peaka-api@latest"]
+       }
+     }
+   }
+   ```
+
+3. **Restart Claude Desktop** to load the new server.
+
+### Setting up Cursor IDE
+
+1. **Locate your Cursor MCP configuration**:
+
+   - **macOS**: `~/.cursor/mcp.json`
+   - **Windows**: `%USERPROFILE%\.cursor\mcp.json`
+
+2. **Add the server configuration**:
+
+   ```json
+   {
+     "mcpServers": {
+       "peaka-api": {
+         "command": "npx",
+         "args": ["-y", "@peaka/mcp-server-peaka-api@latest"]
+       }
+     }
+   }
+   ```
+
+3. **Enable MCP in Cursor settings**.
+
+## What You Can Do with Peaka's API MCP Server
+
+Once connected, your AI assistant becomes a comprehensive API development companion. Here's what becomes possible:
+
+### 1. API Discovery and Documentation
+
+```
+"Show me all available Peaka APIs for managing database connections"
+```
+
+Your assistant will provide:
+
+- Complete list of connection-related endpoints
+- Required parameters and headers for each API
+- Authentication requirements and formats
+- Sample request/response payloads
+- Error codes and troubleshooting tips
+
+### 2. Code Generation for Any Language
+
+```
+"Generate JavaScript code to create a new Peaka project using the API with given organization ID and workspace ID"
+```
+
+The assistant will create:
+
+- Complete JavaScript script with proper imports and headers
+- Correct API endpoint URLs and headers
+- Authentication setup with your API key
+- Error handling and response parsing
+
+**Example output:**
+
+```javascript
+const PEAKA_API_URL = "https://partner.peaka.studio/api/v1";
+const API_KEY = "your-api-key";
+
+// Create a new Peaka project
+async function createPeakaProject(organizationId, workspaceId, projectName) {
+  const response = await fetch(
+    `${PEAKA_API_URL}/organizations/${organizationId}/workspaces/${workspaceId}/projects`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: projectName }),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to create project: ${response.statusText}`);
+  }
+
+  return await response.json();
+}
+
+// Usage example
+async function main() {
+  try {
+    const project = await createPeakaProject(
+      "your-organization-id",
+      "your-workspace-id",
+      "My New Project"
+    );
+
+    console.log("Project created:", project.name);
+    console.log("Project ID:", project.id);
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+}
+
+// Run the example
+main();
+```
+
+## Real-World Development Scenarios
+
+### 1. Building a Data Integration Script
+
+**Developer Request**: _"I need to create a new connection to a PostgreSQL database using the API with given organization ID and workspace ID" with given details: name: "My DB", driver: "postgresql", host: "localhost"_
+
+**AI Assistant Response**:
+
+```javascript
+const PEAKA_API_URL = "https://partner.peaka.studio/api/v1";
+
+async function createPostgreSQLConnection(config) {
+  const {
+    apiKey,
+    projectId,
+    connectionName,
+    host,
+    port,
+    user,
+    password,
+    database,
+  } = config;
+
+  // Connection payload for PostgreSQL
+  const payload = {
+    name: connectionName || "My PostgreSQL DB",
+    type: "POSTGRES",
+    credential: {
+      url: host || "localhost",
+      port: port || 5432,
+      user: user || "postgres",
+      password: password,
+      databaseName: database,
+      useSsl: false,
+    },
+  };
+
+  // Create connection via Peaka API
+  const response = await fetch(`${PEAKA_API_URL}/connections/${projectId}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to create connection: ${response.statusText}`);
+  }
+
+  return await response.json();
+}
+
+// Example usage
+async function run() {
+  try {
+    const connection = await createPostgreSQLConnection({
+      apiKey: "your-peaka-api-key",
+      projectId: "your-project-id",
+      connectionName: "My DB",
+      host: "localhost",
+      port: 5432,
+      user: "postgres",
+      password: "your-password",
+      database: "your-database",
+    });
+
+    console.log("✅ Connection created:", connection.id);
+  } catch (error) {
+    console.error("❌ Error:", error.message);
+  }
+}
+
+run();
+```
+
+### 2. API Error Handling and Debugging
+
+**Developer Request**: _"My API call is failing with a 422 error. Help me understand what's wrong."_
+
+**AI Assistant Analysis**:
+
+- Reviews the 422 status code (Unprocessable Entity)
+- Analyzes your request payload against Peaka's API schema
+- Identifies missing required fields or invalid data types
+- Provides corrected request with proper validation
+- Suggests preventive measures for future calls
+
+## Key Takeaways
+
+- **Complete API Access**: Peaka's MCP server exposes the entire Peaka API suite with full documentation, authentication details, and code examples
+- **Intelligent Code Generation**: Your AI assistant can generate production-ready code in any language with proper error handling and best practices
+- **Comprehensive Integration Support**: From simple scripts to complex data pipelines, get complete implementation guidance
+- **Developer-Friendly Documentation**: Access live API documentation, examples, and troubleshooting through natural language queries
+
+## Conclusion
+
+Peaka's API MCP Server transforms how developers interact with data platform APIs. Instead of switching between documentation, testing tools, and code editors, you get everything in one conversational interface.
+
+Your AI assistant becomes an expert API companion that knows:
+
+- Every endpoint, parameter, and response format
+- Authentication requirements and security best practices
+- How to generate clean, production-ready code
+- How to debug issues and optimize performance
+- How to build complete integration workflows
+
+This isn't just about making API calls easier—it's about fundamentally changing how we build data-driven applications. With Peaka's comprehensive API access through MCP, you can focus on solving business problems rather than wrestling with integration complexity.
+
+Whether you're building a simple data sync script or a comprehensive analytics platform, the combination of Peaka's powerful APIs and MCP's intelligent interface puts enterprise-grade data capabilities at your fingertips.
+
+Ready to supercharge your development workflow? Get your [Peaka Partner API key](https://docs.peaka.com/how-to-guides/how-to-manage-partner-api-key) and start building with AI-powered API assistance.
+
+That's it! You can now use Peaka API MCP Server in your AI assistant.
