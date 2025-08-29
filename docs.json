@@ -15,7 +15,9 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": ["introduction"]
+            "pages": [
+              "introduction"
+            ]
           },
           {
             "group": "Project Operations",
@@ -235,6 +237,9 @@
               "api-reference/data--metadata/semantic-query-metadata-for-the-project",
               "api-reference/data--metadata/generate-sample-ai-questions-for-the-project",
               "api-reference/data--metadata/refresh-project-metadata",
+              "api-reference/data--metadata/get-metadata-refresh-job-callback",
+              "api-reference/data--metadata/register-metadata-refresh-job-callback",
+              "api-reference/data--metadata/unregister-metadata-refresh-job-callback",
               "api-reference/data--metadata/get-metadata-refresh-job-status",
               "api-reference/data--metadata/get-project-catalog-metadata-relations",
               "api-reference/data--metadata/add-relation-to-metadata",
@@ -285,7 +290,9 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": ["sql/introduction"]
+            "pages": [
+              "sql/introduction"
+            ]
           },
           {
             "group": "Reference",
@@ -303,7 +310,9 @@
           },
           {
             "group": "Data Types",
-            "pages": ["sql/reference/types"]
+            "pages": [
+              "sql/reference/types"
+            ]
           },
           {
             "group": "Functions",
