@@ -6344,6 +6344,12 @@
         "properties" : {
           "catalogId" : {
             "type" : "string"
+          },
+          "callbackURL" : {
+            "type" : "string"
+          },
+          "callbackToken" : {
+            "type" : "string"
           }
         }
       },
