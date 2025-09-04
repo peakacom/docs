@@ -4214,16 +4214,6 @@
           "required" : true
         },
         "responses" : {
-          "400" : {
-            "description" : "Target table already exists",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ParametricTable"
-                }
-              }
-            }
-          },
           "200" : {
             "description" : "Parametric table created successfully",
             "content" : {
@@ -4248,6 +4238,16 @@
                       } ]
                     }
                   }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Target table already exists",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ParametricTable"
                 }
               }
             }
@@ -6337,6 +6337,11 @@
               "type" : "boolean"
             },
             "description" : "A map of feature flags, where the key is the feature name and the value indicates if it is enabled.\n Defined feature flags are:\n  - createDataInPeaka : Flag indicating whether the user can create data in Peaka.\n  - queries : Flag indicating whether the user can use query functions."
+          },
+          "featureConfigs" : {
+            "type" : "object",
+            "additionalProperties" : true,
+            "description" : "A map of feature configurations, where the key is the feature name and the value is the configuration.\n Defined feature configurations are:\n  - displayedConnectionTypes : List of connector types displayed in the connection/catalog creation modal."
           }
         }
       },
