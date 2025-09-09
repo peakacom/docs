@@ -15,9 +15,7 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction"
-            ]
+            "pages": ["introduction"]
           },
           {
             "group": "Project Operations",
@@ -52,6 +50,10 @@
               "cdc-setup/cdc-mariadb-setup",
               "cdc-setup/cdc-oracle-setup"
             ]
+          },
+          {
+            "group": "AI Setup",
+            "pages": ["ai-setup/ai-setup"]
           }
         ]
       },
@@ -290,9 +292,7 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": [
-              "sql/introduction"
-            ]
+            "pages": ["sql/introduction"]
           },
           {
             "group": "Reference",
@@ -310,9 +310,7 @@
           },
           {
             "group": "Data Types",
-            "pages": [
-              "sql/reference/types"
-            ]
+            "pages": ["sql/reference/types"]
           },
           {
             "group": "Functions",
