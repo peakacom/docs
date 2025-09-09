@@ -1,0 +1,35 @@
+---
+title: "Bring your own AI model"
+description: "How to use custom AI models with Peaka"
+---
+
+## Prerequisites
+
+Before adding a custom LLM model, make sure you have the following ready:
+
+- **API Key**: The authentication key issued by your LLM provider.
+- **Base URL** (if applicable): The endpoint through which requests to the model will be made.
+
+We currently support the following providers:
+
+- **OpenAI** and **Azure OpenAI**
+- **Google Gemini**
+- **Alibaba Cloud Qwen**
+
+👉 If you’re using another provider, let us know — we can add support for additional LLMs.
+
+## Model Roles
+
+In Peaka, each model you add is assigned a role based on how it will be used. Currently, we support two types of roles:
+
+| Role            | Purpose                              | Example Usages                                                                    |
+| --------------- | ------------------------------------ | --------------------------------------------------------------------------------- |
+| Agent / Chat    | Text-to-SQL generation               | `Show me the top 10 customers by revenue` → model generates the SQL query.        |
+| Embedding / RAG | Retrieval-Augmented Generation (RAG) | Store embeddings of table names & metadata → system retrieves context before SQL. |
+
+# How they work together
+
+- **Agent / Chat models** handle natural language to SQL conversion.
+- **Embedding / RAG models** enhance accuracy by retrieving the most relevant tables and metadata before query generation.
+
+By combining these roles, Peaka ensures your text-to-SQL agent is both accurate and context-aware.

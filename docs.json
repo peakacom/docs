@@ -53,7 +53,7 @@
           },
           {
             "group": "AI Setup",
-            "pages": ["ai-setup/ai-setup"]
+            "pages": ["ai-setup/bring-your-own-ai-model"]
           }
         ]
       },
