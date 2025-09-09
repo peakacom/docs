@@ -99,3 +99,40 @@ Once you’ve added your custom AI models, you can configure Peaka to use them i
 2. Save Settings
    - Click Save to apply your configuration.
    - Peaka will start using your selected AI models according to the roles you’ve assigned.
+
+## Monitoring Token Usage of Models
+
+Peaka allows you to monitor the usage of your AI models, including tokens consumed during operations. Follow these steps to access the monitoring page:
+
+1.  Navigate to the AI Page
+
+    - Go to Peaka AI in the main navigation.
+
+2.  Open the Token Usage Table
+
+    - Click the Token Usage button.
+      <img
+        src="https://cdn.peaka.com/ai-setup/bring-your-own-ai-5.png"
+        style={{ border: "1px solid #e2e4e7" }}
+      />
+    - The LLM Monitoring Table will open, displaying detailed usage information.
+
+3.  Understanding the Table Fields
+
+        <img
+           src="https://cdn.peaka.com/ai-setup/bring-your-own-ai-6.png"
+           style={{ border: "1px solid #e2e4e7" }}
+         />
+
+    | **Field**         | **Description**                                                   |
+    | ----------------- | ----------------------------------------------------------------- |
+    | **Gen AI System** | The AI system used (e.g., OpenAI, Google Gemini).                 |
+    | **Gen AI Model**  | The specific model used for the operation.                        |
+    | **Workflow Name** | The main AI workflow associated with the operation.               |
+    | **Workflow Path** | The path of the subtask within the AI workflow.                   |
+    | **Token**         | Total number of tokens consumed by Peaka for the operation.       |
+    | **Start Time**    | Timestamp when the operation started.                             |
+    | **End Time**      | Timestamp when the operation ended.                               |
+    | **Model Used**    | Indicates whether the **User Model** or **Peaka Model** was used. |
+
+This table helps you track usage, analyze costs, and ensure that your custom models are being utilized as expected.
