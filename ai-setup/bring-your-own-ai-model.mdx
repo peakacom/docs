@@ -53,11 +53,11 @@ Follow these steps to add a custom LLM model to Peaka:
 3. Fill out the Add AI Model Form
    The form contains the following fields:
 
-   - Gen AI System – Select the provider (e.g., Google Gemini, OpenAI, Alibaba Cloud Qwen).
-   - Model Role – Choose the role of the model: Agent/Chat or Embedding/RAG.
-   - Gen AI Model – Specify the model name/version to use.
-   - Gen AI API Key – Enter the API key issued by your provider.
-   - Gen AI Base URL – Enter the base URL/endpoint if required by the provider.
+   - **Gen AI System** – Select the provider (e.g., Google Gemini, OpenAI, Alibaba Cloud Qwen).
+   - **Model Role** – Choose the role of the model: Agent/Chat or Embedding/RAG.
+   - **Gen AI Model** – Specify the model name/version to use.
+   - **Gen AI API Key** – Enter the API key issued by your provider.
+   - **Gen AI Base URL** – Enter the base URL/endpoint if required by the provider.
 
 <img
   src="https://cdn.peaka.com/ai-setup/bring-your-own-ai-2.png"
@@ -73,6 +73,29 @@ Follow these steps to add a custom LLM model to Peaka:
 After successfully adding the model, it will appear in your list of AI models, ready for use in your projects.
 
 <img
-  src="https://cdn.peaka.com/ai-setup/bring-your-own-ai3.png"
+  src="https://cdn.peaka.com/ai-setup/bring-your-own-ai-3.png"
   style={{ border: "1px solid #e2e4e7" }}
 />
+
+## Configuring Model Usage
+
+Once you’ve added your custom AI models, you can configure Peaka to use them instead of the default models.
+
+1. Configure the Settings Form
+   The form contains the following fields:
+
+| **Setting**                                         | **Description**                                                                                                                                                                       |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Agent/Chat Model**                                | Select the model to use for chat and text-to-SQL agent features.                                                                                                                      |
+| **Embedding / RAG Model**                           | Select the model to use for retrieval-augmented generation and metadata retrieval. **⚠️ Changing this model will trigger reindexing of semantic metadata, which may take some time.** |
+| **AI Response Language**                            | Set the global language for AI responses across the system.                                                                                                                           |
+| **Generate Semantics on Each Query Update with AI** | Toggle **On/Off**. When enabled, Peaka will automatically generate semantic metadata whenever a new query is executed.                                                                |
+
+<img
+  src="https://cdn.peaka.com/ai-setup/bring-your-own-ai-4.png"
+  style={{ border: "1px solid #e2e4e7" }}
+/>
+
+2. Save Settings
+   - Click Save to apply your configuration.
+   - Peaka will start using your selected AI models according to the roles you’ve assigned.
