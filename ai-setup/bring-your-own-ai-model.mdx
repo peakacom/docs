@@ -27,9 +27,52 @@ In Peaka, each model you add is assigned a role based on how it will be used. Cu
 | Agent / Chat    | Text-to-SQL generation               | `Show me the top 10 customers by revenue` → model generates the SQL query.        |
 | Embedding / RAG | Retrieval-Augmented Generation (RAG) | Store embeddings of table names & metadata → system retrieves context before SQL. |
 
-# How they work together
+### How they work together
 
 - **Agent / Chat models** handle natural language to SQL conversion.
 - **Embedding / RAG models** enhance accuracy by retrieving the most relevant tables and metadata before query generation.
 
 By combining these roles, Peaka ensures your text-to-SQL agent is both accurate and context-aware.
+
+## Adding a Custom Model
+
+Follow these steps to add a custom LLM model to Peaka:
+
+1. Navigate to AI Settings
+
+   - Go to Organization Settings → AI Settings.
+
+2. Click “Add AI Model”
+   - Locate and click the Add AI Model button to open the form.
+
+<img
+  src="https://cdn.peaka.com/ai-setup/bring-your-own-ai-1.png"
+  style={{ border: "1px solid #e2e4e7" }}
+/>
+
+3. Fill out the Add AI Model Form
+   The form contains the following fields:
+
+   - Gen AI System – Select the provider (e.g., Google Gemini, OpenAI, Alibaba Cloud Qwen).
+   - Model Role – Choose the role of the model: Agent/Chat or Embedding/RAG.
+   - Gen AI Model – Specify the model name/version to use.
+   - Gen AI API Key – Enter the API key issued by your provider.
+   - Gen AI Base URL – Enter the base URL/endpoint if required by the provider.
+
+<img
+  src="https://cdn.peaka.com/ai-setup/bring-your-own-ai-2.png"
+  style={{ border: "1px solid #e2e4e7" }}
+/>
+
+4. Save and Validate
+   - Click Save.
+   - Peaka will automatically test your credentials.
+   - If the credentials are valid, the model will be added and ready to use.
+   - If invalid, an error message will guide you to correct the information.
+
+After successfully adding the model, it will appear in your list of AI models, ready for use in your projects.
+
+<img
+  src="https://cdn.peaka.com/ai-setup/bring-your-own-ai3.png"
+  style={{ border: "1px solid #e2e4e7" }}
+/>
