@@ -1,17 +1,24 @@
 ---
-title: "SnowFlake"
-description: "Discover a seamless integration process! Learn how to connect SnowFlake to Peaka effortlessly for streamlined transactions."
+title: "Snowflake"
+description: "Discover a seamless integration process! Learn how to connect Snowflake to Peaka effortlessly for streamlined transactions."
 ---
 
-This article guides you through the process of connecting SnowFlake to Peaka, allowing you to seamlessly access your SnowFlake data within the Peaka platform.
+This article guides you through the process of connecting Snowflake to Peaka, allowing you to seamlessly access your Snowflake data within the Peaka platform.
 
 ## Prerequisites
 
-Before you begin, ensure you have the following credentials from ServiceTitan:
+Peaka provides two ways to connect to Snowflake:
+
+- Using Snowflake Password
+- Using Snowflake Private Key
+
+Before you begin, ensure you have the following credentials from Snowflake:
 
 - **Account**
 - **User**
-- **Password**
+- **Password** (for using Snowflake Password)
+- **Private Key** (for using Snowflake Private Key)
+- **Private Key Passphrase** (for using Snowflake Private Key)
 - **Database Name**
 - **Role**
 - **Warehouse**
@@ -25,9 +32,9 @@ Follow the steps below to obtain it:
    - At the bottom left, click on your generated account name next to the Snowflake icon.
    - Copy the **Account** name shown and store them in a safe place.
 
-2. To get the User and Password information, follow these steps:
+2. To get the User, follow these steps:
 
-   - User and Password fields are your Snowflake account's login credentials.
+   - User fields are your Snowflake account's login credentials.
 
 3. To get the Database Name information, follow these steps:
 
@@ -49,20 +56,35 @@ Follow the steps below to obtain it:
      - [AWS](https://docs.snowflake.com/en/sql-reference/external-functions-creating-aws-ui-proxy-service)
      - [Google Cloud](https://docs.snowflake.com/en/sql-reference/external-functions-creating-gcp-ui-proxy-service)
 
-## Connecting SnowFlake to Peaka
+### Authentication Methods
 
-Now that you have your SnowFlake Account, User,Password, Database Name, Role, Warehouse and Http Proxy, you can connect it to Peaka using the following steps:
+Choose one of the following authentication methods based on your security requirements:
+
+#### Method 1: Private Key Authentication
+
+7. **Private Key & Passphrase Setup:**
+   - Generate your private key pair by following the [official Snowflake key-pair authentication guide](https://docs.snowflake.com/en/user-guide/key-pair-auth#generate-the-private-keys)
+   - Store the private key securely and note the passphrase you created during generation
+
+#### Method 2: Password Authentication
+
+8. **Password Setup:**
+   - Use your standard Snowflake account login password
+
+## Connecting Snowflake to Peaka
+
+Now that you have your Snowflake Account, User,Password, Database Name, Role, Warehouse and Http Proxy, you can connect it to Peaka using the following steps:
 
 1. Navigate to the data model page in Peaka.
 
 2. In the side menu bar, click the "New Data Source" button to initiate the connection process.
 
-3. In the modal that appears, select "SnowFlake" as your data source.
+3. In the modal that appears, select "Snowflake" as your data source.
 
 4. Enter a name for your data source name and paste values that you before.
 
 <img src="https://cdn.peaka.com/integrations/snowflake-1.png" />
 
-5. Click "Next" to create your SnowFlake data source.
+5. Click "Connect" to create your Snowflake data source.
 
-Congratulations! You've successfully connected SnowFlake to Peaka. You can now access and manage your SnowFlake data seamlessly within the Peaka platform.
+Congratulations! You've successfully connected Snowflake to Peaka. You can now access and manage your Snowflake data seamlessly within the Peaka platform.

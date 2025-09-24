@@ -2,6 +2,7 @@
 title: "Why Semantics Matters in Text-to-SQL Systems"
 description: "See how semantic modeling dramatically improves SQL accuracy, consistency, and query relevance, helping Peaka AI surpass Spider benchmarks."
 ---
+
 # Project Overview
 
 Querying databases using natural language has become increasingly accessible thanks to advancements in AI-powered SQL generation. However, the accuracy of these systems often depends on how well the model understands the structure and semantics of the database schema.
@@ -22,7 +23,7 @@ Peaka is a no-code data management platform that connects and transforms data fr
 
 Spider is a large-scale, cross-domain text-to-SQL benchmark designed to evaluate the performance of natural language interfaces for complex database queries. Unlike simpler datasets, Spider challenges systems to understand diverse schemas and generate accurate SQL queries from natural language questions without access to query templates or hard-coded logic.
 
-It contains 10,000 natural language questions across 200 databases covering a wide range of real-world scenarios. Each question is paired with a ground truth SQL query and is designed to test a model’s ability to generalize. 
+It contains 10,000 natural language questions across 200 databases covering a wide range of real-world scenarios. Each question is paired with a ground truth SQL query and is designed to test a model’s ability to generalize.
 
 Spider is used to assess the effectiveness of semantic parsers and AI agents that attempt to bridge the gap between users and relational databases using plain languages.
 
@@ -32,7 +33,7 @@ Snowflake is a modern cloud-based data warehouse platform known for its scalabil
 
 ## What is a Semantic Layer?
 
-A semantic layer is a method for making data easier to understand and utilize. It connects technical database terms to more familiar business language. By defining key terms, establishing relationships between tables, and implementing standard filters, a semantic layer helps tools like AI agents generate more accurate and meaningful queries. 
+A semantic layer is a method for making data easier to understand and utilize. It connects technical database terms to more familiar business language. By defining key terms, establishing relationships between tables, and implementing standard filters, a semantic layer helps tools like AI agents generate more accurate and meaningful queries.
 
 ### Schema Clarity and RAG
 
@@ -57,13 +58,13 @@ pip install requests streamlit python-dotenv
 
 ## Tech Stack
 
-| Tool/Library | **Purpose** |
-| --- | --- |
-| [Peaka](https://www.peaka.com)  | A zero-ETL data integration platform with single step context generation capability |
-| [Spider Dataset](https://signup.snowflake.com/?utm_cta=trial-en-www-homepage-top-right-nav-ss-evg&_ga=2.22504568.2102680694.1752750423-1660293532.1752241628&_fsi=xN7WEhTe) | Source of natural language questions and structured DB schemas |
-| [Snowflake SQL](https://signup.snowflake.com/?utm_cta=trial-en-www-homepage-top-right-nav-ss-evg&_ga=2.22504568.2102680694.1752750423-1660293532.1752241628&_fsi=xN7WEhTe) | Backend execution engine used by Spider for SQL result generation  |
-| Requests | Used to make authenticated API calls to Peaka AI Agent  |
-| [Streamlit](https://streamlit.io) | To build an interactive web UI for comparing question results |
+| Tool/Library                                                                                                                                                                | **Purpose**                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [Peaka](https://www.peaka.com)                                                                                                                                              | A zero-ETL data integration platform with single step context generation capability |
+| [Spider Dataset](https://signup.snowflake.com/?utm_cta=trial-en-www-homepage-top-right-nav-ss-evg&_ga=2.22504568.2102680694.1752750423-1660293532.1752241628&_fsi=xN7WEhTe) | Source of natural language questions and structured DB schemas                      |
+| [Snowflake SQL](https://signup.snowflake.com/?utm_cta=trial-en-www-homepage-top-right-nav-ss-evg&_ga=2.22504568.2102680694.1752750423-1660293532.1752241628&_fsi=xN7WEhTe)  | Backend execution engine used by Spider for SQL result generation                   |
+| Requests                                                                                                                                                                    | Used to make authenticated API calls to Peaka AI Agent                              |
+| [Streamlit](https://streamlit.io)                                                                                                                                           | To build an interactive web UI for comparing question results                       |
 
 ## Let’s Start
 
@@ -165,7 +166,7 @@ try:
         original_sql = sql_file.read().strip()
 except Exception:
     continue
-    
+
 try:
     transpiled_sql_list = transpile(
         sql=original_sql,
@@ -209,7 +210,7 @@ Peaka serves a powerful data management backend, enabling seamless integration b
 
 **Prerequisites**
 
-For this step, you must create Peaka project and have its ID and an API key. The Peaka project must contain one or more databases already integrated from snowflake and ready to be queried. 
+For this step, you must create Peaka project and have its ID and an API key. The Peaka project must contain one or more databases already integrated from snowflake and ready to be queried.
 
 Now, use the outputs.json file from the previous step, and for each instruction:
 
@@ -245,12 +246,10 @@ OUTPUT_FILE= "results.json"
 ```
 
 > **GET_URL:** Fetches info about your Peaka project (including projectId).
-> 
 
 > **POST_URL:** Sends questions to the AI agent in that project.
-> 
 
-Headers include your token for authorization: 
+Headers include your token for authorization:
 
 ```python
 headers = {
@@ -329,7 +328,7 @@ It will appear on your browser like the following, where you can select the spec
 
 Peaka comes with a tool that analyzes the database schema and automatically generates rich semantic metadata (such as column descriptions, table purposes, and relationships), which are then used by the AI agent during query generation. By providing deeper context about the data, the agent is able to produce significantly more accurate SQL outputs, enhancing the performance of the agent.
 
-I will walk you through how you can simply generate semantics of the tables you are working on. As an example, we’ll generate semantics for a SnowFlake Table named “aircrafts_data” that contains information about different aircrafts items, including their code, model, and ranges.
+I will walk you through how you can simply generate semantics of the tables you are working on. As an example, we’ll generate semantics for a Snowflake Table named “aircrafts_data” that contains information about different aircrafts items, including their code, model, and ranges.
 
 ![starting.png](https://cdn.peaka.com/blogs/semantics/starting.png)
 
