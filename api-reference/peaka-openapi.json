@@ -2409,16 +2409,61 @@
                 "Add Column" : {
                   "description" : "Add Column",
                   "value" : [ {
-                    "dataType" : "bigint",
-                    "displayName" : "num19",
+                    "name" : "varcharcol",
+                    "dataType" : "VARCHAR",
+                    "displayName" : "varcharcol",
                     "defaultValue" : null,
-                    "name" : "num19"
+                    "isNotNull" : false,
+                    "isUnique" : false
                   }, {
-                    "dataType" : "bigint",
-                    "displayName" : "num18",
-                    "defaultValue" : 3,
-                    "isUnique" : true,
-                    "name" : "num18"
+                    "name" : "bigintcol",
+                    "dataType" : "BIGINT",
+                    "displayName" : "bigintcol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "booleancol",
+                    "dataType" : "BOOLEAN",
+                    "displayName" : "booleancol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "timestampcol",
+                    "dataType" : "TIMESTAMP",
+                    "displayName" : "timestampcol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "timecol",
+                    "dataType" : "TIME",
+                    "displayName" : "timecol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "datecol",
+                    "dataType" : "DATE",
+                    "displayName" : "datecol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "uuidcol",
+                    "dataType" : "UUID",
+                    "displayName" : "uuidcol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "decimalcol",
+                    "dataType" : "DECIMAL",
+                    "displayName" : "decimalcol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
                   } ]
                 }
               }
@@ -2707,16 +2752,61 @@
                 "Add Column" : {
                   "description" : "Add Column",
                   "value" : [ {
-                    "dataType" : "bigint",
-                    "displayName" : "num19",
+                    "name" : "varcharcol",
+                    "dataType" : "VARCHAR",
+                    "displayName" : "varcharcol",
                     "defaultValue" : null,
-                    "name" : "num19"
+                    "isNotNull" : false,
+                    "isUnique" : false
                   }, {
-                    "dataType" : "bigint",
-                    "displayName" : "num18",
-                    "defaultValue" : 3,
-                    "isUnique" : true,
-                    "name" : "num18"
+                    "name" : "bigintcol",
+                    "dataType" : "BIGINT",
+                    "displayName" : "bigintcol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "booleancol",
+                    "dataType" : "BOOLEAN",
+                    "displayName" : "booleancol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "timestampcol",
+                    "dataType" : "TIMESTAMP",
+                    "displayName" : "timestampcol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "timecol",
+                    "dataType" : "TIME",
+                    "displayName" : "timecol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "datecol",
+                    "dataType" : "DATE",
+                    "displayName" : "datecol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "uuidcol",
+                    "dataType" : "UUID",
+                    "displayName" : "uuidcol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
+                  }, {
+                    "name" : "decimalcol",
+                    "dataType" : "DECIMAL",
+                    "displayName" : "decimalcol",
+                    "defaultValue" : null,
+                    "isNotNull" : false,
+                    "isUnique" : false
                   } ]
                 }
               }
