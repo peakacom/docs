@@ -4942,6 +4942,13 @@
             "type" : "string"
           }
         }, {
+          "name" : "topK",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
           "name" : "projectId",
           "in" : "path",
           "required" : true,
