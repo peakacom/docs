@@ -287,19 +287,24 @@ curl --request POST \
     "projectId": <your_project_id>
     "theme": <your_theme_name>,
     "themeOverride": true,
-    "connectorType": <"CONNECTOR_MODAL_ONLY" | "FULL_STUDIO">,
+    "connectorType": <connector_type>,
     "catalogCreateEnabled": true,
+    "sessionMode": <session_mode>,
 }'
 ```
 
 ### Configuration Options:
 
-**ConnectorType** - Controls the UI display mode:
+**ConnectorType**: Specifies the type of connector interface to display. Available options can be found in the [API Reference](https://docs.peaka.com/api-reference/embedded-peaka-api/init-session#body-feature-configs).
 
-- `CONNECTOR_MODAL_ONLY`: Displays only the connector modal interface, hiding all other UI components for a focused connection experience.
-- `FULL_STUDIO`: Shows the complete Peaka UI with all available features and functionality.
+**CatalogCreateEnabled**: Boolean flag controlling automatic catalog creation when establishing connections (default: `true`).
 
-**CatalogCreateEnabled** - Boolean flag controlling automatic catalog creation when establishing connections (default: `true`).
+**SessionMode**: Specifies the mode of the session. Available options are:
+
+- `CONNECTOR_MODAL_ONLY`
+- `FULL_STUDIO`
+
+Note: **ConnectorType** and **CatalogCreateEnabled** are only available in the `CONNECTOR_MODAL_ONLY` mode.
 
 ### Example:
 
