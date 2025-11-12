@@ -3,7 +3,7 @@ title: "Peaka as a Data Management Tool with UI"
 description: ""
 ---
 
-With **Peaka as a Data Management Tool with UI**, you can access all of its **premium features** through either its **powerful API** or/and its **intuitive user interface (UI)**. Whether you prefer seamless automation via the API or a more visual approach using the UI, Peaka offers the flexibility to suit your needs.
+With **Peaka as a Data Management Tool with UI**, you can access all of its **premium features** through either its **powerful API** or/and its **intuitive user interface (UI)**. Whether you prefer seamless automation via the API or a more visual approach using the UI, Peaka offers the flexibility to suit your needs. If you prefer to use Peaka exclusively as a connector solution, we provide a dedicated approach for that use case. To learn more about this focused implementation, please refer to the [Peaka as a Connector-Only Solution](#peaka-as-a-connector-only-solution) section.
 
 ## Embed Peaka's UI in Your Web Application
 
@@ -272,3 +272,95 @@ curl --request POST \
 ```
 
 For more details, refer to the [Embedded API Reference](https://docs.peaka.com/api-reference/embedded-peaka-api/init-session).
+
+## Peaka as a Connector-Only Solution
+
+When you need to use Peaka exclusively as a connector solution, you can configure the UI session to display only the connector functionality. This streamlined approach is perfect for applications that focus on data source connections without requiring the full Peaka studio experience.
+
+First, initialize the session with following payload options:
+
+```javascript
+curl --request POST \
+  --url https://partner.peaka.studio/api/v1/ui/initSession \
+  --header 'Content-Type: application/json' 'Authorization: Bearer <token>'\
+  --data '{
+    "projectId": <your_project_id>
+    "theme": <your_theme_name>,
+    "themeOverride": true,
+    "sessionMode": <"CONNECTOR_MODAL_ONLY" | "FULL_STUDIO">,
+    "connectorType": <connector_type>,
+    "catalogCreateEnabled": true,
+}'
+```
+
+### Configuration Options:
+
+**SessionMode**: Specifies the mode of the session. Available options are:
+
+**ConnectorType**: Specifies the type of connector interface to display. Available options can be found in the [API Reference](https://docs.peaka.com/api-reference/embedded-peaka-api/init-session#body-feature-configs).
+
+**CatalogCreateEnabled**: Boolean flag that controls whether catalogs are automatically created when establishing connections. The default value is `true`. Set this to `false` only when using `CONNECTOR_MODAL_ONLY` mode to prevent automatic catalog creation.
+
+- `CONNECTOR_MODAL_ONLY`
+- `FULL_STUDIO`
+
+Note: **ConnectorType** and **CatalogCreateEnabled** are only available in the `CONNECTOR_MODAL_ONLY` mode.
+
+### Example:
+
+The API response includes `sessionUrl` and `partnerOrigin` properties, allowing you to open the Peaka interface in a popup window for seamless integration.
+
+In this example, we're using the `CONNECTOR_MODAL_ONLY` mode to display only the connector modal interface. We get the session URL and partner origin from the API response and open the Peaka interface in a popup window.
+
+```javascript
+fetch(`https://partner.peaka.studio/api/v1/ui/initSession`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer <token>"
+  },
+  body: JSON.stringify({
+    projectId: <your_project_id>,
+    theme: <your_theme_name>,
+    themeOverride: true,
+    sessionMode: "CONNECTOR_MODAL_ONLY",
+    connectorType: <connector_type>,
+    catalogCreateEnabled: true,
+  }),
+}).then(async (response) => {
+  const res = await response.json();
+
+  // Open the Peaka connector interface in a popup window
+  window.open(
+    res.sessionUrl,
+    "authPopup",
+    `width=500,height=600,left=${window.screen.width / 2 - 500 / 2},top=${
+      window.screen.height / 2 - 600 / 2
+    },resizable=yes,scrollbars=yes,noopener=no,noreferrer=no`
+  );
+
+  // Handle the message from the Peaka connector popup
+  const handleMessage = (event) => {
+    // Use event.data to get the message from the Peaka connector popup when popup is closed
+    if (event.data.status) {
+      // Status might be "CANCELLED" or "FINISHED"
+      // If popup is closed without selection a catalog, status will be "CANCELLED"
+      // If popup is closed with selection a catalog, status will be "FINISHED"
+      console.log("Status from the Peaka connector popup:", event.data.status);
+      window.removeEventListener("message", handleMessage);
+    } else {
+      console.log("Data from the Peaka connector popup:", event.data);
+    }
+  };
+
+  // Listen to the message from the Peaka connector popup when popup is closed
+  window.addEventListener("message", handleMessage);
+});
+```
+
+### Troubleshooting
+
+If you are having trouble with having status from the connector popup, follow these steps to troubleshoot the issue:
+
+- Check if you have enabled Embedded UI Settings for your API Key.
+- Add your domain that you want to embed the Peaka app to the Embedded UI Settings in the Developer Settings.
