@@ -46,6 +46,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -89,6 +92,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -147,6 +153,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -209,6 +218,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -260,6 +272,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "put" : {
@@ -331,6 +346,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -361,6 +379,9 @@
           "200" : {
             "description" : "Successful operation"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -421,6 +442,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -486,6 +510,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -541,6 +568,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "put" : {
@@ -614,6 +644,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -646,6 +679,9 @@
           "200" : {
             "description" : "Project deleted"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -689,7 +725,10 @@
             }
           }
         },
-        "deprecated" : true
+        "deprecated" : true,
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
+        }
       },
       "post" : {
         "tags" : [ "Projects (Deprecated)" ],
@@ -739,7 +778,10 @@
             }
           }
         },
-        "deprecated" : true
+        "deprecated" : true,
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
+        }
       }
     },
     "/projects/{projectId}" : {
@@ -780,7 +822,10 @@
             }
           }
         },
-        "deprecated" : true
+        "deprecated" : true,
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
       },
       "put" : {
         "tags" : [ "Projects (Deprecated)" ],
@@ -839,7 +884,10 @@
             }
           }
         },
-        "deprecated" : true
+        "deprecated" : true,
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
       },
       "delete" : {
         "tags" : [ "Projects (Deprecated)" ],
@@ -858,7 +906,10 @@
             "description" : "Project deleted"
           }
         },
-        "deprecated" : true
+        "deprecated" : true,
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
       }
     },
     "/projects/{projectId}/apiKeys" : {
@@ -890,6 +941,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -953,6 +1007,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -984,6 +1041,9 @@
           "200" : {
             "description" : "API Key deleted"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -1007,6 +1067,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -1036,6 +1099,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -1088,6 +1154,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -1198,6 +1267,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -1257,6 +1329,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -1306,6 +1381,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "put" : {
@@ -1388,6 +1466,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -1418,6 +1499,9 @@
           "200" : {
             "description" : "OK"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -1470,6 +1554,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -1538,6 +1625,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -1642,6 +1732,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -1692,6 +1785,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -1721,6 +1817,9 @@
           "200" : {
             "description" : "Catalog deleted successfully"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -1771,6 +1870,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -1843,6 +1945,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2097,6 +2202,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2161,6 +2269,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2240,6 +2351,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2271,6 +2385,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2314,6 +2431,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -2339,6 +2459,9 @@
           "200" : {
             "description" : "Table deleted successfully"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2377,6 +2500,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -2497,6 +2623,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2551,6 +2680,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -2583,6 +2715,9 @@
           "200" : {
             "description" : "Column deleted successfully"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2614,6 +2749,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2657,6 +2795,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -2682,6 +2823,9 @@
           "200" : {
             "description" : "Table deleted successfully"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2720,6 +2864,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -2840,6 +2987,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2894,6 +3044,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -2926,6 +3079,9 @@
           "200" : {
             "description" : "Column deleted successfully"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -2983,6 +3139,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3019,6 +3178,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3070,6 +3232,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -3134,6 +3299,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3253,6 +3421,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3283,6 +3454,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -3318,6 +3492,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3352,6 +3529,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "put" : {
@@ -3394,6 +3574,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -3436,6 +3619,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -3468,6 +3654,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3508,6 +3697,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "put" : {
@@ -3577,6 +3769,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -3602,6 +3797,9 @@
           "200" : {
             "description" : "OK"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3649,6 +3847,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3705,6 +3906,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3746,6 +3950,9 @@
           "200" : {
             "description" : "Table shared"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3780,6 +3987,9 @@
           "200" : {
             "description" : "Table deleted"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3861,6 +4071,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3935,6 +4148,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -3967,6 +4183,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4022,6 +4241,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -4047,6 +4269,9 @@
           "200" : {
             "description" : "OK"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4084,6 +4309,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4121,6 +4349,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4168,6 +4399,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4209,6 +4443,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4268,6 +4505,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -4342,6 +4582,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -4392,6 +4635,9 @@
           "404" : {
             "description" : "Parametric table not found"
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4451,7 +4697,10 @@
             }
           }
         },
-        "deprecated" : true
+        "deprecated" : true,
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
+        }
       },
       "post" : {
         "tags" : [ "Embedded Peaka Api" ],
@@ -4503,6 +4752,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4548,6 +4800,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4573,6 +4828,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4616,6 +4874,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4660,6 +4921,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4728,6 +4992,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -4784,6 +5051,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4821,6 +5091,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4851,6 +5124,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -4889,6 +5165,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4926,6 +5205,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -4970,6 +5252,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5007,6 +5292,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5046,6 +5334,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5076,6 +5367,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "post" : {
@@ -5113,6 +5407,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -5141,6 +5438,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5181,6 +5481,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5218,6 +5521,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5286,6 +5592,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5354,6 +5663,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -5410,6 +5722,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5471,6 +5786,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5518,6 +5836,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5572,6 +5893,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5633,6 +5957,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5653,6 +5980,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5693,6 +6023,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5733,6 +6066,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5763,6 +6099,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5800,6 +6139,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "put" : {
@@ -5845,6 +6187,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       },
       "delete" : {
@@ -5880,6 +6225,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
     },
@@ -5920,6 +6268,9 @@
               }
             }
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n</span>\n"
         }
       }
     }
@@ -6409,18 +6760,6 @@
           }
         }
       },
-      "FeatureConfigs" : {
-        "type" : "object",
-        "properties" : {
-          "displayedConnectorTypes" : {
-            "type" : "array",
-            "description" : "List of connector types displayed in the connection/catalog creation modal.\n  If empty or null, all connector types are displayed.\n  List of connector types:\n\n   \"google_sheets\",\n   \"google_analytics\",\n   \"google_ads\",\n   \"hubspot\",\n   \"slack\",\n   \"intercom\",\n   \"sendgrid\",\n   \"stripe\",\n   \"airtable\",\n   \"zendesk\",\n   \"zendesk\",\n   \"shopify\",\n   \"jira\",\n   \"mailchimp_marketing\",\n   \"mailchimp_transactional\",\n   \"openai\",\n   \"profitwell\",\n   \"smtp_connection\",\n   \"bullhorn\",\n   \"bullhorn\",\n   \"service_titan\",\n   \"provet_cloud\",\n   \"facebook_ads\",\n   \"linkedin_ads\",\n   \"insider\",\n   \"excel_365\",\n   \"quickbooks_online\",\n   \"youtube_analytics\",\n   \"instagram\",\n   \"github\",\n   \"zoom\",\n   \"mixpanel\",\n   \"chartmogul\",\n   \"housecall_pro\",\n   \"klaviyo\",\n   \"gorgias\",\n   \"posthog\",\n   \"xero_accounting\",\n   \"asana\",\n   \"twilio\",\n   \"act_crm\",\n   \"act-on\",\n   \"active_directory\",\n   \"activecampaign\",\n   \"acumatica\",\n   \"adobe_analytics\",\n   \"adobe_commerce\",\n   \"adp\",\n   \"alloydb\",\n   \"amazon_marketplace\",\n   \"amazon_s3\",\n   \"authorize.net\",\n   \"avalara_avatax\",\n   \"azure_active_directory\",\n   \"azure_analysis_services\",\n   \"azure_data_catalog\",\n   \"azure_data_lake_storage\",\n   \"azure_devops\",\n   \"basecamp\",\n   \"bigcommerce\",\n   \"bing_ads\",\n   \"blackbaud_fe_nxt\",\n   \"box\",\n   \"bugzilla\",\n   \"certinia\",\n   \"cloudant\",\n   \"cockroachdb\",\n   \"confluence\",\n   \"cosmos_db\",\n   \"couchbase\",\n   \"couchdb\",\n   \"db2\",\n   \"docusign\",\n   \"dropbox\",\n   \"dynamics_365\",\n   \"dynamics_365_business_central\",\n   \"dynamics_crm\",\n   \"dynamics_gp\",\n   \"dynamics_nav\",\n   \"ebay\",\n   \"ebay_analytics\",\n   \"enterprisedb\",\n   \"epicor_kinetic\",\n   \"exact_online\",\n   \"fhir\",\n   \"freshbooks\",\n   \"freshdesk\",\n   \"google_ad_manager\",\n   \"google_calendar\",\n   \"google_campaign_manager\",\n   \"google_cloud_storage\",\n   \"google_contacts\",\n   \"google_data_catalog\",\n   \"google_directory\",\n   \"google_drive\",\n   \"google_spanner\",\n   \"greenplum\",\n   \"harperdb\",\n   \"hcl_domino\",\n   \"highrise\",\n   \"hive\",\n   \"ibm_cloud_data_engine\",\n   \"ibm_cloud_object_storage\",\n   \"ibm_informix\",\n   \"jira_service_management\",\n   \"kafka\",\n   \"kintone\",\n   \"ldap\",\n   \"marketo\",\n   \"marklogic\",\n   \"microsoft_dataverse\",\n   \"microsoft_exchange\",\n   \"microsoft_onedrive\",\n   \"microsoft_planner\",\n   \"microsoft_project\",\n   \"microsoft_teams\",\n   \"monday.com\",\n   \"myob_accountright\",\n   \"netsuite\",\n   \"onenote\",\n   \"oracle_eloqua\",\n   \"oracle_financials_cloud\",\n   \"oracle_hcm_cloud\",\n   \"oracle_sales\",\n   \"oracle_scm\",\n   \"oracle_service_cloud\",\n   \"outreach.io\",\n   \"paylocity\",\n   \"paypal\",\n   \"pinterest\",\n   \"pipedrive\",\n   \"quickbase\",\n   \"raisers_edge_nxt\",\n   \"reckon\",\n   \"reckon_accounts_hosted\",\n   \"sage_200\",\n   \"sage_300\",\n   \"sage_50_uk\",\n   \"sage_cloud_accounting\",\n   \"sage_intacct\",\n   \"salesforce_marketing\",\n   \"salesforce_pardot\",\n   \"salesloft\",\n   \"sap_business_one\",\n   \"servicenow\",\n   \"shipstation\",\n   \"smartsheet\",\n   \"snapchat_ads\",\n   \"splunk\",\n   \"sql_analysis_services\",\n   \"square\",\n   \"streak\",\n   \"sugar_crm\",\n   \"suitecrm\",\n   \"surveymonkey\",\n   \"tally\",\n   \"taxjar\",\n   \"tigergraph\",\n   \"trello\",\n   \"tsheets\",\n   \"twitter_ads\",\n   \"veeva\",\n   \"veeva_crm\",\n   \"wave_financial\",\n   \"woocommerce\",\n   \"wordpress\",\n   \"workday\",\n   \"xero_workflowmax\",\n   \"zoho_books\",\n   \"zoho_creator\",\n   \"zoho_crm\",\n   \"zuora\",\n   \"icontact\",\n   \"zohosubscriptions\",\n   \"zohoprojects\",\n   \"zohopeople\",\n   \"zohomarketinghub\",\n   \"zohoinvoice\",\n   \"zohoinventory\",\n   \"zohoexpense\",\n   \"zenefits\",\n   \"zohodesk\",\n   \"zendesksell\",\n   \"zarmoney\",\n   \"yelp\",\n   \"wrike\",\n   \"wistia\",\n   \"vwo\",\n   \"unbounce\",\n   \"typeform\",\n   \"toggl\",\n   \"todoist\",\n   \"timely\",\n   \"tickspot\",\n   \"testmonitor\",\n   \"teamwork\",\n   \"teamgate\",\n   \"tanda\",\n   \"stack_exchange\",\n   \"sparkpost\",\n   \"spacex\",\n   \"shippo\",\n   \"shipengine\",\n   \"sendwithus\",\n   \"sendpulse\",\n   \"sendinblue\",\n   \"samanage\",\n   \"sagehr\",\n   \"retently\",\n   \"recurly\",\n   \"rebilly\",\n   \"quaderno\",\n   \"procore\",\n   \"printify\",\n   \"printful\",\n   \"polarteampro\",\n   \"pivotaltracker\",\n   \"planio\",\n   \"pipeliner_crm\",\n   \"pipeline_crm\",\n   \"pingdom\",\n   \"paymo\",\n   \"pagerduty\",\n   \"pabblysubscriptions\",\n   \"optimizely\",\n   \"ontraport\",\n   \"opsgenie\",\n   \"onepagecrm\",\n   \"omnisend\",\n   \"nethunt\",\n   \"mouseflow\",\n   \"moosend\",\n   \"mode\",\n   \"mailjet\",\n   \"messagebird\",\n   \"mailerlite\",\n   \"liondesk\",\n   \"lightspeedretail\",\n   \"leaddesk\",\n   \"klipfolio\",\n   \"launchdarkly\",\n   \"jotform\",\n   \"jumpseller\",\n   \"insightly\",\n   \"invoiced\",\n   \"infusionsoft\",\n   \"humanity\",\n   \"hubstaff\",\n   \"helpscout\",\n   \"hellosign\",\n   \"harvest\",\n   \"grafana\",\n   \"getresponse\",\n   \"front\",\n   \"freshteam\",\n   \"freshservice\",\n   \"freshsales\",\n   \"freeagent\",\n   \"flowlu\",\n   \"float\",\n   \"figshare\",\n   \"everhour\",\n   \"eventbrite\",\n   \"emailoctopus\",\n   \"elorus\",\n   \"egnyte\",\n   \"drip\",\n   \"drift\",\n   \"dotmailer\",\n   \"delighted\",\n   \"copper_crm\",\n   \"convertkit\",\n   \"constantcontact\",\n   \"coinbase\",\n   \"codat\",\n   \"close_crm\",\n   \"clio\",\n   \"clickup\",\n   \"clicktime\",\n   \"chargebee\",\n   \"chargeover\",\n   \"capsulecrm\",\n   \"campaigner\",\n   \"campaignmonitor\",\n   \"bugsnag\",\n   \"calendly\",\n   \"billsby\",\n   \"benchmarkemail\",\n   \"avaza\",\n   \"bamboohr\",\n   \"amplitude\",\n   \"autopilot\",\n   \"aha!\",\n   \"aircall\",\n   \"aftership\",\n   \"agilecrm\",\n   \"adroll\",\n   \"aweber\",\n   \"accelo\",\n   \"POSTGRES\",\n   \"MONGODB\",\n   \"SAPHANA\",\n   \"MSSQL\",\n   \"BIGQUERY\",\n   \"ORACLE\",\n   \"SINGLESTORE\",\n   \"MARIADB\",\n   \"NEO4J\",\n   \"REDSHIFT\",\n   \"MYSQL\",\n   \"SALESFORCE\",\n   \"AURORA\",\n   \"ELASTIC_SEARCH\",\n   \"SNOWFLAKE\",\n   \"TERADATA\",\n   \"DATABRICKS\",\n   \"FIREBASE\",\n   \"WEAVIATE\",\n   \"PINECONE\",\n   \"UPSTASH_VECTOR\",\n   \"QDRANT\",\n   \"ODOO\",\n   \"CLICKHOUSE\"",
-            "items" : {
-              "type" : "string"
-            }
-          }
-        }
-      },
       "InitSessionRequest" : {
         "type" : "object",
         "properties" : {
@@ -6432,6 +6771,11 @@
             "type" : "string",
             "description" : "The theme to be used."
           },
+          "sessionMode" : {
+            "type" : "string",
+            "description" : "The session mode, determining the type of session to be initialized.",
+            "enum" : [ "CONNECTOR_MODAL_ONLY", "FULL_STUDIO" ]
+          },
           "themeOverride" : {
             "type" : "boolean",
             "description" : "Flag indicating whether the theme should be overridden."
@@ -6440,17 +6784,10 @@
             "type" : "integer",
             "description" : "The timeout duration in seconds.",
             "format" : "int32"
-          },
-          "featureFlags" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "boolean"
-            },
-            "description" : "A map of feature flags, where the key is the feature name and the value indicates if it is enabled.\n Defined feature flags are:\n  - createDataInPeaka : Flag indicating whether the user can create data in Peaka.\n  - queries : Flag indicating whether the user can use query functions."
-          },
-          "featureConfigs" : {
-            "$ref" : "#/components/schemas/FeatureConfigs"
           }
+        },
+        "discriminator" : {
+          "propertyName" : "sessionMode"
         }
       },
       "EmbeddedSession" : {
