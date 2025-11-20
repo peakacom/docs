@@ -230,8 +230,13 @@ In order to do that you should;
 Now you are ready to embed Peaka's UI into your web application using an iframe.
 
 ```html
-<iframe src="<your_session_url>" />
+<iframe src="<your_session_url>" allow="clipboard-write *"/>
 ```
+
+<Warning>
+  Note: The application requires clipboard access to perform copy actions. Please ensure your iframe code includes allow="clipboard-write *" to prevent browser blocking.
+</Warning>
+
 
 <Warning>
 Note: If you want to switch between different themes in runtime you can do it with iframe's post message method.
