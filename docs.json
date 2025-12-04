@@ -34,7 +34,8 @@
               "organization-operations/create-organization",
               "organization-operations/update-organization",
               "organization-operations/delete-organization",
-              "organization-operations/manage-organization-members"
+              "organization-operations/manage-organization-members",
+              "organization-operations/manage-organization-groups"
             ]
           },
           {
