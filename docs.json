@@ -15,9 +15,7 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction"
-            ]
+            "pages": ["introduction"]
           },
           {
             "group": "Project Operations",
@@ -29,6 +27,10 @@
               "project-operations/send-a-copy-of-a-project",
               "project-operations/share-your-project"
             ]
+          },
+          {
+            "group": "Organization Operations",
+            "pages": ["organization-operations/create-organization"]
           },
           {
             "group": "Connecting Your Data",
@@ -55,9 +57,7 @@
           },
           {
             "group": "AI Setup",
-            "pages": [
-              "ai-setup/bring-your-own-ai-model"
-            ]
+            "pages": ["ai-setup/bring-your-own-ai-model"]
           }
         ]
       },
@@ -296,9 +296,7 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": [
-              "sql/introduction"
-            ]
+            "pages": ["sql/introduction"]
           },
           {
             "group": "Reference",
@@ -316,9 +314,7 @@
           },
           {
             "group": "Data Types",
-            "pages": [
-              "sql/reference/types"
-            ]
+            "pages": ["sql/reference/types"]
           },
           {
             "group": "Functions",
