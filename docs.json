@@ -24,8 +24,7 @@
               "project-operations/clone-a-project",
               "project-operations/delete-a-project",
               "project-operations/rename-a-project",
-              "project-operations/send-a-copy-of-a-project",
-              "project-operations/share-your-project"
+              "project-operations/manage-members"
             ]
           },
           {
