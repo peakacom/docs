@@ -30,7 +30,11 @@
           },
           {
             "group": "Organization Operations",
-            "pages": ["organization-operations/create-organization"]
+            "pages": [
+              "organization-operations/create-organization",
+              "organization-operations/update-organization",
+              "organization-operations/delete-organization"
+            ]
           },
           {
             "group": "Connecting Your Data",
