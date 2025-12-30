@@ -1681,25 +1681,6 @@
           "required" : true
         },
         "responses" : {
-          "400" : {
-            "description" : "Bad Request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "string"
-                },
-                "examples" : {
-                  "Bad Request" : {
-                    "description" : "Bad Request",
-                    "value" : {
-                      "errorCode" : 100,
-                      "message" : "There are already a catalog with same name!!"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "200" : {
             "description" : "Catalog created successfully",
             "content" : {
@@ -1726,6 +1707,25 @@
                       "displayName" : "exampleStripeCatalog",
                       "catalogType" : "stripe",
                       "connectionId" : "8db17e23-29de-4dab-8886-af9717e0e742"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : {
+                  "Bad Request" : {
+                    "description" : "Bad Request",
+                    "value" : {
+                      "errorCode" : 100,
+                      "message" : "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -2361,7 +2361,7 @@
       "post" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "Search",
-        "description" : "Search for catalogs, schemas, and tables across the project. You can filter the search results by specifying a catalog or schema. You can also specify a limit and offset for pagination.\n<br>\nSee the request body for more details.\n",
+        "description" : "Search for catalogs, schemas, and tables across the project. You can filter the search results by specifying a catalog or schema. You can also specify a limit and offset for pagination.\n\n\nSee the request body for more details.\n",
         "operationId" : "search",
         "parameters" : [ {
           "name" : "projectId",
