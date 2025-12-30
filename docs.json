@@ -143,7 +143,8 @@
               "api-reference/data--catalogs/list-tables",
               "api-reference/data--catalogs/list-columns",
               "api-reference/data--catalogs/table-is-cached",
-              "api-reference/data--catalogs/table-statistics"
+              "api-reference/data--catalogs/table-statistics",
+              "api-reference/data--catalogs/search"
             ]
           },
           {

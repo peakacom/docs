@@ -2357,6 +2357,81 @@
         }
       }
     },
+    "/data/projects/{projectId}/search" : {
+      "post" : {
+        "tags" : [ "Data -- Catalogs" ],
+        "summary" : "Search",
+        "operationId" : "search",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SearchRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successful Search",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SearchResult"
+                },
+                "examples" : {
+                  "Search Result" : {
+                    "description" : "Search Result",
+                    "value" : {
+                      "matchedCatalogs" : [ {
+                        "catalog" : "apple_catalog"
+                      } ],
+                      "matchedSchemas" : [ {
+                        "catalog" : "my_catalog",
+                        "schema" : "apple_schema"
+                      } ],
+                      "matchedTables" : [ {
+                        "catalog" : "my_catalog",
+                        "schema" : "apple_schema",
+                        "table" : "apple_table"
+                      }, {
+                        "catalog" : "my_catalog",
+                        "schema" : "another_schema",
+                        "table" : "another_apple_table"
+                      } ],
+                      "meta" : {
+                        "page" : {
+                          "limit" : 100,
+                          "offset" : 0,
+                          "nextOffset" : null
+                        },
+                        "query" : {
+                          "text" : "apple"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
     "/data/projects/{projectId}/bitable" : {
       "get" : {
         "tags" : [ "Data -- Internal Tables" ],
@@ -7065,6 +7140,107 @@
           "target" : {
             "type" : "string",
             "description" : "Target Project ID"
+          }
+        }
+      },
+      "SearchRequest" : {
+        "type" : "object",
+        "properties" : {
+          "catalog" : {
+            "type" : "string",
+            "description" : "Catalog Query Name. Search only for that catalog."
+          },
+          "schema" : {
+            "type" : "string",
+            "description" : "Schema Name. Search only for that schema. If catalog is also given, find the tables under catalog.schema.*"
+          },
+          "query" : {
+            "type" : "string",
+            "description" : "Search term. Does a case-insensitive contains search."
+          },
+          "limit" : {
+            "type" : "integer",
+            "description" : "Number of results to return. Default is 100.",
+            "format" : "int32"
+          },
+          "offset" : {
+            "type" : "integer",
+            "description" : "Number of results to skip. Default is 0.",
+            "format" : "int32"
+          }
+        }
+      },
+      "CatalogSchemaTable" : {
+        "type" : "object",
+        "properties" : {
+          "catalog" : {
+            "type" : "string",
+            "description" : "Catalog Query Name"
+          },
+          "schema" : {
+            "type" : "string",
+            "description" : "Schema Name"
+          },
+          "table" : {
+            "type" : "string",
+            "description" : "Table Name"
+          }
+        }
+      },
+      "Meta" : {
+        "type" : "object",
+        "properties" : {
+          "page" : {
+            "$ref" : "#/components/schemas/Page"
+          },
+          "query" : {
+            "$ref" : "#/components/schemas/Query"
+          }
+        }
+      },
+      "Page" : {
+        "type" : "object",
+        "properties" : {
+          "limit" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "offset" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "nextOffset" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "SearchResult" : {
+        "type" : "object",
+        "properties" : {
+          "matchedCatalogs" : {
+            "type" : "array",
+            "description" : "Catalogs matched.",
+            "items" : {
+              "$ref" : "#/components/schemas/CatalogSchemaTable"
+            }
+          },
+          "matchedSchemas" : {
+            "type" : "array",
+            "description" : "Schemas matched.",
+            "items" : {
+              "$ref" : "#/components/schemas/CatalogSchemaTable"
+            }
+          },
+          "matchedTables" : {
+            "type" : "array",
+            "description" : "Tables matched.",
+            "items" : {
+              "$ref" : "#/components/schemas/CatalogSchemaTable"
+            }
+          },
+          "meta" : {
+            "$ref" : "#/components/schemas/Meta"
           }
         }
       },
