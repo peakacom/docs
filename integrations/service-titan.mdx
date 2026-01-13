@@ -1,9 +1,9 @@
 ---
 title: "ServiceTitan"
-description: "Discover a seamless integration process! Learn how to connect ServiceTitan to Peaka effortlessly for streamlined transactions."
+description: "This guide explains how to connect your ServiceTitan account to Peaka in order to access and analyze your ServiceTitan data within the Peaka platform."
 ---
 
-This article guides you through the process of connecting ServiceTitan to Peaka, allowing you to seamlessly access your ServiceTitan data within the Peaka platform.
+This guide explains how to connect your ServiceTitan account to Peaka in order to access and analyze your ServiceTitan data within the Peaka platform.
 
 ## Prerequisites
 
@@ -14,9 +14,14 @@ Before you begin, ensure you have the following credentials from ServiceTitan:
 - **Client ID**
 - **Client Secret**
 
-_You can obtain the Application Key, Client ID, and Client Secret by registering your app on [developer.servicetitan.io](https://developer.servicetitan.io/). The Tenant ID usually corresponds to your ServiceTitan subdomain (e.g., yourcompany.servicetitan.io)._
+\_You can obtain the Application Key, Client ID, and Client Secret by registering your app on [developer.servicetitan.io](https://developer.servicetitan.io/). The Tenant ID identifies your ServiceTitan account and can be found in the API Applications section of your ServiceTitan account. It often matches your ServiceTitan subdomain (for example, yourcompany.servicetitan.io).
 
 Follow these steps to obtain them:
+
+ServiceTitan uses two different environments during the integration process:
+
+- Developer Portal (Production credentials): Used to create the application and generate the Application Key.
+- Integration Environment: Used to connect the application to your tenant and generate the Client ID and Client Secret.
 
 1. Begin by signing into your ServiceTitan Developer account using your Production Environment credentials. Access the login portal [here](https://developer.servicetitan.io/signin/).
 
@@ -30,11 +35,11 @@ Follow these steps to obtain them:
 
 <img src="https://cdn.peaka.com/integrations/service-titan-3.png" />
 
-4. In the "Client Credentials Management" section, make sure to select the "Tenant will configure the credentials themselves" option to maintain control over your application credentials.
+4. In the "Client Credentials Management" section, make sure to select the "Tenant will configure the credentials themselves" option. This is required so that each ServiceTitan tenant can authorize the application individually and generate their own Client ID and Client Secret.
 
 <img src="https://cdn.peaka.com/integrations/service-titan-4.png" />
 
-5. After submitting the form, you'll be redirected to the app listing screen. Select your app from the list to find your Application Key.
+5. After submitting the form, you'll be redirected to the app listing screen. Select your app from the list to find your Application Key. You will use this key later when creating the ServiceTitan data source in Peaka.
 
 <img src="https://cdn.peaka.com/integrations/service-titan-5.png" />
 
@@ -54,7 +59,7 @@ Follow these steps to obtain them:
 
 <img src="https://cdn.peaka.com/integrations/service-titan-9.png" />
 
-9. Then click you the app name to access the details page where you can find your Client ID and Client Secret credentials.
+9. Then click the app name to access the details page, where you can find your Client ID and Client Secret. Make sure to store the Client Secret securely, as it may not be displayed again after leaving this page.
 
 <img src="https://cdn.peaka.com/integrations/service-titan-10.png" />
 
@@ -68,10 +73,14 @@ Now that you have your ServiceTitan Client ID, Client Secret, Tenant and Applica
 
 3. In the modal that appears, select "ServiceTitan" as your data source.
 
-4. Enter a name for your data source name and paste values that you before.
+4. Enter a name for your data source and provide the following credentials:
+   • Tenant ID
+   • Application Key
+   • Client ID
+   • Client Secret
 
 <img src="https://cdn.peaka.com/integrations/service-titan-11.png" />
 
 5. Click the "Authorize" button to finalize the creation of your ServiceTitan data source.
 
-Congratulations! You've successfully connected ServiceTitan to Peaka. You can now access and manage your ServiceTitan data seamlessly within the Peaka platform.
+Your ServiceTitan data source is now successfully connected to Peaka and ready to be used.
