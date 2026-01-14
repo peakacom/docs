@@ -15,9 +15,7 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction"
-            ]
+            "pages": ["introduction"]
           },
           {
             "group": "Project Operations",
@@ -49,7 +47,8 @@
               "connecting-your-data/creating-query",
               "connecting-your-data/creating-peaka-table",
               "connecting-your-data/add-connection",
-              "connecting-your-data/what-is-catalog-schema-virtual-table"
+              "connecting-your-data/what-is-catalog-schema-virtual-table",
+              "connecting-your-data/what-is-semantic-catalogs"
             ]
           },
           {
@@ -64,9 +63,7 @@
           },
           {
             "group": "AI Setup",
-            "pages": [
-              "ai-setup/bring-your-own-ai-model"
-            ]
+            "pages": ["ai-setup/bring-your-own-ai-model"]
           }
         ]
       },
@@ -306,9 +303,7 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": [
-              "sql/introduction"
-            ]
+            "pages": ["sql/introduction"]
           },
           {
             "group": "Reference",
@@ -326,9 +321,7 @@
           },
           {
             "group": "Data Types",
-            "pages": [
-              "sql/reference/types"
-            ]
+            "pages": ["sql/reference/types"]
           },
           {
             "group": "Functions",
