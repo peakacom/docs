@@ -48,7 +48,8 @@
               "connecting-your-data/creating-peaka-table",
               "connecting-your-data/add-connection",
               "connecting-your-data/what-is-catalog-schema-virtual-table",
-              "connecting-your-data/what-is-semantic-catalogs"
+              "connecting-your-data/what-is-semantic-catalogs",
+              "connecting-your-data/what-is-materialized-query"
             ]
           },
           {

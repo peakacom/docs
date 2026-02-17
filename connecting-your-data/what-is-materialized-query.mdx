@@ -1,0 +1,201 @@
+---
+title: "What is a Materialized Query?"
+description: "Learn about Peaka Materialized Queries and how you can harness their power"
+---
+
+## What is a Materialized Query?
+
+A Materialized Query is a powerful performance optimization technique that stores the results of complex queries physically in your database. Instead of executing expensive computations repeatedly, materialized queries cache precomputed data, dramatically reducing query execution time and system load.
+
+### Key Benefits
+
+- **Performance Boost**: Queries that once took minutes can now execute in seconds by accessing pre-calculated results
+- **Resource Efficiency**: Reduces computational overhead by eliminating redundant processing
+- **Real-time Analytics**: Enables faster dashboards and reporting by serving data from materialized views
+- **Cost Optimization**: Lower database resource consumption translates to reduced operational costs
+
+### Common Use Cases
+
+- **Data Warehousing**: Pre-aggregate large datasets for faster reporting
+- **Dashboard Queries**: Cache complex analytical queries that power business intelligence tools
+- **Cross-database Joins**: Materialize results from queries spanning multiple data sources
+- **Heavy Computations**: Store results of resource-intensive calculations like statistical analyses
+
+Materialized queries are essential for applications requiring both complex data processing and fast response times.
+
+### What is the difference between a Materialized Query and a Semantic Catalog?
+
+|                    | **Materialized Query**                                                                           | **Semantic Catalog**                                                                                                         |
+| ------------------ | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Storage**        | Stores query results physically (precomputed cache)                                              | Virtual—no stored data; runs the underlying query when accessed                                                              |
+| **Data freshness** | Refreshed on a schedule or manually; data can be slightly stale between refreshes                | Always reflects current source data—each access hits the live query                                                          |
+| **Primary goal**   | **Performance**: avoid re-running expensive queries; faster dashboards and reporting             | **Organization & access**: semantic layer, sharing across projects, controlled access, no data duplication                   |
+| **Use when**       | The query is heavy and you can tolerate periodic refresh (e.g. aggregations, cross-db joins, BI) | You need live data, reusable “data products,” sharing with partners, or a single business-friendly view without copying data |
+
+In short: use a **Materialized Query** when you want speed and can accept scheduled updates; use a **Semantic Catalog** when you want a virtual, always-current view with sharing and governance and no physical copy of the data.
+
+## How to create a Materialized Query?
+
+To create a Materialized Query, you can follow these steps:
+
+1. Navigate to the Query Editor located in the right side panel and then select your query which you want to materialize.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-1.png"
+  alt="Showing Query in Query Editor"
+/>
+
+2. Click on the Advanced button to open the configuration modal. Select the Materialize option and click on the Next button.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-2.png"
+  alt="Selecting Materialize Option in Advanced Modal"
+/>
+
+3. Configure your Materialized Query settings:
+
+   - **Name**: Enter a descriptive name for your Materialized Query
+   - **Auto Update**: Toggle this option to enable automatic refresh of your materialized data
+
+   When Auto Update is enabled, you can choose from two update strategies:
+
+   - **At regular intervals**: Updates the materialized query at specified minute intervals (e.g., every 15, 30, or 60 minutes)
+   - **Based on a schedule**: Provides flexible scheduling options where you can define:
+     - Timezone
+     - Frequency options (daily, weekly, monthly, or specific dates)
+
+   Configure these settings based on how frequently your underlying data changes and your performance requirements.
+
+Then click on the Create Query button to create the Materialized Query.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-3.png"
+  alt="Creating Materialized Query in Advanced Modal"
+/>
+
+That's it, your Materialized Query will be created. You can see the Materialized Query in the right side panel under the "Tables" section.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-4.png"
+  alt="Listing Data of Materialized Query in Tables Section"
+/>
+
+## How to Update Your Materialized Query
+
+You can update your materialized query in two ways: by editing the existing query or by replacing it with a different query entirely.
+
+### Edit the Existing Query
+
+1. Navigate your materialized query in the right side panel under the "Tables" section and click on the Show MT Query button.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-5.png"
+  alt="Showing Materialized Query in Query Editor"
+/>
+
+2. A modal will open displaying the materialized query details. Click on the Edit button to modify the query.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-6.png"
+  alt="Editing Materialized Query in Advanced Modal"
+/>
+
+3. You will be redirected to the Query Editor where your materialized query will open. Make your desired modifications to the query and run it to see the updated results.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-7.png"
+  alt="Editing Materialized Query in Query Editor"
+/>
+
+### Replace with a Different Query
+
+1. Navigate your materialized query in the right side panel under the "Tables" section and click on the Show MT Query button.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-5.png"
+  alt="Showing Materialized Query in Query Editor"
+/>
+
+2. A modal will open displaying the materialized query details. Click on the dropdown button next to the Edit option and select "Select from List" from the dropdown menu.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-8.png"
+  alt="Selecting Select from List option in dropdown menu"
+/>
+
+3. A modal will open displaying the list of queries. Select the query you want to replace your materialized query with and click on the Update button.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-9.png"
+  alt="Selecting Query to replace Materialized Query"
+/>
+
+4. Your materialized query will be replaced with the new query.
+
+## How to Update Materialized Query Settings
+
+You can modify various settings for your materialized queries to optimize performance and control refresh behavior.
+
+1. Navigate your materialized query in the right side panel under the "Tables" section and click on the Show MT Query button.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-5.png"
+  alt="Showing Materialized Query in Query Editor"
+/>
+
+2. A modal will open displaying the materialized query details. Click on the **Setup** tab to access configuration options.
+
+3. You can modify the following settings:
+
+- **Name**: Enter a descriptive name for your Materialized Query
+- **Auto Update**: Toggle this option to enable automatic refresh of your materialized data
+
+  When Auto Update is enabled, you can choose from two update strategies:
+
+  - **At regular intervals**: Updates the materialized query at specified minute intervals (e.g., every 15, 30, or 60 minutes)
+  - **Based on a schedule**: Provides flexible scheduling options where you can define:
+    - Timezone
+    - Frequency options (daily, weekly, monthly, or specific dates)
+  - **Partitioning**: Optionally configure table partitioning to improve query performance. Materialized queries support partitioning by specifying transforms over the table columns. A partition is created for each unique tuple value produced by the transforms. Identity transforms are simply the column name. Other transforms include:
+
+    - `year(order_date)` - Creates a partition for each year. The partition value is the integer difference in years between order_date and January 1 1970.
+    - `month(order_date)` - Creates a partition for each month of each year. The partition value is the integer difference in months between order_date and January 1 1970.
+    - `day(order_date)` - Creates a partition for each day of each year. The partition value is the integer difference in days between order_date and January 1 1970.
+    - `hour(created_at)` - Creates a partition for each hour of each day. The partition value is a timestamp with the minutes and seconds set to zero.
+    - `bucket(account_number, 10)` - Hashes data into 10 buckets. The partition value is an integer hash of account_number, with a value between 0 and 9 inclusive.
+    - `truncate(country, 2)` - The partition value is the first 2 characters of the country field.
+
+    When enabled, you can specify partition columns using the format `partitioning = ARRAY['column1', 'column2']` or with transforms like `partitioning = ARRAY['year(order_date)', 'country']`.
+
+  - **Sort by**: Configure sorted files as a performance improvement. Data is sorted during writes within each file based on the specified array of one or more columns. Sorting is particularly beneficial when the sorted columns show high cardinality and are used as filters for selective reads. You can specify sort columns using the format `sorted_by = ARRAY['column1', 'column2']`. For example, to sort by order_date, use `sorted_by = ARRAY['order_date']`. You can also explicitly configure sort directions and null ordering like `sorted_by = ARRAY['order_date DESC NULLS FIRST', 'order_id ASC NULLS LAST']`. Sorting can be combined with partitioning on the same column for optimal performance.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-10.png"
+  alt="Modifying Materialized Query Settings"
+/>
+
+4. Then click on the **Update Materialized Query** button to update the materialized query settings.
+
+That's it, your materialized query settings will be updated.
+
+## How to Update Materialized Query Manually
+
+You can manually refresh your materialized query to get the latest data without waiting for the scheduled update.
+
+1. Navigate to your materialized query in the right side panel under the "Tables" section and click on the **Show MT Query** button.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-5.png"
+  alt="Showing Materialized Query in Query Editor"
+/>
+
+2. A modal will open displaying the materialized query details. Click on the **Setup** tab to access configuration options.
+
+<img
+  src="https://cdn.peaka.com/connecting-your-data/materialize-query-10.png"
+  alt="Modifying Materialized Query Settings"
+/>
+
+3. Click on the **Manuel Update** button to update the materialized query manually.
+
+That's it, your materialized query will be updated manually.
