@@ -15,7 +15,9 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": ["introduction"]
+            "pages": [
+              "introduction"
+            ]
           },
           {
             "group": "Project Operations",
@@ -64,7 +66,9 @@
           },
           {
             "group": "AI Setup",
-            "pages": ["ai-setup/bring-your-own-ai-model"]
+            "pages": [
+              "ai-setup/bring-your-own-ai-model"
+            ]
           }
         ]
       },
@@ -151,6 +155,7 @@
               "api-reference/data--catalogs/list-columns",
               "api-reference/data--catalogs/table-is-cached",
               "api-reference/data--catalogs/table-statistics",
+              "api-reference/data--catalogs/share-catalog",
               "api-reference/data--catalogs/search"
             ]
           },
@@ -304,7 +309,9 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": ["sql/introduction"]
+            "pages": [
+              "sql/introduction"
+            ]
           },
           {
             "group": "Reference",
@@ -322,7 +329,9 @@
           },
           {
             "group": "Data Types",
-            "pages": ["sql/reference/types"]
+            "pages": [
+              "sql/reference/types"
+            ]
           },
           {
             "group": "Functions",

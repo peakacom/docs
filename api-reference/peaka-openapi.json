@@ -2357,6 +2357,69 @@
         }
       }
     },
+    "/data/projects/{projectId}/catalogs/{catalogId}/share" : {
+      "post" : {
+        "tags" : [ "Data -- Catalogs" ],
+        "summary" : "Share Catalog",
+        "operationId" : "shareCatalog",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "catalogId",
+          "in" : "path",
+          "description" : "ID of the catalog",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : 846085284821991568
+        } ],
+        "requestBody" : {
+          "description" : "Share Request",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CatalogShareRequestV2"
+              },
+              "example" : {
+                "targetProjectId" : "MQtMNNBY"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Catalog shared successfully",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SharedCatalogResponse"
+                },
+                "examples" : {
+                  "Share Catalog Response" : {
+                    "description" : "Share Catalog Response",
+                    "value" : {
+                      "sharedCatalogId" : "555611268656923356"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
     "/data/projects/{projectId}/search" : {
       "post" : {
         "tags" : [ "Data -- Catalogs" ],
@@ -3363,6 +3426,14 @@
           "schema" : {
             "type" : "string"
           }
+        }, {
+          "name" : "checkSchemaExists",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "boolean",
+            "default" : true
+          }
         } ],
         "requestBody" : {
           "description" : "Query Request",
@@ -3834,6 +3905,14 @@
           "required" : true,
           "schema" : {
             "type" : "string"
+          }
+        }, {
+          "name" : "checkSchemaExists",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "boolean",
+            "default" : true
           }
         } ],
         "requestBody" : {
@@ -6663,6 +6742,10 @@
           "isUnique" : {
             "type" : "boolean",
             "description" : "The unique flag for the column."
+          },
+          "desc" : {
+            "type" : "string",
+            "description" : "The description of the column."
           }
         }
       },
@@ -7435,6 +7518,24 @@
             "type" : "object",
             "additionalProperties" : true,
             "description" : "Extra parameters for the catalog"
+          }
+        }
+      },
+      "CatalogShareRequestV2" : {
+        "type" : "object",
+        "properties" : {
+          "targetProjectId" : {
+            "type" : "string",
+            "description" : "Target Project ID"
+          }
+        }
+      },
+      "SharedCatalogResponse" : {
+        "type" : "object",
+        "properties" : {
+          "sharedCatalogId" : {
+            "type" : "string",
+            "description" : "The ID of the shared catalog."
           }
         }
       },
