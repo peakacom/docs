@@ -3529,11 +3529,19 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/QueryExecuteRequest"
+                "oneOf" : [ {
+                  "$ref" : "#/components/schemas/QueryExecuteRequest"
+                }, {
+                  "$ref" : "#/components/schemas/QueryExecuteRequestId"
+                }, {
+                  "$ref" : "#/components/schemas/QueryExecuteRequestName"
+                }, {
+                  "$ref" : "#/components/schemas/QueryExecuteRequestStatement"
+                } ]
               },
               "examples" : {
-                "Execute Query" : {
-                  "description" : "Execute Query",
+                "Execute by Query Builder" : {
+                  "description" : "Execute by Query Builder",
                   "value" : {
                     "from" : [ {
                       "catalogName" : "peaka",
@@ -3542,8 +3550,8 @@
                     } ]
                   }
                 },
-                "Execute Query with Limit" : {
-                  "description" : "Execute Query with Limit",
+                "Execute by Query Builder with Limit" : {
+                  "description" : "Execute by Query Builder with Limit",
                   "value" : {
                     "columns" : [ "amount" ],
                     "from" : [ {
@@ -3554,12 +3562,11 @@
                     "filters" : null,
                     "limit" : 3,
                     "offset" : 0,
-                    "orderBy" : null,
-                    "rows" : null
+                    "orderBy" : null
                   }
                 },
-                "Execute Direct Stripe with Filter and Order By" : {
-                  "description" : "Execute Direct Stripe with Filter and Order By",
+                "Execute by Query Builder with Filter and Order By" : {
+                  "description" : "Execute by Query Builder with Filter and Order By",
                   "value" : {
                     "columns" : [ "amount" ],
                     "from" : [ {
@@ -3579,8 +3586,25 @@
                     },
                     "limit" : 50,
                     "offset" : 0,
-                    "orderBy" : [ "amount DESC" ],
-                    "rows" : null
+                    "orderBy" : [ "amount DESC" ]
+                  }
+                },
+                "Execute by Query ID" : {
+                  "description" : "Execute by Query ID",
+                  "value" : {
+                    "id" : "709922802836177297"
+                  }
+                },
+                "Execute by Query Name" : {
+                  "description" : "Execute by Query Name",
+                  "value" : {
+                    "qualifiedName" : "peaka.query.samplequery"
+                  }
+                },
+                "Execute by SQL Statement" : {
+                  "description" : "Execute by SQL Statement",
+                  "value" : {
+                    "statement" : "SELECT * FROM \"peaka\".\"query\".\"samplequery\""
                   }
                 }
               }
@@ -7448,6 +7472,42 @@
           },
           "tableName" : {
             "type" : "string"
+          }
+        }
+      },
+      "QueryExecuteRequestId" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "timeout" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "QueryExecuteRequestName" : {
+        "type" : "object",
+        "properties" : {
+          "qualifiedName" : {
+            "type" : "string"
+          },
+          "timeout" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "QueryExecuteRequestStatement" : {
+        "type" : "object",
+        "properties" : {
+          "statement" : {
+            "type" : "string"
+          },
+          "timeout" : {
+            "type" : "integer",
+            "format" : "int32"
           }
         }
       },
