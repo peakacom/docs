@@ -1681,25 +1681,6 @@
           "required" : true
         },
         "responses" : {
-          "400" : {
-            "description" : "Bad Request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "string"
-                },
-                "examples" : {
-                  "Bad Request" : {
-                    "description" : "Bad Request",
-                    "value" : {
-                      "errorCode" : 100,
-                      "message" : "There are already a catalog with same name!!"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "200" : {
             "description" : "Catalog created successfully",
             "content" : {
@@ -1726,6 +1707,25 @@
                       "displayName" : "exampleStripeCatalog",
                       "catalogType" : "stripe",
                       "connectionId" : "8db17e23-29de-4dab-8886-af9717e0e742"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : {
+                  "Bad Request" : {
+                    "description" : "Bad Request",
+                    "value" : {
+                      "errorCode" : 100,
+                      "message" : "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -2539,7 +2539,7 @@
       "get" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "List BI Tables",
-        "description" : "See Data -- Catalog / List Tables for more details.",
+        "description" : "Lists all [Peaka BI Tables](https://docs.peaka.com/connecting-your-data/peaka-big-table) in the project. Peaka BI Table is a robust data management solution optimized for handling large datasets of over one million records. It uses a column-oriented data storage approach, resulting in exceptionally fast filtering and grouping performance without requiring additional indexing. It is particularly well-suited for event data and bulk insertions, though it does not support JSON data types. See also: [Differences of Peaka Table and Peaka Big Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-big-table)",
         "operationId" : "listBiTables",
         "parameters" : [ {
           "name" : "projectId",
@@ -2903,7 +2903,7 @@
       "get" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "List Tables",
-        "description" : "See Data -- Catalog / List Tables for more details.",
+        "description" : "Lists all [Peaka Tables](https://docs.peaka.com/connecting-your-data/peaka-table) in the project. Peaka Table is an internal relational database within Peaka that allows you to organize and manage data efficiently. It supports structured data storage and enables you to add, delete, filter, and edit your data, including JSON data types. It is best suited for smaller datasets requiring frequent edits and broader data type support. See also: [Differences of Peaka Table and Peaka Big Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-big-table)",
         "operationId" : "listTables",
         "parameters" : [ {
           "name" : "projectId",
@@ -4738,16 +4738,6 @@
           "required" : true
         },
         "responses" : {
-          "400" : {
-            "description" : "Target table already exists",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ParametricTable"
-                }
-              }
-            }
-          },
           "200" : {
             "description" : "Parametric table created successfully",
             "content" : {
@@ -4772,6 +4762,16 @@
                       } ]
                     }
                   }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Target table already exists",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ParametricTable"
                 }
               }
             }
