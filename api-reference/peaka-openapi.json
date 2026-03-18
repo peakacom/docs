@@ -7464,7 +7464,7 @@
             "format" : "int32"
           }
         },
-        "description" : "Executes a query using the query builder. The <code>from</code> field is required.\n\n <p>Minimal example:\n <pre><code>\n {\n     &quot;from&quot;: [\n         {\n             &quot;catalogName&quot;: &quot;peaka&quot;,\n             &quot;schemaName&quot;: &quot;query&quot;,\n             &quot;tableName&quot;: &quot;samplequery&quot;\n         </code>\n     ]\n }\n }</pre>\n\n <p>With columns, filters, limit, offset, and orderBy:\n <pre>\n {\n     \"columns\": [\"amount\"],\n     \"from\": [\n         {\n             \"catalogName\": \"wilderman_green\",\n             \"schemaName\": \"payment\",\n             \"tableName\": \"charges\"\n         }\n     ],\n     \"filters\": {\n         \"and\": [\n             [\n                 { \"column\": { \"catalogName\": \"wilderman_green\", \"schemaName\": \"payment\", \"tableName\": \"charges\", \"columnName\": \"amount\" } },\n                 \">\",\n                 [150]\n             ]\n         ]\n     },\n     \"limit\": 50,\n     \"offset\": 0,\n     \"orderBy\": [\"amount DESC\"]\n }\n </pre>"
+        "description" : "Executes a query using the query builder. The <code>from</code> field is required.\n\n <p>Minimal example:\n <pre>\n {\n     \"from\": [\n         {\n             \"catalogName\": \"peaka\",\n             \"schemaName\": \"query\",\n             \"tableName\": \"samplequery\"\n         }\n     ]\n }\n </pre>\n\n <p>With columns, filters, limit, offset, and orderBy:\n <pre>\n {\n     \"columns\": [\"amount\"],\n     \"from\": [\n         {\n             \"catalogName\": \"wilderman_green\",\n             \"schemaName\": \"payment\",\n             \"tableName\": \"charges\"\n         }\n     ],\n     \"filters\": {\n         \"and\": [\n             [\n                 { \"column\": { \"catalogName\": \"wilderman_green\", \"schemaName\": \"payment\", \"tableName\": \"charges\", \"columnName\": \"amount\" } },\n                 \">\",\n                 [150]\n             ]\n         ]\n     },\n     \"limit\": 50,\n     \"offset\": 0,\n     \"orderBy\": [\"amount DESC\"]\n }\n </pre>"
       },
       "TableForQuery" : {
         "type" : "object",
@@ -7496,7 +7496,7 @@
             "format" : "int32"
           }
         },
-        "description" : "Executes a query by its ID.\n\n <code>\n {\n     &quot;id&quot;: &quot;709922802836177297&quot;\n\n </code>\n }"
+        "description" : "Executes a query by its ID.\n\n <pre>\n {\n     \"id\": \"709922802836177297\"\n\n }\n </pre>"
       },
       "QueryExecuteRequestName" : {
         "type" : "object",
@@ -7526,7 +7526,7 @@
             "format" : "int32"
           }
         },
-        "description" : "Executes a raw SQL statement directly.\n\n <code>\n {\n     &quot;statement&quot;: &quot;SELECT * FROM \\&quot;peaka\\&quot;.\\&quot;query\\&quot;.\\&quot;samplequery\\&quot;&quot;\n </code>\n }"
+        "description" : "Executes a raw SQL statement directly.\n\n <pre>\n {\n     \"statement\": \"SELECT * FROM \\\"peaka\\\".\\\"query\\\".\\\"samplequery\\\"\"\n }\n </pre>"
       },
       "CellValue" : {
         "type" : "object",
