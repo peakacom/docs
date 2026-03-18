@@ -1564,6 +1564,7 @@
       "get" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "List Catalogs",
+        "description" : "Returns all catalogs registered in the specified project. Each catalog represents a data source connected to Peaka, such as Airtable, Stripe, or an internal Peaka storage. Built-in catalog types like `internal` (Peaka Tables and BI Tables) and `query` (Peaka Queries) are always present.",
         "operationId" : "listCatalogs",
         "parameters" : [ {
           "name" : "projectId",
@@ -1633,6 +1634,7 @@
       "post" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "Create Catalog",
+        "description" : "Creates a new catalog in the specified project. A catalog represents a connected data source — such as Airtable, Stripe, or Google Sheets — that exposes its schemas and tables for querying within Peaka. Requires a `name` and a `connectionId` referencing an existing connection. Some connectors accept additional `extraParameters` (e.g., Google Sheets requires specifying which sheets to include).",
         "operationId" : "createCatalog",
         "parameters" : [ {
           "name" : "projectId",
@@ -1742,6 +1744,7 @@
       "get" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "Read Catalog",
+        "description" : "Retrieves the details of a single catalog by its ID. Returns the catalog's name, display name, catalog type, and the associated connection ID.",
         "operationId" : "readCatalog",
         "parameters" : [ {
           "name" : "projectId",
@@ -1793,6 +1796,7 @@
       "delete" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "Delete Catalog",
+        "description" : "Permanently removes the specified catalog from the project. This disconnects the underlying data source and makes all its schemas and tables unavailable for querying. This action is irreversible.",
         "operationId" : "deleteCatalog",
         "parameters" : [ {
           "name" : "projectId",
@@ -1827,6 +1831,7 @@
       "get" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "List Schemas",
+        "description" : "Returns all schemas available under the specified catalog. Schemas are logical groupings of tables within a catalog. For external connectors, schemas typically correspond to databases or namespaces exposed by the data source.",
         "operationId" : "listSchemas",
         "parameters" : [ {
           "name" : "projectId",
@@ -1880,6 +1885,7 @@
       "get" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "List Tables",
+        "description" : "Lists all tables available under the specified schema of a catalog. Each table entry includes its catalog and schema context along with caching metadata (`isCacheable`, `isDynamicTable`, `isCached`). For the internal catalog, this includes [Peaka Tables](https://docs.peaka.com/connecting-your-data/peaka-table) and [Peaka BI Tables](https://docs.peaka.com/connecting-your-data/peaka-big-table).",
         "operationId" : "listTables_1",
         "parameters" : [ {
           "name" : "projectId",
@@ -1955,6 +1961,7 @@
       "get" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "List Columns",
+        "description" : "Lists all columns for a specific table within a catalog. Returns full column metadata including name, data type, display name, default value, and constraints (nullability, uniqueness). Some connectors expose additional virtual columns (prefixed with `_q_`) that can be used to pass query-time parameters to the data source.",
         "operationId" : "listColumns_1",
         "parameters" : [ {
           "name" : "projectId",
@@ -2212,6 +2219,7 @@
       "get" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "Table is Cached",
+        "description" : "Checks whether the specified table has an active cache in Peaka. When a table is cached, its data is stored locally in Peaka, enabling significantly faster query performance compared to live queries against the original data source. Returns `isCached: true` if a cache is currently active, or `false` otherwise.",
         "operationId" : "isCached",
         "parameters" : [ {
           "name" : "projectId",
@@ -2279,6 +2287,7 @@
       "get" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "Table Statistics",
+        "description" : "Returns statistical metadata for the specified table. Includes per-column `distinctFraction` values, which represent the estimated fraction of distinct values in a column relative to the total row count. These statistics are used internally by Peaka's query optimizer to improve query planning and execution performance.",
         "operationId" : "getTableStatistics",
         "parameters" : [ {
           "name" : "projectId",
@@ -2361,6 +2370,7 @@
       "post" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "Share Catalog",
+        "description" : "Shares a catalog from the current project with another Peaka project. The target project gains read access to the catalog's schemas and tables. Provide the `targetProjectId` of the project you want to share the catalog with.",
         "operationId" : "shareCatalog",
         "parameters" : [ {
           "name" : "projectId",
