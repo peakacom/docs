@@ -1683,25 +1683,6 @@
           "required" : true
         },
         "responses" : {
-          "400" : {
-            "description" : "Bad Request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "string"
-                },
-                "examples" : {
-                  "Bad Request" : {
-                    "description" : "Bad Request",
-                    "value" : {
-                      "errorCode" : 100,
-                      "message" : "There are already a catalog with same name!!"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "200" : {
             "description" : "Catalog created successfully",
             "content" : {
@@ -1728,6 +1709,25 @@
                       "displayName" : "exampleStripeCatalog",
                       "catalogType" : "stripe",
                       "connectionId" : "8db17e23-29de-4dab-8886-af9717e0e742"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : {
+                  "Bad Request" : {
+                    "description" : "Bad Request",
+                    "value" : {
+                      "errorCode" : 100,
+                      "message" : "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -7496,14 +7496,14 @@
             "format" : "int32"
           }
         },
-        "description" : "Executes a query by its ID. The query is looked up and its type determines the schema:\n <code>PLAIN</code> queries use <code>peaka.query.&lt;name&gt;</code>, <code>MATERIALIZED</code> queries use <code>peaka.mtquery.&lt;name&gt;</code>.\n\n <pre><code>\n {\n     &quot;id&quot;: &quot;709922802836177297&quot;\n </code>\n }</pre>"
+        "description" : "Executes a query by its ID.\n\n <pre><code>\n {\n     &quot;id&quot;: &quot;709922802836177297&quot;\n </code>\n }</pre>"
       },
       "QueryExecuteRequestName" : {
         "type" : "object",
         "properties" : {
           "qualifiedName" : {
             "type" : "string",
-            "description" : "Fully qualified name of the query, e.g. <code>peaka.query.samplequery</code> or <code>peaka.mtquery.samplequery</code> or <code>stripe.payment.charges</code>"
+            "description" : "Fully qualified name of the query, e.g.\n <code>peaka.query.samplequery</code> or\n <code>peaka.mtquery.samplequery</code> or\n <code>stripe.payment.charges</code>"
           },
           "timeout" : {
             "type" : "integer",
@@ -7511,7 +7511,7 @@
             "format" : "int32"
           }
         },
-        "description" : "Executes a query by its fully qualified name in the format <code>&lt;catalogName&gt;.&lt;schemaName&gt;.&lt;tableName&gt;</code>.\n\n <pre><code>\n {\n     &quot;qualifiedName&quot;: &quot;peaka.query.samplequery&quot;\n </code>\n }</pre>"
+        "description" : "Executes a query by its fully qualified name in the format <code>&lt;catalogName&gt;.&lt;schemaName&gt;.&lt;tableName&gt;</code>.\n\n <pre><code>\n {&quot;qualifiedName&quot;: &quot;peaka.query.samplequery&quot;</code>\n }</pre>"
       },
       "QueryExecuteRequestStatement" : {
         "type" : "object",
