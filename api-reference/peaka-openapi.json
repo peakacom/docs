@@ -1683,6 +1683,25 @@
           "required" : true
         },
         "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : {
+                  "Bad Request" : {
+                    "description" : "Bad Request",
+                    "value" : {
+                      "errorCode" : 100,
+                      "message" : "There are already a catalog with same name!!"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Catalog created successfully",
             "content" : {
@@ -1709,25 +1728,6 @@
                       "displayName" : "exampleStripeCatalog",
                       "catalogType" : "stripe",
                       "connectionId" : "8db17e23-29de-4dab-8886-af9717e0e742"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "Bad Request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "string"
-                },
-                "examples" : {
-                  "Bad Request" : {
-                    "description" : "Bad Request",
-                    "value" : {
-                      "errorCode" : 100,
-                      "message" : "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -7424,39 +7424,47 @@
         "properties" : {
           "columns" : {
             "type" : "array",
+            "description" : "Columns to select. If omitted, all columns (<code>*</code>) are returned.",
             "items" : {
               "type" : "string"
             }
           },
           "from" : {
             "type" : "array",
+            "description" : "Tables to query from. At least one entry is required.",
             "items" : {
               "$ref" : "#/components/schemas/TableForQuery"
             }
           },
           "limit" : {
             "type" : "integer",
+            "description" : "Maximum number of rows to return.",
             "format" : "int64"
           },
           "offset" : {
             "type" : "integer",
+            "description" : "Number of rows to skip before returning results.",
             "format" : "int64"
           },
           "orderBy" : {
             "type" : "array",
+            "description" : "Ordering specifications. Each entry is a column name optionally followed by <code>ASC</code> or <code>DESC</code>.\n Example: <code>[&quot;amount DESC&quot;, &quot;created_at ASC&quot;]</code>.",
             "items" : {
               "type" : "string"
             }
           },
           "filters" : {
             "type" : "object",
-            "additionalProperties" : true
+            "additionalProperties" : true,
+            "description" : "Filter conditions. Supports <code>and</code>/<code>or</code> logic with column comparisons."
           },
           "timeout" : {
             "type" : "integer",
+            "description" : "Query timeout in seconds.",
             "format" : "int32"
           }
-        }
+        },
+        "description" : "Executes a query using the query builder. The <code>from</code> field is required.\n\n <p>Minimal example:\n <pre><code>\n {\n     &quot;from&quot;: [\n         {\n             &quot;catalogName&quot;: &quot;peaka&quot;,\n             &quot;schemaName&quot;: &quot;query&quot;,\n             &quot;tableName&quot;: &quot;samplequery&quot;\n         </code>\n     ]\n }\n }</pre>\n\n <p>With columns, filters, limit, offset, and orderBy:\n <pre><code>\n {\n     &quot;columns&quot;: [&quot;amount&quot;],\n     &quot;from&quot;: [\n         {\n             &quot;catalogName&quot;: &quot;wilderman_green&quot;,\n             &quot;schemaName&quot;: &quot;payment&quot;,\n             &quot;tableName&quot;: &quot;charges&quot;\n         </code>\n     ],\n     \"filters\": {\n         \"and\": [\n             [\n                 { \"column\": { \"catalogName\": \"wilderman_green\", \"schemaName\": \"payment\", \"tableName\": \"charges\", \"columnName\": \"amount\" } },\n                 \">\",\n                 [150]\n             ]\n         ]\n     },\n     \"limit\": 50,\n     \"offset\": 0,\n     \"orderBy\": [\"amount DESC\"]\n }\n }</pre>"
       },
       "TableForQuery" : {
         "type" : "object",
@@ -7479,37 +7487,46 @@
         "type" : "object",
         "properties" : {
           "id" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The ID of the query to execute."
           },
           "timeout" : {
             "type" : "integer",
+            "description" : "Query timeout in seconds.",
             "format" : "int32"
           }
-        }
+        },
+        "description" : "Executes a query by its ID. The query is looked up and its type determines the schema:\n <code>PLAIN</code> queries use <code>peaka.query.&lt;name&gt;</code>, <code>MATERIALIZED</code> queries use <code>peaka.mtquery.&lt;name&gt;</code>.\n\n <pre><code>\n {\n     &quot;id&quot;: &quot;709922802836177297&quot;\n </code>\n }</pre>"
       },
       "QueryExecuteRequestName" : {
         "type" : "object",
         "properties" : {
           "qualifiedName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Fully qualified name of the query, e.g. <code>peaka.query.samplequery</code> or <code>peaka.mtquery.samplequery</code> or <code>stripe.payment.charges</code>"
           },
           "timeout" : {
             "type" : "integer",
+            "description" : "Query timeout in seconds.",
             "format" : "int32"
           }
-        }
+        },
+        "description" : "Executes a query by its fully qualified name in the format <code>&lt;catalogName&gt;.&lt;schemaName&gt;.&lt;tableName&gt;</code>.\n\n <pre><code>\n {\n     &quot;qualifiedName&quot;: &quot;peaka.query.samplequery&quot;\n </code>\n }</pre>"
       },
       "QueryExecuteRequestStatement" : {
         "type" : "object",
         "properties" : {
           "statement" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The SQL statement to execute."
           },
           "timeout" : {
             "type" : "integer",
+            "description" : "Query timeout in seconds.",
             "format" : "int32"
           }
-        }
+        },
+        "description" : "Executes a raw SQL statement directly.\n\n <pre><code>\n {\n     &quot;statement&quot;: &quot;SELECT * FROM \\&quot;peaka\\&quot;.\\&quot;query\\&quot;.\\&quot;samplequery\\&quot;&quot;\n </code>\n }</pre>"
       },
       "CellValue" : {
         "type" : "object",
