@@ -1683,6 +1683,25 @@
           "required" : true
         },
         "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : {
+                  "Bad Request" : {
+                    "description" : "Bad Request",
+                    "value" : {
+                      "errorCode" : 100,
+                      "message" : "There are already a catalog with same name!!"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Catalog created successfully",
             "content" : {
@@ -1709,25 +1728,6 @@
                       "displayName" : "exampleStripeCatalog",
                       "catalogType" : "stripe",
                       "connectionId" : "8db17e23-29de-4dab-8886-af9717e0e742"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "Bad Request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "string"
-                },
-                "examples" : {
-                  "Bad Request" : {
-                    "description" : "Bad Request",
-                    "value" : {
-                      "errorCode" : 100,
-                      "message" : "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -3386,6 +3386,7 @@
       "get" : {
         "tags" : [ "Data -- Queries" ],
         "summary" : "List Queries",
+        "description" : "Returns all queries belonging to the given project. Each query includes its path and folderId if it is placed in a folder.",
         "operationId" : "listQueries",
         "parameters" : [ {
           "name" : "projectId",
@@ -3410,7 +3411,9 @@
                   "id" : "709891320440684892",
                   "displayName" : "sample2",
                   "name" : "sample2",
-                  "inputQuery" : ""
+                  "inputQuery" : "",
+                  "path" : "/reports/monthly",
+                  "folderId" : "f_3np1a"
                 }, {
                   "id" : "702142445051183684",
                   "displayName" : "deneme",
@@ -3420,7 +3423,9 @@
                   "id" : "709891051854233848",
                   "displayName" : "sample",
                   "name" : "sample",
-                  "inputQuery" : ""
+                  "inputQuery" : "",
+                  "path" : "/reports/monthly",
+                  "folderId" : "f_3np1a"
                 }, {
                   "id" : "709922802836177297",
                   "displayName" : "sampleQuery",
@@ -3438,6 +3443,7 @@
       "post" : {
         "tags" : [ "Data -- Queries" ],
         "summary" : "Create Query",
+        "description" : "Creates a new query under the given project. Supports plain and materialized query types. Optionally accepts a path to place the query in a folder hierarchy.",
         "operationId" : "createQuery",
         "parameters" : [ {
           "name" : "projectId",
@@ -3468,6 +3474,14 @@
                   "value" : {
                     "displayName" : "sampleQuery",
                     "inputQuery" : "SELECT * from \"mycatalog\".payment.customers"
+                  }
+                },
+                "Create Query in Folder" : {
+                  "description" : "Create Query in Folder",
+                  "value" : {
+                    "displayName" : "sampleQuery",
+                    "inputQuery" : "SELECT * from \"mycatalog\".payment.customers",
+                    "folder" : "reports/monthly"
                   }
                 },
                 "Create Materialized Query" : {
@@ -3515,6 +3529,7 @@
       "post" : {
         "tags" : [ "Data -- Queries" ],
         "summary" : "Execute Query",
+        "description" : "Executes a query and returns the result. Accepts a query builder object, a query ID, a query name, or a raw SQL statement.\n\nThe **`format`** query parameter controls the shape of the `data` array in the response:\n\n| Value | Description |\n|-------|-------------|\n| `CELL_TYPED` *(default)* | Each cell is an object with `name`, `displayName`, `dataType`, `order`, and `value`. |\n| `SIMPLE` | Each row is a flat JSON object whose keys are the column names. |\n| `COMPACT` | Each row is a plain array of values ordered by column position. |\n",
         "operationId" : "executeQuery",
         "parameters" : [ {
           "name" : "projectId",
@@ -3522,6 +3537,15 @@
           "required" : true,
           "schema" : {
             "type" : "string"
+          }
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "CELL_TYPED",
+            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ]
           }
         } ],
         "requestBody" : {
@@ -3617,269 +3641,73 @@
             "description" : "Query Result",
             "content" : {
               "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryResult"
-                },
-                "example" : {
-                  "columns" : [ {
-                    "catalogId" : "2",
-                    "catalogName" : "peaka",
-                    "schemaName" : "query",
-                    "tableName" : "samplequery",
-                    "columnName" : "amount"
-                  } ],
-                  "data" : [ [ {
-                    "name" : "amount",
-                    "displayName" : "amount",
-                    "dataType" : "bigint",
-                    "value" : "75",
-                    "order" : 0
-                  } ], [ {
-                    "name" : "amount",
-                    "displayName" : "amount",
-                    "dataType" : "bigint",
-                    "value" : "75",
-                    "order" : 0
-                  } ], [ {
-                    "name" : "amount",
-                    "displayName" : "amount",
-                    "dataType" : "bigint",
-                    "value" : "75",
-                    "order" : 0
-                  } ] ]
-                }
-              }
-            }
-          }
-        },
-        "x-mint" : {
-          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
-      }
-    },
-    "/data/projects/{projectId}/queries/folders" : {
-      "get" : {
-        "tags" : [ "Data -- Queries" ],
-        "summary" : "List Query Folders",
-        "operationId" : "listQueryFolders",
-        "parameters" : [ {
-          "name" : "projectId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Folder Listed",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/QueryFolderItem"
+                "examples" : {
+                  "CELL_TYPED (default)" : {
+                    "description" : "CELL_TYPED (default)",
+                    "value" : {
+                      "columns" : [ {
+                        "catalogName" : "peaka",
+                        "schemaName" : "query",
+                        "tableName" : "samplequery",
+                        "columnName" : "event"
+                      }, {
+                        "catalogName" : "peaka",
+                        "schemaName" : "query",
+                        "tableName" : "samplequery",
+                        "columnName" : "distinct_id"
+                      } ],
+                      "data" : [ [ {
+                        "name" : "event",
+                        "displayName" : "event",
+                        "dataType" : "varchar",
+                        "order" : 0,
+                        "value" : "$mp_web_page_view"
+                      }, {
+                        "name" : "distinct_id",
+                        "displayName" : "distinct_id",
+                        "dataType" : "varchar",
+                        "order" : 1,
+                        "value" : "$device:916806fd-8a6c-425b-b5f9-b76b5d6f9d55"
+                      } ] ]
+                    }
+                  },
+                  "SIMPLE" : {
+                    "description" : "SIMPLE",
+                    "value" : {
+                      "columns" : [ {
+                        "catalogName" : "peaka",
+                        "schemaName" : "query",
+                        "tableName" : "samplequery",
+                        "columnName" : "event"
+                      }, {
+                        "catalogName" : "peaka",
+                        "schemaName" : "query",
+                        "tableName" : "samplequery",
+                        "columnName" : "distinct_id"
+                      } ],
+                      "data" : [ {
+                        "event" : "$mp_web_page_view",
+                        "distinct_id" : "$device:916806fd-8a6c-425b-b5f9-b76b5d6f9d55"
+                      } ]
+                    }
+                  },
+                  "COMPACT" : {
+                    "description" : "COMPACT",
+                    "value" : {
+                      "columns" : [ {
+                        "catalogName" : "peaka",
+                        "schemaName" : "query",
+                        "tableName" : "samplequery",
+                        "columnName" : "event"
+                      }, {
+                        "catalogName" : "peaka",
+                        "schemaName" : "query",
+                        "tableName" : "samplequery",
+                        "columnName" : "distinct_id"
+                      } ],
+                      "data" : [ [ "$mp_web_page_view", "$device:916806fd-8a6c-425b-b5f9-b76b5d6f9d55" ] ]
+                    }
                   }
-                }
-              }
-            }
-          }
-        },
-        "x-mint" : {
-          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
-      },
-      "post" : {
-        "tags" : [ "Data -- Queries" ],
-        "summary" : "Create Query Folder at Root",
-        "operationId" : "createQueryFolderAtRoot",
-        "parameters" : [ {
-          "name" : "projectId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/QueryFolderCreateRequest"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Folder Created",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          }
-        },
-        "x-mint" : {
-          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
-      }
-    },
-    "/data/projects/{projectId}/queries/folders/{folderId}" : {
-      "get" : {
-        "tags" : [ "Data -- Queries" ],
-        "summary" : "Read Query Folder",
-        "operationId" : "readQueryFolder",
-        "parameters" : [ {
-          "name" : "projectId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "folderId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Folder Read",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          }
-        },
-        "x-mint" : {
-          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
-      },
-      "put" : {
-        "tags" : [ "Data -- Queries" ],
-        "summary" : "Add/Remove Query In/From Folder",
-        "operationId" : "addOrRemoveQueryFromFolder",
-        "parameters" : [ {
-          "name" : "projectId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "folderId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/QueryFolderUpdateRequest"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Folder Created",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          }
-        },
-        "x-mint" : {
-          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
-      },
-      "post" : {
-        "tags" : [ "Data -- Queries" ],
-        "summary" : "Create Query Folder With Folder Id",
-        "operationId" : "createQueryFolderWithFolderId",
-        "parameters" : [ {
-          "name" : "projectId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "folderId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/QueryFolderCreateRequest"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Folder Created",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          }
-        },
-        "x-mint" : {
-          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
-      },
-      "delete" : {
-        "tags" : [ "Data -- Queries" ],
-        "summary" : "Delete Query Folder With Folder Id",
-        "operationId" : "deleteQueryFolderWithFolderId",
-        "parameters" : [ {
-          "name" : "projectId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "folderId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Folder Created",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
                 }
               }
             }
@@ -3894,6 +3722,7 @@
       "get" : {
         "tags" : [ "Data -- Queries" ],
         "summary" : "Read Query",
+        "description" : "Returns a single query by its ID. Includes path and folderId if the query is placed in a folder.",
         "operationId" : "readQuery",
         "parameters" : [ {
           "name" : "projectId",
@@ -3917,12 +3746,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/Query"
-                },
-                "example" : {
-                  "id" : "709922802836177297",
-                  "displayName" : "sampleQuery",
-                  "name" : "samplequery",
-                  "inputQuery" : "SELECT * from \"mycatalog\".payment.charges"
                 }
               }
             }
@@ -3935,6 +3758,7 @@
       "put" : {
         "tags" : [ "Data -- Queries" ],
         "summary" : "Update Query",
+        "description" : "Updates the display name, SQL, or schedule of an existing query. To move a query to a different folder use the Update Query Path endpoint.",
         "operationId" : "updateQuery",
         "parameters" : [ {
           "name" : "projectId",
@@ -3992,7 +3816,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Query created",
+            "description" : "Query updated",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -4015,6 +3839,7 @@
       "delete" : {
         "tags" : [ "Data -- Queries" ],
         "summary" : "Delete Query",
+        "description" : "Permanently deletes a query by its ID.",
         "operationId" : "deleteQuery",
         "parameters" : [ {
           "name" : "projectId",
@@ -4034,6 +3859,284 @@
         "responses" : {
           "200" : {
             "description" : "OK"
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/queries/{queryId}/path" : {
+      "patch" : {
+        "tags" : [ "Data -- Queries" ],
+        "summary" : "Update Query Path",
+        "description" : "Moves a query to the specified folder path. The path is resolved by the backend service.",
+        "operationId" : "updateQueryPath",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "queryId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Path Request",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QueryPathUpdateRequest"
+              },
+              "example" : {
+                "path" : "/reports/monthly"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Path updated"
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/queries/folders" : {
+      "get" : {
+        "tags" : [ "Data -- Query Folders" ],
+        "summary" : "List Query Folders",
+        "operationId" : "listQueryFolders",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Folder Listed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/QueryFolderItem"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      },
+      "post" : {
+        "tags" : [ "Data -- Query Folders" ],
+        "summary" : "Create Query Folder at Root",
+        "operationId" : "createQueryFolderAtRoot",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QueryFolderCreateRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Folder Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/queries/folders/{folderId}" : {
+      "get" : {
+        "tags" : [ "Data -- Query Folders" ],
+        "summary" : "Read Query Folder",
+        "operationId" : "readQueryFolder",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "folderId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Folder Read",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      },
+      "put" : {
+        "tags" : [ "Data -- Query Folders" ],
+        "summary" : "Add/Remove Query In/From Folder",
+        "operationId" : "addOrRemoveQueryFromFolder",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "folderId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QueryFolderUpdateRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Folder Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      },
+      "post" : {
+        "tags" : [ "Data -- Query Folders" ],
+        "summary" : "Create Query Folder With Folder Id",
+        "operationId" : "createQueryFolderWithFolderId",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "folderId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QueryFolderCreateRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Folder Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      },
+      "delete" : {
+        "tags" : [ "Data -- Query Folders" ],
+        "summary" : "Delete Query Folder With Folder Id",
+        "operationId" : "deleteQueryFolderWithFolderId",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "folderId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Folder Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
           }
         },
         "x-mint" : {
@@ -6852,6 +6955,14 @@
           },
           "schedule" : {
             "$ref" : "#/components/schemas/Schedule"
+          },
+          "path" : {
+            "type" : "string",
+            "description" : "The path of the query (e.g. \"/analytics/dashboards\").\n Null if the query is not in any folder."
+          },
+          "folderId" : {
+            "type" : "string",
+            "description" : "The ID of the folder containing this query.\n Null if the query is not in any folder."
           }
         }
       },
@@ -6870,7 +6981,8 @@
               "type" : "string"
             }
           }
-        }
+        },
+        "description" : "Request body for updating a query folder (adding/removing query IDs).\n\n <p>Both lists are initialised to empty {@link ArrayList ArrayList}s so the serialised\n JSON always contains <code>&quot;queryIdsAdded&quot;: [...]</code> and\n <code>&quot;queryIdsRemoved&quot;: [...]</code>.  The search service requires both fields\n to be present (non-null) and rejects <code>null</code> with a validation error."
       },
       "QueryFolderItem" : {
         "type" : "object",
@@ -7520,89 +7632,20 @@
             "type" : "string",
             "description" : "The SQL statement to execute."
           },
+          "bindArgs" : {
+            "type" : "array",
+            "description" : "Optional bind arguments for parameterised queries.",
+            "items" : {
+              "type" : "string"
+            }
+          },
           "timeout" : {
             "type" : "integer",
             "description" : "Query timeout in seconds.",
             "format" : "int32"
           }
         },
-        "description" : "Executes a raw SQL statement directly.\n\n <pre>\n {\n     \"statement\": \"SELECT * FROM \\\"peaka\\\".\\\"query\\\".\\\"samplequery\\\"\"\n }\n </pre>"
-      },
-      "CellValue" : {
-        "type" : "object",
-        "properties" : {
-          "name" : {
-            "type" : "string",
-            "description" : "The name of the column."
-          },
-          "displayName" : {
-            "type" : "string",
-            "description" : "The display name of the column."
-          },
-          "dataType" : {
-            "type" : "string",
-            "description" : "The data type of the column."
-          },
-          "value" : {
-            "type" : "string",
-            "description" : "The value of the column."
-          },
-          "order" : {
-            "type" : "integer",
-            "description" : "The order of the column in its row.",
-            "format" : "int32"
-          }
-        },
-        "description" : "Represents a cell value in the query result."
-      },
-      "Column" : {
-        "type" : "object",
-        "properties" : {
-          "catalogId" : {
-            "type" : "string",
-            "description" : "The ID of the catalog for the column."
-          },
-          "catalogName" : {
-            "type" : "string",
-            "description" : "The name of the catalog for the column."
-          },
-          "schemaName" : {
-            "type" : "string",
-            "description" : "The name of the schema for the column."
-          },
-          "tableName" : {
-            "type" : "string",
-            "description" : "The name of the table for the column."
-          },
-          "columnName" : {
-            "type" : "string",
-            "description" : "The name of the column."
-          }
-        },
-        "description" : "This class represents a Column.\n It contains the catalog ID, catalog name, schema name, table name, and column name."
-      },
-      "QueryResult" : {
-        "type" : "object",
-        "properties" : {
-          "columns" : {
-            "type" : "array",
-            "description" : "The columns of the query result.",
-            "items" : {
-              "$ref" : "#/components/schemas/Column"
-            }
-          },
-          "data" : {
-            "type" : "array",
-            "description" : "The data of the query result.",
-            "items" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/components/schemas/CellValue"
-              }
-            }
-          }
-        },
-        "description" : "Represents the result of a query."
+        "description" : "Executes a raw SQL statement directly via the queries/execute endpoint.\n\n <pre>\n {\n     \"statement\": \"SELECT * FROM \\\"peaka\\\".\\\"query\\\".\\\"samplequery\\\"\",\n     \"bindArgs\": [\"arg1\", \"arg2\"]\n }\n </pre>"
       },
       "CatalogRequest" : {
         "type" : "object",
@@ -7765,6 +7808,15 @@
       },
       "ServerSentEventMapStringObject" : {
         "type" : "object"
+      },
+      "QueryPathUpdateRequest" : {
+        "type" : "object",
+        "properties" : {
+          "path" : {
+            "type" : "string",
+            "description" : "The path to place this query in (e.g. \"/analytics/dashboards\")."
+          }
+        }
       },
       "Organization" : {
         "type" : "object",
