@@ -3544,8 +3544,8 @@
           "required" : false,
           "schema" : {
             "type" : "string",
-            "default" : "CELL_TYPED",
-            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ]
+            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ],
+            "default" : "CELL_TYPED"
           }
         } ],
         "requestBody" : {
@@ -7632,7 +7632,7 @@
             "type" : "string",
             "description" : "The SQL statement to execute."
           },
-          "bindArgs" : {
+          "bindings" : {
             "type" : "array",
             "description" : "Optional bind arguments for parameterised queries.",
             "items" : {
