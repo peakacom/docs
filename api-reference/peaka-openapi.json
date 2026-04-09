@@ -1885,7 +1885,7 @@
       "get" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "List Tables",
-        "description" : "Lists all tables available under the specified schema of a catalog. Each table entry includes its catalog and schema context along with caching metadata (`isCacheable`, `isDynamicTable`, `isCached`). For the internal catalog, this includes [Peaka Tables](https://docs.peaka.com/connecting-your-data/peaka-table) and [Peaka BI Tables](https://docs.peaka.com/connecting-your-data/peaka-big-table).",
+        "description" : "Lists all tables available under the specified schema of a catalog. Each table entry includes its catalog and schema context along with caching metadata (`isCacheable`, `isDynamicTable`, `isCached`). For the internal catalog, this includes [Peaka Tables](https://docs.peaka.com/connecting-your-data/peaka-table) and [Peaka BI Tables](https://docs.peaka.com/connecting-your-data/peaka-bi-table).",
         "operationId" : "listTables_1",
         "parameters" : [ {
           "name" : "projectId",
@@ -2549,7 +2549,7 @@
       "get" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "List BI Tables",
-        "description" : "Lists all [Peaka BI Tables](https://docs.peaka.com/connecting-your-data/peaka-big-table) in the project. Peaka BI Table is a robust data management solution optimized for handling large datasets of over one million records. It uses a column-oriented data storage approach, resulting in exceptionally fast filtering and grouping performance without requiring additional indexing. It is particularly well-suited for event data and bulk insertions, though it does not support JSON data types. See also: [Differences of Peaka Table and Peaka Big Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-big-table)",
+        "description" : "Lists all [Peaka BI Tables](https://docs.peaka.com/connecting-your-data/peaka-bi-table) in the project. Peaka BI Table is a robust data management solution optimized for handling large datasets of over one million records. It uses a column-oriented data storage approach, resulting in exceptionally fast filtering and grouping performance without requiring additional indexing. It is particularly well-suited for event data and bulk insertions, though it does not support JSON data types. See also: [Differences of Peaka Table and Peaka BI Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-bi-table)",
         "operationId" : "listBiTables",
         "parameters" : [ {
           "name" : "projectId",
@@ -2583,7 +2583,7 @@
       "post" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Create BI Table",
-        "description" : "Creates a new [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table) with the given name in the specified project. Peaka BI Table uses a column-oriented storage approach optimized for large datasets of over one million records, offering fast filtering and grouping performance. See also: [Differences of Peaka Table and Peaka Big Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-big-table)",
+        "description" : "Creates a new [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table) with the given name in the specified project. Peaka BI Table uses a column-oriented storage approach optimized for large datasets of over one million records, offering fast filtering and grouping performance. See also: [Differences of Peaka Table and Peaka BI Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-bi-table)",
         "operationId" : "createInternalBiTable",
         "parameters" : [ {
           "name" : "projectId",
@@ -2628,7 +2628,7 @@
       "delete" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Delete BI Table",
-        "description" : "Permanently deletes the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table) and all its data from the project. This action is irreversible — all rows, columns, and schema definitions associated with the BI Table will be removed.",
+        "description" : "Permanently deletes the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table) and all its data from the project. This action is irreversible — all rows, columns, and schema definitions associated with the BI Table will be removed.",
         "operationId" : "deleteBiTable",
         "parameters" : [ {
           "name" : "projectId",
@@ -2659,7 +2659,7 @@
       "get" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "List BI Columns",
-        "description" : "Lists all columns defined in the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table). Returns column metadata including name, data type, display name, default value, and constraints such as nullability and uniqueness. Note that Peaka BI Table does not support JSON data types.",
+        "description" : "Lists all columns defined in the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table). Returns column metadata including name, data type, display name, default value, and constraints such as nullability and uniqueness. Note that Peaka BI Table does not support JSON data types.",
         "operationId" : "listBiColumns",
         "parameters" : [ {
           "name" : "projectId",
@@ -2698,7 +2698,7 @@
       "post" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Add BI Column",
-        "description" : "Adds one or more columns to the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table). Each column definition includes its name, data type, display name, optional default value, and constraints (nullability, uniqueness). Peaka BI Table supports VARCHAR, BIGINT, BOOLEAN, TIMESTAMP, TIME, DATE, UUID, and DECIMAL data types. Note that JSON data type is not supported in Peaka BI Table.",
+        "description" : "Adds one or more columns to the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table). Each column definition includes its name, data type, display name, optional default value, and constraints (nullability, uniqueness). Peaka BI Table supports VARCHAR, BIGINT, BOOLEAN, TIMESTAMP, TIME, DATE, UUID, and DECIMAL data types. Note that JSON data type is not supported in Peaka BI Table.",
         "operationId" : "addBiColumn",
         "parameters" : [ {
           "name" : "projectId",
@@ -2824,7 +2824,7 @@
       "put" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Update BI Column",
-        "description" : "Updates the definition of an existing column in the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table). Allows modifying the column's name, display name, data type, default value, and constraints such as nullability and uniqueness.",
+        "description" : "Updates the definition of an existing column in the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table). Allows modifying the column's name, display name, data type, default value, and constraints such as nullability and uniqueness.",
         "operationId" : "updateBiColumn",
         "parameters" : [ {
           "name" : "projectId",
@@ -2880,7 +2880,7 @@
       "delete" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Delete BI Column",
-        "description" : "Permanently removes a column from the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table). This action is irreversible — the column and all its stored data will be deleted from the BI Table.",
+        "description" : "Permanently removes a column from the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table). This action is irreversible — the column and all its stored data will be deleted from the BI Table.",
         "operationId" : "deleteBiColumn",
         "parameters" : [ {
           "name" : "projectId",
@@ -2918,7 +2918,7 @@
       "get" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "List Tables",
-        "description" : "Lists all [Peaka Tables](https://docs.peaka.com/connecting-your-data/peaka-table) in the project. Peaka Table is an internal relational database within Peaka that allows you to organize and manage data efficiently. It supports structured data storage and enables you to add, delete, filter, and edit your data, including JSON data types. It is best suited for smaller datasets requiring frequent edits and broader data type support. See also: [Differences of Peaka Table and Peaka Big Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-big-table)",
+        "description" : "Lists all [Peaka Tables](https://docs.peaka.com/connecting-your-data/peaka-table) in the project. Peaka Table is an internal relational database within Peaka that allows you to organize and manage data efficiently. It supports structured data storage and enables you to add, delete, filter, and edit your data, including JSON data types. It is best suited for smaller datasets requiring frequent edits and broader data type support. See also: [Differences of Peaka Table and Peaka BI Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-bi-table)",
         "operationId" : "listTables",
         "parameters" : [ {
           "name" : "projectId",
@@ -2952,7 +2952,7 @@
       "post" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Create Table",
-        "description" : "Creates a new [Peaka Table](https://docs.peaka.com/connecting-your-data/peaka-table) with the given name in the specified project. Peaka Table is an internal relational database within Peaka that supports structured data storage with full CRUD operations and JSON data types. See also: [Differences of Peaka Table and Peaka Big Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-big-table)",
+        "description" : "Creates a new [Peaka Table](https://docs.peaka.com/connecting-your-data/peaka-table) with the given name in the specified project. Peaka Table is an internal relational database within Peaka that supports structured data storage with full CRUD operations and JSON data types. See also: [Differences of Peaka Table and Peaka BI Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-bi-table)",
         "operationId" : "createInternalTable",
         "parameters" : [ {
           "name" : "projectId",
