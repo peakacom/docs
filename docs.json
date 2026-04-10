@@ -15,9 +15,7 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction"
-            ]
+            "pages": ["introduction"]
           },
           {
             "group": "Project Operations",
@@ -44,8 +42,8 @@
             "pages": [
               "connecting-your-data/peaka-query",
               "connecting-your-data/peaka-table",
-              "connecting-your-data/peaka-big-table",
-              "connecting-your-data/differences-of-peaka-table-and-peaka-big-table",
+              "connecting-your-data/peaka-bi-table",
+              "connecting-your-data/differences-of-peaka-table-and-peaka-bi-table",
               "connecting-your-data/creating-query",
               "connecting-your-data/creating-peaka-table",
               "connecting-your-data/add-connection",
@@ -66,9 +64,7 @@
           },
           {
             "group": "AI Setup",
-            "pages": [
-              "ai-setup/bring-your-own-ai-model"
-            ]
+            "pages": ["ai-setup/bring-your-own-ai-model"]
           }
         ]
       },
@@ -320,9 +316,7 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": [
-              "sql/introduction"
-            ]
+            "pages": ["sql/introduction"]
           },
           {
             "group": "Reference",
@@ -340,9 +334,7 @@
           },
           {
             "group": "Data Types",
-            "pages": [
-              "sql/reference/types"
-            ]
+            "pages": ["sql/reference/types"]
           },
           {
             "group": "Functions",
