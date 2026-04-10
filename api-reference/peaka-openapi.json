@@ -74,7 +74,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Project"
+                  "$ref" : "#/components/schemas/Organization"
                 },
                 "examples" : {
                   "Read Organization Example" : {
@@ -107,10 +107,12 @@
         "parameters" : [ {
           "name" : "organizationId",
           "in" : "path",
+          "description" : "ID of the Organization",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "d0d3c83f-29ed-4f2e-899d-1bfa00eb3cef"
         } ],
         "responses" : {
           "200" : {
@@ -242,10 +244,12 @@
         }, {
           "name" : "workspaceId",
           "in" : "path",
+          "description" : "Workspace ID",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "56d43968-e31d-4010-9b75-018a79a51b17"
         } ],
         "responses" : {
           "200" : {
@@ -302,15 +306,15 @@
           "example" : "8eefb5a9-59f7-43cc-bacb-f0b0e0d1b0ea"
         } ],
         "requestBody" : {
-          "description" : "Create Workspace",
+          "description" : "Update Workspace",
           "content" : {
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/WorkspaceRequest"
               },
               "examples" : {
-                "Create Workspace Example" : {
-                  "description" : "Create Workspace Example",
+                "Update Workspace Example" : {
+                  "description" : "Update Workspace Example",
                   "value" : {
                     "name" : "workspace new name",
                     "description" : "workspace description"
@@ -389,22 +393,26 @@
       "get" : {
         "tags" : [ "Organization -- Projects" ],
         "summary" : "List Projects",
-        "description" : "Fetches all projects within the given Workspace.\n\nA unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside workspaces.\n",
+        "description" : "Fetches all Projects within the given Workspace.\n\nA Project is a unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside Workspaces.\n",
         "operationId" : "listProjects_1",
         "parameters" : [ {
           "name" : "organizationId",
           "in" : "path",
+          "description" : "ID of the Organization",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "d0d3c83f-29ed-4f2e-899d-1bfa00eb3cef"
         }, {
           "name" : "workspaceId",
           "in" : "path",
+          "description" : "ID of the Workspace",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "56d43968-e31d-4010-9b75-018a79a51b17"
         } ],
         "responses" : {
           "200" : {
@@ -450,21 +458,26 @@
       "post" : {
         "tags" : [ "Organization -- Projects" ],
         "summary" : "Create Project",
+        "description" : "Creates a new Project within the given Workspace.\n\nA Project is a unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside Workspaces.\n",
         "operationId" : "createProject_1",
         "parameters" : [ {
           "name" : "organizationId",
           "in" : "path",
+          "description" : "ID of the Organization",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "d0d3c83f-29ed-4f2e-899d-1bfa00eb3cef"
         }, {
           "name" : "workspaceId",
           "in" : "path",
+          "description" : "ID of the Workspace",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "56d43968-e31d-4010-9b75-018a79a51b17"
         } ],
         "requestBody" : {
           "description" : "Project to create",
@@ -520,28 +533,35 @@
       "get" : {
         "tags" : [ "Organization -- Projects" ],
         "summary" : "Read Project",
+        "description" : "Returns details of a specified Project.\n\nA Project is a unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside Workspaces.\n",
         "operationId" : "readProject_1",
         "parameters" : [ {
           "name" : "organizationId",
           "in" : "path",
+          "description" : "ID of the Organization",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "d0d3c83f-29ed-4f2e-899d-1bfa00eb3cef"
         }, {
           "name" : "workspaceId",
           "in" : "path",
+          "description" : "ID of the Workspace",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "56d43968-e31d-4010-9b75-018a79a51b17"
         }, {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "SksnYuxH"
         } ],
         "responses" : {
           "200" : {
@@ -576,28 +596,35 @@
       "put" : {
         "tags" : [ "Organization -- Projects" ],
         "summary" : "Update Project",
+        "description" : "Updates the specified Project within a Workspace.\n\nA Project is a unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside Workspaces.\n",
         "operationId" : "updateProject_1",
         "parameters" : [ {
           "name" : "organizationId",
           "in" : "path",
+          "description" : "ID of the Organization",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "d0d3c83f-29ed-4f2e-899d-1bfa00eb3cef"
         }, {
           "name" : "workspaceId",
           "in" : "path",
+          "description" : "ID of the Workspace",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "56d43968-e31d-4010-9b75-018a79a51b17"
         }, {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "SksnYuxH"
         } ],
         "requestBody" : {
           "description" : "Project to update",
@@ -652,28 +679,35 @@
       "delete" : {
         "tags" : [ "Organization -- Projects" ],
         "summary" : "Delete Project",
+        "description" : "Deletes the specified Project within a Workspace.\n\nA Project is a unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside Workspaces.\n",
         "operationId" : "deleteProject_1",
         "parameters" : [ {
           "name" : "organizationId",
           "in" : "path",
+          "description" : "ID of the Organization",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "d0d3c83f-29ed-4f2e-899d-1bfa00eb3cef"
         }, {
           "name" : "workspaceId",
           "in" : "path",
+          "description" : "ID of the Workspace",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "56d43968-e31d-4010-9b75-018a79a51b17"
         }, {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "SksnYuxH"
         } ],
         "responses" : {
           "200" : {
@@ -689,6 +723,7 @@
       "get" : {
         "tags" : [ "Projects (Deprecated)" ],
         "summary" : "List Projects",
+        "description" : "<strong>Deprecated.</strong> Use the <code>List Projects</code> endpoint under Organization instead.\n\nRetrieves all Projects accessible by the authenticated user.\n\nA Project is a unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside Workspaces.\n",
         "operationId" : "listProjects",
         "responses" : {
           "200" : {
@@ -733,6 +768,7 @@
       "post" : {
         "tags" : [ "Projects (Deprecated)" ],
         "summary" : "Create Project",
+        "description" : "<strong>Deprecated.</strong> Use the <code>Create Project</code> endpoint under Organization instead.\n\nCreates a new Project.\n\nA Project is a unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside Workspaces.\n",
         "operationId" : "createProject",
         "requestBody" : {
           "description" : "Project to create",
@@ -788,14 +824,17 @@
       "get" : {
         "tags" : [ "Projects (Deprecated)" ],
         "summary" : "Read Project",
+        "description" : "<strong>Deprecated.</strong> Use the <code>Read Project</code> endpoint under Organization instead.\n\nReturns details of a specified Project.\n\nA Project is a unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside Workspaces.\n",
         "operationId" : "readProject",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "SksnYuxH"
         } ],
         "responses" : {
           "200" : {
@@ -830,14 +869,17 @@
       "put" : {
         "tags" : [ "Projects (Deprecated)" ],
         "summary" : "Update Project",
+        "description" : "<strong>Deprecated.</strong> Use the <code>Update Project</code> endpoint under Organization instead.\n\nUpdates the specified Project.\n\nA Project is a unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside Workspaces.\n",
         "operationId" : "updateProject",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "SksnYuxH"
         } ],
         "requestBody" : {
           "description" : "Project to update",
@@ -892,14 +934,17 @@
       "delete" : {
         "tags" : [ "Projects (Deprecated)" ],
         "summary" : "Delete Project",
+        "description" : "<strong>Deprecated.</strong> Use the <code>Delete Project</code> endpoint under Organization instead.\n\nDeletes the specified Project.\n\nA Project is a unit of work where queries, data tables, and semantic catalogs are managed. Projects live inside Workspaces.\n",
         "operationId" : "deleteProject",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "SksnYuxH"
         } ],
         "responses" : {
           "200" : {
@@ -916,6 +961,7 @@
       "get" : {
         "tags" : [ "Projects -- Api Key" ],
         "summary" : "List API Keys",
+        "description" : "Retrieves all API Keys associated with the specified Project.\n",
         "operationId" : "listApiKeys",
         "parameters" : [ {
           "name" : "projectId",
@@ -929,13 +975,20 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "OK",
+            "description" : "List of API Keys",
             "content" : {
-              "*/*" : {
+              "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/ApiKey"
+                  "$ref" : "#/components/schemas/ApiKey"
+                },
+                "examples" : {
+                  "List API Keys Example" : {
+                    "description" : "List API Keys Example",
+                    "value" : [ {
+                      "name" : "test",
+                      "apiKey" : null,
+                      "apiKeyId" : "21fd1a8d-88d5-4295-b792-5b2113138057"
+                    } ]
                   }
                 }
               }
@@ -949,6 +1002,7 @@
       "post" : {
         "tags" : [ "Projects -- Api Key" ],
         "summary" : "Create API Key",
+        "description" : "Creates a new API Key for the specified Project. The API Key is used to authenticate requests to the Peaka API on behalf of the Project.\n\nThe full key value is only returned once at creation time. Store it securely, as it cannot be retrieved later.\n",
         "operationId" : "createApiKey",
         "parameters" : [ {
           "name" : "projectId",
@@ -1017,6 +1071,7 @@
       "delete" : {
         "tags" : [ "Projects -- Api Key" ],
         "summary" : "Delete API Key",
+        "description" : "Deletes the specified API Key. Once deleted, any requests authenticated with this key will be rejected.\n",
         "operationId" : "deleteApiKey",
         "parameters" : [ {
           "name" : "projectId",
@@ -1055,14 +1110,11 @@
         "operationId" : "listConnectionConfig",
         "responses" : {
           "200" : {
-            "description" : "OK",
+            "description" : "List of connection configurations",
             "content" : {
-              "*/*" : {
+              "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/ConnectionConfiguration"
-                  }
+                  "$ref" : "#/components/schemas/ConnectionConfiguration"
                 }
               }
             }
@@ -1077,6 +1129,7 @@
       "get" : {
         "tags" : [ "Connections" ],
         "summary" : "Get Connection Config",
+        "description" : "Returns the configuration schema for a specific connection type, including required credential fields and their types. Use this to understand what parameters are needed when creating a connection of this type.\n",
         "operationId" : "getConnectionConfig",
         "parameters" : [ {
           "name" : "connectionType",
@@ -1090,9 +1143,9 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "OK",
+            "description" : "Connection configuration",
             "content" : {
-              "*/*" : {
+              "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ConnectionConfiguration"
                 }
@@ -1109,7 +1162,7 @@
       "get" : {
         "tags" : [ "Connections" ],
         "summary" : "List Connections",
-        "description" : "List all connections for a project",
+        "description" : "Retrieves all connections for the specified Project. A Connection represents an authenticated link to an external data source (e.g., Stripe, Airtable, PostgreSQL).\n",
         "operationId" : "listConnections",
         "parameters" : [ {
           "name" : "projectId",
@@ -1339,7 +1392,7 @@
       "get" : {
         "tags" : [ "Connections" ],
         "summary" : "Get Connection",
-        "description" : "Get a connection by ID",
+        "description" : "Returns details of a specified Connection.\n",
         "operationId" : "getConnection",
         "parameters" : [ {
           "name" : "projectId",
@@ -1389,7 +1442,7 @@
       "put" : {
         "tags" : [ "Connections" ],
         "summary" : "Update Connection",
-        "description" : "Update a connection",
+        "description" : "Updates the specified Connection. You can modify the name, credentials, or other parameters. The request body follows the same structure as the Create Connection endpoint.\n",
         "operationId" : "updateConnection",
         "parameters" : [ {
           "name" : "projectId",
@@ -1457,11 +1510,21 @@
         },
         "responses" : {
           "200" : {
-            "description" : "OK",
+            "description" : "Connection updated successfully",
             "content" : {
-              "*/*" : {
+              "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/Connection"
+                },
+                "examples" : {
+                  "Updated Connection" : {
+                    "description" : "Updated Connection",
+                    "value" : {
+                      "id" : "8db17e23-29de-4dab-8886-af9717e0e742",
+                      "name" : "exampleAirtableConnection",
+                      "type" : "airtable"
+                    }
+                  }
                 }
               }
             }
@@ -1474,7 +1537,7 @@
       "delete" : {
         "tags" : [ "Connections" ],
         "summary" : "Delete Connection",
-        "description" : "Delete a connection",
+        "description" : "Deletes the specified Connection. Any catalogs using this connection will lose access to their data source.\n",
         "operationId" : "deleteConnection",
         "parameters" : [ {
           "name" : "projectId",
@@ -1497,7 +1560,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "OK"
+            "description" : "Connection deleted successfully"
           }
         },
         "x-mint" : {
@@ -2549,15 +2612,17 @@
       "get" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "List BI Tables",
-        "description" : "Lists all [Peaka BI Tables](https://docs.peaka.com/connecting-your-data/peaka-big-table) in the project. Peaka BI Table is a robust data management solution optimized for handling large datasets of over one million records. It uses a column-oriented data storage approach, resulting in exceptionally fast filtering and grouping performance without requiring additional indexing. It is particularly well-suited for event data and bulk insertions, though it does not support JSON data types. See also: [Differences of Peaka Table and Peaka Big Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-big-table)",
+        "description" : "Lists all [Peaka BI Tables](https://docs.peaka.com/connecting-your-data/peaka-bi-table) in the project. Peaka BI Table is a robust data management solution optimized for handling large datasets of over one million records. It uses a column-oriented data storage approach, resulting in exceptionally fast filtering and grouping performance without requiring additional indexing. It is particularly well-suited for event data and bulk insertions, though it does not support JSON data types. See also: [Differences of Peaka Table and Peaka BI Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-bi-table)",
         "operationId" : "listBiTables",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         } ],
         "responses" : {
           "200" : {
@@ -2583,22 +2648,26 @@
       "post" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Create BI Table",
-        "description" : "Creates a new [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table) with the given name in the specified project. Peaka BI Table uses a column-oriented storage approach optimized for large datasets of over one million records, offering fast filtering and grouping performance. See also: [Differences of Peaka Table and Peaka Big Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-big-table)",
+        "description" : "Creates a new [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table) with the given name in the specified project. Peaka BI Table uses a column-oriented storage approach optimized for large datasets of over one million records, offering fast filtering and grouping performance without additional indexing. It is particularly well-suited for event data and bulk insertions. Note that JSON data type is not supported. See also: [Differences of Peaka Table and Peaka BI Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-bi-table)",
         "operationId" : "createInternalBiTable",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the BI table to create",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "events"
         } ],
         "responses" : {
           "200" : {
@@ -2628,22 +2697,26 @@
       "delete" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Delete BI Table",
-        "description" : "Permanently deletes the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table) and all its data from the project. This action is irreversible — all rows, columns, and schema definitions associated with the BI Table will be removed.",
+        "description" : "Permanently deletes the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table) and all its data from the project. This action is irreversible — all rows, columns, and schema definitions associated with the BI Table will be removed.",
         "operationId" : "deleteBiTable",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the BI table to delete",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "events"
         } ],
         "responses" : {
           "200" : {
@@ -2659,22 +2732,26 @@
       "get" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "List BI Columns",
-        "description" : "Lists all columns defined in the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table). Returns column metadata including name, data type, display name, default value, and constraints such as nullability and uniqueness. Note that Peaka BI Table does not support JSON data types.",
+        "description" : "Lists all columns defined in the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table). Returns column metadata including name, data type, display name, default value, and constraints such as nullability and uniqueness. Note that Peaka BI Table does not support JSON data types.",
         "operationId" : "listBiColumns",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the BI table",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "events"
         } ],
         "responses" : {
           "200" : {
@@ -2698,22 +2775,26 @@
       "post" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Add BI Column",
-        "description" : "Adds one or more columns to the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table). Each column definition includes its name, data type, display name, optional default value, and constraints (nullability, uniqueness). Peaka BI Table supports VARCHAR, BIGINT, BOOLEAN, TIMESTAMP, TIME, DATE, UUID, and DECIMAL data types. Note that JSON data type is not supported in Peaka BI Table.",
+        "description" : "Adds one or more columns to the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table). Each column definition includes its name, data type, display name, optional default value, and constraints (nullability, uniqueness). Peaka BI Table supports VARCHAR, BIGINT, BOOLEAN, TIMESTAMP, TIME, DATE, UUID, and DECIMAL data types. Note that JSON data type is not supported in Peaka BI Table.",
         "operationId" : "addBiColumn",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the BI table",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "events"
         } ],
         "requestBody" : {
           "description" : "Column Request",
@@ -2824,29 +2905,35 @@
       "put" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Update BI Column",
-        "description" : "Updates the definition of an existing column in the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table). Allows modifying the column's name, display name, data type, default value, and constraints such as nullability and uniqueness.",
+        "description" : "Updates the definition of an existing column in the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table). Allows modifying the column's name, display name, data type, default value, and constraints such as nullability and uniqueness.",
         "operationId" : "updateBiColumn",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the BI table",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "events"
         }, {
           "name" : "columnName",
           "in" : "path",
+          "description" : "Name of the column to update",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "event_type"
         } ],
         "requestBody" : {
           "content" : {
@@ -2880,29 +2967,35 @@
       "delete" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Delete BI Column",
-        "description" : "Permanently removes a column from the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-big-table). This action is irreversible — the column and all its stored data will be deleted from the BI Table.",
+        "description" : "Permanently removes a column from the specified [Peaka BI Table](https://docs.peaka.com/connecting-your-data/peaka-bi-table). This action is irreversible — the column and all its stored data will be deleted from the BI Table.",
         "operationId" : "deleteBiColumn",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the BI table",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "events"
         }, {
           "name" : "columnName",
           "in" : "path",
+          "description" : "Name of the column to delete",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "event_type"
         } ],
         "responses" : {
           "200" : {
@@ -2918,15 +3011,17 @@
       "get" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "List Tables",
-        "description" : "Lists all [Peaka Tables](https://docs.peaka.com/connecting-your-data/peaka-table) in the project. Peaka Table is an internal relational database within Peaka that allows you to organize and manage data efficiently. It supports structured data storage and enables you to add, delete, filter, and edit your data, including JSON data types. It is best suited for smaller datasets requiring frequent edits and broader data type support. See also: [Differences of Peaka Table and Peaka Big Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-big-table)",
+        "description" : "Lists all [Peaka Tables](https://docs.peaka.com/connecting-your-data/peaka-table) in the project. Peaka Table is an internal relational database within Peaka that allows you to organize and manage data efficiently. It supports structured data storage and enables you to add, delete, filter, and edit your data, including JSON data types. It is best suited for smaller datasets requiring frequent edits and broader data type support. See also: [Differences of Peaka Table and Peaka BI Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-bi-table)",
         "operationId" : "listTables",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         } ],
         "responses" : {
           "200" : {
@@ -2952,22 +3047,26 @@
       "post" : {
         "tags" : [ "Data -- Internal Tables" ],
         "summary" : "Create Table",
-        "description" : "Creates a new [Peaka Table](https://docs.peaka.com/connecting-your-data/peaka-table) with the given name in the specified project. Peaka Table is an internal relational database within Peaka that supports structured data storage with full CRUD operations and JSON data types. See also: [Differences of Peaka Table and Peaka Big Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-big-table)",
+        "description" : "Creates a new [Peaka Table](https://docs.peaka.com/connecting-your-data/peaka-table) with the given name in the specified project. Peaka Table is an internal relational database within Peaka that supports structured data storage with full CRUD operations. It accommodates a wide range of data types including JSON, and is best suited for smaller datasets that require frequent edits and precise changes. See also: [Differences of Peaka Table and Peaka BI Table](https://docs.peaka.com/connecting-your-data/differences-of-peaka-table-and-peaka-bi-table)",
         "operationId" : "createInternalTable",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the table to create",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "customers"
         } ],
         "responses" : {
           "200" : {
@@ -3002,17 +3101,21 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the table to delete",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "customers"
         } ],
         "responses" : {
           "200" : {
@@ -3033,17 +3136,21 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the table",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "customers"
         } ],
         "responses" : {
           "200" : {
@@ -3072,17 +3179,21 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the table",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "customers"
         } ],
         "requestBody" : {
           "description" : "Column Request",
@@ -3198,24 +3309,30 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the table",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "customers"
         }, {
           "name" : "columnName",
           "in" : "path",
+          "description" : "Name of the column to update",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "email"
         } ],
         "requestBody" : {
           "content" : {
@@ -3254,24 +3371,30 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the table",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "customers"
         }, {
           "name" : "columnName",
           "in" : "path",
+          "description" : "Name of the column to delete",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "email"
         } ],
         "responses" : {
           "200" : {
@@ -3292,17 +3415,21 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the table to import into",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "customers"
         } ],
         "requestBody" : {
           "content" : {
@@ -3352,17 +3479,21 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "tableName",
           "in" : "path",
+          "description" : "Name of the table",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "customers"
         } ],
         "responses" : {
           "200" : {
@@ -3391,14 +3522,16 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         } ],
         "responses" : {
           "200" : {
-            "description" : "Query created",
+            "description" : "List of queries",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -3448,10 +3581,12 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "checkSchemaExists",
           "in" : "query",
@@ -3481,7 +3616,7 @@
                   "value" : {
                     "displayName" : "sampleQuery",
                     "inputQuery" : "SELECT * from \"mycatalog\".payment.customers",
-                    "folder" : "reports/monthly"
+                    "path" : "/reports/monthly"
                   }
                 },
                 "Create Materialized Query" : {
@@ -3534,19 +3669,23 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "format",
           "in" : "query",
+          "description" : "Response format: CELL_TYPED (default), SIMPLE, or COMPACT",
           "required" : false,
           "schema" : {
             "type" : "string",
             "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ],
             "default" : "CELL_TYPED"
-          }
+          },
+          "example" : "SIMPLE"
         } ],
         "requestBody" : {
           "description" : "Execute Query Request",
@@ -3727,17 +3866,21 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "queryId",
           "in" : "path",
+          "description" : "ID of the Query",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : 709922802836177297
         } ],
         "responses" : {
           "200" : {
@@ -3763,17 +3906,21 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "queryId",
           "in" : "path",
+          "description" : "ID of the Query",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : 709922802836177297
         }, {
           "name" : "checkSchemaExists",
           "in" : "query",
@@ -3821,12 +3968,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/Query"
-                },
-                "example" : {
-                  "id" : "709922802836177297",
-                  "displayName" : "sampleQuery",
-                  "name" : "samplequery",
-                  "inputQuery" : "SELECT * from \"mycatalog\".payment.charges"
                 }
               }
             }
@@ -3844,21 +3985,25 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "queryId",
           "in" : "path",
+          "description" : "ID of the Query",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : 709922802836177297
         } ],
         "responses" : {
           "200" : {
-            "description" : "OK"
+            "description" : "Query deleted successfully"
           }
         },
         "x-mint" : {
@@ -3875,17 +4020,21 @@
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "queryId",
           "in" : "path",
+          "description" : "ID of the Query",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : 709922802836177297
         } ],
         "requestBody" : {
           "description" : "Path Request",
@@ -3915,25 +4064,40 @@
       "get" : {
         "tags" : [ "Data -- Query Folders" ],
         "summary" : "List Query Folders",
+        "description" : "Returns all query folders belonging to the given project as a flat list.",
         "operationId" : "listQueryFolders",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         } ],
         "responses" : {
           "200" : {
-            "description" : "Folder Listed",
+            "description" : "Folders listed successfully",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/QueryFolderItem"
-                  }
+                  "$ref" : "#/components/schemas/QueryFolderListResponse"
+                },
+                "example" : {
+                  "items" : [ {
+                    "id" : "550e8400-e29b-41d4-a716-446655440000",
+                    "name" : "Reports",
+                    "path" : "/Reports",
+                    "parentId" : null,
+                    "createdAt" : "2025-01-15T10:30:00Z"
+                  }, {
+                    "id" : "550e8400-e29b-41d4-a716-446655440001",
+                    "name" : "Monthly",
+                    "path" : "/Reports/Monthly",
+                    "parentId" : "550e8400-e29b-41d4-a716-446655440000",
+                    "createdAt" : "2025-01-15T10:31:00Z"
+                  } ]
                 }
               }
             }
@@ -3945,33 +4109,129 @@
       },
       "post" : {
         "tags" : [ "Data -- Query Folders" ],
-        "summary" : "Create Query Folder at Root",
+        "summary" : "Create Query Folder",
+        "description" : "Creates a new query folder at the root level. The folder name is used to build the path (e.g. folderName \"Reports\" becomes path \"/Reports\"). Intermediate parent folders are created automatically if a nested path is provided.",
         "operationId" : "createQueryFolderAtRoot",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         } ],
         "requestBody" : {
+          "description" : "Folder creation request",
           "content" : {
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/QueryFolderCreateRequest"
+              },
+              "example" : {
+                "folderName" : "Reports"
               }
             }
           },
           "required" : true
         },
         "responses" : {
-          "200" : {
-            "description" : "Folder Created",
+          "201" : {
+            "description" : "Folder created successfully",
             "content" : {
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/QueryFolderItem"
+                },
+                "example" : {
+                  "id" : "550e8400-e29b-41d4-a716-446655440000",
+                  "name" : "Reports",
+                  "path" : "/Reports",
+                  "parentId" : null,
+                  "createdAt" : "2025-01-15T10:30:00Z"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Folder already exists at this path",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/queries/folders/tree" : {
+      "get" : {
+        "tags" : [ "Data -- Query Folders" ],
+        "summary" : "Get Query Folder Tree",
+        "description" : "Returns the folder hierarchy as a tree structure. Optionally includes queries within each folder node. Use rootFolderId to get a subtree starting from a specific folder.",
+        "operationId" : "getQueryFolderTree",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "includeQueries",
+          "in" : "query",
+          "description" : "Whether to include queries within each folder node",
+          "required" : false,
+          "schema" : {
+            "type" : "boolean",
+            "default" : false
+          },
+          "example" : true
+        }, {
+          "name" : "rootFolderId",
+          "in" : "query",
+          "description" : "ID of the root folder to start the subtree from",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "550e8400-e29b-41d4-a716-446655440000"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Folder tree retrieved successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderTreeResponse"
+                },
+                "example" : {
+                  "tree" : [ {
+                    "id" : "550e8400-e29b-41d4-a716-446655440000",
+                    "name" : "Reports",
+                    "path" : "/Reports",
+                    "children" : [ {
+                      "id" : "550e8400-e29b-41d4-a716-446655440001",
+                      "name" : "Monthly",
+                      "path" : "/Reports/Monthly",
+                      "children" : [ ],
+                      "queries" : [ ]
+                    } ],
+                    "queries" : [ {
+                      "id" : "709922802836177297",
+                      "displayName" : "Revenue Report",
+                      "name" : "revenuereport",
+                      "inputQuery" : "SELECT * FROM revenue"
+                    } ]
+                  } ]
                 }
               }
             }
@@ -3986,29 +4246,66 @@
       "get" : {
         "tags" : [ "Data -- Query Folders" ],
         "summary" : "Read Query Folder",
+        "description" : "Returns a single folder by its ID, including its direct child folders and the queries it contains.",
         "operationId" : "readQueryFolder",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "folderId",
           "in" : "path",
+          "description" : "ID of the Query Folder",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "550e8400-e29b-41d4-a716-446655440000"
         } ],
         "responses" : {
           "200" : {
-            "description" : "Folder Read",
+            "description" : "Folder read successfully",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
+                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
+                },
+                "example" : {
+                  "id" : "550e8400-e29b-41d4-a716-446655440000",
+                  "name" : "Reports",
+                  "path" : "/Reports",
+                  "parentId" : null,
+                  "createdAt" : "2025-01-15T10:30:00Z",
+                  "folders" : [ {
+                    "id" : "550e8400-e29b-41d4-a716-446655440001",
+                    "name" : "Monthly",
+                    "path" : "/Reports/Monthly",
+                    "parentId" : "550e8400-e29b-41d4-a716-446655440000",
+                    "createdAt" : "2025-01-15T10:31:00Z"
+                  } ],
+                  "queries" : [ {
+                    "id" : "709922802836177297",
+                    "displayName" : "Revenue Report",
+                    "name" : "revenuereport",
+                    "inputQuery" : "SELECT * FROM revenue",
+                    "path" : "/Reports",
+                    "folderId" : "550e8400-e29b-41d4-a716-446655440000"
+                  } ]
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
               }
             }
@@ -4020,28 +4317,38 @@
       },
       "put" : {
         "tags" : [ "Data -- Query Folders" ],
-        "summary" : "Add/Remove Query In/From Folder",
+        "summary" : "Add/Remove Queries In/From Folder",
+        "description" : "Moves queries into or out of a folder. Queries in queryIdsAdded are moved to the folder's path, queries in queryIdsRemoved are moved to root (\"/\").",
         "operationId" : "addOrRemoveQueryFromFolder",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "folderId",
           "in" : "path",
+          "description" : "ID of the Query Folder",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "550e8400-e29b-41d4-a716-446655440000"
         } ],
         "requestBody" : {
+          "description" : "Query add/remove request",
           "content" : {
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/QueryFolderUpdateRequest"
+              },
+              "example" : {
+                "queryIdsAdded" : [ "709922802836177297" ],
+                "queryIdsRemoved" : [ "709891320440684892" ]
               }
             }
           },
@@ -4049,56 +4356,21 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Folder Created",
+            "description" : "Queries moved successfully",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
+                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
               }
             }
-          }
-        },
-        "x-mint" : {
-          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
-      },
-      "post" : {
-        "tags" : [ "Data -- Query Folders" ],
-        "summary" : "Create Query Folder With Folder Id",
-        "operationId" : "createQueryFolderWithFolderId",
-        "parameters" : [ {
-          "name" : "projectId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "folderId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/QueryFolderCreateRequest"
-              }
-            }
           },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Folder Created",
+          "404" : {
+            "description" : "Folder not found",
             "content" : {
-              "application/json" : {
+              "*/*" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
+                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
               }
             }
@@ -4110,28 +4382,291 @@
       },
       "delete" : {
         "tags" : [ "Data -- Query Folders" ],
-        "summary" : "Delete Query Folder With Folder Id",
-        "operationId" : "deleteQueryFolderWithFolderId",
+        "summary" : "Delete Query Folder",
+        "description" : "Deletes a query folder by its ID. By default, only empty folders can be deleted. Set force=true to recursively delete the folder along with all its sub-folders and contained queries.",
+        "operationId" : "deleteQueryFolder",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "folderId",
           "in" : "path",
+          "description" : "ID of the Query Folder",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "550e8400-e29b-41d4-a716-446655440000"
+        }, {
+          "name" : "force",
+          "in" : "query",
+          "description" : "If true, recursively deletes the folder along with all sub-folders and queries",
+          "required" : false,
+          "schema" : {
+            "type" : "boolean",
+            "default" : false
+          },
+          "example" : false
         } ],
         "responses" : {
+          "409" : {
+            "description" : "Folder is not empty (use force=true to delete)"
+          },
+          "204" : {
+            "description" : "Folder deleted successfully"
+          },
+          "404" : {
+            "description" : "Folder not found"
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/queries/folders/{folderId}/name" : {
+      "patch" : {
+        "tags" : [ "Data -- Query Folders" ],
+        "summary" : "Rename Query Folder",
+        "description" : "Renames a query folder. The folder's path segments are updated to reflect the new name.",
+        "operationId" : "renameQueryFolder",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "folderId",
+          "in" : "path",
+          "description" : "ID of the Query Folder",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "550e8400-e29b-41d4-a716-446655440000"
+        } ],
+        "requestBody" : {
+          "description" : "Rename request",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QueryFolderRenameRequest"
+              },
+              "example" : {
+                "name" : "Archived Reports"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
           "200" : {
-            "description" : "Folder Created",
+            "description" : "Folder renamed successfully",
             "content" : {
               "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                },
+                "example" : {
+                  "id" : "550e8400-e29b-41d4-a716-446655440000",
+                  "name" : "Archived Reports",
+                  "path" : "/Archived Reports",
+                  "parentId" : null,
+                  "createdAt" : "2025-01-15T10:30:00Z"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "A folder with this name already exists at the same level",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/queries/folders/{folderId}/path" : {
+      "patch" : {
+        "tags" : [ "Data -- Query Folders" ],
+        "summary" : "Move Query Folder",
+        "description" : "Moves a query folder to a new path in the hierarchy. All child folders and their paths are updated accordingly.",
+        "operationId" : "moveQueryFolder",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "folderId",
+          "in" : "path",
+          "description" : "ID of the Query Folder to move",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "550e8400-e29b-41d4-a716-446655440000"
+        } ],
+        "requestBody" : {
+          "description" : "Move request",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QueryPathUpdateRequest"
+              },
+              "example" : {
+                "path" : "/Archive/Reports"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "409" : {
+            "description" : "A folder already exists at the target path or circular move detected",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "Folder moved successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                },
+                "example" : {
+                  "id" : "550e8400-e29b-41d4-a716-446655440000",
+                  "name" : "Reports",
+                  "path" : "/Archive/Reports",
+                  "parentId" : "550e8400-e29b-41d4-a716-446655440002",
+                  "createdAt" : "2025-01-15T10:30:00Z"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/queries/folders/{parentFolderId}" : {
+      "post" : {
+        "tags" : [ "Data -- Query Folders" ],
+        "summary" : "Create Query Folder Under Parent",
+        "description" : "Creates a new query folder as a child of the specified parent folder. The gateway resolves the parent folder's path and creates the new folder at \"{parentPath}/{folderName}\".",
+        "operationId" : "createQueryFolderWithParentId",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "parentFolderId",
+          "in" : "path",
+          "description" : "ID of the parent Query Folder",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "550e8400-e29b-41d4-a716-446655440000"
+        } ],
+        "requestBody" : {
+          "description" : "Folder creation request",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QueryFolderCreateRequest"
+              },
+              "example" : {
+                "folderName" : "Monthly"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "404" : {
+            "description" : "Parent folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          },
+          "201" : {
+            "description" : "Folder created successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                },
+                "example" : {
+                  "id" : "550e8400-e29b-41d4-a716-446655440001",
+                  "name" : "Monthly",
+                  "path" : "/Reports/Monthly",
+                  "parentId" : "550e8400-e29b-41d4-a716-446655440000",
+                  "createdAt" : "2025-01-15T10:31:00Z"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Folder already exists at this path",
+            "content" : {
+              "*/*" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/QueryFolderItem"
                 }
@@ -4148,14 +4683,17 @@
       "post" : {
         "tags" : [ "Data -- Semantic Catalogs" ],
         "summary" : "Create a semantic catalog",
+        "description" : "Creates a new Semantic Catalog in the specified Project. A Semantic Catalog is a virtual catalog that groups Semantic Tables, which are backed by saved queries.\n",
         "operationId" : "createSemanticCatalog",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         } ],
         "requestBody" : {
           "description" : "Semantic Catalog Request",
@@ -4198,21 +4736,26 @@
       "post" : {
         "tags" : [ "Data -- Semantic Catalogs" ],
         "summary" : "Create a semantic table",
+        "description" : "Creates a new Semantic Table within a Semantic Catalog. A Semantic Table maps a saved query to a table, making it queryable via SQL like any other table.\n",
         "operationId" : "createSemanticTable",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "catalogId",
           "in" : "path",
+          "description" : "ID of the Semantic Catalog",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : 688890918747898103
         } ],
         "requestBody" : {
           "description" : "Semantic Table Request",
@@ -4256,22 +4799,27 @@
     "/data/projects/{projectId}/semantic-catalogs/{catalogId}/share" : {
       "post" : {
         "tags" : [ "Data -- Semantic Catalogs" ],
-        "summary" : "Share a semantic table",
+        "summary" : "Share Semantic Catalog",
+        "description" : "Shares a Semantic Catalog with another Project. The target Project gains read access to the catalog's schemas and tables.\n",
         "operationId" : "shareSemanticTable",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "catalogId",
           "in" : "path",
+          "description" : "ID of the Semantic Catalog to share",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : 688890918747898103
         } ],
         "requestBody" : {
           "description" : "Share Request",
@@ -4301,28 +4849,35 @@
       "delete" : {
         "tags" : [ "Data -- Semantic Catalogs" ],
         "summary" : "Delete a semantic table",
+        "description" : "Deletes the specified Semantic Table from a Semantic Catalog.\n",
         "operationId" : "deleteSemanticTable",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "ID of the Project",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "catalogId",
           "in" : "path",
+          "description" : "ID of the Semantic Catalog",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : 688890918747898103
         }, {
           "name" : "tableId",
           "in" : "path",
+          "description" : "ID of the Semantic Table",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : 688890918747898103
         } ],
         "responses" : {
           "200" : {
@@ -4338,11 +4893,12 @@
       "post" : {
         "tags" : [ "Data -- Cache" ],
         "summary" : "Create Cache",
+        "description" : "Creates a new cache for a specific table in a catalog. Caching copies data from an external data source into the internal Peaka BigTable store for faster query performance.\n\nThe cache can be configured in three modes:\n- **One-time cache**: No schedules provided. Data is cached once during creation and never automatically refreshed.\n- **Scheduled incremental updates**: Provide `incrementalCacheSchedule` to periodically sync only the changes (inserts, updates, deletes) since the last sync.\n- **Scheduled full refresh + incremental**: Provide both `fullRefreshCacheSchedule` and `incrementalCacheSchedule`.   Full refresh drops and rebuilds the entire cached table periodically, while incremental updates run more frequently between full refreshes.\n\nAfter creation, the initial sync is triggered automatically based on the provided schedules. If only an incremental schedule is given, an incremental sync starts immediately. If a full refresh schedule is given, a full refresh starts immediately.\n\nThe schedule `expression` uses ISO-8601 duration format (e.g. `PT6H` = every 6 hours, `PT15M` = every 15 minutes, `P1D` = every day).",
         "operationId" : "createCache",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
-          "description" : "Project ID",
+          "description" : "The unique identifier of the project that owns the data source",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -4350,15 +4906,15 @@
           "example" : "mtKDhe1U"
         } ],
         "requestBody" : {
-          "description" : "Create Cache Request",
+          "description" : "Cache creation request specifying the target table and optional sync schedules",
           "content" : {
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/CacheRequest"
               },
               "examples" : {
-                "Create Cache - One Time" : {
-                  "description" : "Create Cache - One Time",
+                "One-Time Cache" : {
+                  "description" : "Creates a cache with no automatic refresh. Data is synced once at creation time.",
                   "value" : {
                     "id" : "960bd651-7b3c-4511-9a88-18e14ac7742a",
                     "catalogId" : "627249916703408649",
@@ -4366,8 +4922,8 @@
                     "tableName" : "customers"
                   }
                 },
-                "Create Cache - Incremental Update Scheduled" : {
-                  "description" : "Create Cache - Incrementally updated every 6 hrs.",
+                "Incremental Schedule Only" : {
+                  "description" : "Creates a cache that incrementally syncs changes every 6 hours. Only new/updated/deleted rows since the last sync are processed.",
                   "value" : {
                     "id" : "960bd651-7b3c-4511-9a88-18e14ac7742a",
                     "catalogId" : "627249916703408649",
@@ -4379,8 +4935,8 @@
                     }
                   }
                 },
-                "Create Cache - Incremental and Fully Refresh Update Scheduled" : {
-                  "description" : "Create Cache - Incrementally updated every 6 hrs  and Fully refreshed every day.",
+                "Full Refresh + Incremental Schedule" : {
+                  "description" : "Creates a cache with both schedules. Incremental sync runs every 6 hours for fast delta updates, and a full refresh rebuilds the entire cache every 24 hours to ensure consistency.",
                   "value" : {
                     "id" : "960bd651-7b3c-4511-9a88-18e14ac7742a",
                     "catalogId" : "627249916703408649",
@@ -4402,8 +4958,28 @@
           "required" : true
         },
         "responses" : {
+          "400" : {
+            "description" : "Invalid request. The catalog, schema, or table may not exist, or the schedule expression is invalid.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Cache"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "A cache already exists for this table.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Cache"
+                }
+              }
+            }
+          },
           "200" : {
-            "description" : "OK",
+            "description" : "Cache created successfully. Returns the created cache configuration including its generated ID and schedules.",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -4422,17 +4998,20 @@
       "post" : {
         "tags" : [ "Data -- Cache" ],
         "summary" : "Create Batch Cache",
+        "description" : "Creates multiple caches in a single request. Each item in the array follows the same schema as the single create cache endpoint. Caches are created independently; if one fails, the others may still succeed.\n\nThe response contains a list of results, one per requested cache, each indicating success or failure. On success, the created cache object is included. On failure, the error message is provided.\n\nThis is useful when enabling caching for multiple tables at once (e.g. during initial project setup).",
         "operationId" : "createBatchCache",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "The unique identifier of the project that owns the data sources",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         } ],
         "requestBody" : {
-          "description" : "Create Cache Request",
+          "description" : "Array of cache creation requests. Each element specifies a table to cache with optional sync schedules.",
           "content" : {
             "application/json" : {
               "schema" : {
@@ -4443,7 +5022,7 @@
               },
               "examples" : {
                 "Create Multiple Caches" : {
-                  "description" : "Create Multiple Caches",
+                  "description" : "Creates three caches: one without schedules, one with incremental only, and one with both full refresh and incremental schedules.",
                   "value" : [ {
                     "catalogId" : "627249916703408649",
                     "schemaName" : "payment",
@@ -4477,7 +5056,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "OK",
+            "description" : "Batch processing completed. Each entry in the response array indicates whether that specific cache was created successfully or failed.",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -4499,11 +5078,12 @@
       "get" : {
         "tags" : [ "Data -- Cache" ],
         "summary" : "Get All Cache Statuses of a Project",
+        "description" : "Returns the status of all caches within a project. Each entry in the response array contains the same status information as the single cache status endpoint, including execution details for both sync types.\n\nThis is useful for building a dashboard view that shows the health and progress of all cached tables in a project.",
         "operationId" : "getCacheStatusByProject",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
-          "description" : "Project ID",
+          "description" : "The unique identifier of the project to list cache statuses for",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -4512,7 +5092,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "OK",
+            "description" : "List of cache statuses for all caches in the project. Returns an empty array if no caches exist.",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -4534,11 +5114,12 @@
       "put" : {
         "tags" : [ "Data -- Cache" ],
         "summary" : "Update Cache Settings",
+        "description" : "Updates the sync schedules of an existing cache. Use this to change how frequently the cache is refreshed.\n\nOnly schedule fields are updated; the target table, catalog, and schema cannot be changed after creation. When a schedule is changed, any previously running scheduled workflow for that mode is replaced with the new schedule. Set a schedule's `type` to `NONE` to disable that particular sync mode.\n\nThe schedule `expression` uses ISO-8601 duration format (e.g. `PT6H` = every 6 hours, `PT15M` = every 15 minutes, `P1D` = every day).",
         "operationId" : "updateCacheSettings",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
-          "description" : "Project ID",
+          "description" : "The unique identifier of the project that owns the cache",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -4547,7 +5128,7 @@
         }, {
           "name" : "cacheId",
           "in" : "path",
-          "description" : "Cache ID",
+          "description" : "The unique identifier of the cache to update (UUID format)",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -4555,16 +5136,37 @@
           "example" : "960bd651-7b3c-4511-9a88-18e14ac7742a"
         } ],
         "requestBody" : {
-          "description" : "Update Cache Settings",
+          "description" : "Updated schedule configuration. Only the provided schedule fields are updated.",
           "content" : {
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/CacheSettingsUpdateRequest"
               },
               "examples" : {
-                "Update Cache Schedules" : {
-                  "description" : "Update Cache Schedules",
-                  "value" : "{\n    \"fullRefreshCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT24H\"\n    },\n    {\n     \"incrementalCacheSchedule\": {\n        \"type\": \"BASIC\",\n        \"expression\": \"PT6H\"\n    }\n}"
+                "Update Both Schedules" : {
+                  "description" : "Sets full refresh to every 24 hours and incremental sync to every 6 hours.",
+                  "value" : {
+                    "fullRefreshCacheSchedule" : {
+                      "type" : "BASIC",
+                      "expression" : "PT24H"
+                    },
+                    "incrementalCacheSchedule" : {
+                      "type" : "BASIC",
+                      "expression" : "PT6H"
+                    }
+                  }
+                },
+                "Disable Full Refresh" : {
+                  "description" : "Disables the full refresh schedule while keeping incremental sync active.",
+                  "value" : {
+                    "fullRefreshCacheSchedule" : {
+                      "type" : "NONE"
+                    },
+                    "incrementalCacheSchedule" : {
+                      "type" : "BASIC",
+                      "expression" : "PT1H"
+                    }
+                  }
                 }
               }
             }
@@ -4572,8 +5174,18 @@
           "required" : true
         },
         "responses" : {
+          "404" : {
+            "description" : "Cache not found for the given cacheId.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Cache"
+                }
+              }
+            }
+          },
           "200" : {
-            "description" : "OK",
+            "description" : "Cache settings updated successfully. Returns the updated cache configuration.",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -4590,25 +5202,109 @@
       "delete" : {
         "tags" : [ "Data -- Cache" ],
         "summary" : "Delete Cache",
+        "description" : "Permanently deletes a cache and all its associated data. This operation:\n- Cancels any running or scheduled sync workflows (both incremental and full refresh).\n- Drops the cached table from the internal BigTable store.\n- Removes all cache settings, execution history, and status records.\n\nThis action is irreversible. To re-cache the table, a new cache must be created from scratch.",
         "operationId" : "deleteCache",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "The unique identifier of the project that owns the cache",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "cacheId",
           "in" : "path",
+          "description" : "The unique identifier of the cache to delete (UUID format)",
           "required" : true,
           "schema" : {
             "type" : "string"
+          },
+          "example" : "960bd651-7b3c-4511-9a88-18e14ac7742a"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Cache not found for the given cacheId."
+          },
+          "200" : {
+            "description" : "Cache deleted successfully."
           }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/cache/{cacheId}/cancelFullRefreshUpdate" : {
+      "post" : {
+        "tags" : [ "Data -- Cache" ],
+        "summary" : "Cancel Running Full Refresh",
+        "description" : "Cancels a currently running full refresh (resync) workflow for the specified cache. This sends a cancellation signal to the underlying Temporal workflow.\n\nThe cancellation is best-effort: if the workflow has already completed or is in its final stages, the cancel request may have no effect. Only workflows with a RUNNING status can be cancelled.\n\nAfter successful cancellation, the cache status transitions to CANCELLED. The previously cached data remains intact (the partial refresh data is discarded). A new full refresh or incremental sync can be triggered after cancellation.\n\nThis endpoint only affects the full refresh workflow. To cancel an incremental sync, use the Cancel Incremental Update endpoint instead.",
+        "operationId" : "cancelFullRefreshCache",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "The unique identifier of the project that owns the cache",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "cacheId",
+          "in" : "path",
+          "description" : "The unique identifier of the cache whose full refresh should be cancelled (UUID format)",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "960bd651-7b3c-4511-9a88-18e14ac7742a"
         } ],
         "responses" : {
           "200" : {
-            "description" : "OK"
+            "description" : "Cancellation signal sent successfully. Check cache status to confirm the workflow was cancelled."
+          },
+          "404" : {
+            "description" : "Cache not found or no running full refresh workflow exists for this cache."
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/cache/{cacheId}/cancelIncrementalUpdate" : {
+      "post" : {
+        "tags" : [ "Data -- Cache" ],
+        "summary" : "Cancel Running Incremental Update",
+        "description" : "Cancels a currently running incremental sync workflow for the specified cache. This sends a cancellation signal to the underlying Temporal workflow.\n\nThe cancellation is best-effort: if the workflow has already completed or is in its final stages, the cancel request may have no effect. Only workflows with a RUNNING status can be cancelled.\n\nAfter successful cancellation, the cache status transitions to CANCELLED. Data that was already synced before the cancellation remains in the cache. A new incremental sync or full refresh can be triggered after cancellation.\n\nThis endpoint only affects the incremental sync workflow. To cancel a full refresh, use the Cancel Full Refresh Update endpoint instead.",
+        "operationId" : "cancelIncrementalCache",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "The unique identifier of the project that owns the cache",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "cacheId",
+          "in" : "path",
+          "description" : "The unique identifier of the cache whose incremental sync should be cancelled (UUID format)",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "960bd651-7b3c-4511-9a88-18e14ac7742a"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Cancellation signal sent successfully. Check cache status to confirm the workflow was cancelled."
+          },
+          "404" : {
+            "description" : "Cache not found or no running incremental sync workflow exists for this cache."
           }
         },
         "x-mint" : {
@@ -4619,26 +5315,44 @@
     "/data/projects/{projectId}/cache/{cacheId}/fullRefreshUpdate" : {
       "post" : {
         "tags" : [ "Data -- Cache" ],
-        "summary" : "Full Refresh Cache",
+        "summary" : "Trigger Full Refresh Cache Update",
+        "description" : "Manually triggers a full refresh (resync) for the specified cache. This drops all existing cached data and rebuilds the cache from scratch by re-reading the entire source table.\n\nFull refresh is more expensive than incremental sync but ensures complete data consistency. It is useful when the source data has drifted or when schema changes have occurred. This is a one-time manual trigger that runs independently of any configured schedule.\n\nUse the Get Cache Status endpoint to monitor the progress of the triggered refresh. The `lastFullRefreshCacheExecution` field in the status response will reflect the new execution.",
         "operationId" : "fullRefreshCache",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "The unique identifier of the project that owns the cache",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "cacheId",
           "in" : "path",
+          "description" : "The unique identifier of the cache to fully refresh (UUID format)",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "960bd651-7b3c-4511-9a88-18e14ac7742a"
         } ],
         "responses" : {
+          "404" : {
+            "description" : "Cache not found for the given cacheId.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "object",
+                  "additionalProperties" : {
+                    "type" : "object"
+                  }
+                }
+              }
+            }
+          },
           "200" : {
-            "description" : "OK",
+            "description" : "Full refresh triggered successfully.",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -4659,26 +5373,44 @@
     "/data/projects/{projectId}/cache/{cacheId}/incrementalUpdate" : {
       "post" : {
         "tags" : [ "Data -- Cache" ],
-        "summary" : "Update Cache Incrementally",
+        "summary" : "Trigger Incremental Cache Update",
+        "description" : "Manually triggers an incremental (delta) sync for the specified cache. This syncs only the rows that have changed (inserted, updated, or deleted) since the last successful sync.\n\nIncremental sync is faster than a full refresh because it processes only the delta. This is a one-time manual trigger that runs independently of any configured schedule. If an incremental sync is already running, this call may start a new workflow that will be queued.\n\nUse the Get Cache Status endpoint to monitor the progress of the triggered sync. The `lastIncrementalCacheExecution` field in the status response will reflect the new execution.",
         "operationId" : "incrementalUpdateCache",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
+          "description" : "The unique identifier of the project that owns the cache",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mtKDhe1U"
         }, {
           "name" : "cacheId",
           "in" : "path",
+          "description" : "The unique identifier of the cache to sync (UUID format)",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "960bd651-7b3c-4511-9a88-18e14ac7742a"
         } ],
         "responses" : {
+          "404" : {
+            "description" : "Cache not found for the given cacheId.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "object",
+                  "additionalProperties" : {
+                    "type" : "object"
+                  }
+                }
+              }
+            }
+          },
           "200" : {
-            "description" : "OK",
+            "description" : "Incremental sync triggered successfully.",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -4700,11 +5432,12 @@
       "get" : {
         "tags" : [ "Data -- Cache" ],
         "summary" : "Get Cache Status",
+        "description" : "Returns the current status of a specific cache, including execution details for both the last incremental sync and the last full refresh.\n\nThe top-level `status` field is computed from the most recent execution across both sync types:\n- `NOT_INITIALIZED`: No sync has ever been executed for this cache.\n- `RUNNING`: At least one sync (incremental or full refresh) is currently in progress.\n- `COMPLETED`: The most recent sync completed successfully.\n- `FAILED`: The most recent sync failed. Check the `error` field in the relevant execution info for details.\n- `CANCELLED`: The most recent sync was cancelled via a cancel endpoint.\n\nEach execution info object (`lastIncrementalCacheExecution`, `lastFullRefreshCacheExecution`) contains:\n- `id`: Unique execution identifier.\n- `status`: Execution-specific status (RUNNING, COMPLETED, FAILED, CANCELLED).\n- `progress`: Real-time progress with record counts (cached, inserted, updated, deleted).\n- `error`: Error details if the execution failed.\n- `createdAt`, `updatedAt`, `finishedAt`: Timestamps tracking execution lifecycle.\n\nUse `excludeLogs=true` to omit the `cacheActionLogs` array for a lighter response, especially when polling for status during an active sync.",
         "operationId" : "getCacheStatus",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
-          "description" : "Project ID",
+          "description" : "The unique identifier of the project that owns the cache",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -4713,7 +5446,7 @@
         }, {
           "name" : "cacheId",
           "in" : "path",
-          "description" : "Cache ID",
+          "description" : "The unique identifier of the cache to check (UUID format)",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -4722,7 +5455,7 @@
         }, {
           "name" : "excludeLogs",
           "in" : "query",
-          "description" : "Exclude Logs",
+          "description" : "When true, omits the cacheActionLogs array from the response for a lighter payload. Defaults to false.",
           "required" : false,
           "schema" : {
             "type" : "boolean"
@@ -4730,8 +5463,18 @@
           "example" : true
         } ],
         "responses" : {
+          "404" : {
+            "description" : "Cache not found for the given cacheId.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CacheStatus"
+                }
+              }
+            }
+          },
           "200" : {
-            "description" : "OK",
+            "description" : "Cache status retrieved successfully.",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -4750,11 +5493,12 @@
       "get" : {
         "tags" : [ "Data -- Cache" ],
         "summary" : "Get All Cache Statuses of a Catalog",
+        "description" : "Returns the status of all caches within a specific catalog of a project. This filters the cache list to only those belonging to the given catalog, which is useful when managing caches per data source connection.\n\nEach entry in the response array contains the same status information as the single cache status endpoint.",
         "operationId" : "getCacheStatusByCatalog",
         "parameters" : [ {
           "name" : "projectId",
           "in" : "path",
-          "description" : "Project ID",
+          "description" : "The unique identifier of the project that owns the catalog",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -4763,7 +5507,7 @@
         }, {
           "name" : "catalogId",
           "in" : "path",
-          "description" : "Catalog ID",
+          "description" : "The unique identifier of the catalog (data source connection) to filter caches by",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -4772,7 +5516,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "OK",
+            "description" : "List of cache statuses for all caches in the catalog. Returns an empty array if no caches exist for this catalog.",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -4794,6 +5538,7 @@
       "get" : {
         "tags" : [ "Data -- Parametric Tables" ],
         "summary" : "List Parametric Tables",
+        "description" : "Lists all Parametric Tables defined under the specified catalog. A Parametric Table is a pre-configured view of a REST-based table with fixed query parameter values (e.g., <code>_q_account</code>), allowing it to be queried like a regular table without passing those parameters each time.",
         "operationId" : "listParametricTables",
         "parameters" : [ {
           "name" : "projectId",
@@ -4854,6 +5599,7 @@
       "post" : {
         "tags" : [ "Data -- Parametric Tables" ],
         "summary" : "Create Parametric Table",
+        "description" : "Creates a new Parametric Table under the specified catalog. A Parametric Table binds specific query parameter values to a source table from a REST catalog, producing a new named table (e.g., <code>xyz_customers</code>) that can be queried directly without supplying those parameters at query time. For example, if the source table <code>customers</code> requires a <code>_q_account</code> parameter, you can create a Parametric Table that fixes this value and exposes the result as a standalone table.",
         "operationId" : "createParametricTable",
         "parameters" : [ {
           "name" : "projectId",
@@ -4875,10 +5621,26 @@
           "example" : 846085284821991568
         } ],
         "requestBody" : {
+          "description" : "Parametric Table definition",
           "content" : {
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/ParametricTable"
+              },
+              "examples" : {
+                "Create Parametric Table Example" : {
+                  "description" : "Create Parametric Table Example",
+                  "value" : {
+                    "fromSchema" : "public",
+                    "fromTable" : "customers",
+                    "toSchema" : "public",
+                    "toTable" : "xyz_customers",
+                    "paramValues" : [ {
+                      "key" : "_q_account",
+                      "value" : "acme-corp"
+                    } ]
+                  }
+                }
               }
             }
           },
@@ -4931,6 +5693,7 @@
       "delete" : {
         "tags" : [ "Data -- Parametric Tables" ],
         "summary" : "Delete Parametric Table",
+        "description" : "Deletes a Parametric Table identified by its target schema and table name. The original source table is not affected.",
         "operationId" : "deleteParametricTable",
         "parameters" : [ {
           "name" : "projectId",
@@ -4986,37 +5749,45 @@
       "get" : {
         "tags" : [ "Embedded Peaka Api" ],
         "summary" : "Init Session (Deprecated)",
-        "description" : "Init session for the user (Deprecated)",
+        "description" : "<strong>Deprecated.</strong> Use <code>POST /ui/initSession</code> instead, which supports feature flags, session modes, and additional configuration options.\n\nInitializes an Embedded Peaka session and returns a session URL. The returned URL can be used to embed the Peaka UI in an iframe.\n",
         "operationId" : "initSession_1",
         "parameters" : [ {
+          "name" : "projectId",
+          "in" : "query",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
           "name" : "timeoutInSeconds",
           "in" : "query",
+          "description" : "Session timeout in seconds",
           "required" : false,
           "schema" : {
             "type" : "integer",
             "format" : "int32"
-          }
-        }, {
-          "name" : "projectId",
-          "in" : "query",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
+          },
+          "example" : 300
         }, {
           "name" : "theme",
           "in" : "query",
+          "description" : "Theme for the embedded UI (e.g., dark, light)",
           "required" : false,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "dark"
         }, {
           "name" : "themeOverride",
           "in" : "query",
+          "description" : "Whether to override the default theme",
           "required" : false,
           "schema" : {
             "type" : "boolean"
-          }
+          },
+          "example" : true
         } ],
         "responses" : {
           "200" : {
@@ -5046,7 +5817,7 @@
       "post" : {
         "tags" : [ "Embedded Peaka Api" ],
         "summary" : "Init Session",
-        "description" : "Init session for the user",
+        "description" : "Initializes an Embedded Peaka session and returns a session URL that can be used to embed the Peaka UI in an iframe.\n\n[Embedded Peaka](https://docs.peaka.com/embedded-peaka/introduction) allows you to integrate Peaka's data management capabilities — including connections, catalogs, caching, queries, and a full UI — directly into your application.\n\nThe returned <code>sessionUrl</code> should be loaded inside an iframe. For security, direct iframe embedding requires enabling \"Embedded UI\" in Developer Settings and registering your domain over HTTPS.\n\n#### Configuration options\n- <code>theme</code> / <code>themeOverride</code>: Customize the look and feel of the embedded UI, including custom CSS theming.\n- <code>featureFlags</code>: Control visibility of UI sections (e.g., enable/disable queries, connectors).\n- <code>sessionMode</code>: Choose between <code>FULL_STUDIO</code> (complete Peaka experience) or <code>CONNECTOR_MODAL_ONLY</code> (streamlined connector setup).\n- <code>connectorType</code>: Pre-select a specific connector type when using connector-only mode.\n- <code>autoCreateCatalog</code>: Automatically create a catalog after a connection is established.\n\nSee also: [Data Management Tool with UI](https://docs.peaka.com/embedded-peaka/data-management-tool-with-ui)\n",
         "operationId" : "initSession",
         "requestBody" : {
           "description" : "Session Initialization Request",
@@ -5103,6 +5874,7 @@
       "get" : {
         "tags" : [ "Supported Drivers" ],
         "summary" : "List Supported Drivers",
+        "description" : "Returns connection strings for all supported drivers (JDBC, SQL Alchemy). These can be used to connect to Peaka's query engine from external tools.\n",
         "operationId" : "getSupportedDrivers",
         "parameters" : [ {
           "name" : "catalogName",
@@ -5151,6 +5923,7 @@
       "get" : {
         "tags" : [ "Supported Drivers" ],
         "summary" : "Get JDBC Driver",
+        "description" : "Returns the JDBC connection string for connecting to Peaka's query engine from JDBC-compatible tools.\n",
         "operationId" : "getJdbcDriver",
         "responses" : {
           "200" : {
@@ -5179,6 +5952,7 @@
       "get" : {
         "tags" : [ "Supported Drivers" ],
         "summary" : "Get SQL Alchemy Driver",
+        "description" : "Returns the SQL Alchemy connection string for connecting to Peaka's query engine. SQL Alchemy supports only one catalog at a time, so a <code>catalogName</code> must be provided.\n",
         "operationId" : "getSqlAlchemyDriver",
         "parameters" : [ {
           "name" : "catalogName",
@@ -6575,21 +7349,33 @@
     "/sql/transpile/{dialect}" : {
       "post" : {
         "tags" : [ "Data -- SQL" ],
-        "summary" : "Transpile a sql query into given dialect",
+        "summary" : "Transpile SQL",
+        "description" : "Transpiles a SQL query from Peaka's SQL dialect (Trino) into the specified target dialect (e.g., mysql, postgres, bigquery). Useful when you need to export or reuse queries written in Peaka in other database systems.",
         "operationId" : "transpileSQL",
         "parameters" : [ {
           "name" : "dialect",
           "in" : "path",
+          "description" : "Target SQL dialect to transpile into",
           "required" : true,
           "schema" : {
             "type" : "string"
-          }
+          },
+          "example" : "mysql"
         } ],
         "requestBody" : {
+          "description" : "SQL query to transpile",
           "content" : {
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/SQLTranspileQueryRequest"
+              },
+              "examples" : {
+                "Transpile Query Example" : {
+                  "description" : "Transpile Query Example",
+                  "value" : {
+                    "query" : "SELECT * FROM catalog.schema.table WHERE id = 1"
+                  }
+                }
               }
             }
           },
@@ -6597,13 +7383,15 @@
         },
         "responses" : {
           "200" : {
-            "description" : "OK",
+            "description" : "Transpiled query",
             "content" : {
-              "*/*" : {
-                "schema" : {
-                  "type" : "object",
-                  "additionalProperties" : {
-                    "type" : "object"
+              "application/json" : {
+                "examples" : {
+                  "Transpiled Result" : {
+                    "description" : "Transpiled Result",
+                    "value" : {
+                      "result" : "SELECT * FROM `catalog`.`schema`.`table` WHERE `id` = 1"
+                    }
                   }
                 }
               }
@@ -6913,6 +7701,10 @@
           },
           "schedule" : {
             "$ref" : "#/components/schemas/Schedule"
+          },
+          "path" : {
+            "type" : "string",
+            "description" : "The folder path to place this query in (e.g. \"/reports/monthly\").\n If provided, intermediate folders are created automatically.\n Optional — if omitted, the query is placed at the root level."
           }
         }
       },
@@ -6964,7 +7756,8 @@
             "type" : "string",
             "description" : "The ID of the folder containing this query.\n Null if the query is not in any folder."
           }
-        }
+        },
+        "description" : "Queries in this folder (present only when includeQueries=true)"
       },
       "QueryFolderUpdateRequest" : {
         "type" : "object",
@@ -6988,32 +7781,72 @@
         "type" : "object",
         "properties" : {
           "id" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Unique identifier of the folder (UUID)",
+            "example" : "550e8400-e29b-41d4-a716-446655440000"
           },
           "name" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Display name of the folder",
+            "example" : "Monthly Reports"
+          },
+          "path" : {
+            "type" : "string",
+            "description" : "Full path of the folder in the hierarchy",
+            "example" : "/reports/monthly"
+          },
+          "parentId" : {
+            "type" : "string",
+            "description" : "ID of the parent folder, null if root-level",
+            "example" : "550e8400-e29b-41d4-a716-446655440001"
           },
           "createdAt" : {
-            "type" : "integer",
-            "format" : "int64"
+            "type" : "string",
+            "description" : "Timestamp when the folder was created (ISO 8601)",
+            "example" : "2025-01-15T10:30:00Z"
+          }
+        },
+        "description" : "Represents a query folder"
+      },
+      "QueryFolderWithContentsResponse" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Unique identifier of the folder (UUID)"
           },
-          "modifiedAt" : {
-            "type" : "integer",
-            "format" : "int64"
+          "name" : {
+            "type" : "string",
+            "description" : "Display name of the folder"
           },
-          "children" : {
+          "path" : {
+            "type" : "string",
+            "description" : "Full path of the folder in the hierarchy"
+          },
+          "parentId" : {
+            "type" : "string",
+            "description" : "ID of the parent folder, null if root-level"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "description" : "Timestamp when the folder was created (ISO 8601)"
+          },
+          "folders" : {
             "type" : "array",
+            "description" : "Direct child folders",
             "items" : {
               "$ref" : "#/components/schemas/QueryFolderItem"
             }
           },
-          "queryIds" : {
+          "queries" : {
             "type" : "array",
+            "description" : "Queries contained in this folder",
             "items" : {
-              "type" : "string"
+              "$ref" : "#/components/schemas/Query"
             }
           }
-        }
+        },
+        "description" : "A folder with its direct child folders and queries"
       },
       "CacheSettingsUpdateRequest" : {
         "type" : "object",
@@ -7303,7 +8136,7 @@
           },
           "isCached" : {
             "type" : "boolean",
-            "description" : "Indicates whether the table is cached or not."
+            "description" : "Indicates whether the table is cached or not.\n It is not the status of caching.\n <br>\n e.g. when a table is cached, you are no longer accessing the original data source.\n But the data may not be complete since an ongoing cache refresh is in progress."
           }
         },
         "description" : "Represents a table in a schema."
@@ -7818,6 +8651,18 @@
           }
         }
       },
+      "QueryFolderRenameRequest" : {
+        "required" : [ "name" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "New name for the folder",
+            "example" : "Archived Reports"
+          }
+        },
+        "description" : "Request body for renaming a query folder"
+      },
       "Organization" : {
         "type" : "object",
         "properties" : {
@@ -7857,6 +8702,64 @@
             "enum" : [ "NOT_ACTIVE", "COMPLETED", "WAITING", "ACTIVE", "DELAYED", "FAILED", "PAUSED", "STUCK" ]
           }
         }
+      },
+      "QueryFolderListResponse" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "description" : "List of folders in the project",
+            "items" : {
+              "$ref" : "#/components/schemas/QueryFolderItem"
+            }
+          }
+        },
+        "description" : "Response containing a list of query folders"
+      },
+      "QueryFolderTreeNode" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Unique identifier of the folder (UUID)"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Display name of the folder"
+          },
+          "path" : {
+            "type" : "string",
+            "description" : "Full path of the folder"
+          },
+          "children" : {
+            "type" : "array",
+            "description" : "Child folder nodes",
+            "items" : {
+              "$ref" : "#/components/schemas/QueryFolderTreeNode"
+            }
+          },
+          "queries" : {
+            "type" : "array",
+            "description" : "Queries in this folder (present only when includeQueries=true)",
+            "items" : {
+              "$ref" : "#/components/schemas/Query"
+            }
+          }
+        },
+        "description" : "A node in the folder tree hierarchy"
+      },
+      "QueryFolderTreeResponse" : {
+        "type" : "object",
+        "properties" : {
+          "tree" : {
+            "type" : "array",
+            "description" : "Root-level nodes of the folder tree",
+            "items" : {
+              "$ref" : "#/components/schemas/QueryFolderTreeNode"
+            }
+          }
+        },
+        "description" : "Response containing the folder tree hierarchy"
       },
       "Schema" : {
         "type" : "object",

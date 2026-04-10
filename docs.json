@@ -196,11 +196,14 @@
             "group": "Data -- Query Folders",
             "pages": [
               "api-reference/data--query-folders/list-query-folders",
-              "api-reference/data--query-folders/create-query-folder-at-root",
+              "api-reference/data--query-folders/create-query-folder",
+              "api-reference/data--query-folders/get-query-folder-tree",
               "api-reference/data--query-folders/read-query-folder",
-              "api-reference/data--query-folders/addremove-query-infrom-folder",
-              "api-reference/data--query-folders/create-query-folder-with-folder-id",
-              "api-reference/data--query-folders/delete-query-folder-with-folder-id"
+              "api-reference/data--query-folders/addremove-queries-infrom-folder",
+              "api-reference/data--query-folders/delete-query-folder",
+              "api-reference/data--query-folders/rename-query-folder",
+              "api-reference/data--query-folders/move-query-folder",
+              "api-reference/data--query-folders/create-query-folder-under-parent"
             ]
           },
           {
@@ -208,7 +211,7 @@
             "pages": [
               "api-reference/data--semantic-catalogs/create-a-semantic-catalog",
               "api-reference/data--semantic-catalogs/create-a-semantic-table",
-              "api-reference/data--semantic-catalogs/share-a-semantic-table",
+              "api-reference/data--semantic-catalogs/share-semantic-catalog",
               "api-reference/data--semantic-catalogs/delete-a-semantic-table"
             ]
           },
@@ -220,8 +223,10 @@
               "api-reference/data--cache/get-all-cache-statuses-of-a-project",
               "api-reference/data--cache/update-cache-settings",
               "api-reference/data--cache/delete-cache",
-              "api-reference/data--cache/full-refresh-cache",
-              "api-reference/data--cache/update-cache-incrementally",
+              "api-reference/data--cache/cancel-running-full-refresh",
+              "api-reference/data--cache/cancel-running-incremental-update",
+              "api-reference/data--cache/trigger-full-refresh-cache-update",
+              "api-reference/data--cache/trigger-incremental-cache-update",
               "api-reference/data--cache/get-cache-status",
               "api-reference/data--cache/get-all-cache-statuses-of-a-catalog"
             ]
@@ -291,7 +296,7 @@
           {
             "group": "Data -- SQL",
             "pages": [
-              "api-reference/data--sql/transpile-a-sql-query-into-given-dialect"
+              "api-reference/data--sql/transpile-sql"
             ]
           }
         ]
