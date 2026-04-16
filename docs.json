@@ -291,9 +291,7 @@
           },
           {
             "group": "Data -- SQL",
-            "pages": [
-              "api-reference/data--sql/transpile-sql"
-            ]
+            "pages": ["api-reference/data--sql/transpile-sql"]
           }
         ]
       },
@@ -393,6 +391,7 @@
             "pages": [
               "integrations/activecampaign",
               "integrations/airtable",
+              "integrations/amazon-athena",
               "integrations/amazon-redshift",
               "integrations/amazon-rds",
               "integrations/big-query",

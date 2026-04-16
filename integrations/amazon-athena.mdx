@@ -1,0 +1,43 @@
+---
+title: "Amazon Athena"
+description: "Discover a seamless integration process! Learn how to connect Amazon Athena to Peaka effortlessly for streamlined transactions."
+---
+
+This article guides you through the process of connecting Amazon Athena to Peaka, allowing you to seamlessly access your Amazon Athena data within the Peaka platform.
+
+## Prerequisites
+
+Before you start, you will need the following information from your AWS account:
+
+- **Region** (The AWS region where your Athena resources are located)
+- **Catalog** (The data source catalog name, typically `AwsDataCatalog` for AWS Glue)
+- **Access Key ID** (The access key ID for your AWS account or IAM user)
+- **Secret Access Key** (The secret access key for your AWS account or IAM user)
+
+Follow the steps below to obtain these values:
+
+1. **Region:** Identify the AWS region where your Athena workgroup and data reside. You can find your current region in the top-right corner of the [AWS Management Console](https://console.aws.amazon.com/). For more details, refer to the [AWS region selection guide](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/select-region-procedure.html).
+
+2. **Catalog:** The catalog name refers to the data source catalog registered in Athena. If you are using AWS Glue Data Catalog, the default catalog name is `AwsDataCatalog`. For more details, see the [Athena data sources documentation](https://docs.aws.amazon.com/athena/latest/ug/data-sources-glue.html).
+
+3. **Access Key ID and Secret Access Key:** Generate an access key pair from the AWS IAM console.
+   - For IAM users, follow the [IAM user access key guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-keys-admin-managed.html#admin-create-access-key).
+   - For root users, follow the [root user access key guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user_manage_add-key.html).
+
+## Connecting Amazon Athena to Peaka
+
+Now that you have obtained the necessary credentials, you can connect Amazon Athena to Peaka using the following steps:
+
+1. Navigate to the data model page in Peaka.
+
+2. In the side menu bar, click the "Data Source" button to initiate the connection process.
+
+3. In the modal that appears, select "Amazon Athena" as your data source.
+
+4. Fill out the connection details form as shown in the image below.
+
+<img src="https://cdn.peaka.com/integrations/amazon-athena-1.png" />
+
+5. Click "Connect" to create your Amazon Athena data source.
+
+Congratulations! You've successfully connected Amazon Athena to Peaka. You can now access and manage your Amazon Athena data seamlessly within the Peaka platform.
