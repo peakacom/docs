@@ -15,7 +15,9 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": ["introduction"]
+            "pages": [
+              "introduction"
+            ]
           },
           {
             "group": "Project Operations",
@@ -64,7 +66,9 @@
           },
           {
             "group": "AI Setup",
-            "pages": ["ai-setup/bring-your-own-ai-model"]
+            "pages": [
+              "ai-setup/bring-your-own-ai-model"
+            ]
           }
         ]
       },
@@ -217,14 +221,17 @@
               "api-reference/data--cache/create-cache",
               "api-reference/data--cache/create-batch-cache",
               "api-reference/data--cache/get-all-cache-statuses-of-a-project",
+              "api-reference/data--cache/get-cache-settings",
               "api-reference/data--cache/update-cache-settings",
               "api-reference/data--cache/delete-cache",
               "api-reference/data--cache/cancel-running-full-refresh",
               "api-reference/data--cache/cancel-running-incremental-update",
+              "api-reference/data--cache/get-cache-execution-history",
               "api-reference/data--cache/trigger-full-refresh-cache-update",
               "api-reference/data--cache/trigger-incremental-cache-update",
               "api-reference/data--cache/get-cache-status",
-              "api-reference/data--cache/get-all-cache-statuses-of-a-catalog"
+              "api-reference/data--cache/get-all-cache-statuses-of-a-catalog",
+              "api-reference/data--cache/get-all-cache-statuses-of-a-schema"
             ]
           },
           {
@@ -291,7 +298,9 @@
           },
           {
             "group": "Data -- SQL",
-            "pages": ["api-reference/data--sql/transpile-sql"]
+            "pages": [
+              "api-reference/data--sql/transpile-sql"
+            ]
           }
         ]
       },
@@ -314,7 +323,9 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": ["sql/introduction"]
+            "pages": [
+              "sql/introduction"
+            ]
           },
           {
             "group": "Reference",
@@ -332,7 +343,9 @@
           },
           {
             "group": "Data Types",
-            "pages": ["sql/reference/types"]
+            "pages": [
+              "sql/reference/types"
+            ]
           },
           {
             "group": "Functions",
