@@ -1746,25 +1746,6 @@
           "required" : true
         },
         "responses" : {
-          "400" : {
-            "description" : "Bad Request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "string"
-                },
-                "examples" : {
-                  "Bad Request" : {
-                    "description" : "Bad Request",
-                    "value" : {
-                      "errorCode" : 100,
-                      "message" : "There are already a catalog with same name!!"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "200" : {
             "description" : "Catalog created successfully",
             "content" : {
@@ -1791,6 +1772,25 @@
                       "displayName" : "exampleStripeCatalog",
                       "catalogType" : "stripe",
                       "connectionId" : "8db17e23-29de-4dab-8886-af9717e0e742"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : {
+                  "Bad Request" : {
+                    "description" : "Bad Request",
+                    "value" : {
+                      "errorCode" : 100,
+                      "message" : "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -3682,8 +3682,8 @@
           "required" : false,
           "schema" : {
             "type" : "string",
-            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ],
-            "default" : "CELL_TYPED"
+            "default" : "CELL_TYPED",
+            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ]
           },
           "example" : "SIMPLE"
         } ],
@@ -4268,6 +4268,16 @@
           "example" : "550e8400-e29b-41d4-a716-446655440000"
         } ],
         "responses" : {
+          "404" : {
+            "description" : "Folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Folder read successfully",
             "content" : {
@@ -4296,16 +4306,6 @@
                     "path" : "/Reports",
                     "folderId" : "550e8400-e29b-41d4-a716-446655440000"
                   } ]
-                }
-              }
-            }
-          },
-          "404" : {
-            "description" : "Folder not found",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
               }
             }
@@ -4470,6 +4470,16 @@
           "required" : true
         },
         "responses" : {
+          "409" : {
+            "description" : "A folder with this name already exists at the same level",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Folder renamed successfully",
             "content" : {
@@ -4483,16 +4493,6 @@
                   "path" : "/Archived Reports",
                   "parentId" : null,
                   "createdAt" : "2025-01-15T10:30:00Z"
-                }
-              }
-            }
-          },
-          "409" : {
-            "description" : "A folder with this name already exists at the same level",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
                 }
               }
             }
@@ -4553,6 +4553,23 @@
           "required" : true
         },
         "responses" : {
+          "200" : {
+            "description" : "Folder moved successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                },
+                "example" : {
+                  "id" : "550e8400-e29b-41d4-a716-446655440000",
+                  "name" : "Reports",
+                  "path" : "/Archive/Reports",
+                  "parentId" : "550e8400-e29b-41d4-a716-446655440002",
+                  "createdAt" : "2025-01-15T10:30:00Z"
+                }
+              }
+            }
+          },
           "409" : {
             "description" : "A folder already exists at the target path or circular move detected",
             "content" : {
@@ -4569,23 +4586,6 @@
               "*/*" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          },
-          "200" : {
-            "description" : "Folder moved successfully",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                },
-                "example" : {
-                  "id" : "550e8400-e29b-41d4-a716-446655440000",
-                  "name" : "Reports",
-                  "path" : "/Archive/Reports",
-                  "parentId" : "550e8400-e29b-41d4-a716-446655440002",
-                  "createdAt" : "2025-01-15T10:30:00Z"
                 }
               }
             }
@@ -4636,16 +4636,6 @@
           "required" : true
         },
         "responses" : {
-          "404" : {
-            "description" : "Parent folder not found",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          },
           "201" : {
             "description" : "Folder created successfully",
             "content" : {
@@ -4659,6 +4649,16 @@
                   "path" : "/Reports/Monthly",
                   "parentId" : "550e8400-e29b-41d4-a716-446655440000",
                   "createdAt" : "2025-01-15T10:31:00Z"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Parent folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
                 }
               }
             }
@@ -5111,6 +5111,56 @@
       }
     },
     "/data/projects/{projectId}/cache/{cacheId}" : {
+      "get" : {
+        "tags" : [ "Data -- Cache" ],
+        "summary" : "Get Cache Settings",
+        "description" : "Retrieves the configuration of a specific cache, including the target catalog, schema, table, and the configured incremental and full refresh schedules.\n\nUse this endpoint to inspect a cache's current settings before updating them, or to confirm the schedule configuration of a cache after creation. To check the runtime status (last execution, progress, errors) of the cache, use the Get Cache Status endpoint instead.",
+        "operationId" : "getCacheSettings",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "The unique identifier of the project that owns the cache",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "cacheId",
+          "in" : "path",
+          "description" : "The unique identifier of the cache to retrieve (UUID format)",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "960bd651-7b3c-4511-9a88-18e14ac7742a"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Cache not found for the given cacheId.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Cache"
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "Cache settings retrieved successfully.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Cache"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      },
       "put" : {
         "tags" : [ "Data -- Cache" ],
         "summary" : "Update Cache Settings",
@@ -5305,6 +5355,86 @@
           },
           "404" : {
             "description" : "Cache not found or no running incremental sync workflow exists for this cache."
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/cache/{cacheId}/executionHistory" : {
+      "get" : {
+        "tags" : [ "Data -- Cache" ],
+        "summary" : "Get Cache Execution History",
+        "description" : "Returns a paginated list of past sync executions for the specified cache, ordered from most recent to oldest. Each entry corresponds to one sync run (either incremental or full refresh) and includes its status, progress counters, error details (if failed), and lifecycle timestamps.\n\nThe `executionMode` field on each entry indicates whether that run was an incremental sync or a full refresh. Use the `limit` and `offset` query parameters to page through history; defaults are `limit=10` and `offset=0`.\n\nExecution records have a retention window of 14 days after the cache or run is finalised, after which they are automatically removed.",
+        "operationId" : "getCacheExecutionHistory",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "The unique identifier of the project that owns the cache",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "cacheId",
+          "in" : "path",
+          "description" : "The unique identifier of the cache whose history is requested (UUID format)",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "960bd651-7b3c-4511-9a88-18e14ac7742a"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Maximum number of execution records to return. Defaults to 10.",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "default" : 10
+          },
+          "example" : 10
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Number of records to skip from the start of the result set, used for pagination. Defaults to 0.",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "default" : 0
+          },
+          "example" : 0
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Cache not found for the given cacheId.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/CacheExecutionInfo"
+                  }
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "Execution history retrieved successfully. Returns an empty array if no executions exist for this cache.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/CacheExecutionInfo"
+                  }
+                }
+              }
+            }
           }
         },
         "x-mint" : {
@@ -5517,6 +5647,60 @@
         "responses" : {
           "200" : {
             "description" : "List of cache statuses for all caches in the catalog. Returns an empty array if no caches exist for this catalog.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/CacheStatus"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/catalog/{catalogId}/schema/{schemaName}/cache/status" : {
+      "get" : {
+        "tags" : [ "Data -- Cache" ],
+        "summary" : "Get All Cache Statuses of a Schema",
+        "description" : "Returns the status of all caches within a specific schema of a catalog. This is a narrower filter than the catalog-level status endpoint, useful when a single catalog contains many schemas and only a subset is of interest.\n\nEach entry in the response array contains the same status information as the single cache status endpoint.",
+        "operationId" : "getCacheStatusBySchema",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "The unique identifier of the project that owns the catalog",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "catalogId",
+          "in" : "path",
+          "description" : "The unique identifier of the catalog (data source connection) that owns the schema",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : 627249916703408649
+        }, {
+          "name" : "schemaName",
+          "in" : "path",
+          "description" : "The name of the schema to filter caches by",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "payment"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of cache statuses for all caches in the schema. Returns an empty array if no caches exist for this schema.",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -8850,6 +9034,9 @@
         "type" : "object",
         "properties" : {
           "id" : {
+            "type" : "string"
+          },
+          "executionMode" : {
             "type" : "string"
           },
           "status" : {
