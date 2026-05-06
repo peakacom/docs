@@ -1,0 +1,71 @@
+---
+title: "NPM"
+description: "Run the Peaka MCP server locally via npx, authenticated with a Peaka API key."
+---
+
+The published [`@peaka/mcp-server-peaka`](https://www.npmjs.com/package/@peaka/mcp-server-peaka) package runs the server over stdio. Your MCP client launches it on demand with `npx`, and authentication is a single environment variable.
+
+This is the right choice when you want:
+
+- A locally-running server, no remote dependency.
+- API-key auth (for CI, headless scripts, or pinning to a specific Peaka identity).
+- Faster cold-starts than a remote round-trip.
+
+For the zero-install path, see [Remote](/mcp/install/remote).
+
+## Configure your client
+
+Add the server to your MCP client config:
+
+```json
+{
+  "mcpServers": {
+    "peaka": {
+      "command": "npx",
+      "args": ["-y", "@peaka/mcp-server-peaka@latest"],
+      "env": {
+        "PEAKA_API_KEY": "<YOUR_API_KEY>"
+      }
+    }
+  }
+}
+```
+
+Replace `<YOUR_API_KEY>` with a Peaka API key. Restart the client after editing the config.
+
+[Supported clients](/mcp/clients) shows where each client's config file lives.
+
+## Get an API key
+
+You can use either a **Project** or **Partner** API key:
+
+- **Project API key** — bound to a single Peaka project. Simplest. Good for everyday use against one project. See [How to generate API keys](/how-to-guides/how-to-generate-api-keys).
+- **Partner API key** — enumerates projects across organizations and workspaces. Use this if you want the assistant to discover and switch between projects. See [How to manage Partner API keys](/how-to-guides/how-to-manage-partner-api-key).
+
+Full breakdown in [Authentication](/mcp/authentication).
+
+## Environment variables
+
+| Name | Description |
+| --- | --- |
+| `PEAKA_API_KEY` | Project or Partner API key for authenticating with Peaka. **Required.** |
+
+## Verify it's working
+
+After your client restarts:
+
+1. Confirm the `peaka` server shows up in your client's MCP server list.
+2. Ask your assistant: _"List my Peaka projects."_
+3. The first response should call [`peaka_list_projects`](/mcp/tools#peaka_list_projects) and return the projects your key can see.
+
+If nothing happens, see [Troubleshooting](/mcp/troubleshooting).
+
+## Updating
+
+Because the config uses `@latest`, every cold start picks up the newest server release. To pin a version:
+
+```json
+"args": ["-y", "@peaka/mcp-server-peaka@0.7.0"]
+```
+
+Releases live on [npm](https://www.npmjs.com/package/@peaka/mcp-server-peaka) and [GitHub](https://github.com/peakacom/peaka-mcp-server).

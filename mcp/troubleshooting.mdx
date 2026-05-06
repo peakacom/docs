@@ -1,0 +1,66 @@
+---
+title: "Troubleshooting"
+description: "Common errors with the Peaka MCP server and how to fix them."
+---
+
+## The server doesn't show up in my client
+
+After editing your client's MCP config, you usually need to fully restart the client (not just close the chat window). Check the client's "MCP servers" or "Tools" panel — if `peaka` doesn't appear, the config wasn't picked up.
+
+If it appears but reports an error on startup, look at the client's MCP logs:
+
+- **Claude Desktop:** `~/Library/Logs/Claude/mcp*.log` (macOS) or `%APPDATA%\Claude\logs\mcp*.log` (Windows)
+- **Cursor / Windsurf / VS Code:** the **Output** panel — choose the MCP/extension channel
+- **Claude Code:** `claude mcp list` and inspect the named server
+
+## OAuth window never opens (remote)
+
+The remote server returns `401 Unauthorized` with OAuth metadata on the first request, and the client is expected to open a browser. If that doesn't happen:
+
+- Confirm your client supports remote MCP with OAuth. If not, wrap the URL with `mcp-remote` — see [Supported clients](/mcp/clients).
+- If you're using `mcp-remote`, make sure your shell can launch a browser (`$BROWSER` env var on Linux, default browser on macOS/Windows).
+- Some clients cache failed auth attempts. Remove the server from the client config, restart, and re-add it.
+
+## "401 Unauthorized" on every call
+
+- **Remote:** your token expired or was revoked. Re-trigger OAuth by removing and re-adding the server in your client.
+- **NPM / from source:** `PEAKA_API_KEY` is missing, malformed, or revoked. Re-issue the key in Peaka and update the `env` block in your client config.
+
+## "403 Forbidden" on a specific tool
+
+The authenticated identity doesn't have permission for that action in Peaka. The MCP server is a thin protocol layer — it can't grant access the underlying user/key doesn't already have. Grant the permission in Peaka and retry.
+
+See [Authentication](/mcp/authentication).
+
+## `peaka_list_projects` returns only one project
+
+Expected when authenticating with a **Project** API key — the key is bound to a single project. To enumerate projects across organizations and workspaces, use a [Partner API key](/how-to-guides/how-to-manage-partner-api-key) or the [remote server](/mcp/install/remote) with OAuth.
+
+## The assistant keeps asking for `projectId`
+
+Every project-scoped tool call needs a `projectId`. The remote server is stateless about which project you're working with — the assistant is instructed to ask once per session and reuse the answer. If it asks more often than that, mention the project up front: _"In my `analytics-prod` project, list the tables in the `events` schema."_
+
+## Cache or metadata refresh seems stuck
+
+Both are async. Check status with:
+
+- [`peaka_get_cache_statuses`](/mcp/tools#peaka_get_cache_statuses) for cache jobs.
+- [`peaka_get_metadata_refresh_status`](/mcp/tools#peaka_get_metadata_refresh_status) for catalog metadata refreshes.
+
+## SQL fails with "table not found"
+
+The catalog's metadata may be stale. Run [`peaka_refresh_project_metadata`](/mcp/tools#peaka_refresh_project_metadata) for the relevant catalog and retry.
+
+## Environment variables
+
+The local installs read one variable:
+
+| Name | Description |
+| --- | --- |
+| `PEAKA_API_KEY` | Project or Partner API key. Required for [NPM](/mcp/install/npm) and [from source](/mcp/install/local) installs. The remote server uses OAuth and does not read this variable. |
+
+## Still stuck?
+
+- File an issue at [`peakacom/peaka-mcp-server`](https://github.com/peakacom/peaka-mcp-server/issues).
+- Ask in the [Peaka Discord](https://discord.com/invite/peaka).
+- Email [support@peaka.com](mailto:support@peaka.com).

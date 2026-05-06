@@ -1,0 +1,103 @@
+---
+title: "Remote"
+description: "Connect to the hosted Peaka MCP server over streamable HTTP, authenticated with OAuth."
+---
+
+Peaka hosts a remote MCP server at:
+
+```
+https://mcp.peaka.studio/mcp
+```
+
+It speaks the [streamable HTTP transport](https://modelcontextprotocol.io/specification/draft/basic/transports#streamable-http) and uses OAuth for authentication. There is nothing to install — point any MCP client that supports remote servers at the URL.
+
+## When to use this
+
+- You want zero install. Just paste a URL.
+- You want the assistant to act under **your** Peaka identity, scoped to what you're authorized to do.
+- You don't want to copy an API key around.
+
+If you instead need a key-authenticated, locally-running server (e.g. for CI, scripts, or air-gapped setups), see [NPM](/mcp/install/npm) or [From source](/mcp/install/local).
+
+## Add it to your client
+
+<CodeGroup>
+```json Native remote MCP clients
+{
+  "mcpServers": {
+    "peaka": {
+      "url": "https://mcp.peaka.studio/mcp"
+    }
+  }
+}
+```
+
+```json Stdio-only clients (via mcp-remote bridge)
+{
+  "mcpServers": {
+    "peaka": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.peaka.studio/mcp"]
+    }
+  }
+}
+```
+</CodeGroup>
+
+[Supported clients](/mcp/clients) lists which form each client expects and links to its "add an MCP server" instructions.
+
+## OAuth flow
+
+The first time your client opens a session, the server returns a `401` with OAuth metadata. Your client opens a browser window to `mcp.peaka.studio`, where you sign in to Peaka and approve access.
+
+<Steps>
+  <Step title="Client connects">
+    Your AI assistant opens an MCP session against `https://mcp.peaka.studio/mcp`.
+  </Step>
+  <Step title="Server requests auth">
+    The server responds with `401 Unauthorized` and an OAuth metadata URL in the
+    `WWW-Authenticate` header.
+
+    <img src="/images/mcp/oauth-401.png" alt="Client receives 401 and opens browser for OAuth" />
+  </Step>
+  <Step title="You approve in the browser">
+    The client opens `mcp.peaka.studio` in your browser. Sign in to Peaka and
+    approve the consent screen.
+
+    <img src="/images/mcp/oauth-consent.png" alt="Peaka OAuth consent screen" />
+  </Step>
+  <Step title="Tokens are issued">
+    The client receives an access token, retries the original request, and the
+    session is live. Tools become callable from the assistant.
+
+    <img src="/images/mcp/oauth-success.png" alt="Connected — tools available in the assistant" />
+  </Step>
+</Steps>
+
+The assistant can now act on your behalf. It can do anything **you** can do in Peaka — and nothing more.
+
+## Working with projects
+
+The remote server is stateless with respect to project selection. Each tool call carries its own `projectId`.
+
+To keep the conversation natural, the assistant is instructed to:
+
+- **Ask once per session** which project you want to work with, then reuse it.
+- **Skip the question** if you mention a specific project up front (e.g. _"In my `analytics-prod` project, list the catalogs"_).
+
+If you want to switch mid-session, just say so: _"Switch to my `staging` project."_
+
+<Tip>
+  Use [`peaka_list_projects`](/mcp/tools#peaka_list_projects) to discover the
+  projects you have access to. The assistant will typically call this for you.
+</Tip>
+
+## Limits and behavior
+
+- **Permissions follow the user.** Each call is authorized as the OAuth-signed-in user. If the user can't do something in Peaka, the server can't do it either.
+- **Rate limits.** Standard Peaka API limits apply.
+- **Long-running operations.** Cache refreshes and metadata refreshes are async and report progress via the relevant `_status` tools.
+
+## Troubleshooting
+
+If the OAuth window never opens, or your client gets stuck on `401`, see [Troubleshooting](/mcp/troubleshooting).
