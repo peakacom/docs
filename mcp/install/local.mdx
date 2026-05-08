@@ -1,0 +1,66 @@
+---
+title: "From source"
+description: "Build and run the Peaka MCP server from a local clone of the GitHub repository."
+---
+
+For contributors and users who need to run a modified or pinned build, the server can be cloned from GitHub and run from source.
+
+For most users, [Remote](/mcp/install/remote) or [NPM](/mcp/install/npm) is simpler.
+
+## Prerequisites
+
+- Node.js 18 or newer.
+- A Peaka API key — see [Authentication](/mcp/authentication).
+
+## Clone and build
+
+```bash
+git clone https://github.com/peakacom/peaka-mcp-server.git
+cd peaka-mcp-server
+npm install
+npm run build
+```
+
+The build emits `dist/index.js`, which is the binary your client will launch.
+
+## Configure your client
+
+Point your client at the local build and pass the API key as an environment variable:
+
+```json
+{
+  "mcpServers": {
+    "peaka": {
+      "command": "node",
+      "args": ["/absolute/path/to/peaka-mcp-server/dist/index.js"],
+      "env": {
+        "PEAKA_API_KEY": "<YOUR_API_KEY>"
+      }
+    }
+  }
+}
+```
+
+Use an absolute path. Restart the client after editing its config.
+
+## Environment variables
+
+| Name | Description |
+| --- | --- |
+| `PEAKA_API_KEY` | Project or Partner API key for authenticating with Peaka. **Required.** |
+
+## Updating
+
+Pull the latest changes and rebuild:
+
+```bash
+git pull
+npm install
+npm run build
+```
+
+Your client will pick up the new binary on its next launch of the server.
+
+## Contributing
+
+Issues and pull requests are welcome on [`peakacom/peaka-mcp-server`](https://github.com/peakacom/peaka-mcp-server).

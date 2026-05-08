@@ -1,0 +1,78 @@
+---
+title: "Quickstart"
+description: "Connect Peaka MCP to your AI assistant in under five minutes."
+---
+
+The fastest way to get started is the **remote** server.
+
+## Remote (recommended)
+
+Point your client at:
+
+```
+https://mcp.peaka.studio/mcp
+```
+
+The first request triggers OAuth. Approve the consent screen and the assistant can act as you in Peaka.
+
+```json Remote MCP clients
+{
+  "mcpServers": {
+    "peaka": {
+      "url": "https://mcp.peaka.studio/mcp"
+    }
+  }
+}
+```
+
+<Tip>
+  Not sure which form your client wants? See [Supported clients](/mcp/clients) — each row shows the right config snippet and a link to the client's "add an MCP server" docs.
+</Tip>
+
+Restart the client after editing its config.
+
+## NPM (local)
+
+If you'd rather run the server yourself with a Peaka API key:
+
+```json
+{
+  "mcpServers": {
+    "peaka": {
+      "command": "npx",
+      "args": ["-y", "@peaka/mcp-server-peaka@latest"],
+      "env": {
+        "PEAKA_API_KEY": "<YOUR_API_KEY>"
+      }
+    }
+  }
+}
+```
+
+Get an API key from [How to generate API keys](/how-to-guides/how-to-generate-api-keys). Either a Project or Partner key works — see [Authentication](/mcp/authentication) for the trade-offs.
+
+## First prompts to try
+
+Once the server is connected, give your assistant a try:
+
+- _"List my Peaka projects."_
+- _"What catalogs and schemas are in project `<id>`?"_
+- _"Find me the top 10 customers by revenue last quarter."_
+- _"Cache the `orders` table and schedule an incremental refresh every hour."_
+- _"Save this query as `monthly_active_users` and surface it in a semantic catalog."_
+
+<Note>
+  On the remote server, the assistant is instructed to ask which project you want
+  to work with once per session — unless you mention a specific project up front.
+</Note>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Remote install details" href="/mcp/install/remote" icon="cloud">
+    OAuth flow, scopes, and screenshots.
+  </Card>
+  <Card title="Tools reference" href="/mcp/tools" icon="wrench">
+    Everything the assistant can do via the server.
+  </Card>
+</CardGroup>

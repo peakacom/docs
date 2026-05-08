@@ -1,0 +1,62 @@
+---
+title: "Peaka MCP Server"
+description: "Give your AI assistant first-class access to Peaka — query data, manage caches, inspect schemas, and orchestrate semantic catalogs through the Model Context Protocol."
+---
+
+The Peaka MCP server exposes Peaka's data platform to any [Model Context Protocol](https://modelcontextprotocol.io/)–compatible client. Once connected, your AI assistant can list catalogs, inspect schemas, run SQL, manage caches, save queries, and build semantic catalogs on your behalf — using natural language.
+
+<Card>
+  Under the hood it's the same Peaka you use in Studio. The MCP server is a thin
+  protocol adapter that lets agents call Peaka the way humans do.
+</Card>
+
+## What you can do with it
+
+- **Talk to your data.** Ask questions in natural language; the assistant inspects your project's metadata, writes SQL, and runs it on Peaka.
+- **Manage caches.** Create caches, schedule refreshes, and check status without leaving your editor.
+- **Curate a semantic layer.** Save queries, group them under semantic catalogs, and surface them as queryable tables.
+- **Inspect connections.** List data source connections in a project and pull connection-specific configuration.
+- **Reuse golden SQL.** The server queries Peaka's golden-SQL store so the assistant can lean on vetted, hand-written queries before generating new ones.
+
+See [Tools reference](/mcp/tools) for the full list of exposed tools.
+
+## Three ways to connect
+
+<CardGroup cols={3}>
+  <Card title="Remote" href="/mcp/install/remote" icon="cloud">
+    Point any client that supports remote MCP. Recommended.
+  </Card>
+  <Card title="NPM" href="/mcp/install/npm" icon="box">
+    Run the server locally. Authenticates with a Peaka API key.
+  </Card>
+  <Card title="From source" href="/mcp/install/local" icon="github">
+    Clone the repository and run it from a local checkout. For contributors and air-gapped setups.
+  </Card>
+</CardGroup>
+
+## Authentication at a glance
+
+| Install mode | Auth | Acts as |
+| --- | --- | --- |
+| Remote (`mcp.peaka.studio/mcp`) | OAuth | The signed-in Peaka user — limited to what they're authorized to do |
+| NPM | Project or Partner API key in `PEAKA_API_KEY` | The owner of the key |
+| From source | Project or Partner API key in `PEAKA_API_KEY` | The owner of the key |
+
+Full details in [Authentication](/mcp/authentication).
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" href="/mcp/quickstart" icon="bolt">
+    Connect your first client in under five minutes.
+  </Card>
+  <Card title="Supported clients" href="/mcp/clients" icon="plug">
+    Claude Desktop, Claude Code, Cursor, Windsurf, VS Code, and more.
+  </Card>
+  <Card title="Tools reference" href="/mcp/tools" icon="wrench">
+    Every tool the server exposes, grouped by area.
+  </Card>
+  <Card title="Troubleshooting" href="/mcp/troubleshooting" icon="life-ring">
+    Common errors, environment variables, and how to read server logs.
+  </Card>
+</CardGroup>

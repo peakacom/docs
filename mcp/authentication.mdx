@@ -1,0 +1,86 @@
+---
+title: "Authentication"
+description: "How the Peaka MCP server authenticates — OAuth on the remote server, API keys for local installs."
+---
+
+The Peaka MCP server uses two different auth mechanisms depending on how you run it.
+
+| Install mode | Auth mechanism | Acts as |
+| --- | --- | --- |
+| [Remote](/mcp/install/remote) — `mcp.peaka.studio/mcp` | OAuth | The signed-in Peaka user |
+| [NPM](/mcp/install/npm) | `PEAKA_API_KEY` env var | The owner of the API key |
+| [From source](/mcp/install/local) | `PEAKA_API_KEY` env var | The owner of the API key |
+
+## Remote — OAuth
+
+When a client connects to `https://mcp.peaka.studio/mcp`, the server returns `401 Unauthorized` with OAuth metadata in the `WWW-Authenticate` header. Your MCP client opens a browser to `mcp.peaka.studio`, you sign in to Peaka, approve the consent screen, and the client receives an access token.
+
+From that point on, every tool call is authorized as **you**. The assistant can do anything you can do in Peaka — and nothing else.
+
+There is no API key to copy, rotate, or store. Tokens are scoped to your session and refresh automatically.
+
+See [Remote install](/mcp/install/remote) for the step-by-step screenshots.
+
+## Local — API keys
+
+The NPM and from-source installs read a Peaka API key from the `PEAKA_API_KEY` environment variable. Two key types are supported.
+
+### Project API key
+
+A Project API key is bound to a single Peaka project. It's the simplest option and the right default if you only work with one project at a time.
+
+- **Scope:** the one project the key was issued for.
+- **`peaka_list_projects` returns:** that single project.
+- **How to create one:** [How to generate API keys](/how-to-guides/how-to-generate-api-keys).
+
+### Partner API key
+
+A Partner API key is bound to a Peaka partner account and can act across all organizations and workspaces that account owns.
+
+- **Scope:** every project the partner account can access.
+- **`peaka_list_projects` returns:** all projects across all organizations and workspaces — useful when you want the assistant to discover and switch between projects.
+- **How to create one:** [How to manage Partner API keys](/how-to-guides/how-to-manage-partner-api-key).
+
+### Which should I use?
+
+<CardGroup cols={2}>
+  <Card title="Use a Project key when…">
+    You're working with one project, you want strict scope, or you're embedding
+    the server in a per-project workflow (CI for one project, a script that
+    operates on a known project, etc.).
+  </Card>
+  <Card title="Use a Partner key when…">
+    You want the assistant to enumerate projects across your organization, or
+    you regularly switch between projects in the same session.
+  </Card>
+</CardGroup>
+
+### Setting the key
+
+Pass the key via the `env` block in your MCP client config:
+
+```json
+{
+  "mcpServers": {
+    "peaka": {
+      "command": "npx",
+      "args": ["-y", "@peaka/mcp-server-peaka@latest"],
+      "env": {
+        "PEAKA_API_KEY": "<YOUR_API_KEY>"
+      }
+    }
+  }
+}
+```
+
+<Warning>
+  Treat API keys like passwords. Don't commit MCP client configs that contain
+  raw keys to source control. Most clients also support reading from your
+  shell environment if you'd rather not put the key in a JSON file.
+</Warning>
+
+## What permissions does the agent have?
+
+The MCP server is a thin protocol layer over the Peaka API — it has no special privileges. Whatever the authenticated identity (OAuth user or API key owner) is allowed to do in Peaka, the server is allowed to do. Nothing more.
+
+If a tool call returns a permission error, the underlying identity doesn't have access; granting access in Peaka resolves it.

@@ -1,0 +1,211 @@
+---
+title: "Supported clients"
+description: "Add the Peaka MCP server to Claude Desktop, Claude Code, Cursor, Windsurf, VS Code, and any other MCP-compatible client."
+---
+
+The Peaka MCP server works with any client that supports the Model Context Protocol. Pick your client below for the right config snippet and a link to its "add an MCP server" instructions.
+
+Two configuration patterns appear throughout this page:
+
+- **Remote (recommended).** Point the client at `https://mcp.peaka.studio/mcp` and authenticate via OAuth. Some clients accept a remote URL natively; others use the [`mcp-remote`](https://www.npmjs.com/package/mcp-remote) bridge to expose it as a stdio server.
+- **Local (NPM).** Run [`@peaka/mcp-server-peaka`](https://www.npmjs.com/package/@peaka/mcp-server-peaka) via `npx` and authenticate with `PEAKA_API_KEY`.
+
+For everything else (auth modes, env vars), see [Authentication](/mcp/authentication).
+
+## Claude Desktop
+
+[Add an MCP server in Claude Desktop ↗](https://support.anthropic.com/en/articles/11175166-getting-started-with-custom-connectors-using-remote-mcp)
+
+**Remote** — Claude Desktop adds remote MCP servers through the UI, not the JSON config file.
+
+<Steps>
+  <Step title="Open Settings → Connectors">
+    Click your name in the bottom-left, then **Settings** → **Connectors**.
+  </Step>
+  <Step title="Add custom connector">
+    Click **Add custom connector** and paste `https://mcp.peaka.studio/mcp` as the MCP Server URL.
+  </Step>
+  <Step title="Authenticate">
+    Claude Desktop opens the OAuth flow in your browser. Sign in to Peaka and approve.
+  </Step>
+</Steps>
+
+**NPM** — for the local, API-key path, edit `claude_desktop_config.json`:
+
+- **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "peaka": {
+      "command": "npx",
+      "args": ["-y", "@peaka/mcp-server-peaka@latest"],
+      "env": { "PEAKA_API_KEY": "<YOUR_API_KEY>" }
+    }
+  }
+}
+```
+
+Restart Claude Desktop after editing.
+
+## Claude Code
+
+[Add an MCP server in Claude Code ↗](https://docs.claude.com/en/docs/claude-code/mcp)
+
+```bash
+# Remote
+claude mcp add --transport http peaka https://mcp.peaka.studio/mcp
+
+# NPM
+claude mcp add peaka -- npx -y @peaka/mcp-server-peaka@latest -e PEAKA_API_KEY=<YOUR_API_KEY>
+```
+
+## Cursor
+
+[Add an MCP server in Cursor ↗](https://docs.cursor.com/context/model-context-protocol)
+
+Edit `~/.cursor/mcp.json` (macOS/Linux) or `%USERPROFILE%\.cursor\mcp.json` (Windows):
+
+<CodeGroup>
+```json Remote
+{
+  "mcpServers": {
+    "peaka": {
+      "url": "https://mcp.peaka.studio/mcp"
+    }
+  }
+}
+```
+
+```json NPM
+{
+  "mcpServers": {
+    "peaka": {
+      "command": "npx",
+      "args": ["-y", "@peaka/mcp-server-peaka@latest"],
+      "env": { "PEAKA_API_KEY": "<YOUR_API_KEY>" }
+    }
+  }
+}
+```
+</CodeGroup>
+
+## Windsurf
+
+[Add an MCP server in Windsurf ↗](https://docs.windsurf.com/windsurf/cascade/mcp)
+
+Edit `~/.codeium/windsurf/mcp_config.json`:
+
+<CodeGroup>
+```json Remote
+{
+  "mcpServers": {
+    "peaka": {
+      "serverUrl": "https://mcp.peaka.studio/mcp"
+    }
+  }
+}
+```
+
+```json NPM
+{
+  "mcpServers": {
+    "peaka": {
+      "command": "npx",
+      "args": ["-y", "@peaka/mcp-server-peaka@latest"],
+      "env": { "PEAKA_API_KEY": "<YOUR_API_KEY>" }
+    }
+  }
+}
+```
+</CodeGroup>
+
+## VS Code (GitHub Copilot)
+
+[Add an MCP server in VS Code ↗](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
+
+Edit `.vscode/mcp.json` in your workspace, or your user-level `mcp.json`:
+
+<CodeGroup>
+```json Remote
+{
+  "servers": {
+    "peaka": {
+      "type": "http",
+      "url": "https://mcp.peaka.studio/mcp"
+    }
+  }
+}
+```
+
+```json NPM
+{
+  "servers": {
+    "peaka": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@peaka/mcp-server-peaka@latest"],
+      "env": { "PEAKA_API_KEY": "<YOUR_API_KEY>" }
+    }
+  }
+}
+```
+</CodeGroup>
+
+## Zed
+
+[Add an MCP server in Zed ↗](https://zed.dev/docs/ai/mcp)
+
+Open the command palette → `agent: add context server`, or edit `settings.json`:
+
+```json
+{
+  "context_servers": {
+    "peaka": {
+      "command": {
+        "path": "npx",
+        "args": ["-y", "mcp-remote", "https://mcp.peaka.studio/mcp"]
+      }
+    }
+  }
+}
+```
+
+## Cline
+
+[Add an MCP server in Cline ↗](https://docs.cline.bot/mcp/configuring-mcp-servers)
+
+Open Cline → `MCP Servers` → `Configure MCP Servers`:
+
+```json
+{
+  "mcpServers": {
+    "peaka": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.peaka.studio/mcp"]
+    }
+  }
+}
+```
+
+## ChatGPT (Custom Connectors)
+
+[Add a custom connector in ChatGPT ↗](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt)
+
+In ChatGPT settings → **Connectors** → **Add custom connector**, enter:
+
+- **MCP Server URL:** `https://mcp.peaka.studio/mcp`
+- **Authentication:** OAuth
+
+ChatGPT walks you through the OAuth flow.
+
+## Any other client
+
+Any MCP-compliant client can connect. Use one of the patterns above as a template:
+
+- If the client supports remote MCP natively, give it `https://mcp.peaka.studio/mcp`.
+- If it only supports stdio, wrap the URL with `npx -y mcp-remote https://mcp.peaka.studio/mcp`.
+- If you'd rather use an API key, run `npx -y @peaka/mcp-server-peaka@latest` with `PEAKA_API_KEY` in the environment.
+
+See [Quickstart](/mcp/quickstart) for the minimal setup, [Tools reference](/mcp/tools) for what the assistant can do once connected, and [Troubleshooting](/mcp/troubleshooting) if something doesn't light up.

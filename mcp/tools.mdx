@@ -1,0 +1,145 @@
+---
+title: "Tools reference"
+description: "Every tool the Peaka MCP server exposes, grouped by area."
+---
+
+The Peaka MCP server exposes the tools below to your AI assistant. Most are scoped to a single Peaka project — the assistant passes a `projectId` argument with each call. If the project hasn't been chosen yet, the assistant typically calls [`peaka_list_projects`](#peaka_list_projects) first.
+
+The server also exposes two **resources** the assistant can pull in for context:
+
+- **`peaka_sql_query_rule_set`** — guidelines for writing valid Peaka SQL.
+- **`peaka_artifact_template`** — style guide and HTML template for generating visual reports, dashboards, and artifacts from query results.
+
+## Projects
+
+### `peaka_list_projects`
+
+List all projects accessible with the current credentials. Under OAuth (remote) or a Partner API key, enumerates projects across all organizations and workspaces. Under a Project API key, returns the single project bound to the key.
+
+## Metadata
+
+### `peaka_get_project_metadata`
+
+Get metadata for all catalogs, schemas, and tables in the project in a single call. Optionally filter by `catalogId` and/or `schemaName`.
+
+### `peaka_list_catalogs`
+
+List all available catalogs in the project. Returns catalog names, types, and connection info.
+
+### `peaka_list_schemas`
+
+List all available schemas for a given catalog.
+
+### `peaka_list_tables`
+
+List all available tables for a given catalog and schema.
+
+### `peaka_list_columns`
+
+List all columns for a given table. Returns column names, data types, and constraints.
+
+### `peaka_get_relations`
+
+Get table relationships (foreign keys) for a catalog. Useful for constructing accurate JOINs.
+
+### `peaka_get_table_statistics`
+
+Get column-level statistics for a table, including distinct-value fractions per column.
+
+### `peaka_refresh_project_metadata`
+
+Refresh project metadata for a specific catalog. Long-running; triggers the refresh and polls for completion.
+
+### `peaka_get_metadata_refresh_status`
+
+Check the current status of a metadata refresh job for a specific catalog.
+
+## Query execution
+
+### `peaka_execute_sql_query`
+
+Run an arbitrary SQL query on Peaka.
+
+### `peaka_query_golden_sqls`
+
+Query the project's golden-SQL store for question/SQL pairs. If an existing golden query matches the user's question, the assistant can reuse it directly instead of generating new SQL.
+
+## Cache
+
+### `peaka_create_cache`
+
+Create a cache for a single table. Caching improves query performance by storing the data locally.
+
+### `peaka_create_cache_batch`
+
+Create caches for multiple tables in a single call. Preferred over repeated `peaka_create_cache` calls.
+
+### `peaka_get_cache_statuses`
+
+Get all cache statuses for tables in the project, including current caching state, execution history, and progress.
+
+### `peaka_refresh_cache_full`
+
+Trigger a full refresh on an existing cache.
+
+### `peaka_refresh_cache_incremental`
+
+Trigger an incremental update on an existing cache, fetching only new or changed rows.
+
+### `peaka_update_cache`
+
+Update cache settings (schedules) on an existing cache. Replaces both schedules entirely on each call.
+
+### `peaka_delete_cache`
+
+Delete an existing cache. The underlying table is not affected.
+
+## Saved queries
+
+### `peaka_list_queries`
+
+List all saved queries in the project. Returns query names, SQL content, and whether they are plain or materialized.
+
+### `peaka_execute_query`
+
+Execute a saved query by its ID.
+
+### `peaka_create_query`
+
+Create a named, saved query in the project's semantic layer. Returns the created query, including its ID.
+
+### `peaka_update_query`
+
+Update an existing saved query's display name and/or SQL body.
+
+### `peaka_delete_query`
+
+Delete a saved query from the project.
+
+## Connections
+
+### `peaka_list_connections`
+
+List all data source connections in the project — each connection's id, name, type, and (for OAuth-based connections) callback URL.
+
+### `peaka_get_connection_detail`
+
+Get connection-specific configuration detail for a data source connection.
+
+## Semantic catalogs
+
+### `peaka_create_semantic_catalog`
+
+Create a semantic catalog. A semantic catalog groups semantic tables (saved queries surfaced as queryable tables) under a single namespace.
+
+### `peaka_create_semantic_table`
+
+Create a semantic table inside a semantic catalog, backed by a saved query. Requires `catalogId`, `schemaName`, `tableName`, and `queryId`.
+
+### `peaka_delete_semantic_table`
+
+Delete a semantic table from a semantic catalog. The underlying saved query is not affected.
+
+---
+
+The canonical, version-pinned tool list lives in the [`peakacom/peaka-mcp-server` README](https://github.com/peakacom/peaka-mcp-server#readme).
