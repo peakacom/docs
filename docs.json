@@ -654,5 +654,18 @@
     "gtm": {
       "tagId": "GTM-NLBSKN8"
     }
-  }
+  },
+  "redirects": [
+    { "source": "/api-reference", "destination": "/api-reference/introduction" },
+    { "source": "/mcp", "destination": "/mcp/overview" },
+    { "source": "/embedded-peaka", "destination": "/embedded-peaka/introduction" },
+    { "source": "/sql", "destination": "/sql/introduction" },
+    { "source": "/integrations", "destination": "/integrations/activecampaign" },
+    { "source": "/bi-tools", "destination": "/bi-tools/looker-studio" },
+    { "source": "/db-drivers", "destination": "/db-drivers/python" },
+    { "source": "/jexl", "destination": "/jexl/using-jexl" },
+    { "source": "/flows", "destination": "/flows/how-to-create-a-flow" },
+    { "source": "/how-to-guides", "destination": "/how-to-guides/how-to-combine-connector-and-peaka-table-data" },
+    { "source": "/blogs", "destination": "/blogs/how-to-build-rag-with-peaka" }
+  ]
 }
