@@ -3,7 +3,7 @@ title: "Quickstart"
 description: "Connect Peaka MCP to your AI assistant in under five minutes."
 ---
 
-The fastest way to get started is the **remote** server — no install, no API key, just OAuth. Pick the path that matches your client.
+The fastest way to get started is the **remote** server.
 
 ## Remote (recommended)
 
@@ -15,19 +15,7 @@ https://mcp.peaka.studio/mcp
 
 The first request triggers OAuth. Approve the consent screen and the assistant can act as you in Peaka.
 
-<CodeGroup>
-```json Stdio-only clients (via mcp-remote bridge)
-{
-  "mcpServers": {
-    "peaka": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://mcp.peaka.studio/mcp"]
-    }
-  }
-}
-```
-
-```json Native remote MCP clients
+```json Remote MCP clients
 {
   "mcpServers": {
     "peaka": {
@@ -36,7 +24,6 @@ The first request triggers OAuth. Approve the consent screen and the assistant c
   }
 }
 ```
-</CodeGroup>
 
 <Tip>
   Not sure which form your client wants? See [Supported clients](/mcp/clients) — each row shows the right config snippet and a link to the client's "add an MCP server" docs.

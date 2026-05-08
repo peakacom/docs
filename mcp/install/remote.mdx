@@ -21,8 +21,7 @@ If you instead need a key-authenticated, locally-running server (e.g. for CI, sc
 
 ## Add it to your client
 
-<CodeGroup>
-```json Native remote MCP clients
+```json
 {
   "mcpServers": {
     "peaka": {
@@ -31,18 +30,6 @@ If you instead need a key-authenticated, locally-running server (e.g. for CI, sc
   }
 }
 ```
-
-```json Stdio-only clients (via mcp-remote bridge)
-{
-  "mcpServers": {
-    "peaka": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://mcp.peaka.studio/mcp"]
-    }
-  }
-}
-```
-</CodeGroup>
 
 [Supported clients](/mcp/clients) lists which form each client expects and links to its "add an MCP server" instructions.
 
