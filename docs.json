@@ -15,9 +15,7 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction"
-            ]
+            "pages": ["introduction"]
           },
           {
             "group": "Project Operations",
@@ -67,9 +65,7 @@
           },
           {
             "group": "AI Setup",
-            "pages": [
-              "ai-setup/bring-your-own-ai-model"
-            ]
+            "pages": ["ai-setup/bring-your-own-ai-model"]
           }
         ]
       },
@@ -299,9 +295,7 @@
           },
           {
             "group": "Data -- SQL",
-            "pages": [
-              "api-reference/data--sql/transpile-sql"
-            ]
+            "pages": ["api-reference/data--sql/transpile-sql"]
           }
         ]
       },
@@ -310,10 +304,7 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "mcp/overview",
-              "mcp/quickstart"
-            ]
+            "pages": ["mcp/overview", "mcp/quickstart"]
           },
           {
             "group": "Install",
@@ -353,9 +344,7 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": [
-              "sql/introduction"
-            ]
+            "pages": ["sql/introduction"]
           },
           {
             "group": "Reference",
@@ -373,9 +362,7 @@
           },
           {
             "group": "Data Types",
-            "pages": [
-              "sql/reference/types"
-            ]
+            "pages": ["sql/reference/types"]
           },
           {
             "group": "Functions",
@@ -435,9 +422,9 @@
               "integrations/activecampaign",
               "integrations/airtable",
               "integrations/amazon-athena",
-              "integrations/amazon-redshift",
+              "integrations/redshift",
               "integrations/amazon-rds",
-              "integrations/big-query",
+              "integrations/bigquery",
               "integrations/clickhouse",
               "integrations/databricks",
               "integrations/dynamics-365",
