@@ -457,6 +457,7 @@
               "integrations/odoo",
               "integrations/openai",
               "integrations/oracle",
+              "integrations/paychex",
               "integrations/pinecone",
               "integrations/pipedrive",
               "integrations/postgresql",
