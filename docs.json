@@ -438,6 +438,7 @@
               "integrations/google-ads",
               "integrations/google-analytics",
               "integrations/google-sheets",
+              "integrations/google-spanner",
               "integrations/hubspot",
               "integrations/instagram",
               "integrations/intercom",
