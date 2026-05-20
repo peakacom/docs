@@ -322,6 +322,15 @@
               "mcp/tools",
               "mcp/troubleshooting"
             ]
+          },
+          {
+            "group": "Data -- Materialized Queries",
+            "pages": [
+              "api-reference/data--materialized-queries/list-materialized-query-statuses",
+              "api-reference/data--materialized-queries/cancel-materialized-query-refresh",
+              "api-reference/data--materialized-queries/refresh-materialized-query",
+              "api-reference/data--materialized-queries/read-materialized-query-status"
+            ]
           }
         ]
       },

@@ -4268,16 +4268,6 @@
           "example" : "550e8400-e29b-41d4-a716-446655440000"
         } ],
         "responses" : {
-          "404" : {
-            "description" : "Folder not found",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
-                }
-              }
-            }
-          },
           "200" : {
             "description" : "Folder read successfully",
             "content" : {
@@ -4306,6 +4296,16 @@
                     "path" : "/Reports",
                     "folderId" : "550e8400-e29b-41d4-a716-446655440000"
                   } ]
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
               }
             }
@@ -4470,16 +4470,6 @@
           "required" : true
         },
         "responses" : {
-          "409" : {
-            "description" : "A folder with this name already exists at the same level",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          },
           "200" : {
             "description" : "Folder renamed successfully",
             "content" : {
@@ -4493,6 +4483,16 @@
                   "path" : "/Archived Reports",
                   "parentId" : null,
                   "createdAt" : "2025-01-15T10:30:00Z"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "A folder with this name already exists at the same level",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
                 }
               }
             }
@@ -4553,23 +4553,6 @@
           "required" : true
         },
         "responses" : {
-          "200" : {
-            "description" : "Folder moved successfully",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                },
-                "example" : {
-                  "id" : "550e8400-e29b-41d4-a716-446655440000",
-                  "name" : "Reports",
-                  "path" : "/Archive/Reports",
-                  "parentId" : "550e8400-e29b-41d4-a716-446655440002",
-                  "createdAt" : "2025-01-15T10:30:00Z"
-                }
-              }
-            }
-          },
           "409" : {
             "description" : "A folder already exists at the target path or circular move detected",
             "content" : {
@@ -4586,6 +4569,23 @@
               "*/*" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "Folder moved successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                },
+                "example" : {
+                  "id" : "550e8400-e29b-41d4-a716-446655440000",
+                  "name" : "Reports",
+                  "path" : "/Archive/Reports",
+                  "parentId" : "550e8400-e29b-41d4-a716-446655440002",
+                  "createdAt" : "2025-01-15T10:30:00Z"
                 }
               }
             }
@@ -4636,6 +4636,16 @@
           "required" : true
         },
         "responses" : {
+          "404" : {
+            "description" : "Parent folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          },
           "201" : {
             "description" : "Folder created successfully",
             "content" : {
@@ -4649,16 +4659,6 @@
                   "path" : "/Reports/Monthly",
                   "parentId" : "550e8400-e29b-41d4-a716-446655440000",
                   "createdAt" : "2025-01-15T10:31:00Z"
-                }
-              }
-            }
-          },
-          "404" : {
-            "description" : "Parent folder not found",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
                 }
               }
             }
@@ -7586,6 +7586,182 @@
           "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
         }
       }
+    },
+    "/data/projects/{projectId}/materialized-queries/status" : {
+      "get" : {
+        "tags" : [ "Data -- Materialized Queries" ],
+        "summary" : "List Materialized Query Statuses",
+        "description" : "Returns refresh status and schedule information for all materialized queries in the project.",
+        "operationId" : "listMaterializedQueryStatuses",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of materialized query statuses",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/MaterializedQueryStatusView"
+                  }
+                },
+                "example" : [ {
+                  "queryId" : "709922802836177297",
+                  "queryName" : "samplequery",
+                  "scheduleSettings" : {
+                    "cronExpression" : null,
+                    "repeatDuration" : "PT6H",
+                    "timezone" : null,
+                    "type" : "interval"
+                  },
+                  "nextExecutionStartTime" : "2025-01-15T16:00:00Z",
+                  "status" : "COMPLETED",
+                  "lastExecutionStartTime" : "2025-01-15T10:00:00Z",
+                  "lastUpdateTime" : "2025-01-15T10:05:00Z"
+                } ]
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/materialized-queries/{queryId}/cancel" : {
+      "post" : {
+        "tags" : [ "Data -- Materialized Queries" ],
+        "summary" : "Cancel Materialized Query Refresh",
+        "description" : "Cancels the in-progress refresh of a materialized query, if any.",
+        "operationId" : "cancelMaterializedQuery",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "queryId",
+          "in" : "path",
+          "description" : "ID of the Query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : 709922802836177297
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Cancel request accepted"
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/materialized-queries/{queryId}/refresh" : {
+      "post" : {
+        "tags" : [ "Data -- Materialized Queries" ],
+        "summary" : "Refresh Materialized Query",
+        "description" : "Triggers an immediate refresh of a materialized query. If the query has an existing schedule, the scheduled workflow is invoked; otherwise a one-time refresh is started.",
+        "operationId" : "refreshMaterializedQuery",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "queryId",
+          "in" : "path",
+          "description" : "ID of the Query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : 709922802836177297
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Refresh request accepted"
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/materialized-queries/{queryId}/status" : {
+      "get" : {
+        "tags" : [ "Data -- Materialized Queries" ],
+        "summary" : "Read Materialized Query Status",
+        "description" : "Returns refresh status and schedule information for a single materialized query.",
+        "operationId" : "readMaterializedQueryStatus",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "queryId",
+          "in" : "path",
+          "description" : "ID of the Query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : 709922802836177297
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Materialized query status",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MaterializedQueryStatusView"
+                },
+                "example" : {
+                  "queryId" : "709922802836177297",
+                  "queryName" : "samplequery",
+                  "scheduleSettings" : {
+                    "cronExpression" : null,
+                    "repeatDuration" : "PT6H",
+                    "timezone" : null,
+                    "type" : "interval"
+                  },
+                  "nextExecutionStartTime" : "2025-01-15T16:00:00Z",
+                  "status" : "COMPLETED",
+                  "lastExecutionStartTime" : "2025-01-15T10:00:00Z",
+                  "lastUpdateTime" : "2025-01-15T10:05:00Z"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
     }
   },
   "components" : {
@@ -8944,6 +9120,79 @@
           }
         },
         "description" : "Response containing the folder tree hierarchy"
+      },
+      "MaterializedQueryScheduleSettings" : {
+        "type" : "object",
+        "properties" : {
+          "cronExpression" : {
+            "type" : "string",
+            "description" : "Cron expression when the schedule type is 'cron'.",
+            "nullable" : true,
+            "example" : "0 0 * * *"
+          },
+          "repeatDuration" : {
+            "type" : "string",
+            "description" : "ISO-8601 duration when the schedule type is 'interval'.",
+            "nullable" : true,
+            "example" : "PT6H"
+          },
+          "timezone" : {
+            "type" : "string",
+            "description" : "IANA timezone used to evaluate the cron expression.",
+            "nullable" : true,
+            "example" : "UTC"
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "Type of schedule.",
+            "example" : "interval",
+            "enum" : [ "interval", "cron", "none" ]
+          }
+        },
+        "description" : "Schedule configuration of a materialized query",
+        "nullable" : true
+      },
+      "MaterializedQueryStatusView" : {
+        "type" : "object",
+        "properties" : {
+          "queryId" : {
+            "type" : "string",
+            "description" : "ID of the query",
+            "example" : "709922802836177297"
+          },
+          "queryName" : {
+            "type" : "string",
+            "description" : "Name of the query",
+            "example" : "samplequery"
+          },
+          "scheduleSettings" : {
+            "$ref" : "#/components/schemas/MaterializedQueryScheduleSettings"
+          },
+          "nextExecutionStartTime" : {
+            "type" : "string",
+            "description" : "Next scheduled execution start time (ISO 8601). Null when the schedule type is 'none' or cannot be computed.",
+            "nullable" : true,
+            "example" : "2025-01-15T16:00:00Z"
+          },
+          "status" : {
+            "type" : "string",
+            "description" : "Status of the most recent refresh",
+            "example" : "COMPLETED"
+          },
+          "lastExecutionStartTime" : {
+            "type" : "string",
+            "description" : "Start time of the last refresh (ISO 8601)",
+            "nullable" : true,
+            "example" : "2025-01-15T10:00:00Z"
+          },
+          "lastUpdateTime" : {
+            "type" : "string",
+            "description" : "Time the status was last updated (ISO 8601)",
+            "nullable" : true,
+            "example" : "2025-01-15T10:05:00Z"
+          }
+        },
+        "description" : "Status and schedule information for a materialized query"
       },
       "Schema" : {
         "type" : "object",
