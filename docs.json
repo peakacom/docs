@@ -190,6 +190,15 @@
             ]
           },
           {
+            "group": "Data -- Materialized Queries",
+            "pages": [
+              "api-reference/data--materialized-queries/list-materialized-query-statuses",
+              "api-reference/data--materialized-queries/cancel-materialized-query-refresh",
+              "api-reference/data--materialized-queries/refresh-materialized-query",
+              "api-reference/data--materialized-queries/read-materialized-query-status"
+            ]
+          },
+          {
             "group": "Data -- Query Folders",
             "pages": [
               "api-reference/data--query-folders/list-query-folders",
@@ -321,15 +330,6 @@
               "mcp/clients",
               "mcp/tools",
               "mcp/troubleshooting"
-            ]
-          },
-          {
-            "group": "Data -- Materialized Queries",
-            "pages": [
-              "api-reference/data--materialized-queries/list-materialized-query-statuses",
-              "api-reference/data--materialized-queries/cancel-materialized-query-refresh",
-              "api-reference/data--materialized-queries/refresh-materialized-query",
-              "api-reference/data--materialized-queries/read-materialized-query-status"
             ]
           }
         ]
