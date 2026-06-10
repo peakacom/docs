@@ -19,9 +19,9 @@ Follow these steps to obtain them:
 ServiceTitan has two environments — **Integration** and **Production** — and a separate **Developer Portal** platform for app registration. During this setup:
 
 - **Developer Portal** ([developer.servicetitan.io](https://developer.servicetitan.io/)): The platform where you register your app and generate the Application Key. You sign in using your Production environment credentials.
-- **Integration Environment**: Where you connect your registered app to your tenant and generate the Client ID and Client Secret.
+- **Integration Environment or Production Environment**: Where you connect your registered app to your tenant and generate the Client ID and Client Secret.
 
-1. Begin by signing into your ServiceTitan Developer account using your Production Environment credentials. Access the login portal [here](https://developer.servicetitan.io/signin/).
+1. Begin by signing into your ServiceTitan Developer account using your Production Environment or Integration Environment credentials. Access the login portal [here](https://developer.servicetitan.io/signin/).
 
 <img src="https://cdn.peaka.com/integrations/service-titan-1.png" />
 
@@ -43,7 +43,11 @@ ServiceTitan has two environments — **Integration** and **Production** — and
 
 <img src="https://cdn.peaka.com/integrations/service-titan-5.png" />
 
-6. Click on the settings icon located in the right header to access the settings page and then click on the "API Applications" section located in the left sidebar to access the API Applications page.
+The next steps are performed in the ServiceTitan environment you want to connect — either the **Integration Environment** or the **Production Environment**. This is where you connect your registered app to your tenant and generate the Tenant ID, Client ID, and Client Secret.
+
+> **Important:** Remember which environment you use here. You must select the matching environment when connecting the data source in Peaka (see the Integration Environment toggle below). Credentials generated in one environment will not work in the other.
+
+6. Sign into your chosen environment (Integration or Production), click on the settings icon located in the right header to access the settings page, and then click on the "API Applications" section located in the left sidebar to access the API Applications page.
 
 <img src="https://cdn.peaka.com/integrations/service-titan-7.png" />
 
