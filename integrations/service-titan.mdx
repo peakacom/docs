@@ -16,10 +16,10 @@ _You can obtain the Application Key, Client ID, and Client Secret by registering
 
 Follow these steps to obtain them:
 
-ServiceTitan uses two different environments during the integration process:
+ServiceTitan has two environments — **Integration** and **Production** — and a separate **Developer Portal** platform for app registration. During this setup:
 
-- Developer Portal (Production credentials): Used to create the application and generate the Application Key.
-- Integration Environment: Used to connect the application to your tenant and generate the Client ID and Client Secret.
+- **Developer Portal** ([developer.servicetitan.io](https://developer.servicetitan.io/)): The platform where you register your app and generate the Application Key. You sign in using your Production environment credentials.
+- **Integration Environment**: Where you connect your registered app to your tenant and generate the Client ID and Client Secret.
 
 1. Begin by signing into your ServiceTitan Developer account using your Production Environment credentials. Access the login portal [here](https://developer.servicetitan.io/signin/).
 
@@ -75,8 +75,14 @@ Now that you have your ServiceTitan Client ID, Client Secret, Tenant and Applica
    - Client ID
    - Client Secret
 
+5. Set the **Integration Environment** toggle to match the environment in which your credentials were created:
+   - If your credentials were generated in the **Integration Environment**, turn the toggle **on**.
+   - If your credentials were generated in the **Production Environment**, leave the toggle **off**.
+
+   > **Important:** If this toggle does not match the environment used to generate your credentials, the connection will fail even if all credentials are correct.
+
 <img src="https://cdn.peaka.com/integrations/service-titan-11.png" />
 
-5. Click the "Authorize" button to finalize the creation of your ServiceTitan data source.
+6. Click the "Authorize" button to finalize the creation of your ServiceTitan data source.
 
 Your ServiceTitan data source is now successfully connected to Peaka and ready to be used.
