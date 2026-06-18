@@ -238,11 +238,11 @@
           {
             "group": "Data -- Exports",
             "pages": [
+              "api-reference/data--exports/export-query-async",
               "api-reference/data--exports/export-table-async",
               "api-reference/data--exports/list-exports",
               "api-reference/data--exports/read-export",
-              "api-reference/data--exports/cancel-export",
-              "api-reference/data--exports/export-query-async"
+              "api-reference/data--exports/cancel-export"
             ]
           },
           {

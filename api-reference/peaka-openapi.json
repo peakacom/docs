@@ -3682,8 +3682,8 @@
           "required" : false,
           "schema" : {
             "type" : "string",
-            "default" : "CELL_TYPED",
-            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ]
+            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ],
+            "default" : "CELL_TYPED"
           },
           "example" : "SIMPLE"
         } ],
@@ -5718,6 +5718,86 @@
         }
       }
     },
+    "/data/projects/{projectId}/queries/{queryId}/exports" : {
+      "post" : {
+        "tags" : [ "Data -- Exports" ],
+        "summary" : "Export Query (async)",
+        "description" : "Submits an async export of a saved query as CSV or JSONL. Returns immediately with a job id; poll the status endpoint for the download URLs.",
+        "operationId" : "exportQuery",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "queryId",
+          "in" : "path",
+          "description" : "ID of the Query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : 709922802836177297
+        } ],
+        "requestBody" : {
+          "description" : "Export options",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ExportRequest"
+              },
+              "examples" : {
+                "CSV" : {
+                  "description" : "CSV",
+                  "value" : {
+                    "format" : "CSV",
+                    "columns" : [ "id", "created", "amount" ]
+                  }
+                },
+                "JSONL" : {
+                  "description" : "JSONL",
+                  "value" : {
+                    "format" : "JSONL"
+                  }
+                },
+                "CSV + GZIP" : {
+                  "description" : "CSV + GZIP",
+                  "value" : {
+                    "format" : "CSV",
+                    "compression" : "GZIP"
+                  }
+                }
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "202" : {
+            "description" : "Export job accepted",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ExportJobCreated"
+                },
+                "example" : {
+                  "id" : "4c9fcb44-126a-45f8-99a0-f1d245083d78",
+                  "status" : "PENDING"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        },
+        "x-api-order" : 1
+      }
+    },
     "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/exports" : {
       "post" : {
         "tags" : [ "Data -- Exports" ],
@@ -5769,11 +5849,24 @@
                 "$ref" : "#/components/schemas/ExportRequest"
               },
               "examples" : {
-                "JSONL stream" : {
-                  "description" : "JSONL stream",
+                "CSV" : {
+                  "description" : "CSV",
                   "value" : {
-                    "format" : "JSONL",
-                    "method" : "APP_STREAM"
+                    "format" : "CSV",
+                    "columns" : [ "id", "created", "amount" ]
+                  }
+                },
+                "JSONL" : {
+                  "description" : "JSONL",
+                  "value" : {
+                    "format" : "JSONL"
+                  }
+                },
+                "CSV + GZIP" : {
+                  "description" : "CSV + GZIP",
+                  "value" : {
+                    "format" : "CSV",
+                    "compression" : "GZIP"
                   }
                 }
               }
@@ -5795,7 +5888,8 @@
         },
         "x-mint" : {
           "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
+        },
+        "x-api-order" : 2
       }
     },
     "/data/projects/{projectId}/exports" : {
@@ -5821,7 +5915,15 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "SUCCEEDED,RUNNING"
+          "examples" : {
+            "By status" : {
+              "description" : "By status",
+              "value" : "SUCCEEDED,RUNNING"
+            },
+            "Default" : {
+              "description" : "Default"
+            }
+          }
         }, {
           "name" : "limit",
           "in" : "query",
@@ -5840,7 +5942,15 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "2026-06-10T15:23:26.893985Z"
+          "examples" : {
+            "Before date" : {
+              "description" : "Before date",
+              "value" : "2026-06-10T15:23:26.893985Z"
+            },
+            "Default" : {
+              "description" : "Default"
+            }
+          }
         } ],
         "responses" : {
           "200" : {
@@ -5859,7 +5969,8 @@
         },
         "x-mint" : {
           "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
+        },
+        "x-api-order" : 3
       }
     },
     "/data/projects/{projectId}/exports/{exportId}" : {
@@ -5914,7 +6025,8 @@
         },
         "x-mint" : {
           "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
+        },
+        "x-api-order" : 4
       },
       "delete" : {
         "tags" : [ "Data -- Exports" ],
@@ -5947,82 +6059,8 @@
         },
         "x-mint" : {
           "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
-      }
-    },
-    "/data/projects/{projectId}/queries/{queryId}/exports" : {
-      "post" : {
-        "tags" : [ "Data -- Exports" ],
-        "summary" : "Export Query (async)",
-        "description" : "Submits an async export of a saved query as CSV or JSONL. Returns immediately with a job id; poll the status endpoint for the download URLs.",
-        "operationId" : "exportQuery",
-        "parameters" : [ {
-          "name" : "projectId",
-          "in" : "path",
-          "description" : "ID of the Project",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "mtKDhe1U"
-        }, {
-          "name" : "queryId",
-          "in" : "path",
-          "description" : "ID of the Query",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : 709922802836177297
-        } ],
-        "requestBody" : {
-          "description" : "Export options",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/ExportRequest"
-              },
-              "examples" : {
-                "CSV with selected columns" : {
-                  "description" : "CSV with selected columns",
-                  "value" : {
-                    "format" : "CSV",
-                    "columns" : [ "id", "created", "amount" ]
-                  }
-                },
-                "JSONL, single merged file, gzip" : {
-                  "description" : "JSONL, single merged file, gzip",
-                  "value" : {
-                    "format" : "JSONL",
-                    "method" : "TRINO_NATIVE",
-                    "singleFile" : true,
-                    "compression" : "GZIP"
-                  }
-                }
-              }
-            }
-          },
-          "required" : true
         },
-        "responses" : {
-          "202" : {
-            "description" : "Export job accepted",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ExportJobCreated"
-                },
-                "example" : {
-                  "id" : "4c9fcb44-126a-45f8-99a0-f1d245083d78",
-                  "status" : "PENDING"
-                }
-              }
-            }
-          }
-        },
-        "x-mint" : {
-          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
-        }
+        "x-api-order" : 5
       }
     },
     "/data/projects/{projectId}/catalogs/{catalogId}/parametricTables" : {
@@ -9064,8 +9102,8 @@
             "type" : "string",
             "description" : "Output format",
             "example" : "CSV",
-            "default" : "CSV",
-            "enum" : [ "CSV", "JSONL" ]
+            "enum" : [ "CSV", "JSONL" ],
+            "default" : "CSV"
           },
           "limit" : {
             "type" : "integer",
@@ -9092,25 +9130,12 @@
               "example" : "[\"id\",\"created\",\"amount\"]"
             }
           },
-          "method" : {
-            "type" : "string",
-            "description" : "How the export is produced. APP_STREAM streams a single file; TRINO_NATIVE writes parts in parallel (faster on large data).",
-            "example" : "TRINO_NATIVE",
-            "default" : "TRINO_NATIVE",
-            "enum" : [ "APP_STREAM", "TRINO_NATIVE" ]
-          },
-          "singleFile" : {
-            "type" : "boolean",
-            "description" : "Merges the multi-part output of TRINO_NATIVE into a single object",
-            "example" : false,
-            "default" : false
-          },
           "compression" : {
             "type" : "string",
             "description" : "Output compression; with GZIP every artifact is a gzip stream carrying a .gz suffix",
             "example" : "NONE",
-            "default" : "NONE",
-            "enum" : [ "NONE", "GZIP" ]
+            "enum" : [ "NONE", "GZIP" ],
+            "default" : "NONE"
           }
         },
         "description" : "Async export request. The job is accepted (202) and runs in the background; the result is downloaded via presigned URLs returned by the status endpoint."
