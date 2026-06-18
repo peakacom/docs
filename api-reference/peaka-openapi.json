@@ -1746,6 +1746,25 @@
           "required" : true
         },
         "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : {
+                  "Bad Request" : {
+                    "description" : "Bad Request",
+                    "value" : {
+                      "errorCode" : 100,
+                      "message" : "There are already a catalog with same name!!"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Catalog created successfully",
             "content" : {
@@ -1772,25 +1791,6 @@
                       "displayName" : "exampleStripeCatalog",
                       "catalogType" : "stripe",
                       "connectionId" : "8db17e23-29de-4dab-8886-af9717e0e742"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "Bad Request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "string"
-                },
-                "examples" : {
-                  "Bad Request" : {
-                    "description" : "Bad Request",
-                    "value" : {
-                      "errorCode" : 100,
-                      "message" : "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -4553,6 +4553,23 @@
           "required" : true
         },
         "responses" : {
+          "200" : {
+            "description" : "Folder moved successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                },
+                "example" : {
+                  "id" : "550e8400-e29b-41d4-a716-446655440000",
+                  "name" : "Reports",
+                  "path" : "/Archive/Reports",
+                  "parentId" : "550e8400-e29b-41d4-a716-446655440002",
+                  "createdAt" : "2025-01-15T10:30:00Z"
+                }
+              }
+            }
+          },
           "409" : {
             "description" : "A folder already exists at the target path or circular move detected",
             "content" : {
@@ -4569,23 +4586,6 @@
               "*/*" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          },
-          "200" : {
-            "description" : "Folder moved successfully",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                },
-                "example" : {
-                  "id" : "550e8400-e29b-41d4-a716-446655440000",
-                  "name" : "Reports",
-                  "path" : "/Archive/Reports",
-                  "parentId" : "550e8400-e29b-41d4-a716-446655440002",
-                  "createdAt" : "2025-01-15T10:30:00Z"
                 }
               }
             }
@@ -5708,6 +5708,313 @@
                   "items" : {
                     "$ref" : "#/components/schemas/CacheStatus"
                   }
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/catalogs/{catalogId}/schemas/{schemaName}/tables/{tableName}/exports" : {
+      "post" : {
+        "tags" : [ "Data -- Exports" ],
+        "summary" : "Export Table (async)",
+        "description" : "Submits an async export of a table as CSV or JSONL. Returns immediately with a job id; poll the status endpoint for the download URLs.",
+        "operationId" : "exportTable",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "catalogId",
+          "in" : "path",
+          "description" : "ID of the Catalog",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : 367189801096446904
+        }, {
+          "name" : "schemaName",
+          "in" : "path",
+          "description" : "Schema name",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "payment"
+        }, {
+          "name" : "tableName",
+          "in" : "path",
+          "description" : "Table name",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "charges"
+        } ],
+        "requestBody" : {
+          "description" : "Export options",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ExportRequest"
+              },
+              "examples" : {
+                "JSONL stream" : {
+                  "description" : "JSONL stream",
+                  "value" : {
+                    "format" : "JSONL",
+                    "method" : "APP_STREAM"
+                  }
+                }
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "202" : {
+            "description" : "Export job accepted",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ExportJobCreated"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/exports" : {
+      "get" : {
+        "tags" : [ "Data -- Exports" ],
+        "summary" : "List Exports",
+        "description" : "Returns the project's export jobs, newest first. Files are omitted from the list (call the single-export endpoint for download URLs); each item still carries `downloadable`.",
+        "operationId" : "listExports",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "status",
+          "in" : "query",
+          "description" : "Comma-separated status filter: PENDING,RUNNING,SUCCEEDED,FAILED,CANCELLED",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "SUCCEEDED,RUNNING"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Page size, clamped to [1, 200]",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "example" : 50
+        }, {
+          "name" : "createdBefore",
+          "in" : "query",
+          "description" : "Keyset cursor (ISO-8601): the previous page's last createdAt",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "2026-06-10T15:23:26.893985Z"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of export jobs",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ExportJobResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/exports/{exportId}" : {
+      "get" : {
+        "tags" : [ "Data -- Exports" ],
+        "summary" : "Read Export",
+        "description" : "Returns the status of a single export job. For a SUCCEEDED job owned by the caller, `files` carries freshly-presigned download URLs; non-owners get the row with `downloadable=false`.",
+        "operationId" : "readExport",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "exportId",
+          "in" : "path",
+          "description" : "Export job id (UUID)",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "4c9fcb44-126a-45f8-99a0-f1d245083d78"
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "Export job not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "object",
+                  "additionalProperties" : {
+                    "type" : "object"
+                  }
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "Export job status",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ExportJobResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      },
+      "delete" : {
+        "tags" : [ "Data -- Exports" ],
+        "summary" : "Cancel Export",
+        "description" : "Cancels a PENDING/RUNNING export (kills the running query and cleans up partial artifacts). A no-op on an already-finished job. Idempotent.",
+        "operationId" : "cancelExport",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "exportId",
+          "in" : "path",
+          "description" : "Export job id (UUID)",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "4c9fcb44-126a-45f8-99a0-f1d245083d78"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Cancellation accepted"
+          }
+        },
+        "x-mint" : {
+          "content" : "<span style={{display: \"flex\", gap: \"10px\", flexDirection: \"row\", alignItems: \"center\"}}>\n    <img src=\"https://cdn.peaka.com/badges/partner-api-key-badge.png\"/>\n    <img src=\"https://cdn.peaka.com/badges/project-api-key-badge.png\"/>\n</span>\n"
+        }
+      }
+    },
+    "/data/projects/{projectId}/queries/{queryId}/exports" : {
+      "post" : {
+        "tags" : [ "Data -- Exports" ],
+        "summary" : "Export Query (async)",
+        "description" : "Submits an async export of a saved query as CSV or JSONL. Returns immediately with a job id; poll the status endpoint for the download URLs.",
+        "operationId" : "exportQuery",
+        "parameters" : [ {
+          "name" : "projectId",
+          "in" : "path",
+          "description" : "ID of the Project",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mtKDhe1U"
+        }, {
+          "name" : "queryId",
+          "in" : "path",
+          "description" : "ID of the Query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : 709922802836177297
+        } ],
+        "requestBody" : {
+          "description" : "Export options",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ExportRequest"
+              },
+              "examples" : {
+                "CSV with selected columns" : {
+                  "description" : "CSV with selected columns",
+                  "value" : {
+                    "format" : "CSV",
+                    "columns" : [ "id", "created", "amount" ]
+                  }
+                },
+                "JSONL, single merged file, gzip" : {
+                  "description" : "JSONL, single merged file, gzip",
+                  "value" : {
+                    "format" : "JSONL",
+                    "method" : "TRINO_NATIVE",
+                    "singleFile" : true,
+                    "compression" : "GZIP"
+                  }
+                }
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "202" : {
+            "description" : "Export job accepted",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ExportJobCreated"
+                },
+                "example" : {
+                  "id" : "4c9fcb44-126a-45f8-99a0-f1d245083d78",
+                  "status" : "PENDING"
                 }
               }
             }
@@ -8716,6 +9023,114 @@
           }
         }
       },
+      "ExportCsvOptions" : {
+        "type" : "object",
+        "properties" : {
+          "delimiter" : {
+            "type" : "string",
+            "description" : "Field delimiter",
+            "example" : ",",
+            "default" : ","
+          },
+          "quoteChar" : {
+            "type" : "string",
+            "description" : "Quote character",
+            "example" : "\"",
+            "default" : "\""
+          },
+          "recordSeparator" : {
+            "type" : "string",
+            "description" : "Record separator",
+            "example" : "\\n",
+            "default" : "\\n"
+          },
+          "includeHeader" : {
+            "type" : "boolean",
+            "description" : "Whether to emit a header row",
+            "example" : true,
+            "default" : true
+          },
+          "nullValue" : {
+            "type" : "string",
+            "description" : "Representation of NULL values"
+          }
+        },
+        "description" : "CSV formatting options (ignored for JSONL exports)"
+      },
+      "ExportRequest" : {
+        "type" : "object",
+        "properties" : {
+          "format" : {
+            "type" : "string",
+            "description" : "Output format",
+            "example" : "CSV",
+            "default" : "CSV",
+            "enum" : [ "CSV", "JSONL" ]
+          },
+          "limit" : {
+            "type" : "integer",
+            "description" : "Row limit; clamped to [1, 1000000]",
+            "format" : "int32",
+            "example" : 100000
+          },
+          "csvOptions" : {
+            "$ref" : "#/components/schemas/ExportCsvOptions"
+          },
+          "includeSystemColumns" : {
+            "type" : "boolean",
+            "description" : "When false, Peaka system columns (_id, _version, …) are excluded. Cache plumbing columns (_q_*, _cache_*) are always dropped.",
+            "example" : true,
+            "default" : true
+          },
+          "columns" : {
+            "type" : "array",
+            "description" : "Explicit column selection; an unknown name yields 400. Omit to export all columns.",
+            "example" : [ "id", "created", "amount" ],
+            "items" : {
+              "type" : "string",
+              "description" : "Explicit column selection; an unknown name yields 400. Omit to export all columns.",
+              "example" : "[\"id\",\"created\",\"amount\"]"
+            }
+          },
+          "method" : {
+            "type" : "string",
+            "description" : "How the export is produced. APP_STREAM streams a single file; TRINO_NATIVE writes parts in parallel (faster on large data).",
+            "example" : "TRINO_NATIVE",
+            "default" : "TRINO_NATIVE",
+            "enum" : [ "APP_STREAM", "TRINO_NATIVE" ]
+          },
+          "singleFile" : {
+            "type" : "boolean",
+            "description" : "Merges the multi-part output of TRINO_NATIVE into a single object",
+            "example" : false,
+            "default" : false
+          },
+          "compression" : {
+            "type" : "string",
+            "description" : "Output compression; with GZIP every artifact is a gzip stream carrying a .gz suffix",
+            "example" : "NONE",
+            "default" : "NONE",
+            "enum" : [ "NONE", "GZIP" ]
+          }
+        },
+        "description" : "Async export request. The job is accepted (202) and runs in the background; the result is downloaded via presigned URLs returned by the status endpoint."
+      },
+      "ExportJobCreated" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Export job id",
+            "example" : "4c9fcb44-126a-45f8-99a0-f1d245083d78"
+          },
+          "status" : {
+            "type" : "string",
+            "description" : "Initial job status",
+            "example" : "PENDING"
+          }
+        },
+        "description" : "Acknowledgement returned when an export job is accepted"
+      },
       "QueryFolderCreateRequest" : {
         "type" : "object",
         "properties" : {
@@ -9193,6 +9608,140 @@
           }
         },
         "description" : "Status and schedule information for a materialized query"
+      },
+      "ExportFile" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "File name",
+            "example" : "query_709922802836177297_charges.jsonl"
+          },
+          "url" : {
+            "type" : "string",
+            "description" : "Presigned download URL (short-lived)",
+            "example" : "https://<minio>/export/...&X-Amz-Signature=..."
+          },
+          "bytes" : {
+            "type" : "integer",
+            "description" : "Object size in bytes",
+            "format" : "int64",
+            "example" : 3706920
+          }
+        },
+        "description" : "A downloadable export artifact with a freshly-minted presigned URL"
+      },
+      "ExportJobResponse" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Export job id",
+            "example" : "4c9fcb44-126a-45f8-99a0-f1d245083d78"
+          },
+          "status" : {
+            "type" : "string",
+            "description" : "Job status. EXPIRED is derived when the artifacts have been removed by the lifecycle rule; exports are point-in-time snapshots and are never regenerated.",
+            "example" : "SUCCEEDED",
+            "enum" : [ "PENDING", "RUNNING", "SUCCEEDED", "FAILED", "CANCELLED", "EXPIRED" ]
+          },
+          "format" : {
+            "type" : "string",
+            "description" : "Output format",
+            "example" : "JSONL"
+          },
+          "compression" : {
+            "type" : "string",
+            "description" : "Output compression",
+            "example" : "NONE"
+          },
+          "rowCount" : {
+            "type" : "integer",
+            "description" : "Number of exported rows",
+            "format" : "int64",
+            "example" : 993
+          },
+          "bytes" : {
+            "type" : "integer",
+            "description" : "Total output size in bytes",
+            "format" : "int64",
+            "example" : 3706920
+          },
+          "durationMs" : {
+            "type" : "integer",
+            "description" : "Execution time in milliseconds",
+            "format" : "int64",
+            "example" : 1055
+          },
+          "files" : {
+            "type" : "array",
+            "description" : "Downloadable artifacts (only for the owner of a SUCCEEDED job)",
+            "items" : {
+              "$ref" : "#/components/schemas/ExportFile"
+            }
+          },
+          "expiresAt" : {
+            "type" : "string",
+            "description" : "Expiry of the presigned URLs (ISO-8601); re-call GET for fresh links",
+            "example" : "2026-06-10T13:24:20Z"
+          },
+          "downloadable" : {
+            "type" : "boolean",
+            "description" : "Whether the calling user may download this export (owner-only access)",
+            "example" : true
+          },
+          "error" : {
+            "type" : "string",
+            "description" : "Error message when the job failed"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "description" : "Submission time (ISO-8601)",
+            "example" : "2026-06-10T12:24:08Z"
+          },
+          "queryId" : {
+            "type" : "string",
+            "description" : "Source query id (query exports)",
+            "example" : "709922802836177297"
+          },
+          "catalogId" : {
+            "type" : "string",
+            "description" : "Source catalog id (table exports)"
+          },
+          "schemaName" : {
+            "type" : "string",
+            "description" : "Source schema name (table exports)"
+          },
+          "tableName" : {
+            "type" : "string",
+            "description" : "Source table name (table exports)"
+          },
+          "source" : {
+            "type" : "string",
+            "description" : "Quoted, fully-qualified source name for display",
+            "example" : "peaka.query.\"charges_view\""
+          },
+          "userId" : {
+            "type" : "string",
+            "description" : "Initiator user id"
+          },
+          "userName" : {
+            "type" : "string",
+            "description" : "Initiator user name",
+            "example" : "user@example.com"
+          },
+          "apiKeyPrefix" : {
+            "type" : "string",
+            "description" : "Public prefix of the initiator's API key",
+            "example" : "hBWIQxjc"
+          },
+          "clientSource" : {
+            "type" : "string",
+            "description" : "Client source (X-Trino-Source, falling back to User-Agent)",
+            "example" : "peaka-studio"
+          }
+        },
+        "description" : "Status and result of an export job"
       },
       "Schema" : {
         "type" : "object",
