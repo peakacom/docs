@@ -3682,8 +3682,8 @@
           "required" : false,
           "schema" : {
             "type" : "string",
-            "default" : "CELL_TYPED",
-            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ]
+            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ],
+            "default" : "CELL_TYPED"
           },
           "example" : "SIMPLE"
         } ],
@@ -5961,6 +5961,53 @@
                   "type" : "array",
                   "items" : {
                     "$ref" : "#/components/schemas/ExportJobResponse"
+                  }
+                },
+                "examples" : {
+                  "Mixed statuses" : {
+                    "description" : "Mixed statuses",
+                    "value" : [ {
+                      "id" : "4c9fcb44-126a-45f8-99a0-f1d245083d78",
+                      "status" : "SUCCEEDED",
+                      "format" : "JSONL",
+                      "compression" : "NONE",
+                      "rowCount" : 993,
+                      "bytes" : 3706920,
+                      "durationMs" : 1055,
+                      "downloadable" : true,
+                      "queryId" : "709922802836177297",
+                      "source" : "peaka.query.\"charges_view\"",
+                      "userName" : "user@example.com",
+                      "apiKeyPrefix" : "hBWIQxjc",
+                      "clientSource" : "peaka-studio",
+                      "createdAt" : "2026-06-10T12:24:08Z"
+                    }, {
+                      "id" : "2f1a9c77-8b3e-4d21-9a5c-1e7f0b2d4a90",
+                      "status" : "RUNNING",
+                      "format" : "CSV",
+                      "compression" : "GZIP",
+                      "downloadable" : false,
+                      "catalogId" : "367189801096446904",
+                      "schemaName" : "payment",
+                      "tableName" : "charges",
+                      "source" : "peaka.payment.\"charges\"",
+                      "userName" : "user@example.com",
+                      "apiKeyPrefix" : "hBWIQxjc",
+                      "clientSource" : "peaka-api",
+                      "createdAt" : "2026-06-10T12:20:31Z"
+                    }, {
+                      "id" : "9d8c7b6a-5e4f-3210-bca9-87654321fedc",
+                      "status" : "FAILED",
+                      "format" : "CSV",
+                      "downloadable" : false,
+                      "error" : "Query exceeded the 1,000,000 row export limit",
+                      "queryId" : "709922802836177297",
+                      "source" : "peaka.query.\"charges_view\"",
+                      "userName" : "user@example.com",
+                      "apiKeyPrefix" : "hBWIQxjc",
+                      "clientSource" : "peaka-studio",
+                      "createdAt" : "2026-06-10T12:11:02Z"
+                    } ]
                   }
                 }
               }
@@ -9102,8 +9149,8 @@
             "type" : "string",
             "description" : "Output format",
             "example" : "CSV",
-            "default" : "CSV",
-            "enum" : [ "CSV", "JSONL" ]
+            "enum" : [ "CSV", "JSONL" ],
+            "default" : "CSV"
           },
           "limit" : {
             "type" : "integer",
@@ -9134,8 +9181,8 @@
             "type" : "string",
             "description" : "Output compression; with GZIP every artifact is a gzip stream carrying a .gz suffix",
             "example" : "NONE",
-            "default" : "NONE",
-            "enum" : [ "NONE", "GZIP" ]
+            "enum" : [ "NONE", "GZIP" ],
+            "default" : "NONE"
           }
         },
         "description" : "Async export request. The job is accepted (202) and runs in the background; the result is downloaded via presigned URLs returned by the status endpoint."
