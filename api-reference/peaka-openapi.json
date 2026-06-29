@@ -4308,6 +4308,16 @@
           "example" : "550e8400-e29b-41d4-a716-446655440000"
         } ],
         "responses" : {
+          "404" : {
+            "description" : "Folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Folder read successfully",
             "content" : {
@@ -4336,16 +4346,6 @@
                     "path" : "/Reports",
                     "folderId" : "550e8400-e29b-41d4-a716-446655440000"
                   } ]
-                }
-              }
-            }
-          },
-          "404" : {
-            "description" : "Folder not found",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
               }
             }
@@ -6247,6 +6247,16 @@
           "required" : true
         },
         "responses" : {
+          "400" : {
+            "description" : "Target table already exists",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ParametricTable"
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Parametric table created successfully",
             "content" : {
@@ -6271,16 +6281,6 @@
                       } ]
                     }
                   }
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "Target table already exists",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ParametricTable"
                 }
               }
             }
@@ -8466,30 +8466,31 @@
           "type" : {
             "type" : "string",
             "description" : "Type of schedule.",
-            "example" : "interval",
             "enum" : [ "interval", "cron", "none" ]
           },
           "cronExpression" : {
             "type" : "string",
-            "description" : "Cron expression when the schedule type is 'cron'.",
-            "nullable" : true,
-            "example" : "0 0 * * *"
+            "description" : "Cron expression. Set only when the schedule type is 'cron'.",
+            "nullable" : true
           },
           "repeatDuration" : {
             "type" : "string",
-            "description" : "ISO-8601 duration when the schedule type is 'interval'.",
-            "nullable" : true,
-            "example" : "PT6H"
+            "description" : "ISO-8601 duration. Set only when the schedule type is 'interval'.",
+            "nullable" : true
           },
           "timezone" : {
             "type" : "string",
-            "description" : "IANA timezone used to evaluate the cron expression.",
-            "nullable" : true,
-            "example" : "UTC"
+            "description" : "IANA timezone used to evaluate the cron expression. Set only when the schedule type is 'cron'.",
+            "nullable" : true
           }
         },
-        "description" : "Schedule configuration of a materialized query.",
-        "nullable" : true
+        "description" : "Schedule configuration of a materialized query. Provide EITHER an interval schedule (`type=interval` with `repeatDuration`) OR a cron schedule (`type=cron` with `cronExpression` and optional `timezone`). Use `type=none` for no schedule. The fields that do not apply to the chosen type are omitted.",
+        "nullable" : true,
+        "example" : {
+          "type" : "cron",
+          "cronExpression" : "0 0 * * *",
+          "timezone" : "UTC"
+        }
       },
       "QueryRequest" : {
         "type" : "object",
