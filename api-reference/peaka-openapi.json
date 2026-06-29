@@ -3564,6 +3564,18 @@
                   "displayName" : "sampleQuery",
                   "name" : "samplequery",
                   "inputQuery" : "SELECT * from \"mycatalog\".payment.charges"
+                }, {
+                  "id" : "709922802836177298",
+                  "displayName" : "dailyRevenue",
+                  "name" : "dailyrevenue",
+                  "inputQuery" : "SELECT * from \"mycatalog\".payment.charges",
+                  "queryType" : "MATERIALIZED",
+                  "inputQueryRefId" : "709922802836177297",
+                  "schedule" : {
+                    "type" : "cron",
+                    "cronExpression" : "0 0 * * *",
+                    "timezone" : "UTC"
+                  }
                 } ]
               }
             }
@@ -3627,14 +3639,28 @@
                     "queryType" : "MATERIALIZED"
                   }
                 },
-                "Create Materialized Scheduled Query" : {
-                  "description" : "Create Materialized Scheduled Query",
+                "Create Materialized Query (Interval Schedule)" : {
+                  "description" : "Create Materialized Query (Interval Schedule)",
                   "value" : {
                     "displayName" : "sampleQuery",
                     "inputQuery" : "SELECT * from \"mycatalog\".payment.customers",
                     "queryType" : "MATERIALIZED",
                     "schedule" : {
-                      "expression" : "PT6H"
+                      "type" : "interval",
+                      "repeatDuration" : "PT6H"
+                    }
+                  }
+                },
+                "Create Materialized Query (Cron Schedule)" : {
+                  "description" : "Create Materialized Query (Cron Schedule)",
+                  "value" : {
+                    "displayName" : "sampleQuery",
+                    "inputQuery" : "SELECT * from \"mycatalog\".payment.customers",
+                    "queryType" : "MATERIALIZED",
+                    "schedule" : {
+                      "type" : "cron",
+                      "cronExpression" : "0 0 * * *",
+                      "timezone" : "UTC"
                     }
                   }
                 }
@@ -3945,14 +3971,28 @@
                     "inputQuery" : "SELECT * from \"mycatalog\".payment.charges"
                   }
                 },
-                "Update Materialized Query" : {
-                  "description" : "Update Materialized Query",
+                "Update Materialized Query (Interval Schedule)" : {
+                  "description" : "Update Materialized Query (Interval Schedule)",
                   "value" : {
                     "displayName" : "sampleQuery",
                     "inputQuery" : "SELECT * from \"mycatalog\".payment.charges",
                     "queryType" : "MATERIALIZED",
                     "schedule" : {
-                      "expression" : "PT6H"
+                      "type" : "interval",
+                      "repeatDuration" : "PT6H"
+                    }
+                  }
+                },
+                "Update Materialized Query (Cron Schedule)" : {
+                  "description" : "Update Materialized Query (Cron Schedule)",
+                  "value" : {
+                    "displayName" : "sampleQuery",
+                    "inputQuery" : "SELECT * from \"mycatalog\".payment.charges",
+                    "queryType" : "MATERIALIZED",
+                    "schedule" : {
+                      "type" : "cron",
+                      "cronExpression" : "0 0 * * *",
+                      "timezone" : "UTC"
                     }
                   }
                 }
@@ -4553,6 +4593,23 @@
           "required" : true
         },
         "responses" : {
+          "200" : {
+            "description" : "Folder moved successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                },
+                "example" : {
+                  "id" : "550e8400-e29b-41d4-a716-446655440000",
+                  "name" : "Reports",
+                  "path" : "/Archive/Reports",
+                  "parentId" : "550e8400-e29b-41d4-a716-446655440002",
+                  "createdAt" : "2025-01-15T10:30:00Z"
+                }
+              }
+            }
+          },
           "409" : {
             "description" : "A folder already exists at the target path or circular move detected",
             "content" : {
@@ -4569,23 +4626,6 @@
               "*/*" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          },
-          "200" : {
-            "description" : "Folder moved successfully",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                },
-                "example" : {
-                  "id" : "550e8400-e29b-41d4-a716-446655440000",
-                  "name" : "Reports",
-                  "path" : "/Archive/Reports",
-                  "parentId" : "550e8400-e29b-41d4-a716-446655440002",
-                  "createdAt" : "2025-01-15T10:30:00Z"
                 }
               }
             }
@@ -4646,16 +4686,6 @@
               }
             }
           },
-          "409" : {
-            "description" : "Folder already exists at this path",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          },
           "201" : {
             "description" : "Folder created successfully",
             "content" : {
@@ -4669,6 +4699,16 @@
                   "path" : "/Reports/Monthly",
                   "parentId" : "550e8400-e29b-41d4-a716-446655440000",
                   "createdAt" : "2025-01-15T10:31:00Z"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Folder already exists at this path",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
                 }
               }
             }
@@ -8420,6 +8460,37 @@
           }
         }
       },
+      "MaterializedQuerySchedule" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "description" : "Type of schedule.",
+            "example" : "interval",
+            "enum" : [ "interval", "cron", "none" ]
+          },
+          "cronExpression" : {
+            "type" : "string",
+            "description" : "Cron expression when the schedule type is 'cron'.",
+            "nullable" : true,
+            "example" : "0 0 * * *"
+          },
+          "repeatDuration" : {
+            "type" : "string",
+            "description" : "ISO-8601 duration when the schedule type is 'interval'.",
+            "nullable" : true,
+            "example" : "PT6H"
+          },
+          "timezone" : {
+            "type" : "string",
+            "description" : "IANA timezone used to evaluate the cron expression.",
+            "nullable" : true,
+            "example" : "UTC"
+          }
+        },
+        "description" : "Schedule configuration of a materialized query.",
+        "nullable" : true
+      },
       "QueryRequest" : {
         "type" : "object",
         "properties" : {
@@ -8436,23 +8507,13 @@
             "description" : "The type of the query:\n PLAIN or MATERIALIZED\n\n\n Default is PLAIN."
           },
           "schedule" : {
-            "$ref" : "#/components/schemas/Schedule"
+            "$ref" : "#/components/schemas/MaterializedQuerySchedule"
           },
           "path" : {
             "type" : "string",
             "description" : "The folder path to place this query in (e.g. \"/reports/monthly\").\n If provided, intermediate folders are created automatically.\n Optional — if omitted, the query is placed at the root level."
           }
         }
-      },
-      "Schedule" : {
-        "type" : "object",
-        "properties" : {
-          "expression" : {
-            "type" : "string",
-            "description" : "The expression of the schedule.\n The expression is a duration in ISO-8601 format.\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds)\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds)\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
-          }
-        },
-        "description" : "This class represents a schedule for a materialized query."
       },
       "Query" : {
         "type" : "object",
@@ -8467,33 +8528,37 @@
           },
           "name" : {
             "type" : "string",
-            "description" : "The name of the query.\n\n This is the name of the query which will be used in the sql query.\n e.g. SELECT * FROM \"peaka\".\"query\".\"<name>\""
+            "description" : "The name of the query used in SQL, e.g. SELECT * FROM \"peaka\".\"query\".\"<name>\"."
           },
           "inputQuery" : {
             "type" : "string",
-            "description" : "The sql query."
+            "description" : "The SQL query."
           },
           "inputQueryRefId" : {
             "type" : "string",
-            "description" : "The reference id of the input query."
+            "description" : "The reference id of the input query. For a MATERIALIZED query, the id of the original query it materializes.",
+            "nullable" : true
           },
           "queryType" : {
             "type" : "string",
-            "description" : "The type of the query:\n PLAIN or MATERIALIZED"
+            "description" : "The type of the query.",
+            "enum" : [ "PLAIN", "MATERIALIZED" ]
           },
           "schedule" : {
-            "$ref" : "#/components/schemas/Schedule"
+            "$ref" : "#/components/schemas/MaterializedQuerySchedule"
           },
           "path" : {
             "type" : "string",
-            "description" : "The path of the query (e.g. \"/analytics/dashboards\").\n Null if the query is not in any folder."
+            "description" : "The folder path of the query (e.g. \"/analytics/dashboards\"). Null if not in any folder.",
+            "nullable" : true
           },
           "folderId" : {
             "type" : "string",
-            "description" : "The ID of the folder containing this query.\n Null if the query is not in any folder."
+            "description" : "The ID of the folder containing this query. Null if not in any folder.",
+            "nullable" : true
           }
         },
-        "description" : "Queries in this folder (present only when includeQueries=true)"
+        "description" : "A saved query belonging to a project."
       },
       "QueryFolderUpdateRequest" : {
         "type" : "object",
@@ -8595,6 +8660,20 @@
           }
         },
         "description" : "This class represents a request to cache data.\n It contains the catalog ID, schema name, table name, and schedule of the cache request."
+      },
+      "Schedule" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "description" : "The type of the schedule. BASIC or NONE."
+          },
+          "expression" : {
+            "type" : "string",
+            "description" : "The expression of the schedule.\n Valid if the type is other than NONE.\n For BASIC, the expression is a duration in ISO-8601 format.\n \"PT15M\"     -- parses as \"15 minutes\" (where a minute is 60 seconds)\n \"PT10H\"     -- parses as \"10 hours\" (where an hour is 3600 seconds)\n \"P2D\"       -- parses as \"2 days\" (where a day is 24 hours or 86400 seconds)"
+          }
+        },
+        "description" : "This class represents a schedule for a cache request.\n It contains the type and expression of the schedule."
       },
       "Cache" : {
         "type" : "object",
@@ -9592,37 +9671,6 @@
         },
         "description" : "Response containing the folder tree hierarchy"
       },
-      "MaterializedQueryScheduleSettings" : {
-        "type" : "object",
-        "properties" : {
-          "cronExpression" : {
-            "type" : "string",
-            "description" : "Cron expression when the schedule type is 'cron'.",
-            "nullable" : true,
-            "example" : "0 0 * * *"
-          },
-          "repeatDuration" : {
-            "type" : "string",
-            "description" : "ISO-8601 duration when the schedule type is 'interval'.",
-            "nullable" : true,
-            "example" : "PT6H"
-          },
-          "timezone" : {
-            "type" : "string",
-            "description" : "IANA timezone used to evaluate the cron expression.",
-            "nullable" : true,
-            "example" : "UTC"
-          },
-          "type" : {
-            "type" : "string",
-            "description" : "Type of schedule.",
-            "example" : "interval",
-            "enum" : [ "interval", "cron", "none" ]
-          }
-        },
-        "description" : "Schedule configuration of a materialized query",
-        "nullable" : true
-      },
       "MaterializedQueryStatusView" : {
         "type" : "object",
         "properties" : {
@@ -9637,7 +9685,7 @@
             "example" : "samplequery"
           },
           "scheduleSettings" : {
-            "$ref" : "#/components/schemas/MaterializedQueryScheduleSettings"
+            "$ref" : "#/components/schemas/MaterializedQuerySchedule"
           },
           "nextExecutionStartTime" : {
             "type" : "string",
