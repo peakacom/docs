@@ -3708,8 +3708,8 @@
           "required" : false,
           "schema" : {
             "type" : "string",
-            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ],
-            "default" : "CELL_TYPED"
+            "default" : "CELL_TYPED",
+            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ]
           },
           "example" : "SIMPLE"
         } ],
@@ -4308,16 +4308,6 @@
           "example" : "550e8400-e29b-41d4-a716-446655440000"
         } ],
         "responses" : {
-          "404" : {
-            "description" : "Folder not found",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
-                }
-              }
-            }
-          },
           "200" : {
             "description" : "Folder read successfully",
             "content" : {
@@ -4346,6 +4336,16 @@
                     "path" : "/Reports",
                     "folderId" : "550e8400-e29b-41d4-a716-446655440000"
                   } ]
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
               }
             }
@@ -6247,16 +6247,6 @@
           "required" : true
         },
         "responses" : {
-          "400" : {
-            "description" : "Target table already exists",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ParametricTable"
-                }
-              }
-            }
-          },
           "200" : {
             "description" : "Parametric table created successfully",
             "content" : {
@@ -6281,6 +6271,16 @@
                       } ]
                     }
                   }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Target table already exists",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ParametricTable"
                 }
               }
             }
@@ -9213,8 +9213,8 @@
             "type" : "string",
             "description" : "Output format",
             "example" : "CSV",
-            "enum" : [ "CSV", "JSONL" ],
-            "default" : "CSV"
+            "default" : "CSV",
+            "enum" : [ "CSV", "JSONL" ]
           },
           "limit" : {
             "type" : "integer",
@@ -9245,8 +9245,8 @@
             "type" : "string",
             "description" : "Output compression; with GZIP every artifact is a gzip stream carrying a .gz suffix",
             "example" : "NONE",
-            "enum" : [ "NONE", "GZIP" ],
-            "default" : "NONE"
+            "default" : "NONE",
+            "enum" : [ "NONE", "GZIP" ]
           }
         },
         "description" : "Async export request. The job is accepted (202) and runs in the background; the result is downloaded via presigned URLs returned by the status endpoint."
