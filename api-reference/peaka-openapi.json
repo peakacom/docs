@@ -3570,7 +3570,6 @@
                   "name" : "dailyrevenue",
                   "inputQuery" : "SELECT * from \"mycatalog\".payment.charges",
                   "queryType" : "MATERIALIZED",
-                  "inputQueryRefId" : "709922802836177297",
                   "schedule" : {
                     "type" : "cron",
                     "cronExpression" : "0 0 * * *",
@@ -3588,7 +3587,7 @@
       "post" : {
         "tags" : [ "Data -- Queries" ],
         "summary" : "Create Query",
-        "description" : "Creates a new query under the given project. Supports plain and materialized query types. Optionally accepts a path to place the query in a folder hierarchy.",
+        "description" : "Creates a new query under the given project. Supports plain and materialized query types. Optionally accepts a path to place the query in a folder hierarchy. A MATERIALIZED query is materialized immediately on create and its result is queryable as `\"peaka\".\"mtquery\".\"<name>\"`; an optional `schedule` keeps it refreshed. To materialize an existing query, send `inputQueryRefId` with the source query's id instead of `inputQuery`: a snapshot of the source SQL is taken at create time and stored as the new query's own `inputQuery` (the source query is left untouched, and later changes to it do not propagate).",
         "operationId" : "createQuery",
         "parameters" : [ {
           "name" : "projectId",
@@ -3663,6 +3662,26 @@
                       "timezone" : "UTC"
                     }
                   }
+                },
+                "Create Materialized Query from Existing Query" : {
+                  "description" : "Create Materialized Query from Existing Query",
+                  "value" : {
+                    "displayName" : "sampleQuery",
+                    "queryType" : "MATERIALIZED",
+                    "inputQueryRefId" : "709922802836177297"
+                  }
+                },
+                "Create Materialized Query from Existing Query (Twice-Daily Schedule)" : {
+                  "description" : "Create Materialized Query from Existing Query (Twice-Daily Schedule)",
+                  "value" : {
+                    "displayName" : "sampleQuery",
+                    "queryType" : "MATERIALIZED",
+                    "inputQueryRefId" : "709922802836177297",
+                    "schedule" : {
+                      "type" : "interval",
+                      "repeatDuration" : "PT12H"
+                    }
+                  }
                 }
               }
             }
@@ -3708,8 +3727,8 @@
           "required" : false,
           "schema" : {
             "type" : "string",
-            "default" : "CELL_TYPED",
-            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ]
+            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ],
+            "default" : "CELL_TYPED"
           },
           "example" : "SIMPLE"
         } ],
@@ -3927,7 +3946,7 @@
       "put" : {
         "tags" : [ "Data -- Queries" ],
         "summary" : "Update Query",
-        "description" : "Updates the display name, SQL, or schedule of an existing query. To move a query to a different folder use the Update Query Path endpoint.",
+        "description" : "Updates the display name, SQL, or schedule of an existing query. Fields omitted from the request keep their current values. Sending `queryType: MATERIALIZED` converts a plain query into a materialized one. Sending `inputQueryRefId` re-resolves the referenced query's SQL and stores the fresh snapshot as this query's `inputQuery` — use it to re-sync a materialized query with its source. To move a query to a different folder use the Update Query Path endpoint.",
         "operationId" : "updateQuery",
         "parameters" : [ {
           "name" : "projectId",
@@ -3994,6 +4013,14 @@
                       "cronExpression" : "0 0 * * *",
                       "timezone" : "UTC"
                     }
+                  }
+                },
+                "Re-sync Materialized Query from Source Query" : {
+                  "description" : "Re-resolves the referenced query's SQL and stores the fresh snapshot as this query's inputQuery.",
+                  "value" : {
+                    "displayName" : "sampleQuery",
+                    "queryType" : "MATERIALIZED",
+                    "inputQueryRefId" : "709922802836177297"
                   }
                 }
               }
@@ -4308,6 +4335,16 @@
           "example" : "550e8400-e29b-41d4-a716-446655440000"
         } ],
         "responses" : {
+          "404" : {
+            "description" : "Folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Folder read successfully",
             "content" : {
@@ -4336,16 +4373,6 @@
                     "path" : "/Reports",
                     "folderId" : "550e8400-e29b-41d4-a716-446655440000"
                   } ]
-                }
-              }
-            }
-          },
-          "404" : {
-            "description" : "Folder not found",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
               }
             }
@@ -4395,20 +4422,20 @@
           "required" : true
         },
         "responses" : {
-          "200" : {
-            "description" : "Queries moved successfully",
+          "404" : {
+            "description" : "Folder not found",
             "content" : {
-              "application/json" : {
+              "*/*" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
               }
             }
           },
-          "404" : {
-            "description" : "Folder not found",
+          "200" : {
+            "description" : "Queries moved successfully",
             "content" : {
-              "*/*" : {
+              "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
@@ -8470,18 +8497,21 @@
           },
           "cronExpression" : {
             "type" : "string",
-            "description" : "Cron expression. Set only when the schedule type is 'cron'.",
-            "nullable" : true
+            "description" : "UNIX cron expression (minute hour day-of-month month day-of-week), e.g. '0 0 * * *' for every day at midnight. Set only when the schedule type is 'cron'.",
+            "nullable" : true,
+            "example" : "0 0 * * *"
           },
           "repeatDuration" : {
             "type" : "string",
-            "description" : "ISO-8601 duration. Set only when the schedule type is 'interval'.",
-            "nullable" : true
+            "description" : "ISO-8601 duration between refreshes, e.g. 'PT6H' (every 6 hours), 'PT12H' (twice daily), 'P1D' (daily). Set only when the schedule type is 'interval'.",
+            "nullable" : true,
+            "example" : "PT12H"
           },
           "timezone" : {
             "type" : "string",
-            "description" : "IANA timezone used to evaluate the cron expression. Set only when the schedule type is 'cron'.",
-            "nullable" : true
+            "description" : "IANA timezone used to evaluate the cron expression, e.g. 'UTC' or 'Europe/Istanbul'. Set only when the schedule type is 'cron'.",
+            "nullable" : true,
+            "example" : "UTC"
           }
         },
         "description" : "Schedule configuration of a materialized query. Provide EITHER an interval schedule (`type=interval` with `repeatDuration`) OR a cron schedule (`type=cron` with `cronExpression` and optional `timezone`). Use `type=none` for no schedule. The fields that do not apply to the chosen type are omitted.",
@@ -8497,22 +8527,34 @@
         "properties" : {
           "displayName" : {
             "type" : "string",
-            "description" : "The display name of the query."
+            "description" : "The display name of the query.",
+            "example" : "sampleQuery"
           },
           "inputQuery" : {
             "type" : "string",
-            "description" : "The sql query."
+            "description" : "The SQL query. Required unless inputQueryRefId is provided.",
+            "nullable" : true
           },
           "queryType" : {
             "type" : "string",
-            "description" : "The type of the query:\n PLAIN or MATERIALIZED\n\n\n Default is PLAIN."
+            "description" : "The type of the query. Defaults to PLAIN.",
+            "enum" : [ "PLAIN", "MATERIALIZED" ],
+            "default" : "PLAIN"
           },
           "schedule" : {
             "$ref" : "#/components/schemas/MaterializedQuerySchedule"
           },
+          "inputQueryRefId" : {
+            "type" : "string",
+            "description" : "The id of an existing query to materialize. Valid only if the query type is MATERIALIZED. When set, the materialized query is built from the referenced query's SQL and inputQuery is not required. The reference is resolved when the request is processed: a snapshot of the referenced query's SQL is stored as this query's inputQuery. The reference id itself is not persisted and is not returned in responses; later changes to the referenced query do not propagate. Send the reference again on an update to re-resolve from the source.",
+            "nullable" : true,
+            "example" : "709922802836177297"
+          },
           "path" : {
             "type" : "string",
-            "description" : "The folder path to place this query in (e.g. \"/reports/monthly\").\n If provided, intermediate folders are created automatically.\n Optional — if omitted, the query is placed at the root level."
+            "description" : "The folder path to place this query in. Intermediate folders are created automatically. If omitted, the query is placed at the root level.",
+            "nullable" : true,
+            "example" : "/reports/monthly"
           }
         }
       },
@@ -8529,15 +8571,15 @@
           },
           "name" : {
             "type" : "string",
-            "description" : "The name of the query used in SQL, e.g. SELECT * FROM \"peaka\".\"query\".\"<name>\"."
+            "description" : "The name of the query used in SQL, e.g. SELECT * FROM \"peaka\".\"query\".\"<name>\". For a MATERIALIZED query the materialized result is queryable as \"peaka\".\"mtquery\".\"<name>\"."
           },
           "inputQuery" : {
             "type" : "string",
-            "description" : "The SQL query."
+            "description" : "The SQL query. For a materialized query created from an existing query (via inputQueryRefId), this holds the snapshot of the source query's SQL resolved when the query was created or last updated with the reference."
           },
           "inputQueryRefId" : {
             "type" : "string",
-            "description" : "The reference id of the input query. For a MATERIALIZED query, the id of the original query it materializes.",
+            "description" : "Always null in responses. The inputQueryRefId sent on create/update is resolved immediately to the referenced query's SQL — stored as this query's inputQuery — and the reference itself is not persisted.",
             "nullable" : true
           },
           "queryType" : {
@@ -9213,8 +9255,8 @@
             "type" : "string",
             "description" : "Output format",
             "example" : "CSV",
-            "default" : "CSV",
-            "enum" : [ "CSV", "JSONL" ]
+            "enum" : [ "CSV", "JSONL" ],
+            "default" : "CSV"
           },
           "limit" : {
             "type" : "integer",
@@ -9245,8 +9287,8 @@
             "type" : "string",
             "description" : "Output compression; with GZIP every artifact is a gzip stream carrying a .gz suffix",
             "example" : "NONE",
-            "default" : "NONE",
-            "enum" : [ "NONE", "GZIP" ]
+            "enum" : [ "NONE", "GZIP" ],
+            "default" : "NONE"
           }
         },
         "description" : "Async export request. The job is accepted (202) and runs in the background; the result is downloaded via presigned URLs returned by the status endpoint."
