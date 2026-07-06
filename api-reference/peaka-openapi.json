@@ -1746,6 +1746,25 @@
           "required" : true
         },
         "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : {
+                  "Bad Request" : {
+                    "description" : "Bad Request",
+                    "value" : {
+                      "errorCode" : 100,
+                      "message" : "There are already a catalog with same name!!"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Catalog created successfully",
             "content" : {
@@ -1772,25 +1791,6 @@
                       "displayName" : "exampleStripeCatalog",
                       "catalogType" : "stripe",
                       "connectionId" : "8db17e23-29de-4dab-8886-af9717e0e742"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "Bad Request",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "string"
-                },
-                "examples" : {
-                  "Bad Request" : {
-                    "description" : "Bad Request",
-                    "value" : {
-                      "errorCode" : 100,
-                      "message" : "There are already a catalog with same name!!"
                     }
                   }
                 }
@@ -4620,6 +4620,23 @@
           "required" : true
         },
         "responses" : {
+          "200" : {
+            "description" : "Folder moved successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                },
+                "example" : {
+                  "id" : "550e8400-e29b-41d4-a716-446655440000",
+                  "name" : "Reports",
+                  "path" : "/Archive/Reports",
+                  "parentId" : "550e8400-e29b-41d4-a716-446655440002",
+                  "createdAt" : "2025-01-15T10:30:00Z"
+                }
+              }
+            }
+          },
           "409" : {
             "description" : "A folder already exists at the target path or circular move detected",
             "content" : {
@@ -4636,23 +4653,6 @@
               "*/*" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          },
-          "200" : {
-            "description" : "Folder moved successfully",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                },
-                "example" : {
-                  "id" : "550e8400-e29b-41d4-a716-446655440000",
-                  "name" : "Reports",
-                  "path" : "/Archive/Reports",
-                  "parentId" : "550e8400-e29b-41d4-a716-446655440002",
-                  "createdAt" : "2025-01-15T10:30:00Z"
                 }
               }
             }
@@ -6226,7 +6226,7 @@
       "post" : {
         "tags" : [ "Data -- Parametric Tables" ],
         "summary" : "Create Parametric Table",
-        "description" : "Creates a new Parametric Table under the specified catalog. A Parametric Table binds specific query parameter values to a source table from a REST catalog, producing a new named table (e.g., <code>xyz_customers</code>) that can be queried directly without supplying those parameters at query time. For example, if the source table <code>customers</code> requires a <code>_q_account</code> parameter, you can create a Parametric Table that fixes this value and exposes the result as a standalone table.",
+        "description" : "Creates a new Parametric Table under the specified catalog. A Parametric Table binds specific query parameter values to a source table from a REST catalog, producing a new named table (e.g., <code>xyz_customers</code>) that can be queried directly without supplying those parameters at query time. For example, if the source table <code>customers</code> requires a <code>_q_account</code> parameter, you can create a Parametric Table that fixes this value and exposes the result as a standalone table.\n<br><br>\nDate and timestamp parameters also accept <b>relative-date macros</b>, re-evaluated on every query, so a table saved as \"this week's sales\" always returns the current week. Grammar: <code>@&lt;anchor&gt;[(+|-)&lt;n&gt;&lt;unit&gt;]</code> — anchors <code>@today</code>, <code>@yesterday</code>, <code>@now</code> (current instant), <code>@sow</code>/<code>@eow</code> (week, Monday start), <code>@som</code>/<code>@eom</code> (month), <code>@soq</code>/<code>@eoq</code> (quarter), <code>@soy</code>/<code>@eoy</code> (year); units <code>d</code> day, <code>w</code> week, <code>M</code> month, <code>q</code> quarter, <code>y</code> year, <code>h</code> hour, <code>m</code> minute (note: lowercase <code>m</code> is minute, uppercase <code>M</code> is month). Offsets can be chained: <code>@today-7d</code>, <code>@som-1M</code>, <code>@now-24h</code>. Whitelisted Trino date expressions (e.g. <code>date_trunc('month', current_date)</code>) are accepted as well.",
         "operationId" : "createParametricTable",
         "parameters" : [ {
           "name" : "projectId",
@@ -6265,6 +6265,22 @@
                     "paramValues" : [ {
                       "key" : "_q_account",
                       "value" : "acme-corp"
+                    } ]
+                  }
+                },
+                "Dynamic Date Range (relative-date macros)" : {
+                  "description" : "Date parameters bound to macros are recomputed on every run: this table always returns the current week (Monday through now). Other examples: last 7 days = @today-7d .. @today, last month = @som-1M .. @eom-1M.",
+                  "value" : {
+                    "fromSchema" : "integrations",
+                    "fromTable" : "sales_report",
+                    "toSchema" : "integrations",
+                    "toTable" : "this_weeks_sales",
+                    "paramValues" : [ {
+                      "key" : "_q_from",
+                      "value" : "@sow"
+                    }, {
+                      "key" : "_q_to",
+                      "value" : "@today"
                     } ]
                   }
                 }
