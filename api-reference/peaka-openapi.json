@@ -4335,6 +4335,16 @@
           "example" : "550e8400-e29b-41d4-a716-446655440000"
         } ],
         "responses" : {
+          "404" : {
+            "description" : "Folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Folder read successfully",
             "content" : {
@@ -4363,16 +4373,6 @@
                     "path" : "/Reports",
                     "folderId" : "550e8400-e29b-41d4-a716-446655440000"
                   } ]
-                }
-              }
-            }
-          },
-          "404" : {
-            "description" : "Folder not found",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
               }
             }
@@ -4713,6 +4713,16 @@
               }
             }
           },
+          "409" : {
+            "description" : "Folder already exists at this path",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
+                }
+              }
+            }
+          },
           "201" : {
             "description" : "Folder created successfully",
             "content" : {
@@ -4726,16 +4736,6 @@
                   "path" : "/Reports/Monthly",
                   "parentId" : "550e8400-e29b-41d4-a716-446655440000",
                   "createdAt" : "2025-01-15T10:31:00Z"
-                }
-              }
-            }
-          },
-          "409" : {
-            "description" : "Folder already exists at this path",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
                 }
               }
             }
@@ -6165,7 +6165,7 @@
       "get" : {
         "tags" : [ "Data -- Parametric Tables" ],
         "summary" : "List Parametric Tables",
-        "description" : "Lists all Parametric Tables defined under the specified catalog. A Parametric Table is a pre-configured view of a REST-based table with fixed query parameter values (e.g., <code>_q_account</code>), allowing it to be queried like a regular table without passing those parameters each time.",
+        "description" : "Lists all Parametric Tables defined under the specified catalog. A Parametric Table is a pre-configured view of a REST-based table with fixed query parameter values (e.g., `_q_account`), allowing it to be queried like a regular table without passing those parameters each time.",
         "operationId" : "listParametricTables",
         "parameters" : [ {
           "name" : "projectId",
@@ -6226,7 +6226,7 @@
       "post" : {
         "tags" : [ "Data -- Parametric Tables" ],
         "summary" : "Create Parametric Table",
-        "description" : "Creates a new Parametric Table under the specified catalog. A Parametric Table binds specific query parameter values to a source table from a REST catalog, producing a new named table (e.g., <code>xyz_customers</code>) that can be queried directly without supplying those parameters at query time. For example, if the source table <code>customers</code> requires a <code>_q_account</code> parameter, you can create a Parametric Table that fixes this value and exposes the result as a standalone table.\n<br><br>\nDate and timestamp parameters also accept <b>relative-date macros</b>, re-evaluated on every query, so a table saved as \"this week's sales\" always returns the current week. Grammar: <code>@&lt;anchor&gt;[(+|-)&lt;n&gt;&lt;unit&gt;]</code> — anchors <code>@today</code>, <code>@yesterday</code>, <code>@now</code> (current instant), <code>@sow</code>/<code>@eow</code> (week, Monday start), <code>@som</code>/<code>@eom</code> (month), <code>@soq</code>/<code>@eoq</code> (quarter), <code>@soy</code>/<code>@eoy</code> (year); units <code>d</code> day, <code>w</code> week, <code>M</code> month, <code>q</code> quarter, <code>y</code> year, <code>h</code> hour, <code>m</code> minute (note: lowercase <code>m</code> is minute, uppercase <code>M</code> is month). Offsets can be chained: <code>@today-7d</code>, <code>@som-1M</code>, <code>@now-24h</code>. Whitelisted Trino date expressions (e.g. <code>date_trunc('month', current_date)</code>) are accepted as well.",
+        "description" : "Creates a new Parametric Table under the specified catalog. A Parametric Table binds specific query parameter values to a source table from a REST catalog, producing a new named table (e.g., `xyz_customers`) that can be queried directly without supplying those parameters at query time. For example, if the source table `customers` requires a `_q_account` parameter, you can create a Parametric Table that fixes this value and exposes the result as a standalone table.\n\nDate and timestamp parameters also accept **relative-date macros**, re-evaluated on every query, so a table saved as \"this week's sales\" always returns the current week. Grammar: `@<anchor>[(+|-)<n><unit>]`\n\n- Anchors: `@today`, `@yesterday`, `@now` (current instant), `@sow` / `@eow` (week, Monday start), `@som` / `@eom` (month), `@soq` / `@eoq` (quarter), `@soy` / `@eoy` (year)\n- Units: `d` day, `w` week, `M` month, `q` quarter, `y` year, `h` hour, `m` minute (lowercase `m` is minute, uppercase `M` is month)\n- Offsets can be chained: `@today-7d`, `@som-1M`, `@now-24h`\n- Whitelisted Trino date expressions (e.g. `date_trunc('month', current_date)`) are accepted as well",
         "operationId" : "createParametricTable",
         "parameters" : [ {
           "name" : "projectId",
