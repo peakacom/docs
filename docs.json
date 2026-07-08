@@ -15,7 +15,9 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": ["introduction"]
+            "pages": [
+              "introduction"
+            ]
           },
           {
             "group": "Project Operations",
@@ -65,7 +67,9 @@
           },
           {
             "group": "AI Setup",
-            "pages": ["ai-setup/bring-your-own-ai-model"]
+            "pages": [
+              "ai-setup/bring-your-own-ai-model"
+            ]
           }
         ]
       },
@@ -232,6 +236,16 @@
             ]
           },
           {
+            "group": "Data -- Exports",
+            "pages": [
+              "api-reference/data--exports/export-query-async",
+              "api-reference/data--exports/export-table-async",
+              "api-reference/data--exports/list-exports",
+              "api-reference/data--exports/read-export",
+              "api-reference/data--exports/cancel-export"
+            ]
+          },
+          {
             "group": "Data -- Parametric Tables",
             "pages": [
               "api-reference/data--parametric-tables/list-parametric-tables",
@@ -295,7 +309,18 @@
           },
           {
             "group": "Data -- SQL",
-            "pages": ["api-reference/data--sql/transpile-sql"]
+            "pages": [
+              "api-reference/data--sql/transpile-sql"
+            ]
+          },
+          {
+            "group": "Data -- Materialized Queries",
+            "pages": [
+              "api-reference/data--materialized-queries/list-materialized-query-statuses",
+              "api-reference/data--materialized-queries/cancel-materialized-query-refresh",
+              "api-reference/data--materialized-queries/refresh-materialized-query",
+              "api-reference/data--materialized-queries/read-materialized-query-status"
+            ]
           }
         ]
       },
@@ -304,7 +329,10 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": ["mcp/overview", "mcp/quickstart"]
+            "pages": [
+              "mcp/overview",
+              "mcp/quickstart"
+            ]
           },
           {
             "group": "Install",
@@ -344,7 +372,9 @@
         "groups": [
           {
             "group": "SQL",
-            "pages": ["sql/introduction"]
+            "pages": [
+              "sql/introduction"
+            ]
           },
           {
             "group": "Reference",
@@ -362,7 +392,9 @@
           },
           {
             "group": "Data Types",
-            "pages": ["sql/reference/types"]
+            "pages": [
+              "sql/reference/types"
+            ]
           },
           {
             "group": "Functions",
