@@ -66,6 +66,11 @@ To create a Materialized Query, you can follow these steps:
 
    Configure these settings based on how frequently your underlying data changes and your performance requirements.
 
+   You can also fine-tune how the results are physically stored for better performance. Both fields are optional:
+
+   - **Partitioning**: Physically groups rows by one or more columns or transforms so that filtered reads scan less data. Use the format `ARRAY['column1', 'column2']` — for example `ARRAY['country', 'day(order_date)']`. See [How to Update Materialized Query Settings](#how-to-update-materialized-query-settings) for the full list of supported transforms.
+   - **Sorted By**: Sorts rows within each file to speed up selective filters on high-cardinality columns. Use the format `ARRAY['column1', 'column2']` — for example `ARRAY['order_date DESC']`.
+
 Then click on the Create Query button to create the Materialized Query.
 
 <img
