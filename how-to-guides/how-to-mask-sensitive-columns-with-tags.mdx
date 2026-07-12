@@ -1,34 +1,34 @@
 ---
 title: "How to mask sensitive columns with tags"
-description: "Learn how to protect PII and other sensitive data in Peaka by tagging columns and applying masking rules per user or group."
+description: "Learn how to protect PII and other sensitive data in Peaka by tagging columns and applying masking rules per user group."
 ---
 
-Column masking lets you hide or transform sensitive values — emails, phone numbers, national IDs, salaries — without changing the underlying data or writing a separate query for every audience. You classify columns with **tags**, and each tag carries **mask rules** that decide what each user or group sees. Masking is enforced at query time by Peaka's query engine, so it applies everywhere the data is consumed: the Peaka Studio, the Query API, BI tools, and embedded apps.
+Column masking lets you hide or transform sensitive values — emails, phone numbers, national IDs, salaries — without changing the underlying data or writing a separate query for every audience. You classify columns with **tags**, and each tag carries **mask rules** that decide what each user group sees. Masking is enforced at query time by Peaka's query engine, so it applies everywhere the data is consumed: the Peaka Studio, the Query API, BI tools, and embedded apps.
 
 ## How it works
 
 Three building blocks work together:
 
-- **Tags** classify your data (for example `PII`, `Financial`, `Confidential`). A tag can be attached to any number of columns across your catalogs.
+- **Tags** classify your data (for example `PII`, `Financial`, `Confidential`). Tags are defined once at the organization level and can be attached to any number of columns across your projects and catalogs.
 - **Masks** define *how* a value is transformed. You can use Peaka's predefined masks or create your own with a SQL expression.
-- **Mask rules** connect the two: for a given tag, a rule says *who* (a specific user, a group, or everyone) sees the data through *which* mask.
+- **Mask rules** connect the two: for a given tag, a rule says which **group** of users sees the data through *which* mask.
 
-When a query touches a tagged column, Peaka picks the most specific rule that matches the querying user and rewrites the column on the fly:
+When a query touches a tagged column, Peaka checks the querying user's groups. If one of the tag's rules targets a group the user belongs to, the column is rewritten through that mask on the fly. If no rule matches — or the tag is inactive — the column is returned **unmasked**.
 
-1. A rule targeting the **user** directly wins first,
-2. then a rule targeting one of the user's **groups**,
-3. then a rule targeting **everyone**.
+<Warning>
+There is no implicit "everyone" rule: a user who is in none of the tag's rule groups sees raw values. To mask data by default, create a group that contains all regular members and give it a rule. Avoid putting the same user in multiple rule groups of one tag — only a single rule is applied.
+</Warning>
 
-If no rule matches — or the tag is inactive — the column is returned unmasked.
+## 1. Open the Tags page
 
-## 1. Open Data Governance settings
+Tags are managed at the organization level. In Peaka Studio's home screen, find the **ORGANIZATION** section in the left sidebar and open **Tags**. This brings you to the *Tag List* page.
 
-Tags and masks are managed at the organization level. In Peaka Studio, open your organization settings and navigate to the **Data Governance** section. You need the *Manage Data Governance* permission to see and edit these settings.
+Mask rules target user groups, which are managed on the same organization sidebar under **General → Groups** (Organization Settings). Create your groups — for example `support-team` — and add members before setting up rules.
 
 {/* TODO: upload screenshot to CDN, then restore:
 <img
   src="https://cdn.peaka.com/how-to-guides/how-to-mask-sensitive-columns-with-tags-1.png"
-  alt="data governance section in organization settings"
+  alt="Tags page in the organization sidebar"
 />
 */}
 
@@ -42,10 +42,10 @@ Peaka ships with predefined masks that cover the most common cases:
 | Partial Mask Show Last Four  | Masks everything except the last four characters                     | `XXXXXXXXXXXXXXX.com`            |
 | Partial Mask Show First Four | Masks everything except the first four characters                    | `janeXXXXXXXXXXXXXXX`            |
 | Nullify                      | Replaces the value with `NULL`                                       | `NULL`                           |
-| Unmasked                     | No masking — useful for exempting a user or group from a tag's rules | `jane.doe99@acme.com`            |
+| Unmasked                     | No masking — useful for exempting a group from a tag's rules         | `jane.doe99@acme.com`            |
 | Date Show Only Year          | Truncates a date to its year                                         | `2024-01-01` (from `2024-08-15`) |
 
-If none of these fit, create a **custom mask** with a SQL expression. Use the `{col}` placeholder for the column and `{type}` for its data type — Peaka substitutes them at query time. For example, a mask that keeps only the email domain:
+If none of these fit, create a **custom mask** with a SQL expression — either from the **Manage Custom Masks** button on the Tag List page, or directly from the *Mask Type* dropdown's **+ Custom Mask** option while editing a rule. A custom mask has a *Name*, *Description*, and *Expression*. Use the `{col}` placeholder for the column and `{type}` for its data type — Peaka substitutes them at query time. For example, a mask that keeps only the email domain:
 
 ```sql
 cast(concat('***@', split_part({col}, '@', 2)) as {type})
@@ -60,13 +60,13 @@ cast(concat('***@', split_part({col}, '@', 2)) as {type})
 
 ## 3. Create a tag with mask rules
 
-Create a tag (for example `PII`) and add its mask rules. A typical setup:
+On the Tag List page click **New Tag**, give it a *Name* (for example `PII`) and optionally a *Description*, and add rules with **+ New Rule**. Each rule pairs a **Mask Type** with a **Group**. A typical setup:
 
-- **Everyone** → *Redact* — by default, nobody sees raw values.
-- **Group: Data Team** → *Unmasked* — analysts who need the raw data are exempted.
-- **User: support@acme.com** → *Partial Mask Show Last Four* — support can verify identities without seeing full values.
+- **Group: support-team** → *Redact* — support agents work with masked values.
+- **Group: contractors** → *Nullify* — external contractors see nothing.
+- Users in neither group — say, your data team — keep seeing raw values, since no rule targets them.
 
-Keep the tag **active** — deactivating a tag switches off all of its masking at once, which is useful for testing.
+Keep the tag's **Status** toggle on — deactivating a tag switches off all of its masking at once, which is useful for testing.
 
 {/* TODO: upload screenshot to CDN, then restore:
 <img
@@ -77,12 +77,12 @@ Keep the tag **active** — deactivating a tag switches off all of its masking a
 
 ## 4. Assign the tag to columns
 
-Open the table that contains sensitive data and assign the tag to the relevant columns — for example the `email` and `phone` columns of your CRM catalog. A column can carry one tag; the same tag can be reused across any number of tables and catalogs.
+Tags are attached to columns inside your project. Open the table in the **Data Model** view and click **Manage Column Tags** in the table toolbar. Add a mapping with **+ New Column Rule**, pick the *Column* and the *Tag*, and **Save** — for example the `email` and `phone` columns of your CRM catalog. A column can carry one tag; the same tag can be reused across any number of tables and catalogs.
 
 {/* TODO: upload screenshot to CDN, then restore:
 <img
   src="https://cdn.peaka.com/how-to-guides/how-to-mask-sensitive-columns-with-tags-4.png"
-  alt="assigning a tag to table columns"
+  alt="assigning a tag to table columns with Manage Column Tags"
 />
 */}
 
@@ -94,11 +94,13 @@ Run a query on the tagged table as different users:
 SELECT id, full_name, email, phone FROM crm.public.customers LIMIT 5
 ```
 
-A member of the *Data Team* group sees raw values, while everyone else sees the masked version:
+A member of the *support-team* group sees the masked version, while users outside the rule groups see raw values:
 
 | id  | full_name    | email                 | phone          |
 | --- | ------------ | --------------------- | -------------- |
 | 1   | Xxxx Xxx     | xxxx.xxx00@xxxx.xxx   | 000-000-0000   |
+
+The change takes effect immediately — the next query against the tagged column is masked, with no refresh or restart needed.
 
 {/* TODO: upload screenshot to CDN, then restore:
 <img
@@ -110,6 +112,6 @@ A member of the *Data Team* group sees raw values, while everyone else sees the 
 ## Things to keep in mind
 
 - Masking is applied by the query engine, so it also covers downstream access paths — the Query API, BI tool connections, and embedded Peaka.
-- Rule precedence is *user → group → everyone*; only the single most specific rule is applied.
+- Rules are group-based. If none of the querying user's groups has a rule for the tag, the column comes back unmasked — design your groups so that everyone who should see masked data is covered by a rule.
 - Custom mask expressions run inside the query, so any Peaka SQL function is available in them.
 - Masks transform values but do not remove rows. To control *which rows* a user can see, combine masking with [row-level security](/how-to-guides/how-to-implement-row-level-security).
