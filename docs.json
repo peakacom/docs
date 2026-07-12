@@ -599,6 +599,8 @@
               "how-to-guides/how-to-create-peaka-rest-api-catalog-with-authentication",
               "how-to-guides/how-to-use-new-ai-api-api",
               "how-to-guides/how-to-materialize-a-query-with-the-peaka-api"
+              "how-to-guides/how-to-mask-sensitive-columns-with-tags",
+              "how-to-guides/how-to-implement-row-level-security"
             ]
           }
         ]
