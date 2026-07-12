@@ -25,13 +25,6 @@ Tags are managed at the organization level. In Peaka Studio's home screen, find 
 
 Mask rules target user groups, which are managed on the same organization sidebar under **General → Groups** (Organization Settings). Create your groups — for example `support-team` — and add members before setting up rules.
 
-{/* TODO: upload screenshot to CDN, then restore:
-<img
-  src="https://cdn.peaka.com/how-to-guides/how-to-mask-sensitive-columns-with-tags-1.png"
-  alt="Tags page in the organization sidebar"
-/>
-*/}
-
 ## 2. Pick a mask (or create a custom one)
 
 Peaka ships with predefined masks that cover the most common cases:
@@ -51,13 +44,6 @@ If none of these fit, create a **custom mask** with a SQL expression — either 
 cast(concat('***@', split_part({col}, '@', 2)) as {type})
 ```
 
-{/* TODO: upload screenshot to CDN, then restore:
-<img
-  src="https://cdn.peaka.com/how-to-guides/how-to-mask-sensitive-columns-with-tags-2.png"
-  alt="creating a custom mask"
-/>
-*/}
-
 ## 3. Create a tag with mask rules
 
 On the Tag List page click **New Tag**, give it a *Name* (for example `PII`) and optionally a *Description*, and add rules with **+ New Rule**. Each rule pairs a **Mask Type** with a **Group**. A typical setup:
@@ -68,23 +54,9 @@ On the Tag List page click **New Tag**, give it a *Name* (for example `PII`) and
 
 Keep the tag's **Status** toggle on — deactivating a tag switches off all of its masking at once, which is useful for testing.
 
-{/* TODO: upload screenshot to CDN, then restore:
-<img
-  src="https://cdn.peaka.com/how-to-guides/how-to-mask-sensitive-columns-with-tags-3.png"
-  alt="creating a tag with mask rules"
-/>
-*/}
-
 ## 4. Assign the tag to columns
 
 Tags are attached to columns inside your project. Open the table in the **Data Model** view and click **Manage Column Tags** in the table toolbar. Add a mapping with **+ New Column Rule**, pick the *Column* and the *Tag*, and **Save** — for example the `email` and `phone` columns of your CRM catalog. A column can carry one tag; the same tag can be reused across any number of tables and catalogs.
-
-{/* TODO: upload screenshot to CDN, then restore:
-<img
-  src="https://cdn.peaka.com/how-to-guides/how-to-mask-sensitive-columns-with-tags-4.png"
-  alt="assigning a tag to table columns with Manage Column Tags"
-/>
-*/}
 
 ## 5. Verify the masking
 
@@ -101,13 +73,6 @@ A member of the *support-team* group sees the masked version, while users outsid
 | 1   | Xxxx Xxx     | xxxx.xxx00@xxxx.xxx   | 000-000-0000   |
 
 The change takes effect immediately — the next query against the tagged column is masked, with no refresh or restart needed.
-
-{/* TODO: upload screenshot to CDN, then restore:
-<img
-  src="https://cdn.peaka.com/how-to-guides/how-to-mask-sensitive-columns-with-tags-5.png"
-  alt="query result with masked columns"
-/>
-*/}
 
 ## Things to keep in mind
 
