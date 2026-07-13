@@ -2284,7 +2284,7 @@
       "get" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "Table is Cached",
-        "description" : "Checks whether the specified table has an active cache in Peaka. When a table is cached, its data is stored locally in Peaka, enabling significantly faster query performance compared to live queries against the original data source. Returns `isCached: true` if a cache is currently active, or `false` otherwise.",
+        "description" : "Checks whether the specified table has an active cache in Peaka. When a table is cached, its data is stored locally in Peaka, enabling significantly faster query performance compared to live queries against the original data source. Returns `isCached: true` if a cache is currently active, or `false` otherwise.\n\nThe response also carries `isCacheable` and `supportedCacheTypes` (`FULL_REFRESH`, `INCREMENTAL`), so a single call is enough to decide whether — and with which schedule types — a cache can be created for the table. `supportedCacheTypes` is empty when the table is not cacheable; both fields are absent when the information could not be resolved.",
         "operationId" : "isCached",
         "parameters" : [ {
           "name" : "projectId",
@@ -2335,7 +2335,17 @@
                   "Table is Cached" : {
                     "description" : "Table is Cached",
                     "value" : {
-                      "isCached" : true
+                      "isCached" : true,
+                      "isCacheable" : true,
+                      "supportedCacheTypes" : [ "FULL_REFRESH", "INCREMENTAL" ]
+                    }
+                  },
+                  "Table is Not Cacheable" : {
+                    "description" : "Table is Not Cacheable",
+                    "value" : {
+                      "isCached" : false,
+                      "isCacheable" : false,
+                      "supportedCacheTypes" : [ ]
                     }
                   }
                 }
@@ -9978,9 +9988,20 @@
       "TableCacheResult" : {
         "type" : "object",
         "properties" : {
+          "supportedCacheTypes" : {
+            "type" : "array",
+            "description" : "The cache types supported by the table: FULL_REFRESH and/or INCREMENTAL.\n An empty list means the table is not cacheable.\n The field is absent when capability information could not be resolved.",
+            "items" : {
+              "type" : "string"
+            }
+          },
           "isCached" : {
             "type" : "boolean",
-            "description" : "Indicates whether the table is cacheable or not."
+            "description" : "Indicates whether the table currently has an active cache."
+          },
+          "isCacheable" : {
+            "type" : "boolean",
+            "description" : "Indicates whether the table can be cached.\n The field is absent when the information could not be resolved."
           }
         }
       },
