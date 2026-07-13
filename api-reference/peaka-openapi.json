@@ -1948,7 +1948,7 @@
       "get" : {
         "tags" : [ "Data -- Catalogs" ],
         "summary" : "List Tables",
-        "description" : "Lists all tables available under the specified schema of a catalog. Each table entry includes its catalog and schema context along with caching metadata (`isCacheable`, `isDynamicTable`, `isCached`). For the internal catalog, this includes [Peaka Tables](https://docs.peaka.com/connecting-your-data/peaka-table) and [Peaka BI Tables](https://docs.peaka.com/connecting-your-data/peaka-big-table).",
+        "description" : "Lists all tables available under the specified schema of a catalog. Each table entry includes its catalog and schema context along with caching metadata (`isCacheable`, `isDynamicTable`, `isCached`, `supportedCacheTypes`). `supportedCacheTypes` lists the cache types (`FULL_REFRESH`, `INCREMENTAL`) that can be used when creating a cache for the table; it is empty when the table is not cacheable, and absent when capability information could not be resolved. For the internal catalog, this includes [Peaka Tables](https://docs.peaka.com/connecting-your-data/peaka-table) and [Peaka BI Tables](https://docs.peaka.com/connecting-your-data/peaka-big-table).",
         "operationId" : "listTables_1",
         "parameters" : [ {
           "name" : "projectId",
@@ -1994,20 +1994,22 @@
                     "description" : "List Tables",
                     "value" : [ {
                       "catalogId" : "544639856899260964",
-                      "catalogName" : "airtable2",
-                      "schemaName" : "test",
-                      "tableName" : "projects",
-                      "isCacheable" : false,
+                      "catalogName" : "hubspot",
+                      "schemaName" : "crm",
+                      "tableName" : "companies",
+                      "isCacheable" : true,
                       "isDynamicTable" : false,
-                      "isCached" : false
+                      "isCached" : false,
+                      "supportedCacheTypes" : [ "FULL_REFRESH", "INCREMENTAL" ]
                     }, {
                       "catalogId" : "544639856899260964",
-                      "catalogName" : "airtable2",
-                      "schemaName" : "test",
-                      "tableName" : "testTable",
+                      "catalogName" : "hubspot",
+                      "schemaName" : "crm",
+                      "tableName" : "owners",
                       "isCacheable" : false,
                       "isDynamicTable" : false,
-                      "isCached" : false
+                      "isCached" : false,
+                      "supportedCacheTypes" : [ ]
                     } ]
                   }
                 }
@@ -3727,8 +3729,8 @@
           "required" : false,
           "schema" : {
             "type" : "string",
-            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ],
-            "default" : "CELL_TYPED"
+            "default" : "CELL_TYPED",
+            "enum" : [ "CELL_TYPED", "SIMPLE", "COMPACT" ]
           },
           "example" : "SIMPLE"
         } ],
@@ -4335,16 +4337,6 @@
           "example" : "550e8400-e29b-41d4-a716-446655440000"
         } ],
         "responses" : {
-          "404" : {
-            "description" : "Folder not found",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
-                }
-              }
-            }
-          },
           "200" : {
             "description" : "Folder read successfully",
             "content" : {
@@ -4373,6 +4365,16 @@
                     "path" : "/Reports",
                     "folderId" : "550e8400-e29b-41d4-a716-446655440000"
                   } ]
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Folder not found",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderWithContentsResponse"
                 }
               }
             }
@@ -4713,16 +4715,6 @@
               }
             }
           },
-          "409" : {
-            "description" : "Folder already exists at this path",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/QueryFolderItem"
-                }
-              }
-            }
-          },
           "201" : {
             "description" : "Folder created successfully",
             "content" : {
@@ -4736,6 +4728,16 @@
                   "path" : "/Reports/Monthly",
                   "parentId" : "550e8400-e29b-41d4-a716-446655440000",
                   "createdAt" : "2025-01-15T10:31:00Z"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Folder already exists at this path",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QueryFolderItem"
                 }
               }
             }
@@ -4960,7 +4962,7 @@
       "post" : {
         "tags" : [ "Data -- Cache" ],
         "summary" : "Create Cache",
-        "description" : "Creates a new cache for a specific table in a catalog. Caching copies data from an external data source into the internal Peaka BigTable store for faster query performance.\n\nThe cache can be configured in three modes:\n- **One-time cache**: No schedules provided. Data is cached once during creation and never automatically refreshed.\n- **Scheduled incremental updates**: Provide `incrementalCacheSchedule` to periodically sync only the changes (inserts, updates, deletes) since the last sync.\n- **Scheduled full refresh + incremental**: Provide both `fullRefreshCacheSchedule` and `incrementalCacheSchedule`.   Full refresh drops and rebuilds the entire cached table periodically, while incremental updates run more frequently between full refreshes.\n\nAfter creation, the initial sync is triggered automatically based on the provided schedules. If only an incremental schedule is given, an incremental sync starts immediately. If a full refresh schedule is given, a full refresh starts immediately.\n\nThe schedule `expression` uses ISO-8601 duration format (e.g. `PT6H` = every 6 hours, `PT15M` = every 15 minutes, `P1D` = every day).",
+        "description" : "Creates a new cache for a specific table in a catalog. Caching copies data from an external data source into the internal Peaka BigTable store for faster query performance.\n\nNot every table can be cached: check `isCacheable` and `supportedCacheTypes` in the List Tables response before creating a cache. `supportedCacheTypes` tells which of the modes below are available for the table (`FULL_REFRESH`, `INCREMENTAL`).\n\nThe cache can be configured in three modes:\n- **One-time cache**: No schedules provided. Data is cached once during creation and never automatically refreshed.\n- **Scheduled incremental updates**: Provide `incrementalCacheSchedule` to periodically sync only the changes (inserts, updates, deletes) since the last sync.\n- **Scheduled full refresh + incremental**: Provide both `fullRefreshCacheSchedule` and `incrementalCacheSchedule`.   Full refresh drops and rebuilds the entire cached table periodically, while incremental updates run more frequently between full refreshes.\n\nAfter creation, the initial sync is triggered automatically based on the provided schedules. If only an incremental schedule is given, an incremental sync starts immediately. If a full refresh schedule is given, a full refresh starts immediately.\n\nThe schedule `expression` uses ISO-8601 duration format (e.g. `PT6H` = every 6 hours, `PT15M` = every 15 minutes, `P1D` = every day).",
         "operationId" : "createCache",
         "parameters" : [ {
           "name" : "projectId",
@@ -5025,8 +5027,8 @@
           "required" : true
         },
         "responses" : {
-          "400" : {
-            "description" : "Invalid request. The catalog, schema, or table may not exist, or the schedule expression is invalid.",
+          "409" : {
+            "description" : "A cache already exists for this table.",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -5035,8 +5037,8 @@
               }
             }
           },
-          "409" : {
-            "description" : "A cache already exists for this table.",
+          "400" : {
+            "description" : "Invalid request. The catalog, schema, or table may not exist, or the schedule expression is invalid. When the table is not cacheable (`isCacheable: false` in the table metadata), the error body carries `errorCode: TABLE_NOT_CACHEABLE`.",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -5291,6 +5293,16 @@
           "required" : true
         },
         "responses" : {
+          "400" : {
+            "description" : "Invalid request, e.g. the schedule expression is invalid.",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Cache"
+                }
+              }
+            }
+          },
           "404" : {
             "description" : "Cache not found for the given cacheId.",
             "content" : {
@@ -6097,16 +6109,6 @@
           "example" : "4c9fcb44-126a-45f8-99a0-f1d245083d78"
         } ],
         "responses" : {
-          "200" : {
-            "description" : "Export job status",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ExportJobResponse"
-                }
-              }
-            }
-          },
           "404" : {
             "description" : "Export job not found",
             "content" : {
@@ -6116,6 +6118,16 @@
                   "additionalProperties" : {
                     "type" : "object"
                   }
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "Export job status",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ExportJobResponse"
                 }
               }
             }
@@ -8554,8 +8566,8 @@
           "queryType" : {
             "type" : "string",
             "description" : "The type of the query. Defaults to PLAIN.",
-            "enum" : [ "PLAIN", "MATERIALIZED" ],
-            "default" : "PLAIN"
+            "default" : "PLAIN",
+            "enum" : [ "PLAIN", "MATERIALIZED" ]
           },
           "schedule" : {
             "$ref" : "#/components/schemas/MaterializedQuerySchedule"
@@ -8995,6 +9007,13 @@
             "type" : "string",
             "description" : "The name of the table."
           },
+          "supportedCacheTypes" : {
+            "type" : "array",
+            "description" : "The cache types supported by the table: FULL_REFRESH and/or INCREMENTAL.\n An empty list means the table is not cacheable.\n The field is absent when capability information could not be resolved.",
+            "items" : {
+              "type" : "string"
+            }
+          },
           "isCacheable" : {
             "type" : "boolean",
             "description" : "Indicates whether the table is cacheable or not."
@@ -9266,8 +9285,8 @@
             "type" : "string",
             "description" : "Output format",
             "example" : "CSV",
-            "enum" : [ "CSV", "JSONL" ],
-            "default" : "CSV"
+            "default" : "CSV",
+            "enum" : [ "CSV", "JSONL" ]
           },
           "limit" : {
             "type" : "integer",
@@ -9298,8 +9317,8 @@
             "type" : "string",
             "description" : "Output compression; with GZIP every artifact is a gzip stream carrying a .gz suffix",
             "example" : "NONE",
-            "enum" : [ "NONE", "GZIP" ],
-            "default" : "NONE"
+            "default" : "NONE",
+            "enum" : [ "NONE", "GZIP" ]
           }
         },
         "description" : "Async export request. The job is accepted (202) and runs in the background; the result is downloaded via presigned URLs returned by the status endpoint."
