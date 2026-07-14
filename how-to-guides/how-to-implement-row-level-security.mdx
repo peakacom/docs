@@ -1,0 +1,87 @@
+---
+title: "How to implement row-level security"
+description: "Learn how to restrict which rows each user can see in Peaka using the current_user_props() SQL function."
+---
+
+Row-level security means different users see different rows of the same table — a sales rep sees only their own deals, a regional manager sees only their region. In Peaka you implement this with the `current_user_props()` SQL function: it returns properties of the user running the query, so a single saved query can filter itself for whoever executes it.
+
+## How it works
+
+Every query in Peaka runs with the identity of the user who executes it — whether it comes from the Studio, the Query API, a BI tool, or an embedded app. The `current_user_props(key)` function exposes that identity inside SQL:
+
+| Key                            | Returns                              |
+| ------------------------------ | ------------------------------------ |
+| `'id'` or `'user'`             | The user's unique ID                 |
+| `'email'`                      | The user's email address             |
+| `'username'`                   | The user's username                  |
+| `'firstname'` / `'first_name'` | The user's first name                |
+| `'lastname'` / `'last_name'`   | The user's last name                 |
+| `'project'`                    | The current project ID               |
+
+All keys return a `varchar`. If the property is not available — or the query runs without a user identity — the function returns an empty string, so identity-based filters simply match no rows rather than exposing data.
+
+## 1. Test the function
+
+Run this in the SQL editor to see your own identity:
+
+```sql
+SELECT current_user_props('email')      AS email,
+       current_user_props('firstname')  AS first_name,
+       current_user_props('id')         AS user_id
+```
+
+| email               | first_name | user_id                              |
+| ------------------- | ---------- | ------------------------------------ |
+| jane.doe@acme.com   | Jane       | a72a80ed-7c1c-4847-8a36-8a07d506afcf |
+
+## 2. Write a self-filtering query
+
+Add a `WHERE` clause that compares a column against the current user. For a CRM table where every deal has an `owner_email` column:
+
+```sql
+SELECT deal_id, deal_name, amount, stage
+FROM crm.public.deals
+WHERE owner_email = current_user_props('email')
+```
+
+When Jane runs this query she gets only her deals; when another rep runs the *same* query, they get theirs. No per-user copies, no application-side filtering.
+
+## 3. Save and share the query
+
+Save the statement as a Peaka query and share *the query* with your users instead of the underlying table. The filter travels with the query, and each consumer — in the Studio, over the Query API, or in an embedded app — is automatically limited to their own rows.
+
+<Warning>
+Row-level security lives in the query, not on the table. A user who can query the base table directly can bypass the filter — so grant your consumers access to the saved query, not to the raw catalog table.
+</Warning>
+
+## 4. Use a mapping table for indirect relationships
+
+Often your data doesn't contain user emails directly — deals belong to *regions*, and users are assigned to regions elsewhere. Model that with a small mapping table (a Peaka Table works well):
+
+**user_regions**
+
+| user_email          | region |
+| ------------------- | ------ |
+| jane.doe@acme.com   | EMEA   |
+| john.smith@acme.com | AMER   |
+
+Then join through it in your shared query:
+
+```sql
+SELECT d.deal_id, d.deal_name, d.amount, d.region
+FROM crm.public.deals d
+WHERE d.region IN (
+    SELECT r.region
+    FROM "peaka"."table"."user_regions" r
+    WHERE r.user_email = current_user_props('email')
+)
+```
+
+Access management now becomes data management: to change what someone sees, edit a row in `user_regions` — no query changes needed. A user with no row in the mapping table sees nothing.
+
+## Things to keep in mind
+
+- `current_user_props()` always returns `varchar`. Cast when comparing against numeric columns: `CAST(current_user_props('id') AS ...)` or cast the column instead.
+- An unknown key returns an empty string rather than an error — double-check key spelling, since a typo silently filters out all rows.
+- User properties such as email and name are cached for a few minutes, so profile changes may take up to five minutes to be reflected in query results.
+- Row-level security controls *which rows* a user sees. To control *what's inside* sensitive columns, combine it with [tag-based column masking](/how-to-guides/how-to-mask-sensitive-columns-with-tags).
