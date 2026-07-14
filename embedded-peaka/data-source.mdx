@@ -77,6 +77,25 @@ Once you have created the catalog, you will find the catalog table displayed in 
 
 **Note**: This action may either initiate a cache job for the catalog directly or open a new modal where you can input the required fields. If prompted, fill in the necessary information and then click on the "Start Cache" button to proceed.
 
+#### Cache Settings
+
+When configuring the cache, you can control how and when your cached data is refreshed using the following settings:
+
+- **Auto Update**: A toggle that enables or disables automatic cache refreshes. When turned **on**, Peaka periodically refreshes the cache based on the update frequency you select. When turned **off**, the cache is not refreshed automatically, and both the **Update Frequency** and **Cache Type** options are disabled.
+
+- **Update Frequency**: Determines how often the cache is automatically refreshed. This option is only available when **Auto Update** is on. The available intervals are:
+  - Every 15 minutes
+  - Every 30 minutes
+  - Every 1 hour
+  - Every 2 hours
+  - Every 6 hours
+  - Every day
+  - Every week
+
+- **Cache Type**: Determines how the cache is refreshed on each update. This option is only available when **Auto Update** is on. The available types are:
+  - **Incremental**: Updates the cache with only the new or changed data since the last refresh, resulting in faster and more efficient updates.
+  - **Full Refresh**: Rebuilds the entire cache from scratch on each refresh, ensuring the cached data fully matches the source.
+
 - This will initiate the caching process for your catalog.
 
 <img
