@@ -103,6 +103,28 @@ When configuring the cache, you can control how and when your cached data is ref
   alt="Start Caching"
 />
 
+#### Choosing the Right Autoupdate Settings
+
+Autoupdate keeps your cached data in sync with the source. Picking the wrong combination is the most common setup mistake, so use the scenarios below as a starting point:
+
+- **Frequently changing data that needs to stay fresh** (e.g. orders, events): enable **Auto Update**, choose a short **Update Frequency** (Every 15 or 30 minutes), and set **Cache Type** to **Incremental**. Incremental updates only pull new or changed rows, so short intervals stay inexpensive.
+
+- **Large tables where you mainly need recent data**: enable **Auto Update** with an **Incremental** refresh at a moderate frequency (Every 1–6 hours). Avoid frequent **Full Refresh** on large tables — rebuilding the whole cache repeatedly is slow and resource-heavy.
+
+- **Data that must exactly match the source, including deletes and updates to old rows**: use a **Full Refresh**. Because incremental updates only add new or changed rows, schedule a less frequent Full Refresh (Every day or Every week) to guarantee the cache fully matches the source.
+
+- **Reference or rarely changing data** (e.g. lookup tables): a low frequency such as **Every day** or **Every week** is usually enough.
+
+- **Static data that never changes**: turn **Auto Update off**. The cache is populated once and never refreshed automatically. You can still trigger a manual refresh later if needed.
+
+<Warning>
+  If **Auto Update** is off, your cache will **not** refresh on its own and will gradually become stale as the source changes. Only turn it off for data you know is static, or when you intend to refresh manually.
+</Warning>
+
+<Note>
+  Incremental and Full Refresh can run on independent schedules. A common pattern is a frequent **Incremental** update (e.g. hourly) combined with a periodic **Full Refresh** (e.g. weekly) to catch deletes and corrections. To configure these schedules via the API, see [Cache Your Catalog](https://docs.peaka.com/embedded-peaka/data-management-backend).
+</Note>
+
 ### 4. Creating Partner API Key
 
 - Before starting execution of query, you need to create a Partner API key. You will use this API key to authenticate your requests to the Peaka API.

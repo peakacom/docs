@@ -121,30 +121,30 @@ For detailed guidance, please refer to the documentation on [how to create a pro
     package main
 
     import (
-	    "fmt"
-	    "strings"
-	    "net/http"
-	    "io"
+        "fmt"
+        "strings"
+        "net/http"
+        "io"
     )
 
     func main() {
 
-	    url := "https://partner.peaka.studio/api/v1/organizations/{organizationId}/workspaces/{workspaceId}/projects"
+        url := "https://partner.peaka.studio/api/v1/organizations/{organizationId}/workspaces/{workspaceId}/projects"
 
-	    payload := strings.NewReader("{\n  \"name\": \"Sample Project Name\"\n}")
+        payload := strings.NewReader("{\n  \"name\": \"Sample Project Name\"\n}")
 
-	    req, _ := http.NewRequest("POST", url, payload)
+        req, _ := http.NewRequest("POST", url, payload)
 
-	    req.Header.Add("Authorization", "Bearer <token>")
-	    req.Header.Add("Content-Type", "application/json")
+        req.Header.Add("Authorization", "Bearer <token>")
+        req.Header.Add("Content-Type", "application/json")
 
-	    res, _ := http.DefaultClient.Do(req)
+        res, _ := http.DefaultClient.Do(req)
 
     	defer res.Body.Close()
-	    body, _ := io.ReadAll(res.Body)
+        body, _ := io.ReadAll(res.Body)
 
-	    fmt.Println(res)
-	    fmt.Println(string(body))
+        fmt.Println(res)
+        fmt.Println(string(body))
 
     }
     ```
@@ -539,13 +539,123 @@ For detailed guidance, please refer to the documentation on [how to cache a cata
     "schemaName": "<string>",
     "tableName": "<string>",
     "incrementalCacheSchedule": {
+        "type": "<string>",
         "expression": "<string>"
     },
     "fullRefreshCacheSchedule": {
+        "type": "<string>",
         "expression": "<string>"
     }
 }
 ```
+
+#### Enabling Auto Update (Scheduling Refreshes)
+
+The request above creates a cache **without** auto update — the cache is populated once and never refreshed automatically. To keep the cache in sync with the source, enable auto update by including a schedule in your request.
+
+A cache has two independent schedules, both defined by the same `Schedule` object:
+
+- **`incrementalCacheSchedule`**: How often Peaka pulls only the new or changed rows since the last run. Faster and cheaper — use this for frequent updates.
+- **`fullRefreshCacheSchedule`**: How often Peaka rebuilds the entire cache from scratch. Heavier — use this less frequently to guarantee the cache fully matches the source.
+
+Each schedule is an object with two fields:
+
+| Field        | Description                                                                                    |
+| ------------ | ---------------------------------------------------------------------------------------------- |
+| `type`       | `BASIC` to enable the schedule, or `NONE` to disable it. When `NONE`, `expression` is ignored. |
+| `expression` | The refresh interval as an **ISO-8601 duration** (only used when `type` is `BASIC`).           |
+
+<Warning>
+  The `expression` is an **ISO-8601 duration**, not a cron expression or a plain
+  string like `"15 minutes"`. A malformed expression is the most common cause of
+  a schedule that silently never runs.
+</Warning>
+
+The following table maps each UI **Update Frequency** option to its equivalent ISO-8601 `expression`:
+
+| Update Frequency | `expression` |
+| ---------------- | ------------ |
+| Every 15 minutes | `PT15M`      |
+| Every 30 minutes | `PT30M`      |
+| Every 1 hour     | `PT1H`       |
+| Every 2 hours    | `PT2H`       |
+| Every 6 hours    | `PT6H`       |
+| Every day        | `P1D`        |
+| Every week       | `P7D`        |
+
+The example below creates a cache that runs an **incremental update every hour** and a **full refresh every week**:
+
+<CodeGroup>
+    ```javascript cURL
+    curl --request POST \
+        --url https://partner.peaka.studio/api/v1/data/projects/{projectId}/cache \
+        --header 'Content-Type: application/json' \
+        --data '{
+        "catalogId": "627249916703408649",
+        "schemaName": "payment",
+        "tableName": "customers",
+        "incrementalCacheSchedule": {
+            "type": "BASIC",
+            "expression": "PT1H"
+        },
+        "fullRefreshCacheSchedule": {
+            "type": "BASIC",
+            "expression": "P7D"
+        }
+    }'
+    ```
+    ```javascript JavaScript
+    const options = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            catalogId: "627249916703408649",
+            schemaName: "payment",
+            tableName: "customers",
+            incrementalCacheSchedule: { type: "BASIC", expression: "PT1H" },
+            fullRefreshCacheSchedule: { type: "BASIC", expression: "P7D" }
+        })
+    };
+
+    fetch('https://partner.peaka.studio/api/v1/data/projects/{projectId}/cache', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+    ```
+    ```python Python
+    import requests
+
+    url = "https://partner.peaka.studio/api/v1/data/projects/{projectId}/cache"
+
+    payload = {
+        "catalogId": "627249916703408649",
+        "schemaName": "payment",
+        "tableName": "customers",
+        "incrementalCacheSchedule": {"type": "BASIC", "expression": "PT1H"},
+        "fullRefreshCacheSchedule": {"type": "BASIC", "expression": "P7D"}
+    }
+    headers = {"Content-Type": "application/json"}
+
+    response = requests.request("POST", url, json=payload, headers=headers)
+
+    print(response.text)
+    ```
+
+</CodeGroup>
+
+To turn auto update **off**, either omit the schedule fields entirely or set their `type` to `NONE`:
+
+```javascript
+{
+    "catalogId": "627249916703408649",
+    "schemaName": "payment",
+    "tableName": "customers",
+    "incrementalCacheSchedule": { "type": "NONE" },
+    "fullRefreshCacheSchedule": { "type": "NONE" }
+}
+```
+
+**Note**: You can update the schedules of an existing cache at any time with the [update cache settings](https://docs.peaka.com/api-reference/data--cache/update-cache-settings) endpoint, or trigger a one-off refresh with the [incremental](https://docs.peaka.com/api-reference/data--cache/trigger-incremental-cache-update) or [full refresh](https://docs.peaka.com/api-reference/data--cache/trigger-full-refresh-cache-update) endpoints.
 
 ### 6. Write Your Query
 
