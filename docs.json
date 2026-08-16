@@ -12,66 +12,7 @@
     "tabs": [
       {
         "tab": "Documentation",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "introduction"
-            ]
-          },
-          {
-            "group": "Project Operations",
-            "pages": [
-              "project-operations/how-to-create-a-project",
-              "project-operations/clone-a-project",
-              "project-operations/delete-a-project",
-              "project-operations/rename-a-project",
-              "project-operations/manage-members"
-            ]
-          },
-          {
-            "group": "Organization Operations",
-            "pages": [
-              "organization-operations/create-organization",
-              "organization-operations/update-organization",
-              "organization-operations/delete-organization",
-              "organization-operations/leave-organization",
-              "organization-operations/manage-organization-members",
-              "organization-operations/manage-organization-groups"
-            ]
-          },
-          {
-            "group": "Connecting Your Data",
-            "pages": [
-              "connecting-your-data/peaka-query",
-              "connecting-your-data/peaka-table",
-              "connecting-your-data/peaka-bi-table",
-              "connecting-your-data/differences-of-peaka-table-and-peaka-bi-table",
-              "connecting-your-data/creating-query",
-              "connecting-your-data/creating-peaka-table",
-              "connecting-your-data/add-connection",
-              "connecting-your-data/what-is-catalog-schema-virtual-table",
-              "connecting-your-data/what-is-semantic-catalogs",
-              "connecting-your-data/what-is-materialized-query"
-            ]
-          },
-          {
-            "group": "CDC Setup",
-            "pages": [
-              "cdc-setup/cdc-postgresql-setup",
-              "cdc-setup/cdc-mysql-setup",
-              "cdc-setup/cdc-mongodb-setup",
-              "cdc-setup/cdc-mariadb-setup",
-              "cdc-setup/cdc-oracle-setup"
-            ]
-          },
-          {
-            "group": "AI Setup",
-            "pages": [
-              "ai-setup/bring-your-own-ai-model"
-            ]
-          }
-        ]
+        "href": "https://www.peaka.com/docs/introduction"
       },
       {
         "tab": "API Reference",
@@ -357,27 +298,8 @@
         "href": "https://www.peaka.com/docs/flows/how-to-create-a-flow"
       },
       {
-        "tab": "How to Guides",
-        "groups": [
-          {
-            "group": "How to Guides",
-            "pages": [
-              "how-to-guides/how-to-combine-connector-and-peaka-table-data",
-              "how-to-guides/how-to-filter-your-data-with-visual-filter",
-              "how-to-guides/how-to-change-flow-name",
-              "how-to-guides/how-to-generate-api-keys",
-              "how-to-guides/how-to-connect-databases-in-aws-using-iam-credentials",
-              "how-to-guides/how-to-manage-partner-api-key",
-              "how-to-guides/how-to-customize-embedded-ui-style",
-              "how-to-guides/how-to-create-oauth2-based-connections-via-peaka",
-              "how-to-guides/how-to-create-peaka-rest-api-catalog-with-authentication",
-              "how-to-guides/how-to-use-new-ai-api-api",
-              "how-to-guides/how-to-materialize-a-query-with-the-peaka-api",
-              "how-to-guides/how-to-mask-sensitive-columns-with-tags",
-              "how-to-guides/how-to-implement-row-level-security"
-            ]
-          }
-        ]
+        "tab": "Cookbook",
+        "href": "https://www.peaka.com/docs/cookbook/how-to-combine-connector-and-peaka-table-data"
       }
     ],
     "global": {
@@ -473,6 +395,34 @@
     {
       "source": "/sql/:slug*",
       "destination": "https://www.peaka.com/docs/sql/:slug*"
+    },
+    {
+      "source": "/introduction",
+      "destination": "https://www.peaka.com/docs/introduction"
+    },
+    {
+      "source": "/project-operations/:slug*",
+      "destination": "https://www.peaka.com/docs/project-operations/:slug*"
+    },
+    {
+      "source": "/organization-operations/:slug*",
+      "destination": "https://www.peaka.com/docs/organization-operations/:slug*"
+    },
+    {
+      "source": "/connecting-your-data/:slug*",
+      "destination": "https://www.peaka.com/docs/connecting-your-data/:slug*"
+    },
+    {
+      "source": "/cdc-setup/:slug*",
+      "destination": "https://www.peaka.com/docs/cdc-setup/:slug*"
+    },
+    {
+      "source": "/ai-setup/:slug*",
+      "destination": "https://www.peaka.com/docs/ai-setup/:slug*"
+    },
+    {
+      "source": "/how-to-guides/:slug*",
+      "destination": "https://www.peaka.com/docs/cookbook/:slug*"
     }
   ]
 }
