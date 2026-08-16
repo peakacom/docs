@@ -326,32 +326,7 @@
       },
       {
         "tab": "MCP",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "mcp/overview",
-              "mcp/quickstart"
-            ]
-          },
-          {
-            "group": "Install",
-            "pages": [
-              "mcp/install/remote",
-              "mcp/install/npm",
-              "mcp/install/local"
-            ]
-          },
-          {
-            "group": "Reference",
-            "pages": [
-              "mcp/authentication",
-              "mcp/clients",
-              "mcp/tools",
-              "mcp/troubleshooting"
-            ]
-          }
-        ]
+        "href": "https://www.peaka.com/docs/mcp/overview"
       },
       {
         "tab": "Embedded Peaka",
@@ -667,6 +642,10 @@
     {
       "source": "/blogs/:slug*",
       "destination": "https://www.peaka.com/guides/:slug*"
+    },
+    {
+      "source": "/mcp/:slug*",
+      "destination": "https://www.peaka.com/docs/mcp/:slug*"
     }
   ]
 }
