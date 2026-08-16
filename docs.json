@@ -398,7 +398,7 @@
     },
     {
       "source": "/introduction",
-      "destination": "https://www.peaka.com/docs/introduction"
+      "destination": "https://www.peaka.com/docs/"
     },
     {
       "source": "/project-operations/:slug*",
