@@ -334,156 +334,11 @@
       },
       {
         "tab": "SQL Reference",
-        "groups": [
-          {
-            "group": "SQL",
-            "pages": [
-              "sql/introduction"
-            ]
-          },
-          {
-            "group": "Reference",
-            "pages": [
-              "sql/reference/describe",
-              "sql/reference/execute",
-              "sql/reference/prepare",
-              "sql/reference/select",
-              "sql/reference/show-catalogs",
-              "sql/reference/show-columns",
-              "sql/reference/show-schemas",
-              "sql/reference/use",
-              "sql/reference/values"
-            ]
-          },
-          {
-            "group": "Data Types",
-            "pages": [
-              "sql/reference/types"
-            ]
-          },
-          {
-            "group": "Functions",
-            "pages": [
-              "sql/functions/aggregate",
-              "sql/functions/array",
-              "sql/functions/binary",
-              "sql/functions/bitwise",
-              "sql/functions/comparison",
-              "sql/functions/conditional",
-              "sql/functions/conversion",
-              "sql/functions/datetime",
-              "sql/functions/decimal",
-              "sql/functions/hyperloglog",
-              "sql/functions/json",
-              "sql/functions/lambda",
-              "sql/functions/map",
-              "sql/functions/ml",
-              "sql/functions/qdigest",
-              "sql/functions/regexp",
-              "sql/functions/setdigest",
-              "sql/functions/string",
-              "sql/functions/table",
-              "sql/functions/teradata",
-              "sql/functions/url",
-              "sql/functions/uuid",
-              "sql/functions/window"
-            ]
-          },
-          {
-            "group": "Routines",
-            "pages": [
-              "sql/routines/introduction",
-              "sql/routines/examples",
-              "sql/routines/begin",
-              "sql/routines/case",
-              "sql/routines/declare",
-              "sql/routines/function",
-              "sql/routines/if",
-              "sql/routines/iterate",
-              "sql/routines/leave",
-              "sql/routines/loop",
-              "sql/routines/repeat",
-              "sql/routines/return",
-              "sql/routines/set",
-              "sql/routines/while"
-            ]
-          }
-        ]
+        "href": "https://www.peaka.com/docs/sql/introduction"
       },
       {
         "tab": "Integrations",
-        "groups": [
-          {
-            "group": "Integrations",
-            "pages": [
-              "integrations/activecampaign",
-              "integrations/airtable",
-              "integrations/amazon-athena",
-              "integrations/redshift",
-              "integrations/amazon-rds",
-              "integrations/bigquery",
-              "integrations/clickhouse",
-              "integrations/databricks",
-              "integrations/dynamics-365",
-              "integrations/elastic-search",
-              "integrations/excel-365",
-              "integrations/facebook-ads",
-              "integrations/firebase",
-              "integrations/freshdesk",
-              "integrations/github",
-              "integrations/gorgias",
-              "integrations/google-ads",
-              "integrations/google-analytics",
-              "integrations/google-sheets",
-              "integrations/google-spanner",
-              "integrations/hubspot",
-              "integrations/instagram",
-              "integrations/intercom",
-              "integrations/jira-service-management",
-              "integrations/jira",
-              "integrations/klaviyo",
-              "integrations/linkedin-ads",
-              "integrations/mailchimp-marketing",
-              "integrations/mailchimp-transactional",
-              "integrations/mariadb",
-              "integrations/mixpanel",
-              "integrations/mongodb",
-              "integrations/mssql",
-              "integrations/mysql",
-              "integrations/neo4j",
-              "integrations/odoo",
-              "integrations/openai",
-              "integrations/oracle",
-              "integrations/paychex",
-              "integrations/pinecone",
-              "integrations/pipedrive",
-              "integrations/postgresql",
-              "integrations/posthog",
-              "integrations/profitwell",
-              "integrations/provet-cloud",
-              "integrations/quickbooks-online",
-              "integrations/qdrant",
-              "integrations/salesforce",
-              "integrations/sap-hana",
-              "integrations/segment",
-              "integrations/sendgrid",
-              "integrations/service-titan",
-              "integrations/shopify",
-              "integrations/single-store",
-              "integrations/slack",
-              "integrations/snowflake",
-              "integrations/stripe",
-              "integrations/twilio",
-              "integrations/upstash-vector",
-              "integrations/weaviate",
-              "integrations/xero-accounting",
-              "integrations/youtube-analytics",
-              "integrations/zendesk",
-              "integrations/zoho-crm",
-              "integrations/zoom"
-            ]
-          }
-        ]
+        "href": "https://www.peaka.com/docs/integrations/activecampaign"
       },
       {
         "tab": "BI Tools",
@@ -610,6 +465,14 @@
     {
       "source": "/jexl/:slug*",
       "destination": "https://www.peaka.com/docs/jexl/:slug*"
+    },
+    {
+      "source": "/integrations/:slug*",
+      "destination": "https://www.peaka.com/docs/integrations/:slug*"
+    },
+    {
+      "source": "/sql/:slug*",
+      "destination": "https://www.peaka.com/docs/sql/:slug*"
     }
   ]
 }
