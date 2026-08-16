@@ -604,22 +604,6 @@
             ]
           }
         ]
-      },
-      {
-        "tab": "Blogs",
-        "groups": [
-          {
-            "group": "Blogs",
-            "pages": [
-              "blogs/how-to-build-rag-with-peaka",
-              "blogs/how-to-build-churn-dashboard",
-              "blogs/mastra-agent-with-peaka-mcp",
-              "blogs/build-health-dashboard-zendesk-hubspot-stripe",
-              "blogs/why-semantics-matters",
-              "blogs/how-to-use-peaka-api-mcp-server"
-            ]
-          }
-        ]
       }
     ],
     "global": {
@@ -678,5 +662,11 @@
     "gtm": {
       "tagId": "GTM-NLBSKN8"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/blogs/:slug*",
+      "destination": "https://www.peaka.com/guides/:slug*"
+    }
+  ]
 }
