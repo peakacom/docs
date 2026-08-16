@@ -189,7 +189,7 @@ The materialized result is exposed in the `mtquery` schema of the `peaka` catalo
 SELECT * FROM "peaka"."mtquery"."dailyrevenuematerialized"
 ```
 
-This reads the stored table directly — it is fast and does not touch the underlying connectors. You can run it anywhere you run SQL against your project, for example with the [Execute Query](/api-reference/data--queries/execute-query) endpoint, a [JDBC driver](/db-drivers/java), or from other Peaka queries.
+This reads the stored table directly — it is fast and does not touch the underlying connectors. You can run it anywhere you run SQL against your project, for example with the [Execute Query](/api-reference/data--queries/execute-query) endpoint, a [JDBC driver](https://www.peaka.com/docs/db-drivers/java), or from other Peaka queries.
 
 <Note>
   `"peaka"."query"."<name>"` addresses a query's logical definition, while `"peaka"."mtquery"."<name>"` addresses the stored, materialized result.

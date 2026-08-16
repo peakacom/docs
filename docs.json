@@ -330,17 +330,7 @@
       },
       {
         "tab": "Embedded Peaka",
-        "groups": [
-          {
-            "group": "Embedded Peaka",
-            "pages": [
-              "embedded-peaka/introduction",
-              "embedded-peaka/data-source",
-              "embedded-peaka/data-management-backend",
-              "embedded-peaka/data-management-tool-with-ui"
-            ]
-          }
-        ]
+        "href": "https://www.peaka.com/docs/embedded-peaka/introduction"
       },
       {
         "tab": "SQL Reference",
@@ -497,65 +487,19 @@
       },
       {
         "tab": "BI Tools",
-        "groups": [
-          {
-            "group": "BI Tools",
-            "pages": [
-              "bi-tools/looker-studio",
-              "bi-tools/metabase",
-              "bi-tools/preset",
-              "bi-tools/superset",
-              "bi-tools/tableau",
-              "bi-tools/tableau-web-data"
-            ]
-          }
-        ]
+        "href": "https://www.peaka.com/docs/bi-tools/looker-studio"
       },
       {
         "tab": "DB Drivers",
-        "groups": [
-          {
-            "group": "DB Drivers",
-            "pages": [
-              "db-drivers/python",
-              "db-drivers/nodejs",
-              "db-drivers/java"
-            ]
-          }
-        ]
+        "href": "https://www.peaka.com/docs/db-drivers/python"
       },
       {
         "tab": "JEXL",
-        "groups": [
-          {
-            "group": "JEXL",
-            "pages": [
-              "jexl/using-jexl",
-              "jexl/advanced-jexl",
-              "jexl/built-in-functions",
-              "jexl/lodash-functions"
-            ]
-          }
-        ]
+        "href": "https://www.peaka.com/docs/jexl/using-jexl"
       },
       {
         "tab": "Flows",
-        "groups": [
-          {
-            "group": "Flows",
-            "pages": [
-              "flows/how-to-create-a-flow",
-              "flows/reusable-flows",
-              "flows/what-is-output-and-how-to-use-it",
-              "flows/set-flow-variable",
-              "flows/loops",
-              "flows/http-request",
-              "flows/switch-case",
-              "flows/success-fail",
-              "flows/connections"
-            ]
-          }
-        ]
+        "href": "https://www.peaka.com/docs/flows/how-to-create-a-flow"
       },
       {
         "tab": "How to Guides",
@@ -646,6 +590,26 @@
     {
       "source": "/mcp/:slug*",
       "destination": "https://www.peaka.com/docs/mcp/:slug*"
+    },
+    {
+      "source": "/bi-tools/:slug*",
+      "destination": "https://www.peaka.com/docs/bi-tools/:slug*"
+    },
+    {
+      "source": "/db-drivers/:slug*",
+      "destination": "https://www.peaka.com/docs/db-drivers/:slug*"
+    },
+    {
+      "source": "/embedded-peaka/:slug*",
+      "destination": "https://www.peaka.com/docs/embedded-peaka/:slug*"
+    },
+    {
+      "source": "/flows/:slug*",
+      "destination": "https://www.peaka.com/docs/flows/:slug*"
+    },
+    {
+      "source": "/jexl/:slug*",
+      "destination": "https://www.peaka.com/docs/jexl/:slug*"
     }
   ]
 }
